@@ -1,0 +1,9 @@
+# Local recovery snapshots are not part of the published manual.
+index.corrupted-*.html
+index.recovered-*.html
+
+# Local tooling and OS files.
+.DS_Store
+Thumbs.db
+.vscode/
+

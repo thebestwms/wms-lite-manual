@@ -1,0 +1,1972 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Orbiflow WMS-Lite 功能说明书网站样章">
+  <title>Orbiflow WMS-Lite 功能说明书</title>
+  <link rel="stylesheet" href="styles.css?v=20260813-inventory-tabs">
+</head>
+<body>
+  <!-- 内容规则：不复述截图中显而易见的界面结构、按钮或必填标记；正文只解释业务场景、选择依据、配置结果和非显性约束。 -->
+  <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">O</span>
+      <div>
+        <strong>ORBIFLOW</strong>
+        <small>WMS-Lite Manual</small>
+      </div>
+    </div>
+
+    <div class="sidebar-label">功能说明书 · 样章</div>
+    <nav aria-label="说明书导航">
+      <a href="#start" class="nav-link active"><span>00</span>阅读指南</a>
+      <div class="nav-module main-nav-module mdm-nav" data-nav-module="mdm">
+        <div class="nav-module-head"><a href="#mdm" class="nav-link nav-group-link"><span>MDM</span>· Master Data</a><button class="nav-toggle" type="button" aria-label="收起 MDM 子菜单" aria-expanded="true" aria-controls="mdm-submenu"></button></div>
+        <div class="nav-submenu" id="mdm-submenu">
+          <a href="#organization" class="nav-link"><span>01</span>Organization</a><a href="#customer" class="nav-link"><span>02</span>Customer</a><a href="#item" class="nav-link"><span>03</span>Item</a><a href="#industry" class="nav-link"><span>04</span>Industry</a><a href="#hazard" class="nav-link"><span>05</span>Hazard</a><a href="#carrier" class="nav-link"><span>06</span>Carrier</a><a href="#address" class="nav-link"><span>07</span>Address</a>
+        </div>
+      </div>
+      <div class="nav-module main-nav-module inbound-main-nav" data-nav-module="inbound">
+        <div class="nav-module-head"><a href="#inbound" class="nav-link nav-group-link inbound-nav"><span>IN</span>Inbound</a><button class="nav-toggle" type="button" aria-label="收起 Inbound 子菜单" aria-expanded="true" aria-controls="inbound-submenu"></button></div>
+        <div class="nav-submenu" id="inbound-submenu">
+          <a href="#receipt" class="nav-link"><span>01</span>Receipt</a><a href="#rma" class="nav-link"><span>02</span>RMA Management</a>
+        </div>
+      </div>
+      <div class="nav-module main-nav-module outbound-main-nav" data-nav-module="outbound">
+        <div class="nav-module-head"><a href="#outbound" class="nav-link nav-group-link outbound-nav"><span>OUT</span>Outbound</a><button class="nav-toggle" type="button" aria-label="收起 Outbound 子菜单" aria-expanded="true" aria-controls="outbound-submenu"></button></div>
+        <div class="nav-submenu nav-peer-list outbound-peer-list" id="outbound-submenu">
+        <a href="#outbound-order-guide" class="nav-link"><span>01</span>Outbound Order</a>
+        <a href="#inventory-commitment-guide" class="nav-link"><span>02</span>Inventory Commitment</a>
+        <a href="#order-plans-guide" class="nav-link"><span>03</span>Order Plans</a>
+        <div class="nav-module order-dispatch-nav" data-nav-module="order-dispatch">
+          <div class="nav-module-head">
+            <a href="#order-dispatch" class="nav-link"><span>04</span>Order Dispatch</a>
+            <button class="nav-toggle" type="button" aria-label="收起 Order Dispatch 子菜单" aria-expanded="true" aria-controls="order-dispatch-submenu"></button>
+          </div>
+          <div class="nav-submenu" id="order-dispatch-submenu">
+            <a href="#order-filters" class="nav-link sub sub-sub"><span>—</span>Order Filters</a>
+            <a href="#order-dispatch-settings" class="nav-link sub sub-sub"><span>—</span>Order Dispatch Settings</a>
+          </div>
+        </div>
+        <a href="#small-parcel-station" class="nav-link"><span>05</span>Small Parcel Station</a>
+        <a href="#load-management" class="nav-link"><span>06</span>Load Management</a>
+        <a href="#shipment-tickets" class="nav-link"><span>07</span>Shipment Tickets</a>
+        </div>
+      </div>
+      <div class="nav-module main-nav-module inventory-main-nav" data-nav-module="inventory">
+        <div class="nav-module-head"><a href="#inventory" class="nav-link nav-group-link inventory-nav"><span>INV</span>Inventory</a><button class="nav-toggle" type="button" aria-label="收起 Inventory 子菜单" aria-expanded="true" aria-controls="inventory-submenu"></button></div>
+        <div class="nav-submenu" id="inventory-submenu">
+          <a href="#inventory-list-guide" class="nav-link"><span>01</span>Inventory</a><a href="#inventory-lock-guide" class="nav-link"><span>02</span>Inventory Lock</a><a href="#inventory-activity-guide" class="nav-link"><span>03</span>Inventory Activity</a><a href="#lp-guide" class="nav-link"><span>04</span>LP</a><a href="#adjustment-guide" class="nav-link"><span>05</span>Adjustment</a><a href="#min-max-guide" class="nav-link"><span>06</span>Min/Max Setting</a><a href="#holiday-guide" class="nav-link"><span>07</span>Holiday Management</a>
+        </div>
+      </div>
+      <div class="nav-module main-nav-module cycle-count-main-nav" data-nav-module="cycle-count">
+        <div class="nav-module-head"><a href="#cycle-count" class="nav-link nav-group-link"><span>CC</span>Cycle Count</a><button class="nav-toggle" type="button" aria-label="收起 Cycle Count 子菜单" aria-expanded="true" aria-controls="cycle-count-submenu"></button></div>
+        <div class="nav-submenu" id="cycle-count-submenu">
+          <a href="#count-tickets-guide" class="nav-link"><span>01</span>Count Tickets</a><a href="#count-tasks-guide" class="nav-link"><span>02</span>Count Tasks</a><a href="#count-results-guide" class="nav-link"><span>03</span>Count Results</a>
+        </div>
+      </div>
+      <div class="nav-group muted">后续模块</div>
+      <span class="nav-placeholder">Facility</span>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="status-dot"></span>
+      基于当前系统页面整理
+    </div>
+  </aside>
+
+  <header class="mobile-header">
+    <button id="menu-button" aria-label="打开菜单" aria-expanded="false">☰</button>
+    <strong>WMS-Lite 功能说明书</strong>
+    <span>MDM</span>
+  </header>
+
+  <main>
+    <section class="hero" id="start" data-section="start">
+      <div class="eyebrow">WMS-LITE · FUNCTION MANUAL</div>
+      <h1>从业务场景出发，<br><em>看懂系统如何落地仓储要求</em></h1>
+      <p class="hero-lead">本说明书按照实际操作流程介绍系统。每个模块先解释业务定位和使用场景，再结合真实页面说明字段、配置方法及其在仓储作业中的作用。</p>
+      <div class="hero-actions">
+        <a class="primary-button" href="#mdm">开始阅读</a>
+        <span>当前样章：Organization / Customer / Item / Industry / Hazard / Carrier / Address</span>
+      </div>
+      <div class="route-strip" aria-label="阅读方式">
+        <div><b>01</b><strong>理解模块</strong><span>这个页面解决什么问题</span></div>
+        <i>→</i>
+        <div><b>02</b><strong>对应场景</strong><span>现实业务何时会使用</span></div>
+        <i>→</i>
+        <div><b>03</b><strong>查看页面</strong><span>字段如何维护与配置</span></div>
+        <i>→</i>
+        <div><b>04</b><strong>落地作业</strong><span>配置如何进入业务流程</span></div>
+      </div>
+    </section>
+
+    <section class="mdm-overview" id="mdm" data-section="mdm">
+      <div class="mdm-heading">
+        <div class="eyebrow">MDM · MASTER DATA MANAGEMENT</div>
+        <h2>仓储业务，从准确的基础资料开始</h2>
+        <p>MDM 集中定义“与谁开展业务、仓库处理什么商品，以及这些对象具备哪些分类和属性”。资料建立后，供入库、出库、库存、任务和运输等流程选择或读取，避免同一对象在不同业务中重复维护。</p>
+      </div>
+
+      <div class="mdm-scope" aria-label="MDM 功能范围">
+        <article>
+          <small>业务主体</small>
+          <h3>建立客户与组织身份</h3>
+          <p>Organization 统一记录参与仓储业务的组织身份，Customer 在此基础上补充客户关系和作业规则。</p>
+          <span>Organization · Customer</span>
+        </article>
+        <article>
+          <small>商品与包装</small>
+          <h3>让商品可识别、可换算</h3>
+          <p>Item 维护 SKU 与追踪要求，UOM 和 Pallet Config 描述商品的包装换算及托盘码放配置。</p>
+          <span>Item · UOM · Pallet Config</span>
+        </article>
+        <article>
+          <small>分类与扩展</small>
+          <h3>按行业扩展商品资料</h3>
+          <p>Industry 通过 Property Template 定义行业专属字段；Hazard 维护可供 Item 引用的危险品分类资料。</p>
+          <span>Industry · Property Template · Hazard</span>
+        </article>
+        <article>
+          <small>物流资料</small>
+          <h3>为运输准备承运商与地址</h3>
+          <p>Carrier 记录实际承运商及运输方式，Address 维护客户在订单和装载业务中使用的地址。</p>
+          <span>Carrier · Address</span>
+        </article>
+      </div>
+
+      <div class="mdm-result">
+        <b>业务使用结果</b>
+        <span>入库、出库、库存、任务与运输流程从统一主档取得所需的业务对象和资料。</span>
+      </div>
+    </section>
+
+    <section class="module" id="organization" data-section="organization">
+      <div class="module-number">01</div>
+      <div class="module-heading">
+        <div class="eyebrow">MDM · ORGANIZATION</div>
+        <h2>统一登记业务参与方，供不同仓储场景重复使用</h2>
+        <p>Organization 是系统中的统一组织主档。客户、货权方、品牌、供应商、零售商以及企业内部组织，都先以 Organization 记录主体身份，再通过 Tags 指定其可以承担的业务角色。</p>
+      </div>
+
+      <div class="concept-map">
+        <div class="participant-list">
+          <div><span class="bar blue"></span><strong>客户与零售商</strong><small>委托仓储与接收商品的组织</small></div>
+          <div><span class="bar amber"></span><strong>货权方与资产所有者</strong><small>库存及仓储资产的归属主体</small></div>
+          <div><span class="bar cyan"></span><strong>品牌、供应商与制造商</strong><small>商品品牌、供货及生产来源</small></div>
+          <div><span class="bar blue"></span><strong>租户、本公司与部门</strong><small>平台租户、账户主体及内部组织</small></div>
+        </div>
+        <div class="concept-core">
+          <span>统一组织主档</span>
+          <strong>Organization</strong>
+          <p>一个公司或组织建立一次，在不同业务场景中复用同一主体身份。</p>
+          <small>基础资料 · 角色 Tags · 联系信息</small>
+        </div>
+        <div class="application-list">
+          <article><b>建立客户资料</b><p>配置 CUSTOMER 后，建立或同步对应的 Customer 资料。</p></article>
+          <article><b>维护商品相关组织</b><p>商品可引用品牌方、供应商和制造商等主体。</p></article>
+          <article><b>记录订单与库存归属</b><p>入库、出库和库存记录客户与货权方身份。</p></article>
+        </div>
+      </div>
+
+      <div class="scenario-band">
+        <div class="section-kicker">核心场景</div>
+        <h3>客户与货权方接入</h3>
+        <p class="scenario-intro">当仓库接入新的客户或货权方时，先按名称或编码确认是否已有可复用的 Organization。没有对应主档时，再分别建立主体、指定 CUSTOMER 或 TITLE 等业务角色，并维护客户与货权方关系，供后续入库、出库和库存记录使用。</p>
+        <ol>
+          <li><b>建立组织主档</b><span>分别登记客户与货权方</span></li>
+          <li><b>指定业务角色</b><span>配置 CUSTOMER、TITLE 等 Tags</span></li>
+          <li><b>维护角色关系</b><span>在 Customer 中关联可使用的货权方</span></li>
+          <li><b>进入业务单据</b><span>入出库与库存保存对应主体 ID</span></li>
+        </ol>
+      </div>
+
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">Organization · 列表入口</span>
+          <h3>集中查看并维护已登记的组织主档</h3>
+          <p>Organization 列表集中展示已建立的业务主体。日常维护时，可先按编码、名称或状态定位记录，再进入详情或编辑页面。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/organization-list.png" aria-label="放大 Organization 列表截图">
+          <span>ORGANIZATION LIST</span>
+          <img src="assets/organization-list.png" alt="Organization 列表页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="list-page-notes">
+          <article><b>01</b><strong>查询条件</strong><p>按 Organization Code、Organization Name 或 Status 定位目标组织。</p></article>
+          <article><b>02</b><strong>列表信息</strong><p>查看组织编码、名称、完整名称、Tags、状态及创建时间，快速确认主体身份和业务角色。</p></article>
+        </div>
+      </div>
+
+      <div class="tag-guide">
+        <div class="section-intro">
+          <span class="section-kicker">Tags 使用指南</span>
+          <h3>一个 Organization 可以同时承担多个业务角色</h3>
+          <p>Tags 是 Organization 资料的一部分，用于说明该组织在系统中可以作为哪类业务主体被选择。</p>
+        </div>
+        <div class="tag-grid">
+          <div><code>CUSTOMER</code><span>客户／仓储委托方</span></div>
+          <div><code>TITLE</code><span>货权方／库存所有者</span></div>
+          <div><code>BRAND</code><span>商品品牌方</span></div>
+          <div><code>SUPPLIER</code><span>商品供应商</span></div>
+          <div><code>RETAILER</code><span>零售或收货主体</span></div>
+          <div><code>DEPARTMENT</code><span>企业内部部门</span></div>
+          <div><code>HOST_ACCOUNT</code><span>平台账户所属主体</span></div>
+          <div><code>TENANT</code><span>系统租户主体</span></div>
+          <div><code>ASSET_OWNER</code><span>仓储资产所有者</span></div>
+          <div><code>MANUFACTURER</code><span>商品制造商</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section" id="org-info" data-section="org-info">
+      <div class="section-intro">
+        <span class="section-kicker">Organization · 页面说明</span>
+        <h2>Info 记录组织主档，Contacts 补充联系人信息</h2>
+      </div>
+
+      <div class="screen-explainer">
+        <button class="screen-frame" data-lightbox="assets/organization-info.png" aria-label="放大 Organization Info 截图">
+          <span>INFO</span>
+          <img src="assets/organization-info.png" alt="Organization Info 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title"><span>01</span><h3>Info｜组织主档</h3></div>
+          <dl>
+            <div><dt>Organization Code *</dt><dd>组织的业务编码；创建后可修改。具有 CUSTOMER 角色时同步对应的 Customer Code。</dd></div>
+            <div><dt>Organization Name *</dt><dd>页面列表、详情和业务选择器中使用的组织名称。</dd></div>
+            <div><dt>Full Name</dt><dd>组织完整名称，用于补充正式名称信息。</dd></div>
+            <div><dt>Status *</dt><dd>记录并展示 Organization 主档的有效状态。</dd></div>
+            <div><dt>Tags</dt><dd>定义 Organization 可以承担的业务角色，支持同时选择多个角色。</dd></div>
+            <div><dt>Note</dt><dd>记录与该组织有关的补充说明。</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="screen-explainer reverse">
+        <button class="screen-frame" data-lightbox="assets/organization-contacts.png" aria-label="放大 Organization Contacts 截图">
+          <span>CONTACTS</span>
+          <img src="assets/organization-contacts.png" alt="Organization Contacts 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title cyan-text"><span>02</span><h3>Contacts｜联系人信息</h3></div>
+          <dl>
+            <div><dt>Contact / Phone / Email</dt><dd>维护一位组织联系人及其电话、邮箱资料。</dd></div>
+            <div><dt>Type</dt><dd>联系人分类文本，可自由输入一个值，保存后按输入内容展示。</dd></div>
+            <div><dt>Note</dt><dd>记录联系时间、职责范围等补充信息。</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="module customer-module" id="customer" data-section="customer">
+      <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">MDM · CUSTOMER</div>
+        <h2>把客户约定转化为可执行的仓储配置</h2>
+        <p>Customer 面向货主或委托客户。在统一 Organization 身份基础上，集中维护客户资料、入出库与上架策略、设备和数据连接，以及业务伙伴关系。</p>
+      </div>
+
+      <div class="customer-purpose">
+        <div class="source-card">
+          <span>统一主体来源</span>
+          <strong>Organization</strong>
+          <p>维护主体编码、名称、全称和状态；CUSTOMER Tag 建立客户身份。</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="customer-core-card">
+          <span>客户业务扩展视图</span>
+          <strong>Customer</strong>
+          <p>把客户合同和运营要求转化为仓储资料、作业策略与关系范围。</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="rule-stack">
+          <div><b>入库与上架</b><span>收货步骤、上架时机、超收和库位推荐</span></div>
+          <div><b>出库与拣货</b><span>库存分配、订单分组、取消节点和拣货排序</span></div>
+          <div><b>设备与数据</b><span>WCS、Webhook 和动态扩展字段</span></div>
+        </div>
+      </div>
+
+      <div class="scenario-band customer-onboarding">
+        <div class="section-kicker">核心场景</div>
+        <h3>新客户仓库上线</h3>
+        <p class="scenario-intro">当仓库开始为新客户提供服务时，先建立客户身份和基础资料，再根据合同约定配置收货、上架、库存分配、拣货及设备协同规则；如涉及多个货权方或业务伙伴，则在 Relationships 中建立对应关联。</p>
+        <ol>
+          <li><b>建立客户身份</b><span>从 Organization 或 Customer 入口创建</span></li>
+          <li><b>补充客户资料</b><span>维护行业、联系人和显示信息</span></li>
+          <li><b>配置仓储策略</b><span>确定收货、上架、分配与拣货方式</span></li>
+          <li><b>关联业务伙伴</b><span>维护 Title、Brand、Supplier 等关系</span></li>
+        </ol>
+        <div class="scenario-cases">
+          <div><b>快速收货</b><span>收货过程中生成上架任务，减少货物等待</span></div>
+          <div><b>释放库位</b><span>优先分配拣完后可以清空库位的库存</span></div>
+          <div><b>自动化执行</b><span>将指定任务类型的 Action 发送至 WCS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section" id="customer-info" data-section="customer-info">
+      <div class="section-intro">
+        <span class="section-kicker">Customer · 资料与关系</span>
+        <h2>Basic Info 维护客户资料，Relationships 连接业务主体</h2>
+        <p>Customer 沿用 Organization 的主体编码和名称；关系页签补充该客户涉及的品牌、零售商、供应商、部门与货权方。</p>
+      </div>
+
+      <div class="screen-explainer">
+        <button class="screen-frame tall" data-lightbox="assets/customer-basic-info.png" aria-label="放大 Customer Basic Info 截图">
+          <span>BASIC INFO</span>
+          <img src="assets/customer-basic-info.png" alt="Customer Basic Info 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title"><span>01</span><h3>Basic Info｜客户资料</h3></div>
+          <dl>
+            <div><dt>Customer Code *</dt><dd>沿用 Organization 的主体编码，是客户在业务单据和配置中的识别编码。</dd></div>
+            <div><dt>Name / Full Name</dt><dd>客户简称与完整名称，由对应 Organization 同步。</dd></div>
+            <div><dt>Organization ID</dt><dd>Customer 与 Organization 的一对一关联标识，由系统生成且不可更换。</dd></div>
+            <div><dt>Status *</dt><dd>记录客户主档的有效状态。</dd></div>
+            <div><dt>Industry</dt><dd>记录客户所属行业，便于客户资料分类和查询。</dd></div>
+            <div><dt>Contact / Phone / Email / Role</dt><dd>维护客户联系人资料；Role 可按实际职责自由填写。</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="screen-explainer reverse">
+        <button class="screen-frame" data-lightbox="assets/customer-title-relationship.png" aria-label="放大 Customer Title Relationship 截图">
+          <span>TITLE RELATIONSHIP</span>
+          <img src="assets/customer-title-relationship.png" alt="Customer Title Relationship 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title cyan-text"><span>02</span><h3>Relationships｜业务伙伴关系</h3></div>
+          <dl>
+            <div><dt>Add Relationship</dt><dd>从具备对应 Organization Tag 的业务主体中选择并建立关联。</dd></div>
+            <div><dt>Brand / Retailer / Supplier / Department</dt><dd>形成该客户涉及的品牌、零售商、供应商和部门清单。</dd></div>
+            <div><dt>Title</dt><dd>维护该客户可以使用的货权方；创建 Customer 时自动关联自身。</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section settings-section" id="customer-settings" data-section="customer-settings">
+      <div class="section-intro">
+        <span class="section-kicker">Customer · SETTINGS</span>
+        <h2>按客户配置收货、上架、分配、拣货及设备协同方式</h2>
+        <p>同一仓库服务不同客户时，可以在 Customer Settings 中分别维护作业要求，使任务创建和执行过程采用对应客户的规则。</p>
+      </div>
+
+      <button class="screen-frame settings-screen" data-lightbox="assets/customer-settings.png" aria-label="放大 Customer Settings 截图">
+        <span>CUSTOMER SETTINGS</span>
+        <img src="assets/customer-settings.png" alt="Customer Settings 页面截图">
+        <i>点击放大</i>
+      </button>
+
+      <div class="settings-guide">
+        <div class="settings-tabs" role="tablist" aria-label="Customer Settings 分类">
+          <button class="settings-tab active" role="tab" aria-selected="true" aria-controls="settings-inbound" data-settings-tab="settings-inbound"><span>01</span>入库与上架</button>
+          <button class="settings-tab" role="tab" aria-selected="false" aria-controls="settings-outbound" data-settings-tab="settings-outbound"><span>02</span>出库与拣货</button>
+          <button class="settings-tab" role="tab" aria-selected="false" aria-controls="settings-connection" data-settings-tab="settings-connection"><span>03</span>自动化与数据连接</button>
+        </div>
+
+        <section class="settings-block inbound-block" id="settings-inbound" role="tabpanel">
+          <div class="settings-block-heading">
+            <span>01</span>
+            <div><h3>入库与上架</h3><p>根据客户对月台周转、收货差异和库位使用的要求，决定收货任务怎样推进。</p></div>
+          </div>
+          <div class="decision-list">
+            <article>
+              <div><small>流程要求</small><h4>不需要系统记录完整的月台作业步骤</h4></div>
+              <p><b>Skip Receive Steps</b> 可按客户跳过 Dock Check In 或 Offload。适合不在系统中管理签到或卸货步骤的业务；LP Setup 仍会保留，因为它负责建立实际收货的 LP。</p>
+            </article>
+            <article>
+              <div><small>时效要求</small><h4>货物确认后立即上架，还是整单收完后统一上架</h4></div>
+              <p><b>Put Away Mode</b> 选择 <code>DURING_RECEIVING</code> 时，完成 LP Setup 后即可生成上架任务；选择 <code>AFTER_RECEIVING</code> 时，关闭收货任务后再统一生成。</p>
+            </article>
+            <article>
+              <div><small>完成标准</small><h4>收货单何时才算完成</h4></div>
+              <p><b>Receipt Close Timing</b> 可在收货任务完成时关闭 Receipt，也可以等到上架完成后关闭。后者适用于客户把“货物已入库位”作为入库完成标准的情况。</p>
+            </article>
+            <article>
+              <div><small>数量差异</small><h4>供应商实到数量允许超过预计数量</h4></div>
+              <p><b>Receive Qty Checks</b> 按 Receipt Type 控制是否允许超收和最大比例。例如退货收货可以接受一定差异，常规采购收货则可以设置为不允许超收。</p>
+            </article>
+            <article>
+              <div><small>容器规则</small><h4>一个 LP 是否可以同时装载多个 SKU</h4></div>
+              <p><b>Allow LP Mixed Item</b> 开启后允许同一 LP 混放不同商品；实际存放仍需满足 Location、Container Type 等其他规则。</p>
+            </article>
+            <article>
+              <div><small>库位推荐</small><h4>系统按照什么顺序寻找上架库位</h4></div>
+              <p><b>Put Away Strategies</b> 按优先级逐条匹配，例如优先进入已有相同商品的库位，或优先选择空库位。数值越小的策略越先执行。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="settings-block outbound-block" id="settings-outbound" role="tabpanel" hidden>
+          <div class="settings-block-heading">
+            <span>02</span>
+            <div><h3>出库与拣货</h3><p>根据客户对库存周转、订单变更和拣货效率的要求，控制分配与任务执行顺序。</p></div>
+          </div>
+          <div class="decision-list">
+            <article>
+              <div><small>库存周转</small><h4>出库时应优先使用哪一批库存</h4></div>
+              <p><b>Default Shipping Rule</b> 是默认库存分配规则。选择 FIFO 时，系统按库存创建时间由早到晚进行分配，用于落实先进先出的周转要求。</p>
+            </article>
+            <article>
+              <div><small>订单组织</small><h4>按什么时间范围归集订单或波次</h4></div>
+              <p><b>Time Window</b> 可按日、周、月等时间窗口对订单进行分组；不选择时间窗口时，订单不按该维度归集。</p>
+            </article>
+            <article>
+              <div><small>订单变更</small><h4>客户最晚可以在什么阶段取消订单</h4></div>
+              <p><b>Allow Order Cancellation Before</b> 设置允许取消的状态边界。边界越靠前，订单进入拣货、装箱或装车后越早停止接受取消。</p>
+            </article>
+            <article>
+              <div><small>库位利用</small><h4>优先释放被少量库存占用的库位</h4></div>
+              <p><b>Enable Depleted Location</b> 开启后，分配时优先选择本次拣完即可清空库位的库存，减少零散库存长期占用库位。</p>
+            </article>
+            <article>
+              <div><small>拣货路径</small><h4>不同仓库采用不同的拣货排序</h4></div>
+              <p><b>Pick Sort Rules</b> 定义拣货任务的排序方式，并可按 Facility 配置覆盖规则，使同一客户在不同仓库采用各自的作业顺序。</p>
+            </article>
+            <article>
+              <div><small>批次控制</small><h4>拣货时严格执行 Shipping Rule 或放宽 Lot No 校验</h4></div>
+              <p><b>Force Pick By Shipping Rule</b> 强制校验库存是否符合订单规则；<b>Skip LotNo Validation</b> 则用于决定是否跳过订单指定 Lot No 与实际库存的匹配检查。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="settings-block connection-block" id="settings-connection" role="tabpanel" hidden>
+          <div class="settings-block-heading">
+            <span>03</span>
+            <div><h3>自动化与数据连接</h3><p>根据客户的设备范围和数据交换要求，决定任务发送、事件通知及扩展资料的处理方式。</p></div>
+          </div>
+          <div class="decision-list">
+            <article>
+              <div><small>设备执行</small><h4>指定类型的仓储任务由自动化设备完成</h4></div>
+              <p><b>Enable WCS</b> 开启后，还需在 Task Config 中启用对应任务类型。两项条件同时满足时，相关 Task Action 才会发送到 WCS。</p>
+            </article>
+            <article>
+              <div><small>结果通知</small><h4>客户系统需要及时接收关键业务结果</h4></div>
+              <p><b>Webhook Channels</b> 可订阅订单发货、收货关闭和库存调整事件，并配置回调地址、启用状态及最大重试次数。</p>
+            </article>
+            <article>
+              <div><small>客户化资料</small><h4>标准字段不足以承载客户自己的参考信息</h4></div>
+              <p><b>Dynamic Field Mapping</b> 可为 Item、Receipt、Order、明细和 Inventory 配置扩展字段名称，用于页面展示、导入导出、接口同步和精确查询。</p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+    </section>
+
+    <section class="module item-module" id="item" data-section="item">
+      <div class="module-number">03</div>
+      <div class="module-heading">
+        <div class="eyebrow">MDM · ITEM</div>
+        <h2>统一维护仓库识别、追踪和处理商品所需的主档</h2>
+        <p>Item 以租户内唯一的 SKU 识别商品，并记录当前 Customer、商品类型、条码、序列号、批次效期、计量单位、托盘配置及行业扩展资料。业务单据和库存通过稳定的 Item ID 持续引用商品。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">页面预览</span>
+          <h3>Item 列表集中查看与管理商品主档</h3>
+          <p>通过列表查询已有商品，并查看 SKU、Customer、Type、Status 等主要资料；需要新建或维护商品时，可从这里进入对应操作。</p>
+        </div>
+        <button class="screen-frame module-preview-screen" data-lightbox="assets/item-list.png" aria-label="放大 Item 列表页面预览">
+          <span>ITEM LIST · PREVIEW</span>
+          <img src="assets/item-list.png" alt="Item 列表页面预览截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="scenario-band item-onboarding">
+        <div class="section-kicker">核心场景</div>
+        <h3>新商品接入仓库</h3>
+        <p class="scenario-intro">仓库开始接收一个新商品前，先确认租户内是否已有相同 SKU；没有可复用主档时，再确定客户归属和商品类型，补充识别与追踪要求，并根据实际包装和码放方式维护 UOM 与 Pallet Config。</p>
+        <ol>
+          <li><b>确认商品身份</b><span>查询 SKU，确定 Customer 与 Type</span></li>
+          <li><b>设置追踪要求</b><span>维护条码、序列号、批次与效期</span></li>
+          <li><b>描述包装层级</b><span>配置 UOM、尺寸、重量和价值资料</span></li>
+          <li><b>进入仓储业务</b><span>供入库、出库、库存和任务引用</span></li>
+        </ol>
+      </div>
+
+    </section>
+
+    <section class="detail-section item-basic-section" id="item-basic" data-section="item-basic">
+      <div class="section-intro">
+        <span class="section-kicker">Item · BASIC INFO</span>
+        <h2>从商品身份到追踪要求，在一个页面完成基础建档</h2>
+        <p>条码、序列号、批次效期和出库要求共同决定仓库如何识别、追踪和处理该商品。</p>
+      </div>
+
+      <button class="screen-frame item-long-screen" data-lightbox="assets/item-basic-info-full.jpg" aria-label="放大完整 Item Basic Info 截图">
+        <span>ITEM BASIC INFO · FULL PAGE</span>
+        <img src="assets/item-basic-info-full.jpg" alt="完整 Item Basic Info 页面截图">
+        <i>点击查看完整页面</i>
+      </button>
+
+      <div class="item-info-guide">
+        <div class="compact-tabs" role="tablist" aria-label="Item Basic Info 分类">
+          <button class="compact-tab active" role="tab" aria-selected="true" data-item-info-tab="item-identity">基础资料</button>
+          <button class="compact-tab" role="tab" aria-selected="false" data-item-info-tab="item-trace">条码与追踪</button>
+          <button class="compact-tab" role="tab" aria-selected="false" data-item-info-tab="item-special">特殊商品</button>
+          <button class="compact-tab" role="tab" aria-selected="false" data-item-info-tab="item-shipping">出库与补充资料</button>
+        </div>
+
+        <div class="item-info-panel" id="item-identity" role="tabpanel">
+          <div class="field-matrix">
+            <article><b>Customer *</b><p>Item 当前归属的客户。可以修改，但不会同步改变已有单据和库存中的 Customer。</p></article>
+            <article><b>SKU *</b><p>租户内唯一的商品编码，创建后固定，作为长期识别 Item 的业务编号。</p></article>
+            <article><b>Type *</b><p>创建时确定商品分类：PRODUCT 为普通产品，MATERIAL 主要用于物料候选。</p></article>
+            <article><b>Status</b><p>控制商品在新入库、RMA 和出库选择中的常规可选状态；停用不删除已有库存和业务记录。</p></article>
+            <article><b>Description / Short Description</b><p>维护商品的完整描述和列表中便于快速识别的简短描述。</p></article>
+            <article><b>Industry / Brand</b><p>记录商品所属行业和品牌；选择 Industry 后启用对应的 Industry Properties。</p></article>
+            <article><b>Country of Origin / Grade</b><p>补充商品原产地和等级资料。</p></article>
+            <article><b>Tags / AKAs</b><p>记录商品标签和别名，帮助使用不同业务称呼识别同一商品。</p></article>
+          </div>
+        </div>
+
+        <div class="item-info-panel" id="item-trace" role="tabpanel" hidden>
+          <div class="field-matrix">
+            <article><b>EAN / UPC / Case UPC</b><p>维护不同商品或包装层级使用的标准条码。</p></article>
+            <article><b>ISBN / NMFC / Commodity Code</b><p>补充出版物、运输分类和商品分类编码。</p></article>
+            <article><b>Has Serial Number</b><p>标识商品是否启用序列号管理。</p></article>
+            <article><b>Collect SN on Receive / Shipping</b><p>分别配置收货和发货环节是否采集序列号。</p></article>
+            <article><b>Validate SN Inbound / Outbound</b><p>配置入库或出库过程中是否执行序列号校验。</p></article>
+            <article><b>Serial No Length / Rule</b><p>维护序列号长度和格式规则。</p></article>
+            <article><b>Has Lot No</b><p>标识商品是否启用批次管理。</p></article>
+            <article><b>Collect Lot on Receive / Shipping</b><p>分别设置收货和发货过程中是否采集批次。</p></article>
+            <article><b>Shelf Life (Days)</b><p>记录商品保质期天数。</p></article>
+            <article><b>Expiration / Mfg Date on Receive</b><p>配置收货时是否采集有效期和生产日期。</p></article>
+          </div>
+        </div>
+
+        <div class="item-info-panel" id="item-special" role="tabpanel" hidden>
+          <button class="screen-frame special-config-screen" data-lightbox="assets/item-kitting-component.png" aria-label="放大 Kitting Component 设置截图">
+            <span>KITTING COMPONENTS · ADD COMPONENT</span>
+            <img src="assets/item-kitting-component.png" alt="Is Kitting 开启后的组件设置页面截图">
+            <i>点击放大</i>
+          </button>
+          <div class="component-fields">
+            <div><b>Quantity</b><span>当前套件需要使用的组件数量</span></div>
+            <div><b>Component Item</b><span>组成该套件的组件商品</span></div>
+            <div><b>UOM</b><span>组件数量采用的计量单位</span></div>
+          </div>
+          <div class="field-matrix special-item-matrix">
+            <article><b>Is Kitting｜套件商品</b><p>开启后显示 Kitting Components 页签，可维护组件商品、组件数量和单位，形成套件 BOM。</p></article>
+            <article><b>Assembly Task｜组套执行</b><p>组套任务按照 BOM 计算组件需求，锁定并消耗组件库存；完成后增加套件成品库存，并包含组件拣选、组装和成品上架等步骤。</p></article>
+            <article><b>普通订单的处理边界</b><p>普通入库、出库分配和普通拣货不会自动展开 BOM；套件库存不足时，普通订单也不会自动创建 Assembly Task。</p></article>
+            <article><b>Packaging Material</b><p>从 MATERIAL 类型 Item 中选择包装材料，作为 Item 主档的参考关系；当前不自动推荐包装材料，也不扣减耗材库存。</p></article>
+            <article><b>Hazardous / Hazard Definition</b><p>开启 Hazardous 后关联危险品定义；关闭时清除当前选择。资料可随 Item 保存并提供给相关接口。</p></article>
+            <article><b>危险品资料的当前作用</b><p>用于危险品识别和信息传递，不会自动控制危险品库位、混放、库存隔离、标签、承运商、运输限制或 WCS 任务。</p></article>
+          </div>
+        </div>
+
+        <div class="item-info-panel" id="item-shipping" role="tabpanel" hidden>
+          <div class="field-matrix">
+            <article><b>Shipping Rule</b><p>为商品选择默认的出库库存规则。</p></article>
+            <article><b>Allow Ship Days</b><p>记录该商品允许出库的天数要求。</p></article>
+            <article><b>Shipping Rule Window (Days)</b><p>维护出库规则使用的时间窗口。</p></article>
+            <article><b>Ingredient</b><p>记录商品成分或其他需要展示的补充说明。</p></article>
+            <article><b>Images</b><p>最多上传 5 张商品图片，供 Item 资料查看。</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section item-config-section" id="item-config" data-section="item-config">
+      <div class="section-intro">
+        <span class="section-kicker">Item · OPERATION CONFIG</span>
+        <h2>补充商品单位、托盘码放和行业属性</h2>
+      </div>
+
+      <div class="config-tabs" role="tablist" aria-label="Item 配置分类">
+        <button class="config-tab active" role="tab" aria-selected="true" data-item-config-tab="item-uom-panel"><span>01</span>UOM Management</button>
+        <button class="config-tab" role="tab" aria-selected="false" data-item-config-tab="item-pallet-panel"><span>02</span>Pallet Config</button>
+        <button class="config-tab" role="tab" aria-selected="false" data-item-config-tab="item-industry-panel"><span>03</span>Industry Properties</button>
+      </div>
+
+      <div class="item-config-panel" id="item-uom-panel" role="tabpanel">
+        <button class="screen-frame config-screen" data-lightbox="assets/item-uom.png" aria-label="放大 Item UOM 截图">
+          <span>ADD UOM</span><img src="assets/item-uom.png" alt="Item UOM Management 新增页面截图"><i>点击放大</i>
+        </button>
+        <div class="config-explanation">
+          <h3>Add UOM｜为商品增加计量或包装单位</h3>
+          <p class="config-lead">当同一商品需要按件、箱或托盘管理时，在这里逐个建立单位及其包装换算关系。页面顶部三个必填字段共同表达“当前单位里面装了多少个下一级单位”。</p>
+
+          <div class="uom-primary-formula" aria-label="UOM 换算公式">
+            <span>换算关系</span>
+            <b>1 UOM Name = Quantity × Inner UOM</b>
+            <small>例如新增一箱装 12 件：<strong>1 BOX = 12 × EA</strong></small>
+          </div>
+
+          <div class="uom-core-fields" aria-label="构成换算关系的三个字段">
+            <article><small>UOM Name</small><b>当前要建立的单位</b></article>
+            <article><small>Quantity</small><b>包含的下一级单位数量</b></article>
+            <article><small>Inner UOM</small><b>内部使用的下一级单位</b></article>
+          </div>
+
+          <div class="uom-role-grid">
+            <article>
+              <b>Base UOM</b>
+              <p>库存统一换算、比较和分配时使用的基础单位，通常是最小可管理单位。</p>
+            </article>
+            <article>
+              <b>Default UOM</b>
+              <p>新建部分业务明细时优先带出的单位，可以与 Base UOM 不同。</p>
+            </article>
+          </div>
+
+          <p class="uom-supplement"><b>包装补充资料</b> 长、宽、高、重量、体积、参考价格、保险申报价及币种用于记录当前包装规格，不参与 UOM 数量换算。</p>
+
+          <h4 class="config-subtitle">多级包装换算关系</h4>
+          <p class="config-example-intro">商品同时按件、箱和托盘管理时，系统沿 Inner UOM 逐级换算到基础单位：</p>
+          <div class="table-scroll">
+            <table class="uom-example-table">
+              <thead><tr><th>UOM Name</th><th>Quantity</th><th>Inner UOM</th><th>系统换算结果</th><th>Base</th><th>Default</th></tr></thead>
+              <tbody>
+                <tr><td>EA</td><td>1</td><td>EA</td><td>1 EA</td><td>是</td><td>否</td></tr>
+                <tr><td>BOX</td><td>12</td><td>EA</td><td>1 BOX = 12 EA</td><td>否</td><td>是</td></tr>
+                <tr><td>PALLET</td><td>40</td><td>BOX</td><td>1 PALLET = 40 BOX = 480 EA</td><td>否</td><td>否</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="config-note"><b>维护限制</b> 已有库存使用的 UOM 不能修改名称、换算数量或删除。</p>
+        </div>
+      </div>
+
+      <div class="item-config-panel" id="item-pallet-panel" role="tabpanel" hidden>
+        <button class="screen-frame config-screen" data-lightbox="assets/item-pallet-config.png" aria-label="放大 Item Pallet Config 截图">
+          <span>ADD PALLET CONFIG</span><img src="assets/item-pallet-config.png" alt="Item Pallet Config 新增页面截图"><i>点击放大</i>
+        </button>
+        <div class="config-explanation">
+          <h3>记录商品在托盘上的标准码放结构</h3>
+          <div class="pallet-formula"><b>每托数量</b><span>TI × HI × UOM Base Quantity</span><small>例：10 CASE/层 × 5 层 × 24 EA/CASE = 1,200 EA/托</small></div>
+          <div class="config-points">
+            <article><b>Name / Scene</b><p>用名称识别配置，并以 INBOUND、OUTBOUND 或 STORAGE 标注适用场景；当前 Scene 用于资料分类。</p></article>
+            <article><b>Retailer / UOM</b><p>可针对某个 Retailer 和当前 Item 的具体 UOM 记录码托方式，以表达不同业务要求。</p></article>
+            <article><b>TI / HI</b><p>TI 表示每层摆放多少个所选 UOM，HI 表示可码放多少层，两者共同描述一托的标准结构。</p></article>
+            <article><b>Default Config</b><p>一个 Item 可维护多套配置，页面最多标记一套默认配置，供主档查询和识别使用。</p></article>
+          </div>
+          <p class="config-note"><b>当前业务结果</b> 系统保存并可查询托盘配置，但 WMS 作业尚不会按 Scene、Retailer 或 Default 自动选取配置，也不会据此自动执行码垛、库位容量、装载或 WCS 控制。</p>
+        </div>
+      </div>
+
+      <div class="item-config-panel industry-panel" id="item-industry-panel" role="tabpanel" hidden>
+        <button class="screen-frame config-screen industry-screen" data-lightbox="assets/item-industry-properties.png" aria-label="放大 Item Industry Properties 截图">
+          <span>INDUSTRY PROPERTIES · ENABLED</span><img src="assets/item-industry-properties.png" alt="选择 Industry 后可编辑的 Industry Properties 页面截图"><i>点击放大</i>
+        </button>
+        <div class="config-explanation industry-explanation">
+          <h3>Industry Properties｜维护行业专属的商品资料</h3>
+          <p class="config-lead">Basic Info 中的通用字段无法覆盖所有行业资料时，可通过本页签补充维护。</p>
+
+          <div class="industry-dynamic-note">
+            <b>动态字段</b>
+            <p>字段名称、输入类型、是否必填、下拉选项和 UOM 均由所选 Industry 的 Property Template 决定。截图中的 name、num 和 LP 仅为当前模板示例，并非所有 Industry 的固定字段。</p>
+          </div>
+
+          <div class="industry-use-case">
+            <span>核心场景</span>
+            <div><b>同一仓库管理不同行业的商品</b><p>Basic Info 统一维护所有商品共有的资料；食品、医药、化工或电子商品需要的专属信息，则分别配置在对应的 Industry Property Template 中。例如可按行业采集储存分类、注册编号、CAS 编号或电压功率。Item 选择 Industry 后只显示该行业需要填写的字段，避免页面堆积无关内容。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module industry-module" id="industry" data-section="industry">
+      <div class="module-number">04</div>
+      <div class="module-heading">
+        <div class="eyebrow">MDM · INDUSTRY</div>
+        <h2>定义行业专属资料，并为特定作业提供商品分类依据</h2>
+        <p>Industry 用于标识商品所属行业，并通过 Property Template 规定该行业的 Item 需要填写哪些专属属性。该分类同时会参与 VLG 上架范围判断和料箱出库的 Item 过滤。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">页面预览</span>
+          <h3>Industry 列表同时展示行业主档和模板使用情况</h3>
+          <p>列表可按 Industry Code 或 Name 查询，并通过 Property Template Count 查看该行业配置了多少个动态属性，通过 Related SKU Count 查看已有多少个 Item 使用该 Industry。</p>
+        </div>
+        <button class="screen-frame module-preview-screen industry-list-screen" data-lightbox="assets/industry-list.png" aria-label="放大 Industry 列表页面预览">
+          <span>INDUSTRY LIST · PREVIEW</span>
+          <img src="assets/industry-list.png" alt="Industry 列表页面预览截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="industry-linkage">
+        <div class="section-kicker">核心场景</div>
+        <h3>同一套 Item 主档适配不同行业资料</h3>
+        <p>仓库为不同行业客户维护商品时，无需把所有行业字段固定开发在 Basic Info。每个 Industry 单独定义自己的 Property Template，Item 只加载当前行业需要的属性。</p>
+        <div class="industry-linkage-row">
+          <article><small>行业主档</small><b>Industry</b><span>确定商品所属行业</span></article>
+          <i>→</i>
+          <article><small>字段模板</small><b>Property Template</b><span>定义名称、类型、必填、选项和 UOM</span></article>
+          <i>→</i>
+          <article><small>商品填写</small><b>Item Industry Properties</b><span>按所选行业动态显示并保存属性</span></article>
+        </div>
+        <div class="industry-operation-use">
+          <article><b>VLG 上架范围</b><p>系统读取 Item 的 Industry，判断商品可以进入哪些 VLG。</p></article>
+          <article><b>料箱出库过滤</b><p>料箱出库场景可按 Industry 筛选符合条件的 Item。</p></article>
+          <article><b>其他仓储流程</b><p>普通入库、库存、分配、拣货及 WCS 当前不直接读取 Industry。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section industry-edit-section" id="industry-edit" data-section="industry-edit">
+      <div class="section-intro">
+        <span class="section-kicker">Industry · EDIT</span>
+        <h2>在行业主档中维护 Property Template</h2>
+        <p>维护页面上方填写 Industry 的识别资料，下方 Properties 定义 Item 选择该 Industry 后出现的动态字段。</p>
+      </div>
+
+      <div class="industry-create-compare">
+        <button class="screen-frame industry-create-screen" data-lightbox="assets/industry-create.png" aria-label="放大 Create Industry 页面截图">
+          <span>INDUSTRY · PROPERTY TEMPLATE</span>
+          <img src="assets/industry-create.png" alt="Industry 主档与 Property Template 维护页面截图">
+          <i>点击放大</i>
+        </button>
+        <div>
+          <span class="section-kicker">主档维护</span>
+          <h3>为商品分类建立 Industry 主档</h3>
+          <p>新建时填写 Industry Code、Industry Name 和必要的说明。创建完成后，Code 作为稳定标识变为只读；Name 和 Description 仍可继续维护。</p>
+        </div>
+      </div>
+
+      <div class="property-template-guide">
+        <h3>Properties｜模板设置如何反映到 Item 页面</h3>
+        <div class="table-scroll">
+          <table class="property-effect-table">
+            <thead><tr><th>模板设置</th><th>配置作用</th><th>Item 页面效果</th><th>示例</th></tr></thead>
+            <tbody>
+              <tr><td>Property Name</td><td>定义要采集的属性名称</td><td>作为 Industry Properties 的字段标签</td><td>Voltage</td></tr>
+              <tr><td>Data Type</td><td>选择 Text、Number、Date 或 Select</td><td>生成对应的输入框、日期控件或下拉框</td><td>Number</td></tr>
+              <tr><td>Required</td><td>决定该属性是否必须填写</td><td>Yes 时显示必填标记并在保存时检查</td><td>Yes</td></tr>
+              <tr><td>Options</td><td>配置 Select 类型允许选择的值</td><td>生成固定选项的下拉框</td><td>CE / UL</td></tr>
+              <tr><td>Unit</td><td>定义数值采用的计量单位</td><td>在输入框旁显示单位或后缀</td><td>V</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="industry-template-example">
+        <span>配置示例</span>
+        <div><b>电子商品 Industry</b><p>可以建立 Voltage（Number，单位 V）、Certification（Select）等属性。Item 选择该 Industry 后，Industry Properties 页签自动显示相应输入项，操作人员按商品实际资料填写。</p></div>
+      </div>
+    </section>
+
+    <section class="module hazard-module" id="hazard" data-section="hazard">
+      <div class="module-number">05</div>
+      <div class="module-heading">
+        <div class="eyebrow">MDM · HAZARD</div>
+        <h2>统一维护危险品定义，供商品主档识别和复用</h2>
+        <p>Hazard 用于集中记录危险品的业务名称、UN 编号、危险品类别和包装等级。建立定义后，可在 Item 中将商品标记为危险品，并按实际资料选择对应的 Hazard Definition。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">页面预览</span>
+          <h3>从 Hazard 列表查询定义及其关联商品</h3>
+          <p>可按 Hazard Code、Hazard Name 或 Hazard Class 定位记录。列表中的 Related SKU Count 显示当前有多少个 Item 关联该定义，便于确认定义的使用范围。</p>
+        </div>
+        <button class="screen-frame module-preview-screen hazard-list-screen" data-lightbox="assets/hazard-list.png" aria-label="放大 Hazard 列表页面预览">
+          <span>HAZARD LIST · PREVIEW</span>
+          <img src="assets/hazard-list.png" alt="Hazard 列表页面预览截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="hazard-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>同一危险品定义可供多个商品共同引用</h3>
+        <p>仓库管理乙醇、易燃液体等危险品时，可以先按法规资料建立 Hazard 定义，再由相关 Item 选择该定义。这样无需在每个商品上重复填写完整分类资料，也可以通过 Related SKU Count 查看该定义已被多少个商品使用。</p>
+        <div class="hazard-result-row">
+          <article><small>统一定义</small><b>Hazard 主档</b><p>集中记录 UN Number、Hazard Class、Packing Group 等危险品资料。</p></article>
+          <article><small>商品引用</small><b>Item · Hazardous</b><p>开启危险品标识后，可选择已维护的 Hazard Definition。</p></article>
+          <article><small>使用确认</small><b>Related SKU Count</b><p>从列表查看该危险品定义当前关联的商品数量。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section hazard-edit-section" id="hazard-edit" data-section="hazard-edit">
+      <div class="section-intro">
+        <span class="section-kicker">Hazard · CREATE / EDIT</span>
+        <h2>维护危险品的识别与分类资料</h2>
+        <p>新建 Hazard 时，先建立内部识别编码和名称，再根据已有的危险品资料填写 UN 编号、危险品类别、包装等级及说明。</p>
+      </div>
+
+      <button class="screen-frame hazard-create-screen" data-lightbox="assets/hazard-create.png" aria-label="放大 Create Hazard 页面截图">
+        <span>CREATE HAZARD · FIELD GUIDE</span>
+        <img src="assets/hazard-create.png" alt="Create Hazard 页面截图">
+        <i>点击放大</i>
+      </button>
+
+      <div class="hazard-record-example">
+        <div class="hazard-example-heading">
+          <span class="section-kicker">建档示例</span>
+          <h3>以乙醇为例，一条 Hazard 定义需要说明三件事</h3>
+          <p>页面中的字段并不是彼此独立的信息，而是共同回答“系统如何找到它、它属于哪类危险品、还需要补充什么说明”。</p>
+        </div>
+        <div class="hazard-info-groups">
+          <article>
+            <div class="hazard-group-title"><span>01</span><div><b>系统如何识别这条定义</b><p>先建立仓库内部使用的编码与名称，便于后续查询和 Item 选择。</p></div></div>
+            <div class="hazard-example-values"><span><small>Hazard Code *</small><strong>HZ-ETHANOL</strong></span><span><small>Hazard Name *</small><strong>Ethanol</strong></span></div>
+          </article>
+          <article>
+            <div class="hazard-group-title"><span>02</span><div><b>它属于哪类危险品</b><p>依据现有危险品资料，记录标准编号、危险品类别和包装等级。</p></div></div>
+            <div class="hazard-example-values three"><span><small>UN Number</small><strong>UN1170</strong></span><span><small>Hazard Class *</small><strong>3</strong></span><span><small>Packing Group</small><strong>II</strong></span></div>
+          </article>
+          <article>
+            <div class="hazard-group-title"><span>03</span><div><b>现场还需要知道什么</b><p>Description 用于补充编码和分类之外的仓储或合规说明；没有补充内容时可以留空。</p></div></div>
+            <div class="hazard-example-values"><span class="wide"><small>Description</small><strong>乙醇类商品危险品资料</strong></span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="hazard-item-use">
+        <div class="hazard-item-heading">
+          <span class="section-kicker">在 Item 中使用</span>
+          <h3>先标记 Hazardous，再选择对应定义</h3>
+          <p>Item 通过下面两个设置记录商品的危险品身份和对应分类资料。</p>
+        </div>
+        <button class="screen-frame item-hazard-screen" data-lightbox="assets/item-hazard-selection.png" aria-label="放大 Item Hazardous 与 Hazard Definition 设置截图">
+          <span>ITEM · HAZARD SETTINGS</span>
+          <img src="assets/item-hazard-selection.png" alt="Item 中 Hazardous 与 Hazard Definition 设置截图">
+          <i>点击放大</i>
+        </button>
+        <div class="item-hazard-annotations">
+          <article><span>01</span><div><b>Hazardous｜标记商品身份</b><p>开启后表示该 Item 按危险品记录，同时解锁右侧的 Hazard Definition。关闭时定义字段不可编辑，但原有选择会被保留。</p></div></article>
+          <article><span>02</span><div><b>Hazard Definition｜引用分类资料</b><p>从 Hazard 主档选择与商品对应的定义。该项可以留空；后续再次开启 Hazardous 时，页面会恢复上一次的选择。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="module carrier-module" id="carrier" data-section="carrier">
+      <div class="module-number">06</div>
+      <div class="module-heading">
+        <div class="eyebrow">MDM · CARRIER</div>
+        <h2>统一维护实际运输承运商，供出库订单与装载业务引用</h2>
+        <p>Carrier 用于登记仓库合作承运商的识别资料、可承接的运输方式和联系信息。建立主档后，操作人员可以在出库订单或 Load 中选择实际运输方，并在后续查询和运输单据中识别承运商。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">页面预览</span>
+          <h3>从 Carrier Management 查找可用承运商</h3>
+          <p>列表可按 Carrier Code、Carrier Name、SCAC Code 和 Status 查询，并集中查看承运商支持的 Shipping Methods、联系人及当前状态。</p>
+        </div>
+        <button class="screen-frame module-preview-screen carrier-list-screen" data-lightbox="assets/carrier-list.png" aria-label="放大 Carrier 列表页面预览">
+          <span>CARRIER LIST · PREVIEW</span>
+          <img src="assets/carrier-list.png" alt="Carrier Management 列表页面截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="carrier-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>为一次出库运输指定实际承运商</h3>
+        <p>仓库接入新的运输合作方时，先建立 Carrier 主档并记录其运输方式与联系信息。出库订单需要记录运输方时可手动选择 Carrier；订单进入装载阶段后，Load 继续关联实际承运商，并将相应信息用于运输识别和 BOL。</p>
+        <div class="carrier-use-row">
+          <article><small>合作方接入</small><b>建立 Carrier 主档</b><p>维护承运商编码、名称、SCAC、运输方式及联系人。</p></article>
+          <i>→</i>
+          <article><small>Outbound Order</small><b>订单选择 Carrier</b><p>创建或编辑订单时手动选择承运商；订单保存 Carrier ID，详情显示承运商名称，并支持按 Carrier 查询订单。</p></article>
+          <i>→</i>
+          <article><small>Load</small><b>装载关联运输方</b><p>创建 Load 时指定 Carrier，说明本次装载由哪家承运商执行，并承接 BOL 中的承运商信息。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section carrier-edit-section" id="carrier-edit" data-section="carrier-edit">
+      <div class="section-intro">
+        <span class="section-kicker">Carrier · CREATE / EDIT</span>
+        <h2>从身份识别到运输范围，完成承运商建档</h2>
+      </div>
+
+      <button class="screen-frame carrier-create-screen" data-lightbox="assets/carrier-create.png" aria-label="放大 Create Carrier 页面截图">
+        <span>CREATE CARRIER · PAGE</span>
+        <img src="assets/carrier-create.png" alt="Create Carrier 页面截图">
+        <i>点击放大</i>
+      </button>
+
+      <div class="carrier-config-groups">
+        <article>
+          <div class="carrier-group-heading"><span>01</span><div><b>Basic Information｜建立承运商身份</b></div></div>
+          <div class="carrier-example-values">
+            <span><small>Carrier Code *</small><em>仓库内部使用的承运商编码</em></span>
+            <span><small>Carrier Name *</small><em>订单和 Load 选择时显示的承运商名称</em></span>
+            <span><small>SCAC Code</small><em>需要时记录北美标准承运商代码</em></span>
+            <span class="carrier-status-values"><small>Status *</small><b>Active</b><b>Inactive</b><b>Exception</b><em>默认状态：Active</em></span>
+          </div>
+        </article>
+        <article>
+          <div class="carrier-group-heading"><span>02</span><div><b>Transport Configuration｜描述可承接的运输方式</b><p>Shipping Methods 可同时选择多种运输形态；Delivery Services 用于补充该承运商提供的具体服务名称。</p></div></div>
+          <div class="carrier-methods"><span>TL (Truckload)<small>整车运输</small></span><span>LTL (Less-than-Truckload)<small>零担运输</small></span><span>SMALL_PARCEL<small>小包裹</small></span><span>WILL_CALL<small>自提</small></span><span class="service-example">Delivery Services<small>承运商提供的具体服务名称</small></span></div>
+        </article>
+        <article>
+          <div class="carrier-group-heading"><span>03</span><div><b>Contact Information｜留下运输沟通资料</b><p>联系人、电话、邮箱和地址用于记录日常运输对接信息；页面以文本方式保存地址，也可以在 Notes 中补充操作说明。</p></div></div>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="module address-module" id="address" data-section="address">
+      <div class="module-number">07</div>
+      <div class="module-heading">
+        <div class="eyebrow">MDM · ADDRESS</div>
+        <h2>按客户集中维护业务地址，供订单与装载快速调用</h2>
+        <p>Address 是客户地址簿。一个 Customer 可以建立多个门店、收货点或其他业务地址，并通过名称、简称和 Tags 帮助操作人员在创建订单或 Load 时找到正确地址。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">页面预览</span>
+          <h3>从 Address Management 查看客户地址清单</h3>
+          <p>查询框可按地址名称、简称或联系人搜索；列表集中展示 Address Name、Shorthand、Customer、Tags、国家、城市及联系人信息。</p>
+        </div>
+        <button class="screen-frame module-preview-screen address-list-screen" data-lightbox="assets/address-list.png" aria-label="放大 Address 列表页面预览">
+          <span>ADDRESS LIST · PREVIEW</span>
+          <img src="assets/address-list.png" alt="Address Management 列表页面截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="address-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>同一客户拥有多个门店或收货地址</h3>
+        <p>例如零售客户在上海、苏州和杭州分别设有门店。仓库可以为同一个 Customer 建立三条 Address，通过 Address Name 表示门店名称、Shorthand 记录日常简称，并用 Tags 标记区域或用途。创建出库单时，操作人员按客户筛选并选择对应门店地址。</p>
+        <div class="address-merged-flow">
+          <article><small>客户地址簿</small><b>维护多个 Address</b><p>同一 Customer 可维护多个门店或收货点，并通过 Address Name、Shorthand 和 Tags 识别。</p></article>
+          <i>→</i>
+          <article><small>业务单据选择</small><b>复制当前地址内容</b><p>创建 Outbound Order 或 Load 时按 Customer 筛选并选择 Address。</p></article>
+          <i>→</i>
+          <article><small>历史保留</small><b>形成地址快照</b><p>地址写入单据后独立保存，主档修改不改变已有订单或 Load。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section address-edit-section" id="address-edit" data-section="address-edit">
+      <div class="section-intro">
+        <span class="section-kicker">Address · CREATE / EDIT</span>
+        <h2>建立一条可在业务单据中选择的客户地址</h2>
+      </div>
+
+      <button class="screen-frame address-create-screen" data-lightbox="assets/address-create.png" aria-label="放大 Create Address 页面截图">
+        <span>CREATE ADDRESS · PAGE</span>
+        <img src="assets/address-create.png" alt="Create Address 页面截图">
+        <i>点击放大</i>
+      </button>
+
+      <div class="address-config-groups">
+        <article>
+          <span>01</span>
+          <div><b>先确定地址属于哪个客户</b><p>选择 Customer 并填写 Address Name，形成地址的归属和主要识别名称。Shorthand 适合记录操作人员熟悉的简称；Tags 可自由输入区域、门店类别或业务用途。</p></div>
+          <div class="address-example-fields"><span><small>Customer *</small><strong>示例零售客户</strong></span><span><small>Address Name *</small><strong>上海门店</strong></span><span><small>Shorthand</small><strong>SH-STORE</strong></span><span><small>Tags</small><strong>EAST · RETAIL</strong></span></div>
+        </article>
+        <article>
+          <span>02</span>
+          <div><b>再填写可以实际送达的地址</b><p>Country 为页面必填项；选择国家后继续选择 State/Province 和 City，再补充两行详细地址及 Zip Code。州省和城市会根据前一级选择逐步开放。</p></div>
+          <div class="address-example-fields"><span><small>Country *</small><strong>China</strong></span><span><small>State / Province</small><strong>Shanghai</strong></span><span><small>City</small><strong>Shanghai</strong></span><span><small>Zip Code</small><strong>200000</strong></span></div>
+        </article>
+        <article>
+          <span>03</span>
+          <div><b>补充现场收货联系人</b><p>Contact、Phone 和 Email 用于记录该地址的对接窗口；Note 可以补充卸货时间、门店收货要求或其他现场说明。</p></div>
+          <div class="address-contact-chips"><span>Contact</span><span>Phone</span><span>Email</span><span>Note</span></div>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="inbound-overview" id="inbound" data-section="inbound">
+      <div class="inbound-heading">
+        <div class="eyebrow">INBOUND · RECEIVING</div>
+        <h2>让计划到仓的货物，经过收货与上架进入库存</h2>
+        <p>Inbound 管理货物进入仓库的过程。Receipt 记录预计到货内容并承接现场收货；客户退货则先通过 RMA 明确退回商品，再以 RMA 类型 Receipt 完成实际入库。</p>
+      </div>
+
+      <div class="inbound-scenarios">
+        <article><small>常规到货</small><b>按 Receipt 组织收货</b><p>记录客户、到货参考信息和预计 SKU，再生成 Receiving Task 供现场执行。</p></article>
+        <article><small>客户退货</small><b>先授权，再接收入库</b><p>RMA 审批通过后建立退货 Receipt，实收数量随收货结果回写 RMA。</p></article>
+        <article><small>转移入库</small><b>承接调拨或产权转移</b><p>转移类 Receipt 关联对应 Transfer Order，继续沿用收货、上架和库存形成流程。</p></article>
+      </div>
+
+      <div class="inbound-flow" aria-label="Inbound 核心流程">
+        <article><span>01</span><b>建立入库来源</b><small>普通到货直接创建 Receipt；退货先创建并审批 RMA</small></article>
+        <i>→</i>
+        <article><span>02</span><b>执行 Receiving Task</b><small>现场完成收货步骤，并在 LP Setup 记录实际商品和数量</small></article>
+        <i>→</i>
+        <article><span>03</span><b>形成待上架库存</b><small>收货任务关闭后，根据已记录的 LP 内容创建库存</small></article>
+        <i>→</i>
+        <article><span>04</span><b>上架并完成入库</b><small>Put Away Task 将货物移入库位，Receipt 按客户设置关闭</small></article>
+      </div>
+    </section>
+
+    <section class="module receipt-module" id="receipt" data-section="receipt">
+      <div class="module-number">01</div>
+      <div class="module-heading">
+        <div class="eyebrow">INBOUND · RECEIPT</div>
+        <h2>用 Receipt 连接到货计划与现场收货</h2>
+        <p>Receipt 用来管理一批预计到仓的货物。仓库先记录客户、到货来源和预计商品，货物抵达后再以 Receipt 创建收货任务，核对实际到货并推进上架，最终形成库存。</p>
+      </div>
+
+      <div class="module-page-preview receipt-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">页面预览</span>
+          <h3>从列表掌握待收货单据及任务进度</h3>
+          <p>状态汇总用于查看 Open、In Progress、Closed 和 Exception 的数量；列表同时显示 Receipt Type、Receive Task 与 Put Away Task，便于追踪每张单据所处阶段。</p>
+        </div>
+        <button class="screen-frame inbound-list-screen" data-lightbox="assets/receipt-list.png" aria-label="放大 Receipt 列表截图">
+          <span>RECEIPT LIST · PREVIEW</span><img src="assets/receipt-list.png" alt="Receipt 列表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="receipt-create-guide">
+        <span class="section-kicker">核心场景</span>
+        <h3>供应商通知一批货物即将到仓</h3>
+        <p class="receipt-scenario-copy">例如客户安排一批商品通过承运商送达仓库。操作人员先建立 Receipt，记录这批货属于哪个客户、采用哪种入库类型、预计何时到达，并列出计划接收的 SKU 和数量。货物到仓后，现场人员直接依据这张单据创建 Receiving Task，不需要重新录入到货资料。</p>
+        <div class="receipt-screen-grid">
+          <div class="receipt-screen-block">
+            <button class="screen-frame" data-lightbox="assets/receipt-create.png" aria-label="放大 Create Receipt 页面截图">
+              <span>CREATE RECEIPT · BASIC INFORMATION</span><img src="assets/receipt-create.png" alt="Create Receipt Basic Information 页面截图"><i>点击放大</i>
+            </button>
+            <div class="receipt-info-groups basic-groups">
+              <article><small>单据归属</small><b>Customer · Receipt Type · Reference</b><p>确定货物属于哪个客户、采用哪类入库场景，并以 Reference 记录本次到货的外部识别信息。</p></article>
+              <article><small>运输与预约</small><b>Container · BOL · Carrier · Appointment</b><p>按实际需要记录集装箱、提单、封签、Tracking、承运商和进场预约资料；Is Rush 标记需要优先处理的到货。</p></article>
+            </div>
+            <div class="receipt-type-guide">
+              <span class="section-kicker">按到货场景选择 Receipt Type</span>
+              <p class="receipt-type-intro">Receipt Type 位于 Basic Information，用来说明货物为什么进入仓库，并决定是否需要关联前置单据：</p>
+              <div class="receipt-type-row">
+                <article><small>供应商或客户安排普通到货</small><b>Regular Receipt</b><p>直接登记客户、到货信息和预计商品，不要求关联额外来源单据。</p></article>
+                <article><small>客户将商品退回仓库</small><b>RMA Receipt</b><p>先选择已经审批的 RMA，再进行实物收货；退回库存按 Return Channel 记录并要求外观检验。</p></article>
+                <article><small>产权转移入库</small><b>Title Transfer Receipt</b><p>用于货权转移产生的入库，需要关联对应的 Transfer Order。</p></article>
+                <article><small>MIGO 转移入库</small><b>MIGO Transfer Receipt</b><p>用于 MIGO 转移场景，需要关联对应的 Transfer Order。</p></article>
+                <article><small>仓内或仓间内部调拨</small><b>Internal Transfer Receiving</b><p>用于内部调拨的接收入库，需要关联对应的 Transfer Order。</p></article>
+              </div>
+            </div>
+          </div>
+
+          <div class="receipt-screen-block item-line-block">
+            <button class="screen-frame" data-lightbox="assets/receipt-item-line.png" aria-label="放大 Add Item Line 页面截图">
+              <span>ADD ITEM LINE</span><img src="assets/receipt-item-line.png?v=20260812-2" alt="Receipt Add Item Line 页面截图"><i>点击放大</i>
+            </button>
+            <div class="receipt-info-groups item-line-groups">
+              <article><small>货权与商品</small><b>Title · SKU</b><p>Title 确定这批库存的货权方，SKU 确定实际计划接收的商品。</p></article>
+              <article><small>预计数量</small><b>Qty · UOM</b><p>记录预计接收数量及其计量单位，供后续现场收货时核对。</p></article>
+              <article><small>供货来源</small><b>Supplier</b><p>需要追踪供货方时，选择该批商品对应的 Supplier。</p></article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="receipt-execution">
+        <span class="section-kicker">货物到仓之后</span>
+        <h3>库存以现场实收记录为准</h3>
+        <p class="receipt-execution-intro">保存 Receipt 不会直接增加库存。货物到仓后，实际收到的 LP、SKU 和数量在 Receiving Task 中登记；任务完成时，系统据此更新 Received Qty 并形成待上架库存。</p>
+        <div class="receipt-result-flow">
+          <article><span>01</span><small>手持端操作 · Receiving Task</small><b>登记实收结果</b><p>现场人员通过 LP Setup 记录实际 LP、SKU 和数量。</p></article>
+          <i>→</i>
+          <article><span>02</span><small>系统自动处理 · Inventory</small><b>形成待上架库存</b><p>任务完成后，系统按实收结果建立库存，并继续进入 Put Away。</p></article>
+        </div>
+        <div class="receipt-exception-note"><b>没有实收记录</b><span>如果任务中没有完成任何 LP Setup，即使强制关闭也不会产生库存；强制关闭后的 Receipt 进入 Exception，而不是正常 Closed。</span></div>
+      </div>
+
+      <p class="inbound-boundary"><b>取消条件</b> Receipt 仅在 Open 且尚未开始收货时可以取消；收货任务开始后将不能取消。</p>
+    </section>
+
+    <section class="module rma-module" id="rma" data-section="rma">
+      <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">INBOUND · RMA MANAGEMENT</div>
+        <h2>先确认退货范围，再安排商品返仓</h2>
+        <p>RMA 用来管理客户退货申请。它先明确由哪个客户退回哪些商品、预计数量及退货原因；审批通过后，仓库才能建立 RMA 类型 Receipt，接收实物并将实收结果回写到退货记录。</p>
+      </div>
+
+      <div class="rma-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>客户申请退回一批已发出的商品</h3>
+        <p>例如零售客户需要退回两种商品。仓库在商品到达前先建立 RMA，记录客户、退货类型、商品、预计数量和原因，并完成内部审批。这样现场人员能够提前知道哪些商品获准返仓，而真正的库存仍要等退货 Receipt 收货后才产生。</p>
+        <div class="rma-scenario-decisions">
+          <article><small>退货主体</small><b>谁要退货</b><p>Customer 确定本次退货属于哪个客户。</p></article>
+          <article><small>授权范围</small><b>允许退回什么</b><p>SKU Lines 记录商品、UOM 和 Expected Qty。</p></article>
+          <article><small>业务依据</small><b>为什么退回</b><p>RMA Type 和 Return Reason 说明退货来源与原因。</p></article>
+        </div>
+      </div>
+
+      <div class="rma-create-section">
+        <span class="section-kicker">建立退货授权</span>
+        <h3>记录本次允许退回的商品范围</h3>
+        <p class="rma-create-copy">RMA No 和 RMA Type 用于识别退货申请，SKU Lines 记录计划退回的商品、UOM、预计数量和原因。Original Order ID 可补充原订单线索，但当前不是必填项，也不会自动限制退货数量不得超过原出库数量。</p>
+        <div class="rma-screen-grid single-screen">
+          <button class="screen-frame" data-lightbox="assets/rma-edit.png" aria-label="放大 Edit RMA 页面截图">
+            <span>EDIT RMA · BASIC INFORMATION &amp; SKU LINES</span><img src="assets/rma-edit.png" alt="Edit RMA 页面截图"><i>点击放大</i>
+          </button>
+        </div>
+      </div>
+
+      <div class="rma-receipt-section">
+        <span class="section-kicker">从授权到实际入库</span>
+        <h3>RMA 决定能否收，Receipt 负责实际怎么收</h3>
+        <div class="rma-receipt-link">
+        <article><small>提交申请</small><b>Open｜等待审批</b><p>RMA 只记录退货计划，此时可以审批或取消，不会创建库存。</p></article>
+        <i>→</i>
+        <article><small>允许返仓</small><b>Approved｜可创建 Receipt</b><p>审批通过后，仓库以该 RMA 建立退货类型 Receipt。</p></article>
+        <i>→</i>
+        <article><small>接收实物</small><b>In Progress｜回写实收数量</b><p>Receiving Task 的实收结果更新 Received Qty，Receipt 关闭后完成退货入库。</p></article>
+        </div>
+        <div class="rma-screen-grid single-screen rma-receipt-screen">
+          <button class="screen-frame" data-lightbox="assets/rma-receipt-create.png" aria-label="放大创建 RMA Receipt 页面截图">
+            <span>CREATE RECEIPT · SELECT RMA</span><img src="assets/rma-receipt-create.png" alt="创建 RMA Receipt 并选择关联 RMA 的页面截图"><i>点击放大</i>
+          </button>
+          <p class="rma-create-copy">创建退货收货单时，将 Receipt Type 设为 RMA Receipt，再选择本次收货所依据的 RMA。</p>
+        </div>
+      </div>
+
+      <p class="inbound-boundary"><b>取消边界</b> RMA 只有在 Open 状态可以取消；一旦已创建 Receipt 并进入 In Progress，就不能再取消原 RMA。</p>
+    </section>
+
+    <section class="outbound-overview" id="outbound" data-section="outbound">
+      <div class="overview-label">OUTBOUND · MODULE OVERVIEW</div>
+      <h2>Outbound 统筹出库订单、仓内履约与发运交接</h2>
+      <p class="outbound-lead">Outbound 覆盖客户发货需求进入仓库后的完整履约范围，包括订单与库存准备、拣货任务组织，以及包装、装载和发运记录管理。各功能共同保证商品按照订单要求完成出库。</p>
+
+      <div class="outbound-function-grid">
+        <article>
+          <small>01 · 订单与库存准备</small>
+          <b>明确出库需求，并准备可履约库存</b>
+          <p>记录客户、商品、数量、货权和交付要求，同时为订单匹配并锁定可用库存。</p>
+          <div class="outbound-scope-links"><span id="outbound-order">Outbound Order</span><span>Inventory Commitment</span></div>
+        </article>
+        <article>
+          <small>02 · 作业计划与任务派发</small>
+          <b>把可履约订单转成现场作业</b>
+          <p>组织拣货计划，并根据订单条件和派发规则决定哪些订单进入执行。</p>
+          <div class="outbound-scope-links"><span id="order-plans">Order Plans</span><span>Order Dispatch</span></div>
+          <div class="dispatch-scope"><span>Order Filters</span><span>Order Dispatch Settings</span></div>
+        </article>
+        <article>
+          <small>03 · 包装与发运交接</small>
+          <b>完成包装、装载与离仓记录</b>
+          <p>根据运输场景处理小包裹或装载作业，并保留货物离开仓库后的发运凭证。</p>
+          <div class="outbound-scope-links"><span>Small Parcel Station</span><span>Load Management</span><span>Shipment Tickets</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="module outbound-order-module" id="outbound-order-guide" data-section="outbound-order-guide">
+      <div class="module-number">01</div>
+      <div class="module-heading">
+        <div class="eyebrow">OUTBOUND · OUTBOUND ORDER</div>
+        <h2>先把客户的发货要求转成仓库可以执行的订单</h2>
+        <p>Outbound Order 是出库作业的起点。它记录本次订单属于哪个客户、需要发出哪些商品和数量、送往哪里、由谁承运以及计划何时完成；库存锁定、拣货、包装和装车都以这些订单资料为依据。</p>
+      </div>
+
+      <div class="outbound-order-screen-section order-list-preview">
+        <button class="screen-frame" data-lightbox="assets/outbound-order-list.png" aria-label="放大 Outbound Order 列表页面截图">
+          <span>OUTBOUND ORDER · LIST</span><img src="assets/outbound-order-list.png" alt="Outbound Order 列表页面截图"><i>点击放大</i>
+        </button>
+        <div class="outbound-screen-copy">
+          <b>从列表掌握待处理订单与当前进度</b>
+          <p>顶部汇总区显示 Imported、Processing、Shipped 和 Total；订单列表进一步显示 Order Plan 与 Status，用于判断订单是否尚待处理、库存承诺受阻、已经进入计划或完成发运。</p>
+        </div>
+      </div>
+
+      <div class="outbound-order-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>客户要求仓库把一批商品发往指定收货地址</h3>
+        <p>操作人员先选择 Customer，确认订单类型与运输要求，再填写 Ship To Address 和计划时间，最后添加 SKU Lines。订单保存后形成出库需求，但此时还没有扣减库存；后续 Inventory Commitment 才会为订单匹配并锁定可用库存。</p>
+        <div class="outbound-order-decisions">
+          <article><small>订单归属</small><b>谁要发货</b><p>Customer 确定订单归属，并影响后续库存分配策略和 Load 分组。</p></article>
+          <article><small>发货内容</small><b>发什么、发多少</b><p>SKU Lines 记录 Item、UOM、Title 和 Qty，作为库存匹配与数量换算依据。</p></article>
+          <article><small>履约要求</small><b>发到哪里、如何运输</b><p>Address、Carrier、Ship Method 和时间字段共同描述交付要求。</p></article>
+        </div>
+      </div>
+
+      <div class="outbound-order-screen-section">
+        <button class="screen-frame" data-lightbox="assets/outbound-order-basic.png" aria-label="放大 Outbound Order Basic Info 截图">
+          <span>ORDER DETAIL · ORDER</span><img src="assets/outbound-order-basic.png" alt="Outbound Order 的 Order 信息区域截图"><i>点击放大</i>
+        </button>
+        <div class="order-field-list">
+          <div><b>Customer</b><span>订单所属客户，决定可选商品及适用的库存分配策略。</span></div>
+          <div><b>Retailer</b><span>订单对应的零售渠道或门店体系。</span></div>
+          <div><b>Order Type</b><span>出库业务类型，如 Regular Order。</span></div>
+
+          <div><b>Reference No</b><span>客户或上游系统提供的业务参考编号，用于查询与对账。</span></div>
+          <div><b>Sales Order No</b><span>关联的销售订单编号。</span></div>
+          <div><b>PO No</b><span>关联的采购订单编号。</span></div>
+          <div><b>Batch No</b><span>出库订单的批次编号，用于归集同批导入或同批处理的订单。</span></div>
+          <div><b>Master Tracking No</b><span>整票货件或主包裹的总追踪编号。</span></div>
+          <div><b>Source</b><span>订单来源，如页面手工创建或接口导入。</span></div>
+          <div><b>Signature Type</b><span>承运交付时要求的签名服务类型。</span></div>
+          <div><b>Total Weight</b><span>整张订单的预计总重量，供运输安排参考。</span></div>
+          <div><b>Total Pallets</b><span>整张订单预计使用的托盘数量。</span></div>
+          <div><b>Consolidation No</b><span>需要合并处理的订单所使用的归集编号。</span></div>
+          <div><b>Priority</b><span>订单的业务优先级，供后续计划与派发使用。</span></div>
+          <div><b>Single QTY</b><span>标识订单是否属于单件数量场景，由系统根据订单内容显示。</span></div>
+        </div>
+      </div>
+
+      <div class="outbound-order-screen-section">
+        <button class="screen-frame" data-lightbox="assets/outbound-order-shipping-time.png" aria-label="放大 Outbound Order Shipping 和 Time 截图">
+          <span>ORDER DETAIL · SHIPPING &amp; TIME</span><img src="assets/outbound-order-shipping-time.png" alt="Outbound Order 的 Shipping 和 Time 区域截图"><i>点击放大</i>
+        </button>
+        <div class="outbound-screen-copy two-column-copy">
+          <article><b>运输安排</b><p>Carrier 表示实际承运商，Ship Method 决定订单采用的运输场景：Truckload（整车）、Less Than Truckload（零担）、Will Call（客户自提）或 Small Parcel（小包裹）。Delivery Service、Freight Term 和运输单号用于补充具体交接要求。</p></article>
+          <article><b>履约时间</b><p>Schedule Date、Ship Not Before / Later 和 Appointment Time 用来描述计划作业及允许发货的时间窗口；Shipped Time、Canceled Date 等由后续状态记录实际结果。</p></article>
+        </div>
+      </div>
+
+      <div class="outbound-order-screen-section">
+        <button class="screen-frame" data-lightbox="assets/outbound-order-address-lines.png" aria-label="放大 Outbound Order Address 和 SKU Lines 截图">
+          <span>ORDER DETAIL · ADDRESS &amp; SKU LINES</span><img src="assets/outbound-order-address-lines.png" alt="Outbound Order 的 Address 和 SKU Lines 区域截图"><i>点击放大</i>
+        </button>
+        <div class="outbound-screen-copy two-column-copy">
+          <article><b>Address</b><p>Ship From 表示本次发货方，Ship To 表示实际收货目的地，Bill To 用于账单资料。选定后地址内容随订单保存，后续主档修改不会改变该订单。</p></article>
+          <article><b>SKU Lines</b><p>SKU 确定商品，UOM 与 Qty 表示需求数量，Title 限定货权。Inventory Commitment 会按照这些条件匹配并锁定库存；保存订单本身不会直接扣减库存。</p></article>
+        </div>
+      </div>
+
+
+    </section>
+
+    <section class="module inventory-commitment-module" id="inventory-commitment-guide" data-section="inventory-commitment-guide">
+      <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">OUTBOUND · INVENTORY COMMITMENT</div>
+        <h2>在订单进入拣货前，确认库存是否能够兑现需求</h2>
+        <p>Inventory Commitment 将 Outbound Order 的需求与当前可用库存进行匹配。它先显示订单行的库存缺口，再由用户执行锁定；锁定结果会直接更新订单状态，并决定订单能否继续进入拣货计划。</p>
+      </div>
+
+      <div class="commitment-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>先看缺口，再决定哪些订单可以进入履约</h3>
+        <p>当多个订单同时等待出库时，操作人员可以先预览每个 SKU 的需求、已锁定数量和缺口数量，判断库存不足会影响哪些订单，再执行 Commit。库存充足的订单进入 Committed；只有部分库存可用时进入 Partial Committed。</p>
+        <div class="commitment-scenario-flow">
+          <article><small>01 · 检查</small><b>Gap Preview</b><p>查看订单行的需求数量、已锁定数量和缺口数量。</p></article><i>→</i>
+          <article><small>02 · 锁定</small><b>Commit</b><p>按订单优先级和库存匹配规则立即创建 ACTIVE 库存锁。</p></article><i>→</i>
+          <article><small>03 · 结果</small><b>Committed / Partial Committed</b><p>订单根据锁定结果更新状态，继续等待后续计划。</p></article>
+        </div>
+      </div>
+
+      <div class="commitment-screen-section">
+        <button class="screen-frame" data-lightbox="assets/inventory-commitment-build.png" aria-label="放大 Build Commitment 页面截图">
+          <span>BUILD COMMITMENT</span><img src="assets/inventory-commitment-build.png" alt="Build Commitment 页面截图"><i>点击放大</i>
+        </button>
+        <div class="commitment-screen-copy">
+          <b>Build Commitment：选择订单并执行库存锁定</b>
+          <p>页面按 Order ID、Order Type、Status、Customer、Carrier、Ship Method 和 Schedule Date 筛选待处理订单。选中订单后，可先查看 Gap Preview，再点击 Commit 立即执行锁定。</p>
+        </div>
+      </div>
+
+      <div class="commitment-gap-preview-section">
+        <button class="screen-frame" data-lightbox="assets/inventory-commitment-gap.png" aria-label="放大 Gap Preview 弹窗截图">
+          <span>GAP PREVIEW · SHORTAGE DETAIL</span><img src="assets/inventory-commitment-gap.png" alt="Gap Preview 缺口明细弹窗截图"><i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="commitment-gap-guide">
+        <span class="section-kicker">Gap Preview 关注的数量关系</span>
+        <div class="commitment-gap-grid">
+          <article><b>需求数量</b><span>订单要求发出的数量。</span></article>
+          <article><b>已锁定数量</b><span>当前已经成功占用的库存数量。</span></article>
+          <article><b>缺口数量</b><span>仍未匹配到库存的数量。</span></article>
+        </div>
+      </div>
+
+      <div class="commitment-report-section">
+        <button class="screen-frame" data-lightbox="assets/inventory-commitment-report.png" aria-label="放大 Commitment Report 页面截图">
+          <span>COMMITMENT REPORT</span><img src="assets/inventory-commitment-report.png" alt="Commitment Report 页面截图"><i>点击放大</i>
+        </button>
+        <div class="commitment-screen-copy">
+          <b>Commitment Report：查看与回滚已建立的库存承诺</b>
+          <p>报告按订单、客户、状态、承运商和 Batch No 查询已建立的承诺。只有 Committed 或 Partial Committed 订单可以 Rollback；回滚后库存锁释放，订单回到 Open。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ORDER DISPATCH ==================== -->
+    <section class="module" id="order-plans-guide" data-section="order-plans-guide">
+      <div class="module-number">03</div>
+      <div class="module-heading"><div class="eyebrow">OUTBOUND · ORDER PLANS</div><h2>把待出库订单组织成可执行的拣货计划</h2><p>Order Plans 将一个或多个已承诺库存的订单打包到同一个计划中，并指定该计划使用的 Pick Method、Pick Mode 和 Task Priority。计划创建后释放，系统据此生成拣货任务。</p></div>
+      <div class="commitment-scenario"><span class="section-kicker">核心场景</span><h3>从已承诺订单到可执行任务</h3><p>当一批订单完成库存锁定后，计划员需要决定这些订单的拣货策略——是逐单拣还是合并拣、用人工推车还是 AGV，以及优先级如何。Order Plans 就是这个决策的执行入口。</p><div class="commitment-scenario-flow"><article><small>01 · 创建</small><b>Create Plan</b><p>选择拣货方法和模式，添加待处理订单。</p></article><i>→</i><article><small>02 · 释放</small><b>Release</b><p>计划释放后，系统自动生成拣货任务。</p></article><i>→</i><article><small>03 · 执行</small><b>Pick Tasks</b><p>拣货人员或设备按任务执行拣货作业。</p></article></div></div>
+      <div class="commitment-screen-section"><button class="screen-frame" data-lightbox="assets/order-plan-create.png" aria-label="放大 Create Plan 截图"><span>CREATE PLAN</span><img src="assets/order-plan-create.png" alt="Create Plan 页面截图"><i>点击放大</i></button><div class="commitment-screen-copy"><b>Create Plan：配置拣货策略并关联订单</b><p>创建计划时先确定 Pick Method 和 Pick Mode，再从已承诺库存的订单中选择要纳入本次计划的订单。</p></div></div>
+      <div class="commitment-gap-guide"><span class="section-kicker">Pick Method</span><p class="order-plan-group-intro">决定订单如何分配到拣货任务。</p><div class="commitment-gap-grid"><article><b>Single Order Pick</b><span>一个订单对应一个拣货任务。适合大件商品、高价值订单或定制化包装。</span></article><article><b>Batch Order Pick</b><span>多个订单合并到一个任务，一次路线拣取多单商品，再按订单拆分。</span></article><article><b>Wave Pick by Item</b><span>汇总多个订单中相同 SKU 的需求，按商品集中拣取。</span></article></div></div>
+      <div class="commitment-gap-guide"><span class="section-kicker">Pick Mode</span><p class="order-plan-group-intro">指定拣货时使用的设备或工位方式。</p><div class="commitment-gap-grid"><article><b>Pick to Wall</b><span>批量拣取后，在播种墙按订单投放到对应格口。</span></article><article><b>Pick by Tote Cart</b><span>使用多层推车边拣边按订单分配到不同 Tote。</span></article><article><b>Pick by AGV</b><span>由 AGV 将货架送至固定工位，采用货到人方式拣货。</span></article></div></div>
+      <div class="commitment-gap-guide"><span class="section-kicker">其他配置</span><div class="commitment-gap-grid"><article><b>Task Priority</b><span>影响任务在拣货队列中的顺序。</span></article><article><b>Max Order Qty Per Pick Task</b><span>限制单个任务可包含的订单数量。</span></article><article><b>Assignment Mode / Default Assignee</b><span>决定任务采用手动或自动指派，并可设置默认执行人。</span></article><article><b>Pick From VLGs</b><span>限定拣货库存的来源区域。</span></article><article><b>Plan Tags</b><span>为计划添加标签，便于后续筛选分类。</span></article></div></div>
+    </section>
+
+    <section class="module order-dispatch-overview" id="order-dispatch" data-section="order-dispatch">
+      <div class="module-number">04</div>
+      <div class="module-heading">
+        <div class="eyebrow">OUTBOUND · ORDER DISPATCH</div>
+        <h2>按预设条件批量推进订单进入拣货执行</h2>
+        <p>Order Dispatch 把订单筛选、库存锁定、Order Plan 与拣货任务创建连接起来。Order Filters 决定处理哪些订单；Dispatch Settings 决定拣货方式、任务拆分、异常处理和执行时间。</p>
+      </div>
+      <div class="dispatch-overview-map">
+        <article><small>ORDER FILTERS</small><b>圈定待处理订单</b><p>按状态、类型、客户、承运商、运输方式和时间等条件建立筛选模板。</p></article><i>→</i>
+        <article><small>DISPATCH SETTINGS</small><b>配置计划与任务规则</b><p>引用筛选模板，设置 Pick Method、Pick Mode、任务容量、自动释放和计划执行。</p></article><i>→</i>
+        <article><small>EXECUTION RESULT</small><b>生成计划和拣货任务</b><p>系统锁定库存，将符合条件的订单纳入 Order Plan，并按设置生成拣货任务。</p></article>
+      </div>
+    </section>
+
+    <section class="module order-dispatch-detail" id="order-filters" data-section="order-filters">
+      <div class="module-number">04.1</div>
+      <div class="module-heading"><div class="eyebrow">ORDER DISPATCH · ORDER FILTERS</div><h2>用筛选模板定义哪些订单可以进入 Dispatch</h2><p>Order Filters 保存可重复使用的订单条件。Dispatch 只处理满足条件且尚未关联 Order Plan 的订单。</p></div>
+      <div class="dispatch-core-scenario"><span class="section-kicker">核心场景</span><h3>为不同履约场景准备独立的订单入口</h3><p>小包裹订单可按 Ship Method 和订单状态建立模板；内部调拨或退货订单可按 Order Type 分开处理。不同字段同时填写时需全部满足，同一字段多选时匹配任一值。</p></div>
+      <div class="dispatch-screen-section compact-first-screen"><button class="screen-frame" data-lightbox="assets/order-filter-list.png" aria-label="放大 Order Filters 列表截图"><span>ORDER FILTERS · LIST</span><img src="assets/order-filter-list.png" alt="Order Filters 列表页面截图"><i>点击放大</i></button></div>
+      <div class="dispatch-screen-section"><button class="screen-frame" data-lightbox="assets/order-filter-add.png" aria-label="放大 Add Order Filter 截图"><span>ADD ORDER FILTER</span><img src="assets/order-filter-add.png" alt="Add Order Filter 页面截图"><i>点击放大</i></button>
+        <div class="dispatch-reference">
+          <div><b>Order Status</b><span>订单当前状态</span><p>选择 Open、Imported 或其他待处理状态。</p></div><div><b>Order Type</b><span>业务类型</span><p>区分 Regular、Dropship、Internal Transfer 和 Return Goods。</p></div><div><b>Carrier / Ship Methods</b><span>运输属性</span><p>区分 Small Parcel、LTL、Truckload 或 Will Call。</p></div><div><b>Retailer / Ship To</b><span>零售商和收货方</span><p>按门店、渠道或配送区域归集订单。</p></div><div><b>Single Item / Order Qty</b><span>订单结构和数量</span><p>筛选单品订单、批量订单或数量范围。</p></div><div><b>Data Channel / Freight Term</b><span>来源和运费条款</span><p>按订单来源或运费责任区分履约方案。</p></div><div><b>MABD / Ship No Later</b><span>履约期限</span><p>优先筛选临近截止日期的订单。</p></div><div><b>Appointment / Shipped Time</b><span>时间范围</span><p>按预约或发运时间查询订单。</p></div><div><b>Dynamic Text Value</b><span>自定义动态字段</span><p>按客户项目号、渠道标识等动态值筛选。</p></div>
+        </div><p class="dispatch-filter-footnote">系统会排除已经关联 Order Plan 的订单，避免重复 Dispatch。</p>
+      </div>
+    </section>
+
+    <section class="module order-dispatch-detail" id="order-dispatch-settings" data-section="order-dispatch-settings">
+      <div class="module-number">04.2</div><div class="module-heading"><div class="eyebrow">ORDER DISPATCH · SETTINGS</div><h2>定义筛选后的订单如何形成计划与任务</h2><p>Dispatch Settings 将 Filter 模板与拣货配置组合为可执行方案，可手动 Execute Dispatch，也可按 Schedule 自动运行。</p></div>
+      <div class="dispatch-core-scenario"><span class="section-kicker">核心场景</span><h3>同一批订单，按仓库作业方式生成不同任务</h3><p>小件订单可以采用 Batch Order Pick 与 Tote Cart，自动化区域可以采用 Pick by AGV，并通过任务容量控制现场作业规模。</p></div>
+      <div class="dispatch-screen-section compact-first-screen"><button class="screen-frame" data-lightbox="assets/order-dispatch-settings-list.png" aria-label="放大 Order Dispatch Settings 列表截图"><span>ORDER DISPATCH SETTINGS · LIST</span><img src="assets/order-dispatch-settings-list.png" alt="Order Dispatch Settings 列表页面截图"><i>点击放大</i></button><div class="dispatch-list-guide"><div class="dispatch-list-purpose"><span class="section-kicker">页面用途</span><h3>管理并执行仓库内的 Dispatch 方案</h3><p>查询区用于定位配置，列表用于比较订单来源、拣货方式、优先级、自动释放与定时状态。</p></div><div class="dispatch-list-operations"><div><b>Execute Dispatch</b><span>立即执行当前方案</span></div><div><b>History</b><span>查看历次执行结果</span></div><div><b>Copy</b><span>复制后调整为新方案</span></div></div></div></div>
+      <div class="dispatch-screen-section"><button class="screen-frame" data-lightbox="assets/order-dispatch-setting-add-top.png" aria-label="放大 Dispatch Setting 配置截图"><span>ADD DISPATCH SETTING</span><img src="assets/order-dispatch-setting-add-top.png" alt="Dispatch Setting 配置截图"><i>点击放大</i></button><div class="dispatch-setting-groups"><article><span>01</span><div><b>确定订单来源</b><p>Apply Template 引用 Filter，Customer 可进一步缩小订单范围。</p></div></article><article><span>02</span><div><b>选择拣货组织方式</b><p>Pick Method 和 Pick Mode 决定订单如何组合、由什么设备或工位执行。</p></div></article><article><span>03</span><div><b>安排任务执行</b><p>Task Priority、Assignment Mode、Pre-Assignee 和 Task Tags 随任务使用。</p></div></article></div></div>
+      <div class="dispatch-screen-section"><button class="screen-frame" data-lightbox="assets/order-dispatch-setting-add-bottom.png" aria-label="放大 Dispatch Setting 执行配置截图"><span>DISPATCH SETTING · EXECUTION</span><img src="assets/order-dispatch-setting-add-bottom.png" alt="Dispatch Setting 执行配置截图"><i>点击放大</i></button><div class="dispatch-execution-guide"><article><span>计划规模</span><b>多少订单组成一个 Plan</b><p>Min / Max Orders Per Plan 控制订单如何分批。</p></article><article><span>任务规模</span><b>一个任务处理多少订单</b><p>Max Orders Per Pick Task 限制任务规模。</p></article><article><span>计划释放</span><b>生成后是否立即执行</b><p>Auto Release 开启后自动释放 Order Plan。</p></article><article><span>异常处理</span><b>失败订单是否继续</b><p>Exclude If Commitment Fails 和 Exclude If Strategy Fails 控制失败订单处理。</p></article><article><span>自动执行</span><b>何时运行方案</b><p>Enable Schedule 后按间隔、每日、工作日或 Cron 执行。</p></article></div></div>
+    </section>
+
+    <!-- ==================== LOAD MANAGEMENT ==================== -->
+    <section class="module small-parcel-station-guide" id="small-parcel-station" data-section="small-parcel-station">
+      <div class="module-number">05</div>
+      <div class="module-heading">
+        <div class="eyebrow">OUTBOUND · SMALL PARCEL STATION</div>
+        <h2>拣货完成后，在工位完成扫描核验、打包和面单打印</h2>
+        <p>Small Parcel Station 是小包裹出库的打包工位。操作员扫描已拣货的容器或任务调出订单，核对商品，录入包裹信息并打印面单，完成包裹从仓内作业到承运商交接的准备。</p>
+      </div>
+
+      <div class="small-parcel-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>已拣货的容器到达小包裹工位，需要完成一票订单的打包发运</h3>
+        <p>拣货在手持端完成后，容器被送到打包工位。操作员在这里调出订单，确认每件商品与数量，补充包裹尺寸和重量，最后打印 Shipping Label 和需要随货附上的装箱单。</p>
+      </div>
+
+      <div class="commitment-screen-section small-parcel-main-screen">
+        <button class="screen-frame" data-lightbox="assets/small-parcel-station.png" aria-label="放大 Small Parcel Station 页面截图">
+          <span>SMALL PARCEL STATION</span><img src="assets/small-parcel-station.png" alt="Small Parcel Station 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="small-parcel-guide">
+        <div class="small-parcel-guide-section">
+          <div class="subsection-title"><span>01</span><h3>左侧扫描框：调出订单</h3></div>
+          <p>扫描 LP、Task ID、Tote Cart 或 Tracking No，系统根据对应关系调出订单及待打包物料；已发货的 Tracking No 用于只读重打面单。</p>
+          <div class="small-parcel-inline-fields"><div><b>LP / Task ID</b><span>调出当前待打包订单。</span></div><div><b>Tote Cart</b><span>按推车关联的 Tote 和 LP 批量查找订单。</span></div><div><b>Tracking No</b><span>进入 Reprint 模式查看已发货记录。</span></div></div>
+        </div>
+        <div class="small-parcel-guide-section">
+          <div class="subsection-title cyan-text"><span>02</span><h3>右侧扫描框：逐件核验</h3></div>
+          <p>逐件扫描 UPC、Item Name、Case UPC 或其他商品编码，系统将扫描结果与当前订单物料匹配并扣减待扫数量。</p>
+          <div class="small-parcel-inline-fields"><div><b>UPC / Item</b><span>确认商品属于当前订单。</span></div><div><b>Case UPC</b><span>按整箱换算数量一次性确认。</span></div><div><b>SN / Lot No</b><span>按订单和商品规则校验序列号或批次。</span></div></div>
+        </div>
+        <div class="small-parcel-guide-section">
+          <div class="subsection-title"><span>03</span><h3>Print All：完成包裹单据</h3></div>
+          <p>全部物料核验完成并录入包裹尺寸、重量后，选择需要的单据并点击 Print All。</p>
+          <div class="small-parcel-inline-fields"><div><b>Shipping Label（默认勾选）</b><span>物流面单，包含收发件信息和运单条码。适用于交接承运商的所有包裹，每个包裹打印一张。</span></div><div><b>Packing List by Order</b><span>按订单汇总商品和数量，不区分商品装在哪个包裹。适用于客户按订单核对收货内容。</span></div><div><b>Packing List by Shipping</b><span>按包裹分别列出所装商品。适用于一票订单拆成多个包裹发货，方便收货方确认每箱内容。</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module load-management-guide" id="load-management" data-section="load-management">
+      <div class="module-number">06</div><div class="module-heading"><div class="eyebrow">OUTBOUND · LOAD MANAGEMENT</div><h2>把待发订单组织成可交接给承运商的装载批次</h2><p>Load Management 归集同一次运输中的出库订单，维护承运商、地址、预约时间和运输编号。Load Task 必须基于已有 Load 创建；Task &gt; Load Tasks 只管理和执行已创建的任务。</p></div>
+      <div class="load-core-scenario"><span class="section-kicker">核心场景</span><h3>一辆预约到仓的车辆，需要一次带走多个订单</h3><p>例如承运商安排一辆整车下午 3 点到仓，同时提取三个已完成拣货的客户订单。仓库用一个 Load 归集它们，统一记录 Carrier、预约时间、Ship From / Ship To、Master BOL No 和 PRO No。</p></div>
+      <div class="load-screen-section"><button class="screen-frame" data-lightbox="assets/load-management-list.png" aria-label="放大 Load Management 列表截图"><span>LOAD MANAGEMENT · LIST</span><img src="assets/load-management-list.png" alt="Load Management 列表截图"><i>点击放大</i></button><div class="load-list-guide"><div><b>状态概览</b><p>New、In Progress、Loaded 和 Shipped 反映装载批次所处阶段。</p></div><div><b>运输查询</b><p>按 Load、状态、类型、Customer、Carrier、BOL 和时间范围定位批次。</p></div><div><b>任务关联</b><p>Load Tasks 列显示已创建的现场任务编号。</p></div></div></div>
+      <div class="load-create-task-section"><button class="screen-frame load-task-modal-frame" data-lightbox="assets/load-create-task.png" aria-label="放大 Create Load Task 弹窗截图"><span>CREATE LOAD TASK</span><img src="assets/load-create-task.png" alt="Create Load Task 弹窗截图"><i>点击放大</i></button><div class="load-create-task-copy"><span class="section-kicker">任务创建入口</span><h3>Load Task 必须基于已有 Load 创建</h3><p>在 Load Management 列表勾选 Load 后点击 Create Task。Task &gt; Load Tasks 当前不支持手工新建，只管理和执行已经创建的任务。</p><div class="load-task-fields"><div><b>Dock / Load Mode</b><span>月台和装车方式。</span></div><div><b>Carrier / Equipment Type</b><span>承运商及设备类型。</span></div><div><b>Priority / Assignee</b><span>优先级和负责人。</span></div><div><b>Selected Loads</b><span>本次任务包含的 Load。</span></div></div></div></div>
+      <div class="load-screen-section"><button class="screen-frame" data-lightbox="assets/load-create-basic.png" aria-label="放大 New Load 页面截图"><span>NEW LOAD</span><img src="assets/load-create-basic.png" alt="New Load 页面上半部分截图"><i>点击放大</i></button><div class="load-explanation-heading"><span class="section-kicker">基本信息</span><h3>记录本次装载的运输安排</h3></div><div class="load-field-matrix"><div><b>Load No</b><span>装载批次编号。</span></div><div><b>Customer / Carrier</b><span>所属客户和承运商。</span></div><div><b>Load Type</b><span>FTL、LTL、SPL、CONSOL、IMDL 或 TRANSLOAD 分类。</span></div><div><b>Freight Term / Cost</b><span>运费责任和运输费用。</span></div><div><b>Appointment Time</b><span>预约到场时间。</span></div><div><b>Master BOL No / PRO No</b><span>主提单和货运追踪编号。</span></div><div><b>ARN</b><span>装载参考编号。</span></div><div><b>Note / Consignee Note</b><span>内部及收货方备注。</span></div></div></div>
+      <div class="load-screen-section"><button class="screen-frame" data-lightbox="assets/load-create-orders.png" aria-label="放大 New Load 地址和订单截图"><span>NEW LOAD</span><img src="assets/load-create-orders.png" alt="New Load 页面下半部分截图"><i>点击放大</i></button><div class="load-explanation-heading"><span class="section-kicker">地址与订单</span><h3>确认运输地址，并加入本次装载的订单</h3></div><div class="load-order-layout"><div><span class="section-kicker">运输地址</span><h3>Ship From、Ship To 和 Bill To</h3><p>保存本次 Load 的发货、收货和账单地址快照。</p></div><div class="load-order-copy"><span class="section-kicker">Order Lines</span><h3>选择本次装载包含的出库订单</h3><p>可加入 Picked、Packed、Palletized 或 Ready to Ship 的订单，并可启用装载顺序。</p></div></div></div>
+    </section>
+
+    <section class="module shipment-tickets-guide" id="shipment-tickets" data-section="shipment-tickets">
+      <div class="module-number">07</div>
+      <div class="module-heading">
+        <div class="eyebrow">OUTBOUND · SHIPMENT TICKETS</div>
+        <h2>记录订单实际发运结果，并向客户系统发送 Delivery Confirmation</h2>
+        <p>Shipment Ticket 是订单级的发运结果记录。系统在 Load Task 关闭后，根据订单、运输方式、Tracking No 和 Load 对已发运库存进行分组并自动生成。每张 Ticket 记录本次发出的 LP、Tracking No 等信息，并作为打印 Packing List 和发送 DC（Delivery Confirmation）的数据入口。</p>
+      </div>
+
+      <div class="commitment-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>货物离开仓库后，通知客户系统“已发货”</h3>
+        <p>装车任务关闭后，仓库需要保留正式发运记录，说明哪些商品、装在哪些容器中、通过什么运单号发出；客户的 OMS / ERP 也需要接收发货确认并更新订单状态。Shipment Ticket 就是这份记录和通知的数据载体。</p>
+        <div class="commitment-scenario-flow">
+          <article><small>01 · 触发</small><b>Close Load Task</b><p>装车任务关闭，系统自动生成发运记录。</p></article><i>→</i>
+          <article><small>02 · 生成</small><b>Auto Create Ticket</b><p>按订单分组，记录 LP 和 Tracking No。</p></article><i>→</i>
+          <article><small>03 · 通知</small><b>Send DC</b><p>将发运信息推送至客户 Webhook。</p></article>
+        </div>
+      </div>
+
+      <div class="commitment-screen-section shipment-list-screen">
+        <button class="screen-frame" data-lightbox="assets/shipment-tickets-list.png" aria-label="放大 Shipment Tickets 列表截图">
+          <span>SHIPMENT TICKETS LIST</span><img src="assets/shipment-tickets-list.png" alt="Shipment Tickets 列表页面截图"><i>点击放大</i>
+        </button>
+        <div class="shipment-list-copy">
+          <span class="section-kicker">页面用途</span>
+          <h3>查询已生成的发运记录，并处理后续单据与通知</h3>
+          <p>列表用于按订单、Load、Tracking No 等条件定位 Ticket。进入对应记录后，可核对本次实际发出的 LP 和商品，并根据需要打印 Packing List 或执行 Send DC。</p>
+        </div>
+      </div>
+
+      <div class="shipment-dc-section">
+        <div class="shipment-dc-heading">
+          <span class="section-kicker">DC · Delivery Confirmation</span>
+          <h3>向客户或上游系统发送完整发运结果</h3>
+          <p>DC 包含订单、商品、数量、LP、Tracking No、Carrier、地址及 BOL / MBOL 等发运信息。发送前必须在对应 Customer Settings 中配置可用的 Webhook Channel。</p>
+        </div>
+        <div class="webhook-layout">
+          <button class="webhook-img" data-lightbox="assets/webhook-channel-config.png" aria-label="放大 Webhook Channel 配置截图"><span>WEBHOOK CHANNEL</span><img src="assets/webhook-channel-config.png" alt="Webhook Channel 配置弹窗"><i>点击放大</i></button>
+          <div class="webhook-fields">
+            <span class="section-kicker">前置配置</span>
+            <h3>Customer Settings → Webhook Channels</h3>
+            <p class="webhook-path">MDM → Customer → Settings → 自动化与数据连接 → Webhook Channels</p>
+            <dl>
+              <div><dt>Channel Name</dt><dd>Send DC 时选择的目标通道。</dd></div>
+              <div><dt>API URL</dt><dd>客户接收 DC 数据的 HTTP 接口地址。</dd></div>
+              <div><dt>Event Types</dt><dd>必须包含 <code>ORDER_SHIPPED</code>。</dd></div>
+              <div><dt>Enabled</dt><dd>关闭后不显示在 Send DC 通道列表中。</dd></div>
+              <div><dt>Headers / Secret</dt><dd>用于接口认证和 HMAC 签名校验。</dd></div>
+              <div><dt>Max Retry</dt><dd>发送失败后的最大重试次数。</dd></div>
+            </dl>
+            <p class="shipment-channel-note">未配置已启用 Channel 的客户无法执行 Send DC。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="inventory-overview" id="inventory" data-section="inventory">
+      <div class="overview-label">INVENTORY · MODULE OVERVIEW</div>
+      <h2>掌握仓内存量、可用范围与每一次库存变化</h2>
+      <p class="inventory-lead">Inventory 围绕仓库日常最关心的四件事展开：货物现在在哪里、还有多少能够分配、发现差异后如何受控纠正，以及拣货位库存不足时如何及时补充。各功能共同连接入库、出库和补货作业，让库存数量、容器位置与变化记录保持一致。</p>
+      <div class="inventory-function-grid">
+        <article><small>01 · 看清现状</small><b>库存有多少，分别放在哪里</b><p>查询商品数量、状态、Location 与 LP，并通过容器层级确认托盘、箱或 Tote 中实际承载的库存。</p><div class="inventory-scope-links"><span>Inventory</span><span>LP</span></div></article>
+        <article><small>02 · 判断可用</small><b>账面有货，不代表仍可分配</b><p>出库订单锁定库存后，台账数量不会立即减少，但相应数量已被占用；只有未被有效锁定的 Open 库存才能继续分配。</p><div class="inventory-scope-links"><span>Inventory Lock</span></div></article>
+        <article><small>03 · 处理差异</small><b>纠正库存，并保留变化依据</b><p>盘点或现场发现数量、状态、库位等信息不符时，通过 Adjustment 发起受控调整；Inventory Activity 用于追溯库存经历过的作业。</p><div class="inventory-scope-links"><span>Adjustment</span><span>Inventory Activity</span></div></article>
+        <article><small>04 · 保障供给</small><b>拣货位不足时安排补货</b><p>为商品和目标区域设置最低与最高库存；系统按调度检查补货需求，并在设定的非工作日跳过自动任务。</p><div class="inventory-scope-links"><span>Min/Max Setting</span><span>Holiday Management</span></div></article>
+      </div>
+    </section>
+
+    <section class="module inventory-list-guide" id="inventory-list-guide" data-section="inventory-list-guide">
+      <div class="module-number">01</div>
+      <div class="module-heading"><div class="eyebrow">INVENTORY · INVENTORY</div><h2>查询当前库存数量，并定位货物所在的库位与容器</h2><p>Inventory 是仓库的库存查询台账。它将商品、数量、状态、Location、LP 以及关联的收货单、订单和 Load 汇集在同一入口，帮助操作人员确认当前库存处于哪个作业阶段、存放在哪里。</p></div>
+      <div class="inventory-core-scenario"><span class="section-kicker">核心场景</span><h3>出库前核查某个 SKU 是否有货，以及库存分布在哪里</h3><p>例如客户询问某个 SKU 能否满足一批出库需求，操作人员先按 Customer、SKU 和 Open 状态查询总量，再进入明细确认库存所在的 Location 与 LP。若要判断订单实际还能锁定多少，还需结合 Inventory Lock 查看已经被其他订单占用的数量。</p></div>
+      <div class="inventory-content-guide">
+        <div class="settings-tabs inventory-tabs" role="tablist" aria-label="Inventory 页面分类">
+          <button class="settings-tab active" role="tab" aria-selected="true" aria-controls="inventory-summary-panel" data-inventory-tab="inventory-summary-panel"><span>01</span>Summary</button>
+          <button class="settings-tab" role="tab" aria-selected="false" aria-controls="inventory-detail-panel" data-inventory-tab="inventory-detail-panel"><span>02</span>Inventory Detail</button>
+        </div>
+
+      <div class="inventory-screen-section inventory-tab-panel" id="inventory-summary-panel" role="tabpanel">
+        <button class="screen-frame" data-lightbox="assets/inventory-summary.png" aria-label="放大 Inventory Summary 页面截图"><span>INVENTORY · SUMMARY</span><img src="assets/inventory-summary.png" alt="Inventory Summary 页面截图"><i>点击放大</i></button>
+        <div class="inventory-summary-intro"><span class="section-kicker">Summary</span><h3>先按商品查看库存汇总</h3><p>Summary 将符合查询条件的库存按 SKU、Status 和 Type 汇总，适合先判断某个商品当前有多少库存；需要确认具体库位、LP 或关联单据时，再切换到 Inventory Detail。</p></div>
+        <div class="inventory-query-groups"><article><b>归属与商品</b><p>Customer、Title 和 SKU 用于限定库存属于哪个客户、货权方和商品。</p></article><article><b>状态与存放位置</b><p>Status、Location、LP 和 Original LP 用于查询库存所处阶段及当前或来源容器。</p></article><article><b>业务来源</b><p>Receipt、Order 和 Load ID 用于沿入库、出库或装载单据追查对应库存。</p></article></div>
+        <div class="inventory-quantity-note"><div><span>Total Qty (UOM)</span><b>按当前计量单位显示</b><p>例如 5 CASE，表示以箱为单位记录。</p></div><div><span>Total Base Qty (UOM)</span><b>换算为基础单位</b><p>若 1 CASE = 12 EA，则 5 CASE = 60 EA。</p></div><div class="inventory-availability"><span>判断可分配量</span><b>页面库存数量不等于当前可分配数量</b><p>Open 库存还需扣除已锁定数量：100 EA - 30 EA = 70 EA 可分配。</p></div></div>
+      </div>
+      <div class="inventory-detail-section inventory-tab-panel" id="inventory-detail-panel" role="tabpanel" hidden>
+        <button class="screen-frame" data-lightbox="assets/inventory-detail.png" aria-label="放大 Inventory Detail 页面截图"><span>INVENTORY · DETAIL</span><img src="assets/inventory-detail.png" alt="Inventory Detail 页面截图"><i>点击放大</i></button>
+        <div class="inventory-detail-intro"><span class="section-kicker">Inventory Detail</span><h3>把商品汇总量拆解为具体库存记录</h3><p>同一个 SKU 可能分布在不同客户、货权、LP、批次或库存状态下。Inventory Detail 按记录逐行展示这些差异，用于确认某一部分库存的实际归属和存放载体。</p></div>
+        <div class="inventory-detail-fields"><article><span>01</span><div><b>归属对象</b><p>Customer 表示库存所属客户，Title 表示库存货权。即使 SKU 相同，归属不同的库存也会分别记录。</p></div></article><article><span>02</span><div><b>商品与数量</b><p>SKU 识别商品；Qty (UOM) 显示当前单位下的数量，Base Qty 统一换算为基础单位。</p></div></article><article><span>03</span><div><b>库存属性</b><p>Status 表示当前作业阶段，Type 表示货物类型，Lot# 用于区分需要批次追踪的库存。</p></div></article><article><span>04</span><div><b>容器与追查入口</b><p>LP 表示当前承载库存的容器；点击 View 可进入该条库存记录，继续查看 Location 和关联单据等信息。</p></div></article></div>
+        <p class="inventory-detail-usage"><b>实际使用：</b>Summary 用于判断“这个 SKU 总共有多少”，Inventory Detail 用于回答“这些数量分别属于谁、装在哪个 LP、处于什么状态”。</p>
+      </div>
+      </div>
+    </section>
+
+    <section class="module inventory-lock-guide" id="inventory-lock-guide" data-section="inventory-lock-guide">
+      <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">INVENTORY · INVENTORY LOCK</div>
+        <h2>在库存真正拣出前，为订单保留可履约数量</h2>
+        <p>Inventory Lock 记录出库订单或装配任务已经预留的库存，避免同一批可用量被重复分配。锁定只影响后续订单还能分配多少，不会立即减少 Inventory 页面中的库存台账数量。</p>
+      </div>
+
+      <div class="lock-business-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>多个出库订单需要同一 SKU，先为准备履约的订单保留库存</h3>
+        <p>当可用库存无法同时满足所有订单时，仓库先决定本轮需要处理的订单并执行 Commitment。系统为这些订单建立 Lock，后续订单便不会重复使用已预留的数量；若客户取消订单或仓库重新安排履约顺序，再通过 Rollback 释放占用并重新分配。</p>
+        <p class="lock-compact-example"><b>数量关系：</b>Open Inventory 100 EA − Active Lock 30 EA = 其他订单仍可分配 70 EA。Inventory 台账仍显示仓库现有 100 EA，直到实际拣货后库存状态才发生变化。</p>
+      </div>
+
+      <div class="lock-commitment-section">
+        <div class="lock-commitment-heading">
+          <span class="section-kicker">与 Inventory Commitment 的关联</span>
+          <h3>Commitment 执行库存分配，Inventory Lock 保存分配结果</h3>
+          <p>用户不会在 Inventory Lock 页面手工建立锁定。锁定主要从 Outbound Inventory Commitment 产生；Order Dispatch 自动执行 Commitment 时，也会走同一套锁定逻辑。</p>
+        </div>
+        <div class="lock-commitment-flow">
+          <article><small>01 · 选择需求</small><b>Outbound Order</b><p>在 Build Commitment 选择本轮准备履约的订单。</p></article>
+          <i>→</i>
+          <article><small>02 · 执行分配</small><b>Commit</b><p>系统按商品与库存属性匹配可用的 Open Inventory。</p></article>
+          <i>→</i>
+          <article><small>03 · 保存占用</small><b>Active Lock</b><p>成功分配的数量形成锁定，防止被其他订单再次使用。</p></article>
+          <i>→</i>
+          <article><small>04 · 后续结果</small><b>Pick 或 Rollback</b><p>拣货后视为已消耗；取消或回滚后不再占用。</p></article>
+        </div>
+      </div>
+
+      <div class="lock-page-section">
+        <button class="screen-frame" data-lightbox="assets/inventory-lock-list.png" aria-label="放大 Inventory Lock 列表页面截图">
+          <span>INVENTORY LOCK · LIST</span><img src="assets/inventory-lock-list.png" alt="Inventory Lock 列表页面截图"><i>点击放大</i>
+        </button>
+        <div class="lock-page-intro">
+          <span class="section-kicker">锁定记录</span>
+          <h3>查看哪些订单正在占用库存</h3>
+          <p>当订单缺货、需要取消或准备重新分配时，可按 Order ID 或 SKU 找到对应 Lock，确认占用数量、Customer、Title、Lot No 和当前状态。列表用于查询与导出，不提供人工新建或释放入口。</p>
+        </div>
+        <div class="lock-status-legend">
+          <div><b>ACTIVE</b><span>当前仍在为订单占用可分配量</span></div>
+          <div><b>CONSUMED</b><span>对应数量已经完成拣货</span></div>
+          <div><b>INACTIVE</b><span>锁定已释放或本次未形成有效占用</span></div>
+        </div>
+      </div>
+
+      <div class="lock-detail-layout">
+        <button class="screen-frame" data-lightbox="assets/inventory-lock-detail.png" aria-label="放大 Inventory Lock Detail 页面截图">
+          <span>INVENTORY LOCK · DETAIL</span><img src="assets/inventory-lock-detail.png" alt="Inventory Lock Detail 页面截图"><i>点击放大</i>
+        </button>
+        <div class="lock-detail-copy">
+          <span class="section-kicker">Lock Detail</span>
+          <h3>确认这笔库存被谁占用，以及锁定是否仍然有效</h3>
+          <p>客户询问订单为何缺货，或仓库准备取消、回滚并重新分配时，进入 Lock Detail 核对下面三项。</p>
+        </div>
+        <div class="lock-detail-decisions">
+          <article><span>01</span><div><b>哪张订单占用</b><p>Order ID、Order Line ID 与 SKU 定位产生库存需求的订单及行项目。</p></div></article>
+          <article><span>02</span><div><b>占用了多少、是否仍有效</b><p>Qty / UOM 与 Base Qty 显示锁定数量，Status 判断它仍在占用、已被拣货还是已经释放。</p></div></article>
+          <article><span>03</span><div><b>按什么条件匹配库存</b><p>Customer、Title ID 与 Lot No 用于核对 Commitment 当时匹配的库存归属与批次条件。</p></div></article>
+        </div>
+        <p class="lock-available-note"><b>Available Qty 什么时候有值？</b>当订单需要 100 EA，但执行 Commitment 时只有 70 EA 可用，库存不足记录中的 Available Qty 会显示 70 EA。它保存的是当次锁定时系统找到的可用数量，之后不会随库存变化更新；锁定成功的 Active 记录通常显示“−”。</p>
+      </div>
+    </section>
+
+    <section class="module inventory-activity-guide" id="inventory-activity-guide" data-section="inventory-activity-guide">
+      <div class="module-number">03</div>
+      <div class="module-heading">
+        <div class="eyebrow">INVENTORY · INVENTORY ACTIVITY</div>
+        <h2>沿库存作业轨迹，追查货物经历过的每一次变化</h2>
+        <p>Inventory Activity 保存收货、补货、拣货、包装、装车、发运及调整产生的操作记录。它用于还原库存何时因哪项作业发生移动或变化，是查询和审计入口；Activity 本身不会再次修改库存。</p>
+      </div>
+
+      <div class="activity-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>库存位置或数量与预期不符，需要回看它经历了什么</h3>
+        <p>例如某个 SKU 原本位于储存区，现场却发现它已进入拣货容器。操作人员可按 SKU、LP 或 Location 查询 Activity，结合 From、To、Task ID 和 Created Time，确认这批库存是否因补货或拣货任务发生了移动；若来源是库存调整，还能继续通过 Adjustment ID 追溯审批记录。</p>
+        <div class="activity-trace">
+          <article><small>先定位库存</small><b>SKU · Customer · Title</b><p>确认需要追查的商品及库存归属。</p></article>
+          <i>→</i>
+          <article><small>再还原移动</small><b>From → To</b><p>比较变更前后的 LP 与 Location。</p></article>
+          <i>→</i>
+          <article><small>最后追溯来源</small><b>Task / Adjustment</b><p>找到触发这次变化的任务或调整单。</p></article>
+        </div>
+      </div>
+
+      <div class="activity-page-section">
+        <div class="activity-page-intro">
+          <span class="section-kicker">页面用途</span>
+          <h3>查看库存“发生过什么”，而不是“现在还有多少”</h3>
+          <p>Inventory Activity 保存已经发生的库存活动，用于调查库存为何增加、减少、换容器、换库位或进入后续出库阶段。当前库存数量应以 Inventory 或 Balance Report 为准；需要追查历史原因时，再回到本页面按 SKU、LP、Location、Task ID 或 Adjustment ID 查询。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/inventory-activity-list.png" aria-label="放大 Inventory Activity 列表页面截图">
+          <span>INVENTORY ACTIVITY · LIST</span>
+          <img src="assets/inventory-activity-list.png" alt="Inventory Activity 列表页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="activity-field-groups">
+          <article><span>01</span><div><b>查看发生的动作</b><p>Activity Type 可按 Receive、Move、Pick、Pack 或 Adjust 筛选记录；Created Time 与 Qty (UOM) 说明作业发生时间及本次涉及的数量。筛选不会触发库存操作。</p></div></article>
+          <article><span>02</span><div><b>还原移动路径</b><p>From / To LP 与 From / To Location 用于判断库存从哪个容器和库位移动到了哪里。</p></div></article>
+          <article><span>03</span><div><b>追溯业务来源</b><p>Task ID 或 Adjustment ID 指向触发活动的任务或调整单；当前不能直接跳转，可复制 ID 到对应页面查询。</p></div></article>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="module lp-guide" id="lp-guide" data-section="lp-guide">
+      <div class="module-number">04</div>
+      <div class="module-heading">
+        <div class="eyebrow">INVENTORY · LP</div>
+        <h2>用一个可扫描编号，识别并追踪整托、整箱或整料箱库存</h2>
+        <p>LP（License Plate）是托盘、纸箱、周转箱等库存载体在系统中的编号。它把库存、库位和作业状态关联起来，让操作人员无需逐条识别库存，即可通过扫描 LP 完成收货、上架、拣货、打包和装车中的确认与追踪。</p>
+      </div>
+
+      <div class="lp-core-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>货物在仓库中不断更换位置和载体，LP 保留可追踪的库存归属</h3>
+        <p>收货后，库存先装入托盘或容器 LP；上架时扫描 LP，将整组库存移动到目标库位。出库过程中，库存又可能进入拣货料箱、纸箱和外层发运单元。系统通过每个阶段的 LP，持续确认这批库存在哪里、装在哪个载体中，以及正处于哪个作业阶段。</p>
+        <div class="lp-scenario-grid">
+          <article><small>入库与存储</small><b>整托或整箱上架</b><p>库存装入 LP 后，通过标准上架或移动作业，将 LP 与其中的库存一起更新到目标库位。</p></article>
+          <article><small>拣货与发运</small><b>扫码识别作业载体</b><p>拣货库存进入料箱，打包后进入纸箱；后续打包、装车和发运继续扫描对应 LP。</p></article>
+          <article><small>包装层级</small><b>纸箱归集到外层单元</b><p>Parent LP 记录子箱与外层发运 LP 的包含关系，便于按整组识别纸箱和关联库存。</p></article>
+        </div>
+      </div>
+
+      <div class="lp-list-section">
+        <div class="lp-page-heading">
+          <span class="section-kicker">LP List</span>
+          <h3>查询载体当前的位置、状态和用途</h3>
+          <p>可按 LP ID、Type、Location 和 Status 查询现场载体。列表同时提供单个或批量创建、标签打印和详情入口；它用于查询与维护 LP，不直接执行库存移动。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/lp-list.png" aria-label="放大 LP List 页面截图">
+          <span>LP · LIST</span>
+          <img src="assets/lp-list.png" alt="LP List 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="lp-list-guide">
+          <article><b>Type</b><p>区分库存托盘、拣货料箱、纸箱及发运单元等不同载体角色。</p></article>
+          <article><b>Location / Status</b><p>确认 LP 当前所在库位及所处的收货、在库或出库阶段。</p></article>
+          <article><b>Add / Batch Create</b><p>预先建立单个或一批空 LP；创建后仍需通过业务作业装入库存。</p></article>
+        </div>
+        <p class="lp-label-note"><b>标签打印：</b>LP 标签将系统编号与现场托盘、纸箱或料箱对应起来，供手持端在收货、上架、拣货、打包和装车时扫码识别。标签内容由所选模板决定。</p>
+      </div>
+
+      <div class="lp-type-section">
+        <div class="lp-type-copy">
+          <span class="section-kicker">LP Type</span>
+          <h3>不同类型表示库存当前使用的载体或作业角色</h3>
+          <p>创建 LP 时应按照实际用途选择 Type。ILP、TLP、CLP 和 SLP 对应最常见的库内存储、拣货、包装和发运载体；HLP 主要用于任务或设备等临时逻辑挂载，RLP 用于退货场景。</p>
+        </div>
+        <div class="lp-type-list">
+          <div><b>ILP</b><span>库内存储、收货与上架使用的库存 LP</span></div>
+          <div><b>TLP</b><span>拣货和周转过程中使用的料箱 LP</span></div>
+          <div><b>CLP</b><span>打包后形成的纸箱或包裹 LP</span></div>
+          <div><b>SLP</b><span>合托、装车或发运归集使用的外层 LP</span></div>
+          <div><b>RLP</b><span>承载退货、待检或待重新入库库存的 LP</span></div>
+          <div><b>HLP</b><span>任务、设备或临时作业使用的逻辑 LP</span></div>
+        </div>
+      </div>
+
+      <div class="lp-create-section">
+        <div class="lp-create-copy">
+          <span class="section-kicker">Create LP</span>
+          <h3>先建立可扫描的载体编号，再通过仓库作业装入库存</h3>
+          <p>Add 创建一个空 LP；Batch Create 按 Type 和数量批量生成空 LP。两者都不会同时创建库存。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/lp-create.png" aria-label="放大 Create LP 页面截图">
+          <span>LP · CREATE</span>
+          <img src="assets/lp-create.png" alt="Create LP 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="lp-create-fields">
+          <article><b>Type</b><p>必填，决定 LP 用于存储、拣货、纸箱、发运或退货等哪种场景。</p></article>
+          <article><b>Code</b><p>可留空，由系统按 LP Type 自动生成连续编号。</p></article>
+          <article><b>Location</b><p>可指定 LP 的初始位置，但不代表该 LP 已经包含库存。</p></article>
+        </div>
+      </div>
+
+      <div class="lp-detail-section">
+        <div class="lp-detail-copy">
+          <span class="section-kicker">LP Detail</span>
+          <h3>确认这个载体在哪里、属于哪一层，以及里面当前装有什么</h3>
+          <p>详情页用于核对 LP 本身与当前库存的关联，不是历史流水。库存经历过哪些移动，应到 Inventory Activity 查询。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/lp-detail.png" aria-label="放大 LP Detail 页面截图">
+          <span>LP · DETAIL</span>
+          <img src="assets/lp-detail.png" alt="LP Detail 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="lp-detail-points">
+          <article><span>01</span><div><b>Basic Information</b><p>Type、Status 和 Location 说明载体用途、当前作业阶段及所在位置；HLP Category / Reference 仅在逻辑 LP 场景下用于识别关联对象。</p></div></article>
+          <article><span>02</span><div><b>Parent LP</b><p>表示包装包含关系，例如多个纸箱 CLP 归集到一个外层发运 SLP；它不是库位层级。</p></div></article>
+          <article><span>03</span><div><b>Inventory List</b><p>展示当前关联到该 LP 的 SKU、数量、库存状态、批次和库位，可直接确认载体中现有的库存记录。</p></div></article>
+        </div>
+        <p class="lp-boundary-note"><b>操作边界：</b>库存装入、拆出或更换库位，应通过收货、上架、补货、拣货、打包或 Adjustment 等对应业务完成，不应把 LP 页面当作库存移动入口。</p>
+      </div>
+    </section>
+
+    <section class="module adjustment-guide" id="adjustment-guide" data-section="adjustment-guide">
+      <div class="module-number">05</div>
+      <div class="module-heading">
+        <div class="eyebrow">INVENTORY · ADJUSTMENT</div>
+        <h2>通过可审批的调整单，纠正库存数量、位置和属性差异</h2>
+        <p>Adjustment 不只用于修正库存数量。当库存被记录在错误的 LP 或库位，或者状态、货权、质量分类、批次及日期等信息有误时，也可以通过调整单进行更正。保存单据不会立即改变库存，只有审批成功后，整张 Adjustment 才会执行并留下可追溯记录。</p>
+      </div>
+
+      <div class="adjustment-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>盘点发现实际库存与系统数量不一致</h3>
+        <p>操作人员先找到对应库存，创建 Adjust Qty 并将目标数量填写为 18 EA。复核人员确认差异原因后批准单据，库存才从 15 EA 更新为 18 EA，同时生成 Inventory Activity。这样既纠正当前库存，也保留是谁、因为什么原因进行调整的记录。</p>
+        <div class="adjustment-source-heading">
+          <b>Adjustment 的创建来源</b>
+          <span>除了操作人员在网页中创建，盘点和部分库存业务也会由系统生成调整单。</span>
+        </div>
+        <div class="adjustment-sources">
+          <article><small>人工创建</small><b>现场发现库存问题</b><p>发现破损、丢失、找回、收货差异或资料错误时，由操作人员创建 Adjustment。</p></article>
+          <article><small>盘点自动生成</small><b>Cycle Count 出现差异</b><p>Count Result 审批后，系统自动创建并批准相应的 Adjustment。</p></article>
+          <article><small>其他业务自动生成</small><b>LP 删除或 Assembly</b><p>删除仍含库存的 LP 时，系统自动生成调减单；Assembly 生成的调整单为 NEW，仍需人工审批。</p></article>
+        </div>
+      </div>
+
+      <div class="adjustment-list-section">
+        <div class="adjustment-list-copy">
+          <span class="section-kicker">Adjustment List</span>
+          <h3>查询调整原因、类型与审批结果</h3>
+          <p>可按 Customer、Status、Adjustment Type 和 Reason 定位调整单。NEW 单据可在列表右侧直接 Approve 或 Edit；点击 View 进入详情页后，还可以选择 Decline。已完成审批的单据仅保留 View，用于核对审批结果和库存变化。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/adjustment-list.png?v=approve" aria-label="放大 Adjustment List 页面截图">
+          <span>ADJUSTMENT · LIST</span>
+          <img src="assets/adjustment-list.png?v=approve" alt="Adjustment List 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="adjustment-status-row">
+          <div><b>NEW</b><span>已保存，等待审批；库存尚未变化</span></div>
+          <div><b>APPROVED</b><span>全部调整行执行成功，库存已经更新</span></div>
+          <div><b>DECLINED</b><span>在 NEW 单据详情页点击 Decline；库存不会更新</span></div>
+        </div>
+        <p class="adjustment-batch-note"><b>Batch Approve：</b>可一次批准多张 NEW Adjustment。只要其中一张或一行执行失败，本次批量审批整体不生效，不会留下部分成功的库存变化。</p>
+      </div>
+
+      <div class="adjustment-create-section">
+        <div class="adjustment-create-copy">
+          <span class="section-kicker">Create Adjustment</span>
+          <h3>先选中需要纠正的库存，再填写调整后的目标值</h3>
+          <p>Basic Info 先确定 Customer、Reason 和备注；Add Line 再按 SKU、Title、Location、LP 或 Lot No 查找来源库存。选择 Adjustment Type 并填写目标值后，将记录加入 Adjustment Lines，最后保存并按需要审批。</p>
+        </div>
+        <div class="screen-frame adjustment-create-frame">
+          <span>ADJUSTMENT · CREATE</span>
+          <button class="adjustment-create-shot" data-lightbox="assets/adjustment-create-basic.png" aria-label="放大 Create Adjustment 上半部分截图">
+            <img src="assets/adjustment-create-basic.png" alt="Create Adjustment Basic Info 页面截图">
+          </button>
+          <button class="adjustment-create-shot" data-lightbox="assets/adjustment-create-lines.png" aria-label="放大 Create Adjustment 下半部分截图">
+            <img src="assets/adjustment-create-lines.png" alt="Create Adjustment Add Line 与 Adjustment Lines 页面截图">
+          </button>
+        </div>
+        <div class="adjustment-type-heading">
+          <span class="section-kicker">Adjustment Type</span>
+          <h3>选择本次需要纠正的库存内容</h3>
+          <p>不需要逐项记忆所有类型，只需先判断本次差异属于数量、存放位置、业务属性还是追踪资料。</p>
+        </div>
+        <div class="adjustment-type-groups">
+          <article><span>数量差异</span><b>Add Inventory / Adjust Qty</b><p>没有来源库存时使用 Add Inventory；已有库存数量不正确时，使用 Adjust Qty 修正目标数量。</p></article>
+          <article><span>存放位置错误</span><b>Adjust LP / Adjust Location</b><p>库存装在错误载体中时更换 LP；库存位于错误库位时更换 Location。</p></article>
+          <article><span>业务属性错误</span><b>Status / Title / Goods Type</b><p>用于更正库存状态、货权方或 GOOD、DAMAGE 等质量分类，不改变商品身份。</p></article>
+          <article><span>追踪资料错误</span><b>Lot No / Mfg Date / Expiration Date</b><p>用于更正批次号、生产日期或失效日期等批次追踪信息。</p></article>
+        </div>
+        <div class="adjustment-approval-line">
+          <span>Save</span><i>→</i><span>NEW</span><i>→</i><span>Approve</span><i>→</i><b>Inventory 更新 + ADJUST Activity</b>
+        </div>
+        <p class="adjustment-auto-note"><b>Auto Approve：</b>保存后立即尝试批准，适合不需要二次复核的人工调整；如果审批失败，已保存的单据仍保留为 NEW。</p>
+      </div>
+
+      <div class="adjustment-detail-section">
+        <div class="adjustment-detail-copy">
+          <span class="section-kicker">Adjustment Detail</span>
+          <h3>核对库存从什么值调整到了什么值</h3>
+          <p>详情页将调整原因、审批状态和每一条变化放在一起，用于确认库存具体改动了多少，以及后续到 Inventory Activity 继续追溯。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/adjustment-detail.png?v=decline" aria-label="放大 Adjustment Detail 页面截图">
+          <span>ADJUSTMENT · DETAIL</span>
+          <img src="assets/adjustment-detail.png?v=decline" alt="Adjustment Detail 页面截图">
+          <i>点击放大</i>
+        </button>
+        <p class="adjustment-detail-action-note"><b>NEW 单据操作：</b>从列表点击 View 进入详情页，右上角可选择 Approve、Decline 或 Edit。Approve 后执行库存调整；Decline 后单据变为 DECLINED，库存保持不变。</p>
+        <div class="adjustment-detail-fields">
+          <article><span>01</span><div><b>Adjust From</b><p>调整前的数量、状态、LP、Location 或其他库存属性。</p></div></article>
+          <article><span>02</span><div><b>Adjust To</b><p>审批执行后的目标值；数量调整中表示调整后的总数量。</p></div></article>
+          <article><span>03</span><div><b>Adjust Qty / To LP</b><p>Adjust Qty 显示本次增加或减少的数量；To LP 显示库存要转入的目标载体。只有对应的调整类型才会显示数值，其他类型可以为空。</p></div></article>
+        </div>
+        <div class="adjustment-guardrails">
+          <article><b>避免调整作业中的库存</b><p>系统没有统一阻止已锁定、已拣货、已打包或已装车库存被人工调整。操作前应先确认库存未处于正在执行或已完成的出库流程。</p></article>
+          <article><b>审批前核对调整内容</b><p>确认 Adjustment Type、Adjust From、Adjust To、Adjust Qty 和 To LP 与实际处理一致，再执行 Approve。</p></article>
+          <article><b>批准后通过反向单纠错</b><p>APPROVED 单据不能编辑、取消或撤回；如调整有误，应创建一张反向 Adjustment，保留完整审计链路。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="module min-max-guide" id="min-max-guide" data-section="min-max-guide">
+      <div class="module-number">06</div>
+      <div class="module-heading">
+        <div class="eyebrow">INVENTORY · MIN/MAX SETTING</div>
+        <h2>拣货区库存不够时，自动从储存区补货</h2>
+        <p>Min/Max Setting 为每个 SKU 设置拣货区的最低和最高库存水位。当目标区域库存低于 Min Qty 时，系统创建 Replenishment Task，指导操作员从储存区搬运库存至拣货区。任务创建不会立即改变库存，完成 Collect 与 Drop 后库存位置才更新。</p>
+      </div>
+
+      <div class="minmax-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>拣货位库存即将耗尽，提前安排补货</h3>
+        <p>某 SKU 每日出库量为 200 EA，但拣货区只能存放 100 EA。若等到拣货员发现库位已空再人工安排补货，订单会停在现场等待。配置 Min/Max 规则后，系统在库存低于 Min Qty 时生成补货任务，让操作员提前从储存区搬货。</p>
+        <div class="minmax-flow">
+          <article><small>01 · 检测</small><b>当前库存低于 Min Qty</b><p>定时检查或人工触发规则，判断目标拣货区域是否需要补充。</p></article>
+          <i>→</i>
+          <article><small>02 · 创建</small><b>Replenishment Task</b><p>系统按规则计算补货量，并确定可用的来源区域与目标区域。</p></article>
+          <i>→</i>
+          <article><small>03 · 执行</small><b>Collect → Drop</b><p>操作员从 From VLGs 取货，在 To VLG 完成放货后更新库存位置。</p></article>
+        </div>
+      </div>
+
+      <div class="minmax-list-section">
+        <button class="screen-frame" data-lightbox="assets/min-max-list-v2.png" aria-label="放大 Min/Max Setting 列表截图">
+          <span>MIN/MAX SETTING · REPLENISHMENT SETTING</span>
+          <img src="assets/min-max-list-v2.png" alt="Min/Max Setting 列表页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="minmax-page-intro">
+          <span class="section-kicker">Min/Max Setting · 列表</span>
+          <h3>集中管理补货规则及执行状态</h3>
+          <p>列表展示每条规则的 SKU、Method、Min / Max / Fixed Qty、来源与目标 VLG、启用状态和 Last Replenishment。可从这里判断规则是否启用、最近是否触发，并进入新增或编辑页面维护规则。</p>
+        </div>
+      </div>
+
+      <div class="minmax-create-section">
+        <button class="screen-frame" data-lightbox="assets/min-max-create-setting.png" aria-label="放大 Create Setting 页面截图">
+          <span>MIN/MAX SETTING · CREATE SETTING</span>
+          <img src="assets/min-max-create-setting.png" alt="Create Setting 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="minmax-create-copy">
+          <span class="section-kicker">创建补货规则</span>
+          <h3>确定哪个 SKU、在哪个区域、低于多少时，从哪里补多少</h3>
+        </div>
+        <div class="minmax-create-grid">
+          <article><span>01 · 补多少</span><b>Method</b><p><strong>Top Off</strong> 补到 Max Qty，任务数量为 Max Qty 与当前库存的差额；<strong>Fixed Qty</strong> 每次补充固定数量，适合固定容器或人工搬运量。</p></article>
+          <article><span>02 · 何时触发</span><b>Min Qty / Max Qty</b><p>目标区域库存低于 Min Qty 时触发。Top Off 模式按 Max Qty 计算补货上限。</p></article>
+          <article><span>03 · 从哪里到哪里</span><b>From VLGs / To VLG</b><p>To VLG 是需要维持水位的拣货区；From VLGs 是提供库存的储存区，可配置多个来源。</p></article>
+        </div>
+      </div>
+
+      <div class="minmax-scheduler-section">
+        <button class="screen-frame" data-lightbox="assets/min-max-scheduler-v2.png" aria-label="放大 Scheduler Config 截图">
+          <span>MIN/MAX SETTING · SCHEDULER CONFIG</span>
+          <img src="assets/min-max-scheduler-v2.png" alt="Scheduler Config 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="minmax-scheduler-copy">
+          <span class="section-kicker">自动检查</span>
+          <h3>配置系统自动检查补货的时间和跳过规则</h3>
+        </div>
+        <div class="minmax-scheduler-grid">
+          <article><b>Scheduler</b><p>启用后，系统按配置时间检查所有 Enabled 规则并创建需要的补货任务。</p></article>
+          <article><b>Execution Times</b><p>设置每天执行检查的时间点，可配置多个时间。</p></article>
+          <article><b>Skip Rules</b><p>选择固定周几或 Holiday Management 中维护的日期，不执行自动补货。</p></article>
+          <article><b>Default Task Assignee</b><p>设置自动创建的 Replenishment Task 默认负责人。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="module holiday-guide" id="holiday-guide" data-section="holiday-guide">
+      <div class="module-number">07</div>
+      <div class="module-heading">
+        <div class="eyebrow">INVENTORY · HOLIDAY MANAGEMENT</div>
+        <h2>告诉系统哪些日子不需要自动补货</h2>
+        <p>Holiday Management 维护仓库的休息日和节假日。这些日期被 Min/Max Setting 的 Scheduler Config 引用——当天系统跳过自动补货检查，避免在无人值守时生成无法执行的任务。</p>
+      </div>
+
+      <div style="display:flex;gap:32px;align-items:flex-start;margin:20px 0;">
+        <div style="flex:0 0 320px;max-width:320px;">
+          <img src="assets/add-holiday.png" alt="Add Holiday 弹窗截图" style="width:100%;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        </div>
+        <div style="flex:1;">
+          <div class="subsection-title"><span>01</span><h3>两种休息日类型</h3></div>
+          <dl>
+            <div><dt>Date（具体日期）</dt><dd>选择某一天作为假日。适用于法定节假日、公司年假等每年日期不同的情况。</dd></div>
+            <div><dt>Week Day（固定周几）</dt><dd>选择每周固定的休息日。适用于仓库固定排班。</dd></div>
+          </dl>
+          <div class="subsection-title cyan-text"><span>02</span><h3>使用方式</h3></div>
+          <p style="font-size:14px;color:#475569;margin:0 0 0;line-height:1.6;">在此页面添加假日后，到 Min/Max Setting → Scheduler Config → Skip Rules 中勾选需要跳过的日期即可。被勾选的日期当天，Scheduler 不会执行自动补货检查。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cycle-count-overview" id="cycle-count" data-section="cycle-count">
+      <div class="overview-label">CYCLE COUNT · MODULE OVERVIEW</div>
+      <h2>Cycle Count 统筹盘点计划、现场执行与差异处理</h2>
+      <p class="cycle-count-lead">Cycle Count 用于核对仓库实物与系统库存是否一致。模块覆盖盘点范围与规则的建立、现场任务执行，以及盘点结果复核；确认存在差异后，再通过库存调整完成更正。</p>
+
+      <div class="cycle-count-function-grid">
+        <article><small>01 · 盘点计划</small><b>确定本次盘什么、怎么盘</b><p>建立盘点单，选择客户、盘点范围、计数方法、计划日期和是否盲盘。</p><div class="cycle-count-scope-links"><span>Count Tickets</span></div></article>
+        <article><small>02 · 现场执行</small><b>把盘点范围分配给操作人员</b><p>将一张盘点单拆成一个或多个任务，由现场人员逐项清点并提交实盘数量。</p><div class="cycle-count-scope-links"><span>Count Tasks</span></div></article>
+        <article><small>03 · 差异处理</small><b>复核账实差异并决定是否更正</b><p>查看匹配、缺失、新增、数量或属性差异；审批确认后衔接 Adjustment 更新库存。</p><div class="cycle-count-scope-links"><span>Count Results</span></div></article>
+      </div>
+    </section>
+
+    <section class="module count-tickets-guide" id="count-tickets-guide" data-section="count-tickets-guide">
+      <div class="module-number">01</div>
+      <div class="module-heading">
+        <div class="eyebrow">CYCLE COUNT · COUNT TICKETS</div>
+        <h2>先确定盘点对象与规则，再把范围拆成现场任务</h2>
+        <p>Count Ticket 是一次盘点的计划单。它记录为哪个客户盘点、按库位还是商品确定范围、采用哪种计数方法，以及是否隐藏系统数量。保存 Ticket 不会改变库存；创建 Count Task 后，现场人员才开始执行盘点。</p>
+      </div>
+
+      <div class="count-ticket-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>对高频拣货区安排一次不受系统数量影响的抽盘</h3>
+        <p>仓库希望核对某客户拣货区的实物数量时，可以建立日常盘点 Ticket，按 Location 选择需要抽查的库位，采用 Simple Qty Count 并开启 Blind Count。一个 Ticket 可以拆成多个 Count Task，分别交给不同操作员或区域执行。</p>
+        <div class="count-ticket-decisions">
+          <article><small>盘什么</small><b>Count Type + Count Scope</b><p>按库位、商品或商品与库位组合确定本次盘点范围。</p></article>
+          <article><small>怎么数</small><b>Count Method</b><p>按数量、件、箱、托盘或 LP 选择与现场作业一致的计数方式。</p></article>
+          <article><small>是否显示账面数</small><b>Blind Count</b><p>开启后隐藏系统和期望数量，操作员仍可看到 SKU、LP 与库位。</p></article>
+        </div>
+      </div>
+
+      <div class="count-ticket-list-section">
+        <div class="count-ticket-page-copy">
+          <span class="section-kicker">Count Tickets · List</span>
+          <h3>从列表掌握盘点单的准备与执行状态</h3>
+          <p>可按 Ticket No、Customer 和 Status 查询盘点单。列表同时显示范围类型、库位数量和计划日期，并提供 View、Create Task 与 Cancel 入口。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/count-tickets-list.png" aria-label="放大 Count Tickets 列表截图">
+          <span>COUNT TICKETS · LIST</span><img src="assets/count-tickets-list.png" alt="Count Tickets 列表页面截图"><i>点击放大</i>
+        </button>
+        <div class="count-ticket-statuses">
+          <div><b>NEW</b><span>范围已保存，可编辑、创建任务或取消。</span></div>
+          <div><b>TASK CREATED</b><span>已生成一个或多个任务，可取消并同步取消关联任务。</span></div>
+          <div><b>COUNTING</b><span>现场盘点进行中，不再允许编辑或取消。</span></div>
+          <div><b>COMPLETED / CANCELLED</b><span>盘点已经结束或取消，单据只读。</span></div>
+        </div>
+      </div>
+
+      <div class="count-ticket-create-section">
+        <div class="count-ticket-page-copy">
+          <span class="section-kicker">Create Count Ticket</span>
+          <h3>按业务目的选择范围、计数方式和执行要求</h3>
+          <p>先选择 Customer，再确定 Count Type、Count Method 和 Count Category；页面会根据选择启用对应的 Count Scope。Schedule Date 和 Target Completion Date 用于安排执行窗口，Blind Count 决定现场是否可见账面数量。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/count-ticket-create.png" aria-label="放大 Create Count Ticket 页面截图">
+          <span>COUNT TICKETS · CREATE</span><img src="assets/count-ticket-create.png" alt="Create Count Ticket 页面截图"><i>点击放大</i>
+        </button>
+
+        <div class="count-ticket-choice-grid">
+          <article><span>Count Type</span><b>范围按什么展开</b><p><strong>By Location</strong> 选择库位并展开其中库存；<strong>By Item</strong> 选择商品并覆盖其所在库位；<strong>By Item + Location</strong> 直接指定精确组合。</p></article>
+          <article><span>Count Method</span><b>现场按什么单位清点</b><p>Simple Qty / Piece 用于数量盘点，Case 按箱数比较，Pallet / Simple LP 用于托盘或 LP 维度核对。</p></article>
+          <article><span>Count Category</span><b>为什么发起这次盘点</b><p>Daily / Cycle 走标准流程；Full 自动覆盖客户全部库存；Picking Exception 与 Full Air ROB Count 由特定场景自动建任务。</p></article>
+          <article><span>Blind Count</span><b>是否隐藏系统数量</b><p>开启后不显示 System Qty 与 Expected Qty，避免操作员参考账面数填写；SKU、LP 和 Location 仍然可见。</p></article>
+        </div>
+        <p class="count-ticket-live-note"><b>盘点期间不冻结库存：</b>收货、拣货和库存移动可以继续进行。每条盘点 Action 提交时，系统实时查询当时库存并计算差异，因此结果反映的是提交瞬间的账实情况。</p>
+      </div>
+
+      <div class="count-ticket-detail-section">
+        <div class="count-ticket-page-copy">
+          <span class="section-kicker">Count Ticket Detail</span>
+          <h3>核对盘点范围，并查看已经拆出的关联任务</h3>
+          <p>详情页汇总 Ticket 的规则、时间和 Count Lines，并列出由它创建的所有 Count Task。一个 Ticket 可以拆成多个任务，适合将不同区域分配给不同操作员。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/count-ticket-detail.png" aria-label="放大 Count Ticket Detail 页面截图">
+          <span>COUNT TICKETS · DETAIL</span><img src="assets/count-ticket-detail.png" alt="Count Ticket Detail 页面截图"><i>点击放大</i>
+        </button>
+        <div class="count-ticket-detail-points">
+          <article><span>01</span><div><b>Basic / Time Information</b><p>确认 Customer、Count Type、Method、Category、Blind Count 与计划日期。</p></div></article>
+          <article><span>02</span><div><b>Count Lines</b><p>展示本次 Ticket 选中的 SKU、Location 或对应盘点范围。</p></div></article>
+          <article><span>03</span><div><b>Related Tasks</b><p>查看已创建的任务、负责人和状态，并进入具体 Count Task。</p></div></article>
+        </div>
+        <p class="count-ticket-action-note"><b>Create Task：</b>把 Ticket 范围生成一个或多个现场盘点任务。Ticket 进入 COUNTING 后不可取消；所有关联任务结束后，Ticket 自动变为 COMPLETED。</p>
+      </div>
+    </section>
+
+    <footer>
+      <div><strong>Orbiflow WMS-Lite</strong><span>功能说明书网站样章</span></div>
+      <p>说明内容基于当前系统页面及已确认的代码行为整理。后续可继续按系统菜单补充其他模块。</p>
+      <a href="#start">返回顶部 ↑</a>
+    </footer>
+  </main>
+
+  <dialog id="image-dialog">
+    <button id="dialog-close" aria-label="关闭图片">×</button>
+    <img id="dialog-image" alt="页面截图放大预览">
+  </dialog>
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+  <script src="app.js?v=20260813-inventory-tabs"></script>
+</body>
+</html>
