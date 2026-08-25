@@ -70,7 +70,12 @@ const MDM_TRANSLATIONS = {
     "维护危险品的识别与分类资料": "危険品の識別・分類情報を管理する",
     "先标记 Hazardous，再选择对应定义": "Hazardous を設定してから対応する定義を選択する",
     "从身份识别到运输范围，完成承运商建档": "識別情報から輸送範囲まで運送会社マスタを登録する",
-    "建立一条可在业务单据中选择的客户地址": "業務伝票で選択できる顧客住所を登録する"
+    "建立一条可在业务单据中选择的客户地址": "業務伝票で選択できる顧客住所を登録する",
+    "统一维护实际运输承运商，供出库订单与装载业务引用": "出庫注文と積込業務で参照する実運送会社を一元管理する",
+    "Carrier 用于登记仓库合作承运商的识别资料、可承接的运输方式和联系信息。建立主档后，操作人员可以在出库订单或 Load 中选择实际运输方，并在后续查询和运输单据中识别承运商。": "Carrier は倉庫と連携する運送会社の識別情報、対応可能な輸送方式、連絡先を登録します。マスタ登録後、作業者は出庫注文や Load で実際の運送会社を選択し、検索や輸送伝票で識別できます。",
+    "页面预览": "画面プレビュー",
+    "从 Carrier Management 查找可用承运商": "Carrier Management で利用可能な運送会社を検索する",
+    "列表可按 Carrier Code、Carrier Name、SCAC Code 和 Status 查询，并集中查看承运商支持的 Shipping Methods、联系人及当前状态。": "一覧では Carrier Code、Carrier Name、SCAC Code、Status で検索し、対応する Shipping Methods、連絡先、現在のステータスを確認できます。"
   },
   en: {
     "从业务场景出发，": "Start from business scenarios and", "看懂系统如何落地仓储要求": "understand how warehouse requirements are implemented",
@@ -127,7 +132,12 @@ const MDM_TRANSLATIONS = {
     "维护危险品的识别与分类资料": "Maintain hazardous-material identification and classification data",
     "先标记 Hazardous，再选择对应定义": "Mark the item as Hazardous, then select its definition",
     "从身份识别到运输范围，完成承运商建档": "Complete carrier setup from identity to transportation scope",
-    "建立一条可在业务单据中选择的客户地址": "Create a customer address that can be selected in business documents"
+    "建立一条可在业务单据中选择的客户地址": "Create a customer address that can be selected in business documents",
+    "统一维护实际运输承运商，供出库订单与装载业务引用": "Maintain the actual carriers used by outbound orders and load operations",
+    "Carrier 用于登记仓库合作承运商的识别资料、可承接的运输方式和联系信息。建立主档后，操作人员可以在出库订单或 Load 中选择实际运输方，并在后续查询和运输单据中识别承运商。": "Carrier records the identity, supported transportation methods, and contact information of warehouse partners. After the master is created, operators can select the actual carrier in an Outbound Order or Load and identify it in searches and transportation documents.",
+    "页面预览": "Page Preview",
+    "从 Carrier Management 查找可用承运商": "Find available carriers in Carrier Management",
+    "列表可按 Carrier Code、Carrier Name、SCAC Code 和 Status 查询，并集中查看承运商支持的 Shipping Methods、联系人及当前状态。": "Use Carrier Code, Carrier Name, SCAC Code, and Status to search the list and review supported Shipping Methods, contacts, and the current status."
   }
 };
 
