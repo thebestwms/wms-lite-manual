@@ -59,7 +59,18 @@ const MDM_TRANSLATIONS = {
     "一个 LP 是否可以同时装载多个 SKU": "1 つの LP に複数 SKU を混載できるか",
     "系统按照什么顺序寻找上架库位": "システムが棚入れ先を検索する順序",
     "库存周转": "在庫回転", "订单组织": "注文の編成", "订单变更": "注文変更", "库位利用": "ロケーション利用", "拣货路径": "ピッキング経路", "批次控制": "ロット管理",
-    "设备执行": "設備実行", "结果通知": "結果通知", "客户化资料": "顧客固有データ"
+    "设备执行": "設備実行", "结果通知": "結果通知", "客户化资料": "顧客固有データ",
+    "从商品身份到追踪要求，在一个页面完成基础建档": "商品識別から追跡要件までを 1 つの画面で登録する",
+    "补充商品单位、托盘码放和行业属性": "商品単位、パレット積付け、業種属性を補足する",
+    "商品身份": "商品識別情報", "追踪要求": "追跡要件", "特殊属性": "特殊属性", "运输规则": "輸送ルール",
+    "Add UOM｜为商品增加计量或包装单位": "Add UOM｜計量・包装単位を追加する",
+    "记录商品在托盘上的标准码放结构": "パレット上の商品標準積付け構造を記録する",
+    "Industry Properties｜维护行业专属的商品资料": "Industry Properties｜業種固有の商品情報を管理する",
+    "在行业主档中维护 Property Template": "業種マスタで Property Template を管理する",
+    "维护危险品的识别与分类资料": "危険品の識別・分類情報を管理する",
+    "先标记 Hazardous，再选择对应定义": "Hazardous を設定してから対応する定義を選択する",
+    "从身份识别到运输范围，完成承运商建档": "識別情報から輸送範囲まで運送会社マスタを登録する",
+    "建立一条可在业务单据中选择的客户地址": "業務伝票で選択できる顧客住所を登録する"
   },
   en: {
     "从业务场景出发，": "Start from business scenarios and", "看懂系统如何落地仓储要求": "understand how warehouse requirements are implemented",
@@ -105,7 +116,18 @@ const MDM_TRANSLATIONS = {
     "一个 LP 是否可以同时装载多个 SKU": "Whether one LP may contain multiple SKUs",
     "系统按照什么顺序寻找上架库位": "The order in which the system searches for put-away locations",
     "库存周转": "Inventory rotation", "订单组织": "Order grouping", "订单变更": "Order changes", "库位利用": "Location utilization", "拣货路径": "Picking path", "批次控制": "Lot control",
-    "设备执行": "Equipment execution", "结果通知": "Result notifications", "客户化资料": "Customer-specific data"
+    "设备执行": "Equipment execution", "结果通知": "Result notifications", "客户化资料": "Customer-specific data",
+    "从商品身份到追踪要求，在一个页面完成基础建档": "Complete the product master from identity to tracking requirements on one page",
+    "补充商品单位、托盘码放和行业属性": "Add product units, pallet patterns, and industry attributes",
+    "商品身份": "Product identity", "追踪要求": "Tracking requirements", "特殊属性": "Special attributes", "运输规则": "Shipping rules",
+    "Add UOM｜为商品增加计量或包装单位": "Add UOM｜Add a measurement or packaging unit",
+    "记录商品在托盘上的标准码放结构": "Record the standard pallet configuration for the product",
+    "Industry Properties｜维护行业专属的商品资料": "Industry Properties｜Maintain industry-specific product data",
+    "在行业主档中维护 Property Template": "Maintain the Property Template in the industry master",
+    "维护危险品的识别与分类资料": "Maintain hazardous-material identification and classification data",
+    "先标记 Hazardous，再选择对应定义": "Mark the item as Hazardous, then select its definition",
+    "从身份识别到运输范围，完成承运商建档": "Complete carrier setup from identity to transportation scope",
+    "建立一条可在业务单据中选择的客户地址": "Create a customer address that can be selected in business documents"
   }
 };
 
