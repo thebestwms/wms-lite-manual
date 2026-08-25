@@ -12,6 +12,25 @@ const PAGE_LABELS = {
   "inventory.html": { zh: "Inventory + Cycle Count", ja: "在庫 + 棚卸", en: "Inventory + Cycle Count" }
 };
 
+// Homepage + MDM core copy; extend this page-scoped dictionary in reviewed batches.
+const MDM_TRANSLATIONS = {
+  ja: {
+    "从业务场景出发，": "業務シナリオから始め、",
+    "看懂系统如何落地仓储要求": "倉庫要件がシステムにどう反映されるかを理解する",
+    "理解模块": "モジュールを理解する", "对应场景": "シナリオに対応する", "查看页面": "画面を確認する", "落地作业": "現場作業に落とし込む",
+    "业务主体": "業務主体", "建立客户与组织身份": "顧客と組織の識別情報を登録する", "商品与包装": "商品と包装", "让商品可识别、可换算": "商品を識別・換算可能にする",
+    "分类与扩展": "分類と拡張", "按行业扩展商品资料": "業種別に商品情報を拡張する", "物流资料": "物流情報", "为运输准备承运商与地址": "輸送用の運送会社と住所を準備する",
+    "统一登记业务参与方，供不同仓储场景重复使用": "業務参加者を一元登録し、さまざまな倉庫シナリオで再利用する"
+  },
+  en: {
+    "从业务场景出发，": "Start from business scenarios and", "看懂系统如何落地仓储要求": "understand how warehouse requirements are implemented",
+    "理解模块": "Understand the module", "对应场景": "Map the scenario", "查看页面": "Review the screen", "落地作业": "Put it into operation",
+    "业务主体": "Business parties", "建立客户与组织身份": "Establish customer and organization identities", "商品与包装": "Products and packaging", "让商品可识别、可换算": "Make products identifiable and convertible",
+    "分类与扩展": "Classification and extensions", "按行业扩展商品资料": "Extend product data by industry", "物流资料": "Logistics data", "为运输准备承运商与地址": "Prepare carriers and addresses for transportation",
+    "统一登记业务参与方，供不同仓储场景重复使用": "Register business participants once and reuse them across warehouse scenarios"
+  }
+};
+
 const TRANSLATIONS = {
   ja: {
     "阅读指南": "読書ガイド", "功能说明书 · 样章": "機能説明書 · サンプル",
@@ -78,7 +97,7 @@ function textNodes(root) {
 
 function translateText(source, lang) {
   if (lang === "zh") return source;
-  const dictionary = TRANSLATIONS[lang] || {};
+  const dictionary = { ...(TRANSLATIONS[lang] || {}), ...(MDM_TRANSLATIONS[lang] || {}) };
   if (dictionary[source]) return dictionary[source];
   return Object.entries(dictionary)
     .filter(([from]) => from.length > 1)
