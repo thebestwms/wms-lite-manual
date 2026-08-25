@@ -37,7 +37,18 @@ const MDM_TRANSLATIONS = {
     "建立客户身份": "顧客の識別情報を登録する",
     "补充客户资料": "顧客情報を補足する",
     "配置仓储策略": "倉庫運用戦略を設定する",
-    "关联业务伙伴": "業務パートナーを関連付ける"
+    "关联业务伙伴": "業務パートナーを関連付ける",
+    "统一维护仓库识别、追踪和处理商品所需的主档": "倉庫で商品を識別・追跡・処理するためのマスタを一元管理する",
+    "新商品接入仓库": "新商品を倉庫に登録する",
+    "确认商品身份": "商品の識別情報を確認する",
+    "设置追踪要求": "追跡要件を設定する",
+    "描述包装层级": "包装階層を定義する",
+    "进入仓储业务": "倉庫業務で利用する",
+    "按行业扩展商品资料": "業種別に商品情報を拡張する",
+    "定义行业专属资料，并为特定作业提供商品分类依据": "業種固有の情報を定義し、特定作業の商品分類基準を提供する",
+    "维护危险品定义，供商品主档识别和复用": "商品マスタで識別・再利用できる危険品定義を管理する",
+    "从身份识别到运输范围，完成承运商建档": "識別情報から輸送範囲まで運送会社マスタを登録する",
+    "按客户集中维护业务地址，供订单与装载快速调用": "顧客の業務住所を一元管理し、注文と積込からすばやく利用する"
   },
   en: {
     "从业务场景出发，": "Start from business scenarios and", "看懂系统如何落地仓储要求": "understand how warehouse requirements are implemented",
@@ -61,7 +72,18 @@ const MDM_TRANSLATIONS = {
     "建立客户身份": "Establish the customer identity",
     "补充客户资料": "Complete customer information",
     "配置仓储策略": "Configure warehouse strategies",
-    "关联业务伙伴": "Link business partners"
+    "关联业务伙伴": "Link business partners",
+    "统一维护仓库识别、追踪和处理商品所需的主档": "Maintain the master data required to identify, track, and handle products in the warehouse",
+    "新商品接入仓库": "Onboard a new product into the warehouse",
+    "确认商品身份": "Confirm product identity",
+    "设置追踪要求": "Set tracking requirements",
+    "描述包装层级": "Describe packaging levels",
+    "进入仓储业务": "Make it available to warehouse operations",
+    "按行业扩展商品资料": "Extend product data by industry",
+    "定义行业专属资料，并为特定作业提供商品分类依据": "Define industry-specific data and provide product classification criteria for specialized operations",
+    "维护危险品定义，供商品主档识别和复用": "Maintain hazardous-material definitions for product-master identification and reuse",
+    "从身份识别到运输范围，完成承运商建档": "Complete carrier setup from identity to transportation scope",
+    "按客户集中维护业务地址，供订单与装载快速调用": "Maintain customer business addresses centrally for quick use in orders and loads"
   }
 };
 
