@@ -6,6 +6,12 @@ const LANGUAGE_META = {
   en: { htmlLang: "en", title: "Orbiflow WMS-Lite Functional Manual" }
 };
 
+const PAGE_LABELS = {
+  "index.html": { zh: "首页 + MDM", ja: "ホーム + MDM", en: "Home + MDM" },
+  "inbound.html": { zh: "Inbound + Outbound", ja: "入庫 + 出庫", en: "Inbound + Outbound" },
+  "inventory.html": { zh: "Inventory + Cycle Count", ja: "在庫 + 棚卸", en: "Inventory + Cycle Count" }
+};
+
 const TRANSLATIONS = {
   ja: {
     "阅读指南": "読書ガイド", "功能说明书 · 样章": "機能説明書 · サンプル",
@@ -89,7 +95,9 @@ function applyLanguage(lang) {
     node.nodeValue = `${leading}${translateText(source, selected)}${trailing}`;
   });
   document.documentElement.lang = LANGUAGE_META[selected].htmlLang;
-  document.title = LANGUAGE_META[selected].title;
+  const pageName = location.pathname.split("/").pop() || "index.html";
+  const pageLabel = PAGE_LABELS[pageName]?.[selected];
+  document.title = pageLabel ? `${LANGUAGE_META[selected].title} · ${pageLabel}` : LANGUAGE_META[selected].title;
   document.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
     ["aria-label", "alt", "title"].forEach((attribute) => {
       const dataKey = `i18n${attribute.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join("")}`;
