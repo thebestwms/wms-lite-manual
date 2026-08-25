@@ -1494,6 +1494,21 @@ dialog img { display: block; width: 100%; max-height: calc(92vh - 60px); object-
   backdrop-filter: blur(12px);
 }
 
+/* Each split page exposes only its own module group in the sidebar. */
+.page-index [data-nav-module="inbound"],
+.page-index [data-nav-module="outbound"],
+.page-index [data-nav-module="inventory"],
+.page-index [data-nav-module="cycle-count"],
+.page-index [data-nav-module="order-dispatch"],
+.page-inbound [data-nav-module="mdm"],
+.page-inbound [data-nav-module="inventory"],
+.page-inbound [data-nav-module="cycle-count"],
+.page-inventory [data-nav-module="mdm"],
+.page-inventory [data-nav-module="inbound"],
+.page-inventory [data-nav-module="outbound"] {
+  display: none;
+}
+
 .language-switcher button {
   min-width: 2.25rem;
   padding: 0.45rem 0.65rem;
