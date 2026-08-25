@@ -48,7 +48,18 @@ const MDM_TRANSLATIONS = {
     "定义行业专属资料，并为特定作业提供商品分类依据": "業種固有の情報を定義し、特定作業の商品分類基準を提供する",
     "维护危险品定义，供商品主档识别和复用": "商品マスタで識別・再利用できる危険品定義を管理する",
     "从身份识别到运输范围，完成承运商建档": "識別情報から輸送範囲まで運送会社マスタを登録する",
-    "按客户集中维护业务地址，供订单与装载快速调用": "顧客の業務住所を一元管理し、注文と積込からすばやく利用する"
+    "按客户集中维护业务地址，供订单与装载快速调用": "顧客の業務住所を一元管理し、注文と積込からすばやく利用する",
+    "按客户配置收货、上架、分配、拣货及设备协同方式": "顧客ごとに入荷、棚入れ、引当、ピッキング、設備連携を設定する",
+    "入库与上架": "入荷と棚入れ", "出库与拣货": "出庫とピッキング", "自动化与数据连接": "自動化とデータ接続",
+    "流程要求": "フロー要件", "时效要求": "時間要件", "完成标准": "完了基準", "数量差异": "数量差異", "容器规则": "コンテナルール", "库位推荐": "ロケーション推奨",
+    "不需要系统记录完整的月台作业步骤": "システムでバース作業の全ステップを記録しない",
+    "货物确认后立即上架，还是整单收完后统一上架": "確認後すぐ棚入れするか、入荷完了後にまとめて棚入れするか",
+    "收货单何时才算完成": "入荷伝票を完了とするタイミング",
+    "供应商实到数量允许超过预计数量": "実入荷数量が予定数量を超えることを許可する",
+    "一个 LP 是否可以同时装载多个 SKU": "1 つの LP に複数 SKU を混載できるか",
+    "系统按照什么顺序寻找上架库位": "システムが棚入れ先を検索する順序",
+    "库存周转": "在庫回転", "订单组织": "注文の編成", "订单变更": "注文変更", "库位利用": "ロケーション利用", "拣货路径": "ピッキング経路", "批次控制": "ロット管理",
+    "设备执行": "設備実行", "结果通知": "結果通知", "客户化资料": "顧客固有データ"
   },
   en: {
     "从业务场景出发，": "Start from business scenarios and", "看懂系统如何落地仓储要求": "understand how warehouse requirements are implemented",
@@ -83,7 +94,18 @@ const MDM_TRANSLATIONS = {
     "定义行业专属资料，并为特定作业提供商品分类依据": "Define industry-specific data and provide product classification criteria for specialized operations",
     "维护危险品定义，供商品主档识别和复用": "Maintain hazardous-material definitions for product-master identification and reuse",
     "从身份识别到运输范围，完成承运商建档": "Complete carrier setup from identity to transportation scope",
-    "按客户集中维护业务地址，供订单与装载快速调用": "Maintain customer business addresses centrally for quick use in orders and loads"
+    "按客户集中维护业务地址，供订单与装载快速调用": "Maintain customer business addresses centrally for quick use in orders and loads",
+    "按客户配置收货、上架、分配、拣货及设备协同方式": "Configure receiving, put-away, allocation, picking, and equipment coordination by customer",
+    "入库与上架": "Inbound and put-away", "出库与拣货": "Outbound and picking", "自动化与数据连接": "Automation and data connections",
+    "流程要求": "Process requirement", "时效要求": "Timing requirement", "完成标准": "Completion standard", "数量差异": "Quantity variance", "容器规则": "Container rule", "库位推荐": "Location recommendation",
+    "不需要系统记录完整的月台作业步骤": "The system does not need to record every dock step",
+    "货物确认后立即上架，还是整单收完后统一上架": "Put away immediately after confirmation or after the entire receipt is complete",
+    "收货单何时才算完成": "When the receipt is considered complete",
+    "供应商实到数量允许超过预计数量": "Allow the received quantity to exceed the expected quantity",
+    "一个 LP 是否可以同时装载多个 SKU": "Whether one LP may contain multiple SKUs",
+    "系统按照什么顺序寻找上架库位": "The order in which the system searches for put-away locations",
+    "库存周转": "Inventory rotation", "订单组织": "Order grouping", "订单变更": "Order changes", "库位利用": "Location utilization", "拣货路径": "Picking path", "批次控制": "Lot control",
+    "设备执行": "Equipment execution", "结果通知": "Result notifications", "客户化资料": "Customer-specific data"
   }
 };
 
