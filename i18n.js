@@ -92,7 +92,8 @@ function applyLanguage(lang) {
   document.title = LANGUAGE_META[selected].title;
   document.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
     ["aria-label", "alt", "title"].forEach((attribute) => {
-      const source = element.dataset[`i18n${attribute[0].toUpperCase()}${attribute.slice(1)}`];
+      const dataKey = `i18n${attribute.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join("")}`;
+      const source = element.dataset[dataKey];
       if (source) element.setAttribute(attribute, translateText(source, selected));
     });
   });
@@ -102,7 +103,10 @@ function applyLanguage(lang) {
 
 document.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
   ["aria-label", "alt", "title"].forEach((attribute) => {
-    if (element.hasAttribute(attribute)) element.dataset[`i18n${attribute[0].toUpperCase()}${attribute.slice(1)}`] = element.getAttribute(attribute);
+    if (element.hasAttribute(attribute)) {
+      const dataKey = `i18n${attribute.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join("")}`;
+      element.dataset[dataKey] = element.getAttribute(attribute);
+    }
   });
 });
 textNodes(document.body).forEach((node) => { node.__i18nSource = node.nodeValue.trim(); });
