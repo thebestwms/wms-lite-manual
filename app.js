@@ -17,7 +17,10 @@ window.addEventListener("keydown", (event) => {
 });
 
 function activateNavForHash(hash = window.location.hash) {
-  const targetLink = navLinks.find((link) => link.getAttribute("href") === hash);
+  const targetLink = navLinks.find((link) => {
+    const href = link.getAttribute("href") || "";
+    return href === hash || href.endsWith(hash);
+  });
   if (!targetLink) return;
   navLinks.forEach((link) => link.classList.toggle("active", link === targetLink));
   const parentModule = targetLink.closest("[data-nav-module]");
@@ -65,7 +68,7 @@ navModules.forEach((module) => {
 });
 
 const sectionObserver = new IntersectionObserver((entries) => {
-  if (!userStartedNavigation && window.location.hash && navLinks.some((link) => link.getAttribute("href") === window.location.hash)) {
+  if (!userStartedNavigation && window.location.hash && navLinks.some((link) => (link.getAttribute("href") || "").endsWith(window.location.hash))) {
     activateNavForHash();
     return;
   }
@@ -75,9 +78,9 @@ const sectionObserver = new IntersectionObserver((entries) => {
   if (!visible) return;
 
   navLinks.forEach((link) => {
-    link.classList.toggle("active", link.getAttribute("href") === `#${visible.target.id}`);
+    link.classList.toggle("active", (link.getAttribute("href") || "").endsWith(`#${visible.target.id}`));
   });
-  const activeLink = navLinks.find((link) => link.getAttribute("href") === `#${visible.target.id}`);
+  const activeLink = navLinks.find((link) => (link.getAttribute("href") || "").endsWith(`#${visible.target.id}`));
   const activeModule = activeLink?.closest("[data-nav-module]");
   if (activeLink?.classList.contains("sub") && activeModule) setNavModuleExpanded(activeModule, true, false);
 }, { rootMargin: "-20% 0px -64% 0px", threshold: [0, 0.1, 0.3] });
