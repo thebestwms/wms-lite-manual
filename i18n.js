@@ -123,6 +123,13 @@ const MDM_TRANSLATIONS = {
     ,"维护出库规则使用的时间窗口。": "出庫ルールで使用する時間枠を管理します。"
     ,"记录商品成分或其他需要展示的补充说明。": "商品の成分や表示が必要な補足情報を記録します。"
     ,"最多上传 5 张商品图片，供 Item 资料查看。": "Item 情報で確認できる商品画像を最大 5 枚アップロードできます。"
+    ,"基础资料": "基本情報", "条码与追踪": "バーコードと追跡", "特殊商品": "特殊商品", "出库与补充资料": "出庫と補足情報"
+    ,"Industry 用于标识商品所属行业，并通过 Property Template 规定该行业的 Item 需要填写哪些专属属性。该分类同时会参与 VLG 上架范围判断和料箱出库的 Item 过滤。": "Industry は商品の業種を識別し、Property Template でその業種の Item に必要な固有属性を定義します。この分類は VLG の棚入れ範囲判定とコンテナ出庫の Item フィルターにも使用されます。"
+    ,"Industry 列表同时展示行业主档和模板使用情况": "Industry 一覧で業種マスタとテンプレートの利用状況を確認する"
+    ,"列表可按 Industry Code 或 Name 查询，并通过 Property Template Count 查看该行业配置了多少个动态属性，通过 Related SKU Count 查看已有多少个 Item 使用该 Industry。": "一覧では Industry Code または Name で検索できます。Property Template Count で動的属性数を、Related SKU Count でその Industry を使用する Item 数を確認できます。"
+    ,"为一次出库运输指定实际承运商": "出庫輸送に実際の運送会社を指定する"
+    ,"仓库接入新的运输合作方时，先建立 Carrier 主档并记录其运输方式与联系信息。出库订单需要记录运输方时可手动选择 Carrier；订单进入装载阶段后，Load 继续关联实际承运商，并将相应信息用于运输识别和 BOL。": "倉庫が新しい輸送パートナーと連携するときは、Carrier マスタを登録し、輸送方式と連絡先を記録します。出庫注文では Carrier を手動選択でき、積込段階では Load が実際の運送会社を引き継ぎ、輸送識別と BOL に利用します。"
+    ,"合作方接入": "パートナー登録", "建立 Carrier 主档": "Carrier マスタを登録する", "维护承运商编码、名称、SCAC、运输方式及联系人。": "運送会社コード、名称、SCAC、輸送方式、連絡先を管理します。", "订单选择 Carrier": "注文で Carrier を選択する", "创建或编辑订单时手动选择承运商；订单保存 Carrier ID，详情显示承运商名称，并支持按 Carrier 查询订单。": "注文の作成・編集時に運送会社を手動選択します。注文には Carrier ID が保存され、詳細に名称が表示され、Carrier で検索できます。", "装载关联运输方": "積込に運送会社を関連付ける", "创建 Load 时指定 Carrier，说明本次装载由哪家承运商执行，并承接 BOL 中的承运商信息。": "Load 作成時に Carrier を指定し、積込を実行する運送会社を示します。BOL の運送会社情報にも引き継がれます。"
     ,"本说明书按照实际操作流程介绍系统。每个模块先解释业务定位和使用场景，再结合真实页面说明字段、配置方法及其在仓储作业中的作用。": "本マニュアルは実際の操作フローに沿ってシステムを説明します。各モジュールでは、まず業務上の位置付けと利用シーンを説明し、実際の画面を使って項目、設定方法、倉庫作業での役割を解説します。"
     ,"统一登记业务参与方，供不同仓储场景重复使用": "倉庫業務の参加者を一元登録し、さまざまなシナリオで再利用する"
     ,"客户与零售商": "顧客と小売業者", "货权方与资产所有者": "所有者と資産所有者", "品牌、供应商与制造商": "ブランド、サプライヤー、メーカー", "租户、本公司与部门": "テナント、自社、部門"
@@ -297,6 +304,13 @@ const MDM_TRANSLATIONS = {
     ,"维护出库规则使用的时间窗口。": "Maintain the time window used by the shipping rule."
     ,"记录商品成分或其他需要展示的补充说明。": "Record product ingredients or other supplementary information that needs to be displayed."
     ,"最多上传 5 张商品图片，供 Item 资料查看。": "Upload up to five product images for review in the Item record."
+    ,"基础资料": "Master data", "条码与追踪": "Barcodes and tracking", "特殊商品": "Special products", "出库与补充资料": "Outbound and supplementary data"
+    ,"Industry 用于标识商品所属行业，并通过 Property Template 规定该行业的 Item 需要填写哪些专属属性。该分类同时会参与 VLG 上架范围判断和料箱出库的 Item 过滤。": "Industry identifies the product's industry and uses Property Template to define the attributes required for Items in that industry. The classification also participates in VLG put-away scope checks and filters Items for container outbound operations."
+    ,"Industry 列表同时展示行业主档和模板使用情况": "Review the industry master and template usage in the Industry list"
+    ,"列表可按 Industry Code 或 Name 查询，并通过 Property Template Count 查看该行业配置了多少个动态属性，通过 Related SKU Count 查看已有多少个 Item 使用该 Industry。": "Search by Industry Code or Name. Property Template Count shows the number of configured dynamic attributes, while Related SKU Count shows how many Items use the Industry."
+    ,"为一次出库运输指定实际承运商": "Assign the actual carrier for an outbound shipment"
+    ,"仓库接入新的运输合作方时，先建立 Carrier 主档并记录其运输方式与联系信息。出库订单需要记录运输方时可手动选择 Carrier；订单进入装载阶段后，Load 继续关联实际承运商，并将相应信息用于运输识别和 BOL。": "When the warehouse onboards a new transportation partner, create the Carrier master and record its transportation methods and contact details. Select the Carrier on an outbound order when needed; once the order reaches loading, the Load keeps the actual carrier and uses the information for transport identification and the BOL."
+    ,"合作方接入": "Partner onboarding", "建立 Carrier 主档": "Create the Carrier master", "维护承运商编码、名称、SCAC、运输方式及联系人。": "Maintain the carrier code, name, SCAC, transportation methods, and contacts.", "订单选择 Carrier": "Select the Carrier on the order", "创建或编辑订单时手动选择承运商；订单保存 Carrier ID，详情显示承运商名称，并支持按 Carrier 查询订单。": "Select the carrier manually when creating or editing an order. The order stores the Carrier ID, shows the carrier name in details, and supports searches by Carrier.", "装载关联运输方": "Link the carrier to the load", "创建 Load 时指定 Carrier，说明本次装载由哪家承运商执行，并承接 BOL 中的承运商信息。": "Specify the Carrier when creating a Load to identify who performs the loading and carry the carrier information into the BOL."
   }
 };
 
