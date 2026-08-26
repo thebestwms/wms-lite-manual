@@ -88,6 +88,13 @@ const MDM_TRANSLATIONS = {
     ,"库存分配、订单分组、取消节点和拣货排序": "在庫引当、注文グループ化、キャンセル可能時点、ピッキング順序"
     ,"WCS、Webhook 和动态扩展字段": "WCS、Webhook、動的拡張項目"
     ,"当仓库开始为新客户提供服务时，先建立客户身份和基础资料，再根据合同约定配置收货、上架、库存分配、拣货及设备协同规则；如涉及多个货权方或业务伙伴，则在 Relationships 中建立对应关联。": "倉庫が新しい顧客へのサービスを開始するときは、まず顧客の識別情報と基本情報を登録し、契約に基づいて入荷、棚入れ、在庫引当、ピッキング、設備連携のルールを設定します。複数の所有者や業務パートナーが関係する場合は、Relationships で関連付けます。"
+    ,"从 Organization 或 Customer 入口创建": "Organization または Customer の入口から作成する"
+    ,"维护行业、联系人和显示信息": "業種、連絡先、表示情報を管理する"
+    ,"确定收货、上架、分配与拣货方式": "入荷、棚入れ、引当、ピッキング方法を決める"
+    ,"维护 Title、Brand、Supplier 等关系": "Title、Brand、Supplier などの関係を管理する"
+    ,"快速收货": "迅速な入荷", "收货过程中生成上架任务，减少货物等待": "入荷中に棚入れタスクを作成し、貨物の待機時間を短縮する"
+    ,"释放库位": "ロケーションを解放", "优先分配拣完后可以清空库位的库存": "ピッキング後にロケーションを空にできる在庫を優先して引き当てる"
+    ,"自动化执行": "自動実行", "将指定任务类型的 Action 发送至 WCS": "指定したタスク種別の Action を WCS に送信する"
     ,"本说明书按照实际操作流程介绍系统。每个模块先解释业务定位和使用场景，再结合真实页面说明字段、配置方法及其在仓储作业中的作用。": "本マニュアルは実際の操作フローに沿ってシステムを説明します。各モジュールでは、まず業務上の位置付けと利用シーンを説明し、実際の画面を使って項目、設定方法、倉庫作業での役割を解説します。"
     ,"统一登记业务参与方，供不同仓储场景重复使用": "倉庫業務の参加者を一元登録し、さまざまなシナリオで再利用する"
     ,"客户与零售商": "顧客と小売業者", "货权方与资产所有者": "所有者と資産所有者", "品牌、供应商与制造商": "ブランド、サプライヤー、メーカー", "租户、本公司与部门": "テナント、自社、部門"
@@ -227,6 +234,13 @@ const MDM_TRANSLATIONS = {
     ,"是默认库存分配规则。选择 FIFO 时，系统按库存创建时间由早到晚进行分配，用于落实先进先出的周转要求。": "is the default inventory allocation rule. With FIFO, inventory is allocated from oldest to newest by creation time to enforce first-in, first-out rotation."
     ,"开启后，还需在 Task Config 中启用对应任务类型。两项条件同时满足时，相关 Task Action 才会发送到 WCS。": "After enabling this, the corresponding task type must also be enabled in Task Config. The Task Action is sent to WCS only when both conditions are met."
     ,"可为 Item、Receipt、Order、明细和 Inventory 配置扩展字段名称，用于页面展示、导入导出、接口同步和精确查询。": "Configure extension field names for Item, Receipt, Order, lines, and Inventory for display, import/export, API synchronization, and precise searches."
+    ,"从 Organization 或 Customer 入口创建": "Create it from the Organization or Customer entry point"
+    ,"维护行业、联系人和显示信息": "Maintain industry, contact, and display information"
+    ,"确定收货、上架、分配与拣货方式": "Define receiving, put-away, allocation, and picking methods"
+    ,"维护 Title、Brand、Supplier 等关系": "Maintain relationships such as Title, Brand, and Supplier"
+    ,"快速收货": "Fast receiving", "收货过程中生成上架任务，减少货物等待": "Generate put-away tasks during receiving to reduce waiting time"
+    ,"释放库位": "Release locations", "优先分配拣完后可以清空库位的库存": "Prioritize inventory that will empty a location after picking"
+    ,"自动化执行": "Automated execution", "将指定任务类型的 Action 发送至 WCS": "Send the Action for selected task types to WCS"
   }
 };
 
