@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Orbiflow-WCS 产品说明书">
+  <title>Orbiflow-WCS 说明书</title>
+  <link rel="stylesheet" href="styles.css?v=20260824-collapsible-nav">
+</head>
+<body>
+  <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">W</span>
+      <div>
+        <strong>Orbiflow-WCS</strong>
+        <small>Product Manual</small>
+      </div>
+    </div>
+
+    <div class="sidebar-label">说明书导航</div>
+    <nav aria-label="页面导航">
+      <a href="#start" class="nav-link active"><span>00</span>阅读指南</a>
+      <a href="#dashboard" class="nav-link"><span>01</span>Dashboard</a>
+      <div class="nav-group">
+        <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="nav-configuration">
+          <span>CFG</span><strong>Configuration</strong><i aria-hidden="true"></i>
+        </button>
+        <div class="nav-group-items" id="nav-configuration">
+          <a href="#action-type-config" class="nav-link"><span>C1</span>Action Type Config</a>
+          <a href="#workflow-definitions" class="nav-link"><span>C2</span>Workflow Definitions</a>
+          <a href="#system-workflows" class="nav-link"><span>C3</span>System Workflows</a>
+          <a href="#job-filters" class="nav-link"><span>C4</span>Job Filters</a>
+          <a href="#job-dispatch" class="nav-link"><span>C5</span>Job Dispatch Settings</a>
+          <a href="#message-config" class="nav-link"><span>C6</span>Message Config</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="nav-runtime">
+          <span>RUN</span><strong>Runtime</strong><i aria-hidden="true"></i>
+        </button>
+        <div class="nav-group-items" id="nav-runtime">
+          <a href="#job-management" class="nav-link"><span>R1</span>Job Management</a>
+          <a href="#workflow-instances" class="nav-link"><span>R2</span>Workflow Instances</a>
+          <a href="#node-executions" class="nav-link"><span>R3</span>Node Executions</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="nav-station">
+          <span>STA</span><strong>Station</strong><i aria-hidden="true"></i>
+        </button>
+        <div class="nav-group-items" id="nav-station">
+          <a href="#station-entry" class="nav-link"><span>S1</span>Enter Station</a>
+          <a href="#workstation" class="nav-link"><span>S2</span>Workstation</a>
+          <a href="#accept-tasks" class="nav-link"><span>S3</span>Accept Tasks</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="nav-operations">
+          <span>OPS</span><strong>Operations</strong><i aria-hidden="true"></i>
+        </button>
+        <div class="nav-group-items" id="nav-operations">
+          <a href="#message-send-logs" class="nav-link"><span>O1</span>Message Send Logs</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="nav-device-app">
+          <span>DEV</span><strong>Device App</strong><i aria-hidden="true"></i>
+        </button>
+        <div class="nav-group-items" id="nav-device-app">
+          <a href="#communication-logs" class="nav-link"><span>D1</span>Communication Logs</a>
+          <a href="#device-debug" class="nav-link"><span>D2</span>Device/RCS Debug</a>
+          <a href="#callback-records" class="nav-link"><span>D3</span>Callback Records</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="status-dot"></span>
+      覆盖管理端与现场作业页面
+    </div>
+  </aside>
+
+  <header class="mobile-header">
+    <button id="menu-button" aria-label="打开菜单" aria-expanded="false">☰</button>
+    <strong>Orbiflow-WCS</strong>
+    <span>Dashboard</span>
+  </header>
+
+  <main>
+    <!-- Keep the existing task-manual deep link working after this page is synced. -->
+    <span id="task-guide" class="anchor-alias" aria-hidden="true"></span>
+    <section class="hero" id="start" data-section="start">
+      <div class="eyebrow">ORBIFLOW-WCS · FUNCTION MANUAL</div>
+      <h1>Orbiflow-WCS<br><em>产品功能与操作说明</em></h1>
+      <p class="hero-lead">面向业务管理人员、现场操作员及实施运维人员，说明 Orbiflow-WCS 各页面的适用场景、关键操作与业务结果。</p>
+      <div class="hero-actions">
+        <a class="primary-button" href="#dashboard">开始阅读</a>
+      </div>
+    </section>
+
+    <section class="section section-dashboard" id="dashboard" data-section="dashboard">
+      <div class="section-head">
+        <div class="eyebrow">01 · DASHBOARD</div>
+        <h2>Dashboard 用于查看现场运行概况</h2>
+        <p>先看这里，判断系统今天有没有正常跑起来，再决定要去任务、告警、设备还是通信页面下钻。</p>
+      </div>
+
+      <div class="dashboard-visual">
+        <figure class="shot-frame">
+          <button class="shot-open" type="button" data-image="dashboard-stitched.png" aria-label="放大查看 Dashboard 截图">
+            <img src="dashboard-stitched.png" alt="Orbiflow-WCS Dashboard 截图">
+          </button>
+          <figcaption>先看截图，再看下方判断条。这样阅读顺序更接近实际使用习惯。</figcaption>
+        </figure>
+      </div>
+
+      <div class="dashboard-keys">
+        <article>
+          <small>任务总量</small>
+          <p>看今天有没有持续接收、完成和积压。</p>
+        </article>
+        <article>
+          <small>趋势变化</small>
+          <p>看某个时段是不是突然变慢或停住。</p>
+        </article>
+        <article>
+          <small>告警状态</small>
+          <p>看有没有需要优先处理的异常。</p>
+        </article>
+        <article>
+          <small>设备与通信</small>
+          <p>看问题更像业务卡点还是链路问题。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section management-manual" id="configuration">
+      <div class="section-head">
+        <div class="eyebrow">02 · CONFIGURATION</div>
+        <h2>建立任务进入 WCS 后所需的业务配置</h2>
+        <p>用于建立 WCS 的业务类型、流程、筛选、调度和消息规则。通常由实施人员或具备配置权限的管理员维护。</p>
+      </div>
+
+      <div class="manual-page-list">
+        <article class="manual-page featured-page" id="action-type-config" data-section="action-type-config">
+          <div class="manual-page-title"><span>CONFIGURATION · C1</span><div><h3>Action Type Config</h3><p>统一定义 WCS 可以接收和处理的业务作业类型。</p></div></div>
+          <div class="manual-page-body">
+            <p>WMS 下发入库、出库、盘点或容器搬运任务后，WCS 会根据 Action Type 识别业务类型，并匹配相应的流程和调度规则。管理员可在此集中维护各类作业类型，确保任务进入 WCS 后能够被正确识别和处理。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 新增整箱出库业务</small>
+              <div class="core-scenario-copy">
+                <h4>让 WCS 先识别这是一项整箱出库任务</h4>
+                <p>仓库准备上线整箱出库时，管理员先建立 <i>CASE_OUTBOUND</i>，并定义 WMS 下发任务需要携带的容器、工作站等业务数据。完成后，WCS 才能识别这类任务，并将其交给后续流程和调度配置处理。</p>
+              </div>
+              <div class="scenario-flow"><span>新增业务类型</span><i>→</i><span>定义任务数据</span><i>→</i><span>供流程与调度引用</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>从列表确认和维护作业类型</h4>
+                <p>列表集中显示作业类型的编码、名称、说明、状态和创建时间，便于管理员快速确认当前配置；右侧 Operations 可进行编辑、停用或删除。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">ACTION TYPE LIST · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="action-type-list.png" aria-label="放大查看 Action Type Config 列表页截图">
+                <img src="action-type-list.png" alt="Action Type Config 列表页截图">
+              </button>
+            </figure>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>创建新的作业类型</h4>
+                <p>除基础信息外，还需根据业务需要配置入参校验、搜索字段、索引映射和取消任务规则。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">CREATE ACTION TYPE · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="action-type-create.png" aria-label="放大查看 Create Action Type 页面截图">
+                <img src="action-type-create.png" alt="Create Action Type 页面截图">
+              </button>
+            </figure>
+
+            <h4>新增或维护作业类型</h4>
+            <div class="config-explain-grid">
+              <article><b>Basic Info</b><span>填写必填的 Code、Name，并通过 Description 说明适用业务。</span></article>
+              <article><b>Input Constraint Fields</b><span>定义 WMS 下发该类 Job 时必须包含的扩展字段。系统在创建 Job 时校验并保存配置快照，后续修改不影响已有 Job。</span></article>
+              <article><b>Search Fields</b><span>决定 Job Management 可以使用哪些业务字段查询任务。</span></article>
+              <article><b>Indexed Field Mapping</b><span>将常用扩展字段映射为资源、工作站或业务分类索引，提高 Job 查询效率。</span></article>
+            </div>
+
+            <h4>取消任务时的处理规则</h4>
+            <div class="cancel-rule-grid">
+              <article><b>Protect completed actions</b><span>开启后，已完成的 WMS Action 不允许取消，避免误撤销已经结束的业务。</span></article>
+              <article><b>Cancel execution resources</b><span>开启后，取消 Job 时同步清理相关 Command、Station Task 和 Node Execution。</span></article>
+              <article><b>Release action reservation</b><span>开启后，取消 Job 时通知 WMS 释放该 Action 预留的库存或业务资源。</span></article>
+            </div>
+
+            <div class="config-chain">
+              <h4>Action Type 创建后，任务还不能直接执行</h4>
+              <p>还需要依次完成以下配置，任务才能被正确匹配、调度并进入执行流程。</p>
+              <div class="config-chain-flow" aria-label="Action Type 后续配置顺序">
+                <span><b>Action Type</b><small>定义任务类型</small></span><i>→</i>
+                <span><b>Published Workflow</b><small>定义执行步骤</small></span><i>→</i>
+                <span><b>Job Filter</b><small>匹配适用任务</small></span><i>→</i>
+                <span><b>Scheduling Rule</b><small>控制任务调度</small></span>
+              </div>
+              <small>如需向外部系统回传处理结果，再补充 Message Config。</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="manual-page" id="workflow-definitions" data-section="workflow-definitions">
+          <div class="manual-page-title"><span>CONFIGURATION · C2</span><div><h3>Workflow Definitions</h3><p>维护任务执行所采用的标准流程模板。</p></div></div>
+          <div class="manual-page-body">
+            <p>Action Type 说明“这是什么任务”，Workflow Definition 则规定“这项任务要按什么步骤完成”。例如一项收货任务可以依次经过检查收货位、呼叫 RCS 搬运、工作站确认、推荐上架位和完成入库；管理员可在流程设计器中把这些业务步骤组织成可执行的标准流程。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 标准收货流程</small>
+              <div class="core-scenario-copy">
+                <h4>把收货作业拆成系统可以依次执行的步骤</h4>
+                <p>货物到达后，系统先检查收货位并呼叫 RCS 将容器送到收货工位；操作员完成收货确认后，系统推荐上架位，再由 RCS 搬运入库并结束任务。管理员通过 Workflow Definition 固化这条标准路径。</p>
+              </div>
+              <div class="scenario-flow long"><span>检查收货位</span><i>→</i><span>搬到工作站</span><i>→</i><span>收货确认</span><i>→</i><span>推荐上架位</span><i>→</i><span>搬运入库</span></div>
+            </div>
+
+            <div class="workflow-relation">
+              <div><small>Action Type</small><strong>识别任务属于哪类业务</strong><span>例如收货、出库、盘点或容器搬运</span></div>
+              <i>→</i>
+              <div><small>Workflow Definition</small><strong>规定这类任务如何执行</strong><span>定义步骤顺序、判断条件、设备动作和结束方式</span></div>
+              <i>→</i>
+              <div><small>Published Workflow</small><strong>供调度规则正式引用</strong><span>任务匹配后按照已发布流程进入现场执行</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>从列表查找并管理流程定义</h4>
+                <p>列表显示流程名称、唯一 Process Key、当前状态和最后更新时间。管理员可查看历史版本、进入编辑，或通过更多操作调整流程状态。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">WORKFLOW DEFINITIONS LIST · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="workflow-definitions-list.png" aria-label="放大查看 Workflow Definitions 列表截图">
+                <img src="workflow-definitions-list.png" alt="Workflow Definitions 列表截图">
+              </button>
+            </figure>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>在 Process Designer 中组织完整业务路径</h4>
+                <p>左侧提供系统预置的设备资源和流程控制节点。管理员可将需要的节点直接拖入画布，再连接步骤、设置分支并配置节点属性，从而组合或调整新的业务流程。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">PROCESS DESIGNER · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="workflow-designer.png" aria-label="放大查看 Process Designer 截图">
+                <img src="workflow-designer.png" alt="Workflow Process Designer 截图">
+              </button>
+            </figure>
+
+            <div class="designer-parts">
+              <div><small>01</small><b>选择节点</b><span>从左侧组件库选择流程所需的设备、工作站、控制或事件节点。</span></div>
+              <div><small>02</small><b>拖入画布</b><span>将节点拖到中间画布，并按照实际业务顺序连接各步骤和条件分支。</span></div>
+              <div><small>03</small><b>设置属性</b><span>选中节点后，在属性面板中配置执行动作及输入、输出数据。</span></div>
+            </div>
+
+            <div class="node-library-guide">
+              <div><b>WCS Device Resources</b><span>系统已支持的现场硬件或作业能力，例如 RCS Client、Equipment Control、Pick-to-Light、Traffic Light、Station 和 Accept Task。</span></div>
+              <div><b>WCS Flow Control</b><span>用于控制流程走向和等待条件，例如 Decision、Wait、Service Task、Signal Wait 和 Conditional Wait。</span></div>
+              <div><b>Events / BPMN Components</b><span>用于定义流程如何开始、结束、分支、捕获异常或进入子流程。</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>节点配置</small>
+              <div>
+                <h4>选中节点，定义这一步具体执行什么</h4>
+                <p>点击画布中的节点后，右侧会打开对应的属性面板。不同节点显示的配置项会有所不同，用于把业务步骤转换为系统可以执行的动作。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">NODE PROPERTIES · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="workflow-node-properties.png" aria-label="放大查看 Workflow 节点属性截图">
+                <img src="workflow-node-properties.png" alt="Workflow 节点属性配置截图">
+              </button>
+            </figure>
+
+            <div class="node-property-guide">
+              <div><b>Node Name / Description</b><span>说明该节点在业务流程中承担的步骤，名称应让后续维护人员能够直接理解。</span></div>
+              <div><b>Service Method</b><span>指定该节点需要调用的系统能力。示例中的 <i>completeJob</i> 表示流程运行到这里时执行完成 Job 的动作。</span></div>
+              <div><b>Input Mapping</b><span>把流程上下文中的数据传给当前节点，例如将当前 Job ID 提供给完成任务的方法。</span></div>
+              <div><b>Output Mapping</b><span>将节点执行结果写回流程上下文，供后续判断或其他节点继续使用。</span></div>
+            </div>
+
+            <div class="page-caution"><b>配置提示</b><span>流程图负责描述步骤关系，节点属性决定每一步如何执行。新增节点后必须完成必要属性和数据映射，并在发布前检查各分支是否都能到达正确的结束节点。</span></div>
+
+            <h4>流程从设计到停用的状态变化</h4>
+            <p>只有 Published 状态的流程可以被新 Job 引用。状态调整只决定后续任务能否继续选用该流程，不会改变已经启动的 Workflow Instance。</p>
+            <div class="status-lifecycle">
+              <div><b>Draft</b><span>流程处于设计或修改阶段，不能被新 Job 引用。</span><i>Publish →</i></div>
+              <div><b>Published</b><span>流程已经发布，可以被 Job Filter 和后续调度配置引用。</span><i>Deprecate →</i></div>
+              <div><b>Deprecated</b><span>流程已停止供新 Job 使用，但既有实例仍按原版本继续执行。</span><i>Archive →</i></div>
+              <div><b>Archived</b><span>流程完成归档，不再继续流转。</span></div>
+            </div>
+            <p class="subtle-note"><b>Revert to Draft：</b>Published 流程可退回 Draft 继续修改；完成调整后需要重新发布，才能再次供新任务引用。</p>
+
+            <h4>修改流程为什么不会影响在途任务</h4>
+            <p>每次发布都会保存一个流程版本快照，已经启动的 Workflow Instance 绑定其启动时的版本。因此编辑、重新发布、停用或退回草稿都不会改变正在执行的实例，只影响后续新任务。</p>
+
+            <div class="workflow-tool-guide">
+              <div><b>History</b><span>查看流程的创建、更新、发布、退回草稿、停用和归档记录，用于追溯版本变化。</span></div>
+              <div><b>Save As</b><span>以当前流程为基础复制一份新定义，适合新流程与现有流程大部分步骤相同的场景。</span></div>
+              <div><b>Import</b><span>从 BPMN 文件导入流程，适合迁移或复用已经准备好的流程定义。</span></div>
+              <div><b>Export</b><span>导出流程及其相关配置，用于备份、评审或迁移到其他环境。</span></div>
+            </div>
+
+            <div class="page-caution"><b>字段说明</b><span>列表中的 Appendable 当前未发现对应的后端配置规则，应视为预留或已停用字段，不建议据此判断流程是否支持追加任务。</span></div>
+
+            <div class="page-caution"><b>Restartable</b><span>开启后，如果 Workflow Instance 因工作站会话超时（SESSION_TIMEOUT）终止，系统可以自动重新启动该流程；它不是普通失败后的通用重试开关。</span></div>
+          </div>
+        </article>
+
+        <article class="manual-page" id="system-workflows" data-section="system-workflows">
+          <div class="manual-page-title"><span>CONFIGURATION · C3</span><div><h3>System Workflows</h3><p>让系统事件或现场操作自动启动指定的业务流程。</p></div></div>
+          <div class="manual-page-body">
+            <p>Workflow Definitions 负责设计“流程怎么执行”，System Workflows 则决定“什么情况下自动启动这条流程”。管理员为系统内置 Trigger 选择一个已发布的 Workflow Definition 并启用后，条件满足时 WCS 会自动创建相应的流程实例，无需人工逐次启动。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 拣货墙自动补货</small>
+              <div class="core-scenario-copy">
+                <h4>让补货流程在需要时自动启动</h4>
+                <p>拣货墙进入 SHIPPING 或 SHELVING 后，系统每 60 秒检查槽位库存。发现需要补货时，<i>PW_REPLENISHMENT</i> 自动启动已绑定的补货流程并请求 RCS 搬运容器，不需要管理员或操作员逐次创建任务。</p>
+              </div>
+              <div class="scenario-flow"><span>拣货墙进入作业</span><i>→</i><span>检测到补货需求</span><i>→</i><span>自动启动补货流程</span></div>
+            </div>
+
+            <h4>系统工作流如何启动</h4>
+            <div class="workflow-relation">
+              <div><small>01 · Trigger</small><strong>触发条件满足</strong><span>系统检测到已配置的业务条件，或接收到操作员发起的指定操作</span></div>
+              <i>→</i>
+              <div><small>02 · Workflow Binding</small><strong>读取绑定的流程定义</strong><span>系统根据 Trigger 找到当前启用的 Published Workflow</span></div>
+              <i>→</i>
+              <div><small>03 · Workflow Instance</small><strong>创建并运行流程实例</strong><span>新实例按照启动时绑定的流程版本执行</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>为系统 Trigger 选择并启用执行流程</h4>
+                <p>列表直接展示触发器、业务说明、绑定的 Workflow Definition 和启用状态。下拉框只提供 Published 流程；Enabled 打开后，后续满足条件的事件才会启动所选流程。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">SYSTEM WORKFLOW CONFIGURATION · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="system-workflows-list.png" aria-label="放大查看 System Workflows 页面截图">
+                <img src="system-workflows-list.png" alt="System Workflows 页面截图">
+              </button>
+            </figure>
+
+            <h4>后台自动运行的拣货墙流程</h4>
+            <div class="system-trigger-guide">
+              <div><b>PW_REPLENISHMENT</b><span>拣货墙进入 SHIPPING 或 SHELVING 后，每 60 秒检查槽位是否需要补货；有需求时自动请求 RCS 搬运补货容器。</span></div>
+              <div><b>PW_TASK_DECISION</b><span>拣货墙进入 SHIPPING 后，每 5 秒检查任务，将处于 DECISION_ON 的任务推进为 IN_PROGRESS，交由操作员继续执行。</span></div>
+              <div><b>BUFFER_RETURN</b><span>拣货墙进入 SHIPPING 后，每 5 秒检查缓存区利用率；低于设定阈值时，自动安排容器返回存储区。</span></div>
+            </div>
+
+            <h4>由操作员主动发起的呼出流程</h4>
+            <div class="system-trigger-guide two-items">
+              <div><b>CONTAINER_CALL_OUT</b><span>操作员在工作站输入容器条码并发起呼出后，系统启动容器呼出流程，将指定容器送往工作站。</span></div>
+              <div><b>ITEM_CALL_OUT</b><span>操作员按商品维度发起呼出后，系统启动商品呼出流程，将存放该商品的容器送往工作站。</span></div>
+            </div>
+
+            <h4>启停或更换流程时会发生什么</h4>
+            <div class="system-workflow-behavior">
+              <div><b>关闭 Enabled</b><span>新的事件不再启动该流程；已经启动的 Workflow Instance 继续执行。</span></div>
+              <div><b>开启 Enabled</b><span>后续事件满足 Trigger 条件时，系统按照当前绑定的 Published Workflow 启动新实例。</span></div>
+              <div><b>更换 Workflow</b><span>新触发的流程使用更新后的 Workflow Definition；已启动实例继续使用启动时的版本快照。</span></div>
+              <div><b>退出活跃状态</b><span>拣货墙从 SHIPPING / SHELVING 切换到 IDLE 或 LOCKED 时，系统终止该工作站相关的 System Workflow。</span></div>
+            </div>
+
+            <div class="page-caution"><b>配置提示</b><span>Workflow Definition 下拉框只显示 Published 流程。修改绑定后需确认配置已经成功提交并刷新页面核对；仅在下拉框中选择但未成功保存，不会改变实际触发关系。</span></div>
+          </div>
+        </article>
+
+        <article class="manual-page" id="job-filters" data-section="job-filters">
+          <div class="manual-page-title"><span>CONFIGURATION · C4</span><div><h3>Job Filters</h3><p>通过业务条件筛选需要进入特定调度规则的任务。</p></div></div>
+          <div class="manual-page-body">
+            <p>WMS 下发 Job 后，WCS 会依次检查当前启用的 Job Filter，找到第一条满足条件的规则。Job Scheduling Rule 再根据匹配到的 Filter，为任务选择相应的 Workflow Definition 和调度策略。通过这种方式，同一套 WCS 可以让不同类型或属性的任务走不同的执行路径。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 按业务条件分流任务</small>
+              <div class="core-scenario-copy">
+                <h4>让不同任务进入适用的执行策略</h4>
+                <p>当 WMS 下发的 Job 中 <i>actionType = TOTE_OUTBOUND</i> 时，示例 Filter 匹配成功。后续 Job Scheduling Rule 根据这条 Filter，将任务交给周转箱出库所使用的 Workflow Definition。</p>
+              </div>
+              <div class="scenario-flow"><span>Job 进入 WCS</span><i>→</i><span>Filter 匹配 actionType</span><i>→</i><span>进入出库调度策略</span></div>
+            </div>
+
+            <div class="filter-relation">
+              <div><small>01 · Job Data</small><strong>读取 Job 的业务字段</strong><span>例如 actionType、优先级或 extensionData 中的自定义字段</span></div>
+              <i>→</i>
+              <div><small>02 · Job Filter</small><strong>判断是否满足全部条件</strong><span>启用的 Filter 按顺序匹配，找到第一条符合规则的配置</span></div>
+              <i>→</i>
+              <div><small>03 · Scheduling Rule</small><strong>选择执行流程和调度方式</strong><span>通过 jobFilterIds 关联 Filter，并指向相应 Workflow Definition</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>查看和维护现有筛选规则</h4>
+                <p>列表集中显示 Filter 的编码、名称、条件数量、启用状态和创建时间。管理员可按名称或状态查询，并根据业务变化新建、编辑、停用或删除规则。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">JOB FILTER LIST · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="job-filters-list.png" aria-label="放大查看 Job Filters 列表截图">
+                <img src="job-filters-list.png" alt="Job Filters 列表截图">
+              </button>
+            </figure>
+
+            <div class="preview-intro">
+              <small>配置示例</small>
+              <div>
+                <h4>用“字段 + 运算符 + 表达式”建立匹配条件</h4>
+                <p>示例条件为 <i>actionType EQUALS TOTE_OUTBOUND</i>，表示只匹配周转箱出库 Job。需要进一步限定任务时，可通过 Add Condition 增加其他判断。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">JOB FILTER CONDITION · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="job-filter-detail.png" aria-label="放大查看 Job Filter 配置示例截图">
+                <img src="job-filter-detail.png" alt="Job Filter 配置示例截图">
+              </button>
+            </figure>
+
+            <h4>一条条件由三部分组成</h4>
+            <div class="condition-builder">
+              <div><small>Field</small><b>选择要判断的数据</b><span>既可使用 actionType 等标准字段，也可使用 extensionData.skuCode 等自定义扩展字段。</span></div>
+              <div><small>Operator</small><b>选择比较方式</b><span>可进行等于、不等于、数值比较、列表匹配、文本包含、正则匹配或空值判断。</span></div>
+              <div><small>Expression</small><b>填写期望匹配的值</b><span>支持固定值、数组和相对时间表达式，例如 PUTAWAY、[A,B,C] 或 now()-1h。</span></div>
+            </div>
+
+            <div class="page-caution"><b>多条件规则</b><span>同一 Filter 中的多个 Match Conditions 使用 AND 逻辑，只有全部条件都满足时才算匹配。页面显示最多可添加 20 条条件，但当前代码和数据未确认存在后端硬性上限。</span></div>
+
+            <h4>常用匹配方式</h4>
+            <div class="operator-groups">
+              <div><b>精确与列表</b><span>EQUALS、NOT_EQUALS、IN、NOT_IN</span></div>
+              <div><b>数值比较</b><span>GREATER_THAN、LESS_THAN、LESS_THAN_OR_EQUALS</span></div>
+              <div><b>文本判断</b><span>CONTAINS、STARTS_WITH、ENDS_WITH、MATCHES</span></div>
+              <div><b>空值判断</b><span>IS_NULL、IS_NOT_NULL</span></div>
+            </div>
+            <p class="subtle-note">当字段不存在时，只有 IS_NULL 会匹配成功；IS_NOT_NULL 及其他比较方式均不会匹配。</p>
+
+            <div class="page-caution"><b>配置顺序</b><span>Job Filter 只负责识别“哪些 Job 属于这一组”，不会单独启动流程。创建后还需要在 Job Dispatch Settings 中引用该 Filter，并选择要执行的 Workflow Definition。</span></div>
+          </div>
+        </article>
+
+        <article class="manual-page" id="job-dispatch" data-section="job-dispatch">
+          <div class="manual-page-title"><span>CONFIGURATION · C5</span><div><h3>Job Dispatch Settings</h3><p>决定符合条件的任务如何分组、等待并进入执行流程。</p></div></div>
+          <div class="manual-page-body">
+            <p>Job Filter 先识别“哪些 Job 适用”，Job Dispatch Settings 再决定这些 Job 使用哪条 Workflow、如何组成一批，以及何时开始执行。管理员通常在新增业务类型、调整作业节奏或控制单个流程承载量时维护这里的规则。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 将符合条件的任务分组调度</small>
+              <div class="core-scenario-copy">
+                <h4>兼顾凑批效率与现场等待时间</h4>
+                <p>例如将同一容器的 Job 归为一组，设置“满 3 个立即启动、最长等待 60 秒”。任务数量先达到 3 个时立即执行；不足 3 个但已经等待 60 秒时也会启动，避免现场为了凑批持续等待。</p>
+              </div>
+              <div class="scenario-flow long"><span>Filter 匹配 Job</span><i>→</i><span>按业务字段分组</span><i>→</i><span>批量或等待条件满足</span><i>→</i><span>追加或新建实例</span><i>→</i><span>Workflow 开始执行</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>集中查看当前生效的调度策略</h4>
+                <p>列表将 Job Filter、Workflow、批次条件和 Auto Schedule 状态放在同一行，便于管理员确认某类任务会进入哪条流程，并通过 Preview 在实际触发前检查待调度结果。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">JOB DISPATCH SETTINGS · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="job-dispatch-list.png" aria-label="放大查看 Job Dispatch Settings 列表截图">
+                <img src="job-dispatch-list.png" alt="Job Dispatch Settings 列表截图">
+              </button>
+            </figure>
+
+            <div class="preview-intro">
+              <small>规则配置</small>
+              <div>
+                <h4>确定任务范围、执行流程与成组方式</h4>
+                <p>先选择适用的 Job Filter 和 Workflow，再根据业务是否需要合单设置 Grouping Attributes、批次条件与单个流程的最大任务数。截图中的规则按 ACTION_TYPE 分组，每个 Job 单独触发一次流程。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">SCHEDULING RULE · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="job-dispatch-detail.png" aria-label="放大查看 Job Dispatch Settings 规则配置截图">
+                <img src="job-dispatch-detail.png" alt="Job Dispatch Settings 规则配置截图">
+              </button>
+            </figure>
+
+            <h4>一条调度规则需要回答四个业务问题</h4>
+            <div class="dispatch-rule-guide">
+              <div><b>哪些任务适用？</b><span>Associated Filters 可关联一个或多个 Job Filter。多个 Filter 采用 OR 逻辑，Job 满足其中任意一条即可进入本规则。</span></div>
+              <div><b>进入哪条流程？</b><span>Workflow 指定匹配任务后续执行的流程定义。应选择与业务类型和现场能力相符的已发布流程。</span></div>
+              <div><b>哪些任务合为一组？</b><span>Grouping Attributes 按字段值组合分组，值相同的 Job 共用一个 Workflow Instance；不配置时默认按 actionType 分组。</span></div>
+              <div><b>什么时候开始执行？</b><span>Min Jobs 与 Max Wait 采用 OR 逻辑：达到最低任务数立即启动，或等待达到上限时启动，不要求两个条件同时满足。</span></div>
+            </div>
+            <p class="subtle-note"><b>分组字段：</b>可使用 containerCode、stationCode、actionType，也支持 extensionData.businessMode 等嵌套路径。字段在 Job 中不存在时按 null 处理，因此缺少相同字段值的 Job 可能被归入同一组。</p>
+
+            <h4>任务是追加到现有流程，还是新建流程</h4>
+            <div class="dispatch-outcome">
+              <div><small>APPEND</small><b>追加到运行中的实例</b><span>存在相同分组键的运行中 Workflow Instance，且当前 Job 数尚未达到 Max Jobs 时，新 Job 加入该实例继续执行。</span></div>
+              <div><small>CREATE_NEW</small><b>创建新的流程实例</b><span>没有可追加的同组实例，或现有实例已达到 Max Jobs 时，系统为这批 Job 创建新的 Workflow Instance。</span></div>
+            </div>
+
+            <div class="page-caution"><b>Auto Schedule</b><span>启用后，系统会自动检查并调度符合规则的 NEW Job；关闭后规则不会被定时调度器执行，但仍可通过 Preview 后的 Confirm Trigger 手动触发一次调度。</span></div>
+
+            <div class="preview-intro">
+              <small>调度预览</small>
+              <div>
+                <h4>先试算，再决定是否真正触发</h4>
+                <p>Preview 只读取当前 NEW Job 并展示匹配数量与分组结果，不会创建流程或改变 Job 状态。截图中 Matched Jobs 和 Groups 均为 0，因此没有可触发的任务，Confirm Trigger 按钮处于不可用状态。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot preview-dialog-shot">
+              <div class="shot-label">SCHEDULING PREVIEW · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="job-dispatch-preview.png" aria-label="放大查看 Scheduling Preview 弹窗截图">
+                <img src="job-dispatch-preview.png" alt="Scheduling Preview 弹窗截图">
+              </button>
+            </figure>
+
+            <div class="preview-result-guide">
+              <div><b>Total Pending Jobs</b><span>当前等待调度的 NEW Job 总数，用于判断系统中是否存在待处理任务。</span></div>
+              <div><b>Matched Jobs / Groups</b><span>本规则实际匹配到的任务数和分组数，用于核对 Filter 与 Grouping Attributes 是否符合预期。</span></div>
+              <div><b>Action</b><span>有结果时，每组会显示 APPEND 或 CREATE_NEW，说明任务将追加到现有实例还是新建流程。</span></div>
+              <div><b>Confirm Trigger</b><span>确认后才执行真实调度：创建或追加 Workflow Instance，并将对应 Job 从 NEW 更新为 SCHEDULED。</span></div>
+            </div>
+
+            <div class="page-caution"><b>操作前确认</b><span>Preview 可以反复检查且不会改变业务数据；Confirm Trigger 会立即执行调度。若预览结果与预期不符，应先取消并检查 Filter、分组字段、批次条件和 Workflow 选择。</span></div>
+          </div>
+        </article>
+
+        <article class="manual-page" id="message-config" data-section="message-config">
+          <div class="manual-page-title"><span>CONFIGURATION · C6</span><div><h3>Message Config</h3><p>配置 WCS 向外部系统发送业务消息的方式。</p></div></div>
+          <div class="manual-page-body">
+            <p>当 Job 完成、失败或取消时，WCS 可以通过 HTTP 回调将处理结果通知 WMS 等外部系统。管理员在这里指定哪些 Job 事件需要通知、由哪个系统接收、发送什么内容，以及回调失败时如何重试。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 将异常结果及时回传上游系统</small>
+              <div class="core-scenario-copy">
+                <h4>Job 失败后自动通知 WMS</h4>
+                <p>当符合指定 Filter 的 Job 进入失败状态，WCS 使用 JOB_FAILED 配置生成回调地址、请求头和消息内容，并向 WMS 发送通知。如果网络暂时不可用，系统按设定间隔自动重试，避免现场异常只停留在 WCS 内部。</p>
+              </div>
+              <div class="scenario-flow long"><span>Job 状态变化</span><i>→</i><span>事件与 Filter 匹配</span><i>→</i><span>生成回调内容</span><i>→</i><span>HTTP POST 通知</span><i>→</i><span>失败时自动重试</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>查看各类 Job 事件的回调配置</h4>
+                <p>列表展示 Message Type、Subscriber、Callback URL、模板、发送方式、重试次数和关联的 Job Filter。管理员可据此确认某类任务在状态变化后会通知哪个外部系统。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">MESSAGE CONFIG LIST · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="message-config-list.png" aria-label="放大查看 Message Config 列表截图">
+                <img src="message-config-list.png" alt="Message Config 列表截图">
+              </button>
+            </figure>
+
+            <h4>哪些 Job 状态会触发消息</h4>
+            <div class="message-event-guide">
+              <div><small>JOB_COMPLETED</small><b>Job 正常完成</b><span>向外部系统回传作业已经成功结束。</span></div>
+              <div><small>JOB_FAILED</small><b>Job 执行失败</b><span>向外部系统回传失败结果，便于及时处理异常。</span></div>
+              <div><small>JOB_CANCELLED</small><b>Job 被取消</b><span>通知外部系统停止继续等待该任务结果。</span></div>
+            </div>
+
+            <div class="page-caution"><b>Job Filter</b><span>选择 Filter 后，只有满足该 Filter 的 Job 才会触发本配置；不选择时，该 Message Type 下的所有 Job 都会发送回调。若不同业务需要发送到不同地址，应分别建立 Filter 和 Message Config。</span></div>
+
+            <div class="preview-intro">
+              <small>配置示例</small>
+              <div>
+                <h4>定义接收方、地址与消息内容</h4>
+                <p>示例在 Job 失败时向 WMS_LITE_TRIGGER 发送回调，并通过 Job Filter 仅处理指定业务。Callback URL、Headers 和 Payload Template 中的占位符会在发送时替换为当前 Job 的实际数据。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">MESSAGE CALLBACK · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="message-config-detail.png" aria-label="放大查看 Message Config 配置截图">
+                <img src="message-config-detail.png" alt="Message Config 配置截图">
+              </button>
+            </figure>
+
+            <h4>回调内容由四部分组成</h4>
+            <div class="message-config-guide">
+              <div><b>Subscriber</b><span>标识消息接收方，便于同一事件为不同外部系统维护各自的回调配置。</span></div>
+              <div><b>Callback URL</b><span>指定接收地址，可使用 ${job.wmsActionId} 等占位符，将 Job 数据动态写入路径。</span></div>
+              <div><b>Headers</b><span>以 JSON 配置请求头，可动态带入 Tenant、Facility 和时区等调用上下文。</span></div>
+              <div><b>Payload Template</b><span>定义 HTTP POST 的 JSON 请求体，可引用 ${job.xxx} 和 ${extensionData.xxx} 等业务字段。</span></div>
+            </div>
+            <p class="subtle-note"><b>发送格式：</b>系统使用 HTTP POST 发送回调，Content-Type 为 application/json。配置前应与接收方确认 URL、请求头、字段名称和占位符数据均符合双方接口约定。</p>
+
+            <h4>回调失败时如何保障消息送达</h4>
+            <div class="message-delivery-guide">
+              <div><small>01 · Send Mode</small><b>选择同步或异步发送</b><span>Async Send 决定消息是否采用异步方式发送，可根据接口响应速度和业务时效要求选择。</span></div>
+              <i>→</i>
+              <div><small>02 · Retry</small><b>按间隔自动重试</b><span>首次发送失败后，系统按照 Retry Interval 等待，并在 Retry Count 上限内继续尝试。</span></div>
+              <i>→</i>
+              <div><small>03 · Final Result</small><b>超过上限后保留失败状态</b><span>达到最大重试次数仍未成功时，消息保持 FAILED，不再自动重试。</span></div>
+            </div>
+            <p class="subtle-note">截图中的 Retry Count 为 5、Retry Interval 为 10000 ms，表示失败后最多重试 5 次，每次间隔 10 秒。</p>
+
+            <div class="message-important-notes">
+              <div><b>业务状态不回滚</b><span>消息发送与 Job 状态变化相互独立。即使回调最终发送失败，已经完成、失败或取消的 Job 也不会因此恢复到原状态。</span></div>
+              <div><b>配置变更提示</b><span>修改或停用配置只影响后续事件，不能用来终止已经生成的回调消息。更新前应先确认新旧接收地址、模板和 Filter 的适用范围，避免相同业务出现通知遗漏或重复配置。</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="section management-manual" id="runtime">
+      <div class="section-head">
+        <div class="eyebrow">03 · RUNTIME</div>
+        <h2>追踪任务进入 WCS 后的实际执行状态</h2>
+        <p>用于查看已经进入 WCS 的真实任务、流程和节点。问题排查通常从 Job Management 开始，再逐层下钻。</p>
+      </div>
+
+      <div class="manual-page-list">
+        <article class="manual-page" id="job-management" data-section="job-management">
+          <div class="manual-page-title"><span>RUNTIME · R1</span><div><h3>Job Management</h3><p>集中查看和管理 WCS 接收到的业务任务。</p></div></div>
+          <div class="manual-page-body">
+            <p>每个 Job 对应 WMS 下发的一项业务任务。管理人员可通过 WMS Action ID、Action Type 或状态快速定位任务，确认它是否已经进入 WCS、是否开始执行，以及出现异常后应从哪里继续排查。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 排查任务为什么还未开始执行</small>
+              <div class="core-scenario-copy">
+                <h4>从 NEW Job 追踪到调度规则</h4>
+                <p>当 WMS 已下发任务，但现场迟迟没有收到作业时，先在 Job Management 根据 WMS Action ID 查询。若 Job 仍为 NEW 且 Workflow Instance 为空，说明任务尚未进入执行流程，需要继续检查 Action Type 对应的调度规则、自动调度状态及凑批条件。</p>
+              </div>
+              <div class="scenario-flow long"><span>查询 WMS Action ID</span><i>→</i><span>确认 Job 状态</span><i>→</i><span>查看 Workflow Instance</span><i>→</i><span>检查调度条件</span><i>→</i><span>确认等待原因</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>查询任务并判断当前处理阶段</h4>
+                <p>列表将 WMS Action、Action Type、状态、优先级和关联 Workflow Instance 集中展示。截图中的任务均为 NEW，且尚未生成 Workflow Instance，表示它们仍在等待调度。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">JOB MANAGEMENT LIST · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="job-management-list.png" aria-label="放大查看 Job Management 列表截图">
+                <img src="job-management-list.png" alt="Job Management 列表截图">
+              </button>
+            </figure>
+
+            <h4>按三个阶段理解 Job 状态</h4>
+            <div class="job-status-guide">
+              <div><small>等待执行</small><b>NEW</b><span>WMS 任务已经进入 WCS，正在等待符合条件的 Scheduling Rule 调度。</span></div>
+              <div><small>执行过程</small><b>IN_PROGRESS · ON_HOLD · EXCEPTION</b><span>任务正在执行、被业务流程暂停，或遇到仍有机会恢复的异常。</span></div>
+              <div><small>处理结束</small><b>COMPLETED · CLOSED · FAILED · CANCELLED</b><span>任务已正常结束、执行失败或被取消，不再按普通在途任务继续处理。</span></div>
+            </div>
+            <p class="subtle-note"><b>正常结束状态：</b>系统数据中同时存在 COMPLETED 和 CLOSED，两者都表示任务已经正常结束；具体使用哪一种由对应业务流程决定。</p>
+
+            <div class="job-detail-layout">
+              <figure class="shot-frame job-detail-shot">
+                <div class="shot-label">JOB DETAIL · PREVIEW</div>
+                <button class="shot-open" type="button" data-image="job-management-detail.png" aria-label="放大查看 Job Detail 弹窗截图">
+                  <img src="job-management-detail.png" alt="Job Detail 弹窗截图">
+                </button>
+              </figure>
+              <div class="job-detail-copy">
+                <small>任务详情</small>
+                <h4>这些信息分别用来解决什么问题</h4>
+                <div><b>任务是否正确进入 WCS？</b><span>通过 WMS Action ID 和 Original Request 核对上游原始任务。</span></div>
+                <div><b>任务进入了哪条执行流程？</b><span>结合 Action Type 和 Workflow Instance 判断调度去向，并继续追踪实际流程。</span></div>
+                <div><b>任务发生过哪些变化？</b><span>通过 Operation Log 查看状态变化、操作人、来源和时间，还原处理过程。</span></div>
+              </div>
+            </div>
+
+            <h4>列表中可用的管理操作</h4>
+            <div class="job-action-guide">
+              <div><b>Adjust Priority</b><span>仅用于 NEW Job。需要插单或调整等待顺序时修改优先级，新的数值会影响后续调度顺序。</span></div>
+              <div><b>Cancel</b><span>用于 NEW、IN_PROGRESS、ON_HOLD 或 EXCEPTION Job。确认任务不应继续后取消，状态变为 CANCELLED。</span></div>
+            </div>
+
+            <div class="page-caution"><b>异常排查</b><span>Job 进入 EXCEPTION 或 FAILED 时，先查看异常信息和 Result Data，再通过 Workflow Instance 进入流程详情；需要定位具体失败步骤时，继续前往 Node Executions。</span></div>
+          </div>
+        </article>
+
+        <article class="manual-page" id="workflow-instances" data-section="workflow-instances">
+          <div class="manual-page-title"><span>RUNTIME · R2</span><div><h3>Workflow Instances</h3><p>查看每次实际启动的流程当前运行到哪里。</p></div></div>
+          <div class="manual-page-body">
+            <p>Workflow Definition 是执行模板，Workflow Instance 是一批真实 Job 启动后的运行记录。管理人员可从这里确认哪些 Job 被组织在同一流程中、流程当前执行到哪里，以及出现异常后应检查哪个节点。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 判断运行中的流程是否停滞</small>
+              <div class="core-scenario-copy">
+                <h4>从实例状态下钻到实际执行路径</h4>
+                <p>当 Workflow Instance 长时间保持 RUNNING 时，先核对持续时间和 Related Jobs，再查看 Node Execution Records 与 View Flow。即使 Current Node 显示为空，也不能直接判定流程停滞，需要结合节点记录确认是否仍在异步执行或处于节点切换过程。</p>
+              </div>
+              <div class="scenario-flow long"><span>查询 Instance</span><i>→</i><span>核对 Related Jobs</span><i>→</i><span>检查持续时间</span><i>→</i><span>查看执行路径</span><i>→</i><span>定位异常节点</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>快速筛选并判断流程运行状态</h4>
+                <p>可通过 Instance ID、Definition ID、Status 或 Aggregation Key 查询。列表中的 Current Node 用于提示当前活跃步骤；运行中的实例会显示 Terminate 操作。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">WORKFLOW INSTANCES · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="workflow-instances-list.png" aria-label="放大查看 Workflow Instances 列表截图">
+                <img src="workflow-instances-list.png" alt="Workflow Instances 列表截图">
+              </button>
+            </figure>
+
+            <div class="workflow-terminate-note"><b>终止运行中实例</b><span>列表中的 Terminate 仅用于确认不应继续运行的实例。执行后，实例变为 TERMINATED，关联 Job 自动变为 CANCELLED，同时取消子资源并释放流程预留资源。</span></div>
+
+            <h4>按运行阶段理解实例状态</h4>
+            <div class="instance-status-guide">
+              <div><small>尚未执行</small><b>CREATED</b><span>流程实例已经创建，等待开始运行。</span></div>
+              <div><small>执行过程</small><b>RUNNING</b><span>流程正在执行，可能包含一个或多个关联 Job。</span></div>
+              <div><small>处理结束</small><b>COMPLETED · FAILED · CANCELLED · TERMINATED</b><span>流程已正常完成、失败、取消或被管理员主动终止。</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>实例详情</small>
+              <div>
+                <h4>在同一页面核对任务、流程与节点</h4>
+                <p>Related Jobs 说明本次流程包含哪些业务任务；Basic Info 用于确认流程定义、分组键和运行时长；Node Execution Records 展示每个步骤的状态、耗时、重试次数和错误信息。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">WORKFLOW INSTANCE DETAIL · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="workflow-instance-detail.png" aria-label="放大查看 Workflow Instance 详情截图">
+                <img src="workflow-instance-detail.png" alt="Workflow Instance 详情截图">
+              </button>
+            </figure>
+
+            <div class="instance-info-guide">
+              <div><b>哪些 Job 共用这次流程？</b><span>Related Jobs 列出关联任务。相同 Aggregation Key 的 Job 可按照调度规则归入同一个 Workflow Instance。</span></div>
+              <div><b>流程现在执行到哪里？</b><span>Current Node 记录当前活跃节点；Node Execution Records 则保留已经执行过的节点、持续时间和结果。</span></div>
+              <div><b>哪个步骤出现问题？</b><span>通过节点状态、Retry 次数和 Error Message 定位异常；需要更完整的节点信息时，可继续进入 Node Executions。</span></div>
+            </div>
+            <p class="subtle-note"><b>Current Node 显示 “-”：</b>不要直接判断为流程停滞。流程可能刚启动、正在切换节点或异步执行，应结合 Started At、运行时长和 Node Execution Records 判断。</p>
+
+            <div class="preview-intro">
+              <small>执行路径</small>
+              <div>
+                <h4>用流程图查看实际经过的节点</h4>
+                <p>点击 View Flow 后，系统在流程定义上标出本次实例的实际执行路径。高亮节点表示已经执行或进入的步骤，淡化部分表示未进入的分支；Export Image 可将路径图导出用于问题沟通和留档。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">EXECUTION PATH · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="workflow-execution-path.png" aria-label="放大查看 Workflow Execution Path 截图">
+                <img src="workflow-execution-path.png" alt="Workflow Execution Path 截图">
+              </button>
+            </figure>
+
+            <div class="workflow-signal-layout">
+              <figure class="shot-frame workflow-signal-shot">
+                <div class="shot-label">SEND SIGNAL · PREVIEW</div>
+                <button class="shot-open" type="button" data-image="workflow-send-signal.png" aria-label="放大查看 Send Signal 弹窗截图">
+                  <img src="workflow-send-signal.png" alt="Send Signal 弹窗截图">
+                </button>
+              </figure>
+              <div class="workflow-signal-copy">
+                <small>运行中实例</small>
+                <h4>向等待外部事件的流程发送 Signal</h4>
+                <p>Signal Name 不是固定选项，而是由 Workflow Definition 中的 Signal Wait 节点决定。名称匹配时，等待该信号的节点继续执行；流程没有对应订阅时，发送操作不会推进流程。</p>
+                <div><b>适用场景</b><span>唤醒等待外部事件的流程节点，或触发流程中预先设计的退出、补偿子流程。</span></div>
+                <div><b>操作要求</b><span>必须使用流程配置中准确的 Signal Name。无法确认名称时，应先联系流程配置人员，不应反复尝试。</span></div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <article class="manual-page" id="node-executions" data-section="node-executions">
+          <div class="manual-page-title"><span>RUNTIME · R3</span><div><h3>Node Executions</h3><p>下钻查看流程中每个节点的执行结果。</p></div></div>
+          <div class="manual-page-body">
+            <p>Workflow Instance 用于判断整条流程的运行情况，Node Executions 则将流程拆解到每一个执行步骤。管理人员可按 Workflow Instance ID、Node ID 或 Status 查询，定位具体节点的状态、耗时、重试记录和错误原因。</p>
+
+            <div class="core-scenario">
+              <small>核心场景 · 定位流程中的设备指令异常</small>
+              <div class="core-scenario-copy">
+                <h4>从异常节点继续追踪关联 Command</h4>
+                <p>当 RCS_CLIENT 或 EQUIPMENT 节点长时间未完成时，先查看节点状态和执行时间，再展开该行核对关联 Command。截图中的 rcs_return 节点已取消，而其 RCS_TASK Command 显示 TIMEOUT，说明排查重点应转向 RCS 指令和设备回调。</p>
+              </div>
+              <div class="scenario-flow long"><span>查询流程实例</span><i>→</i><span>找到异常节点</span><i>→</i><span>确认 Node Type</span><i>→</i><span>展开关联记录</span><i>→</i><span>检查设备或业务服务</span></div>
+            </div>
+
+            <div class="preview-intro">
+              <small>页面预览</small>
+              <div>
+                <h4>查看节点结果并展开关联执行记录</h4>
+                <p>列表展示节点类型、状态、Retry、开始和完成时间及 Error Message。带“+”的记录可展开查看对应的 Command 等下游执行信息，从流程节点继续定位到设备或外部服务。</p>
+              </div>
+            </div>
+            <figure class="shot-frame page-shot">
+              <div class="shot-label">NODE EXECUTIONS · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="node-executions-list.png" aria-label="放大查看 Node Executions 列表截图">
+                <img src="node-executions-list.png" alt="Node Executions 列表及展开记录截图">
+              </button>
+            </figure>
+
+            <div class="node-reading-guide">
+              <div><b>节点执行到什么状态？</b><span>Status 区分等待、运行、完成、失败、超时、跳过或取消；Started At 与 Completed At 用于判断执行时长。</span></div>
+              <div><b>系统是否已经尝试重试？</b><span>Retry 以“已重试次数 / 最大次数”显示，例如 0/3 表示尚未重试、最多允许 3 次；0/0 表示节点不允许重试。</span></div>
+              <div><b>失败原因是什么？</b><span>Error Message 显示直接错误信息；需要核对节点收到和产生的数据时，再查看 Input / Output Variables 与节点配置快照。</span></div>
+            </div>
+
+            <h4>根据 Node Type 选择后续排查方向</h4>
+            <div class="node-type-guide">
+              <div><b>DECISION</b><span>检查 Input Variables，确认进入该流程分支的判断依据是否正确。</span></div>
+              <div><b>SIGNAL_WAIT</b><span>确认流程正在等待哪个 Signal，以及对应的外部事件是否已经发生。</span></div>
+              <div><b>SERVICE_TASK</b><span>检查节点配置、输入输出和所调用的业务服务是否正常。</span></div>
+              <div><b>EQUIPMENT / RCS_CLIENT</b><span>展开关联 Command，继续检查设备指令状态、目标设备和回调结果。</span></div>
+              <div><b>STATION</b><span>继续检查工作站任务是否已创建、领取或完成，以及工作站会话是否正常。</span></div>
+              <div><b>ACCEPT</b><span>检查任务是否仍在等待接手，以及是否存在符合能力条件的工作站。</span></div>
+            </div>
+
+            <div class="node-execution-note"><b>判断失败速度</b><span>若 Started At 与 Completed At 几乎相同，通常表示节点在校验配置或输入时立即失败；若间隔较长，则应优先检查等待的外部服务、设备回调或超时条件。</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="station-entry" data-section="station-entry">
+      <div class="section-head">
+        <div class="eyebrow">04 · ENTER STATION</div>
+        <h2>为现场作业选择并确认对应的工作站</h2>
+        <p>操作员从可用工作站列表中确认作业地点，选择目标站点后进入工作站首页，开始处理分配到该站点的现场任务。</p>
+      </div>
+
+      <div class="screen-section select-screen">
+        <div class="screen-copy">
+          <h3>确认作业地点</h3>
+          <p>先查找并选中本次作业要使用的工作站，再点击 <i>Confirm</i> 进入工作站。</p>
+          <p>站点状态帮助操作员判断当前是否可用；确认后，后续作业都会在该工作站下执行。</p>
+        </div>
+        <figure class="shot-frame">
+          <button class="shot-open" type="button" data-image="station-select-full.png" aria-label="放大查看 Enter Station 选站页面截图">
+            <img src="station-select-full.png" alt="Enter Station 选站页面截图">
+          </button>
+          <figcaption><b>Select Station</b><span>页面示意</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="section-split">
+        <article class="text-block">
+          <h3>页面操作</h3>
+          <ul class="plain-list">
+            <li><b>Search</b><span>按站点编码或名称缩小列表范围，快速找到要使用的工作站。</span></li>
+            <li><b>Refresh</b><span>更新站点列表和使用状态，确保选择基于最新信息。</span></li>
+            <li><b>选择站点</b><span>查看 Station Code、Station Name 和 Status 后，选中本次作业的站点。</span></li>
+            <li><b>Confirm</b><span>确认站点并进入工作站首页，开始现场作业。</span></li>
+            <li><b>Back to Admin</b><span>暂不进入现场作业，返回 WCS 管理页面。</span></li>
+          </ul>
+        </article>
+
+        <article class="callout-panel">
+          <h3>先确认站点状态</h3>
+          <p><b>Idle</b> 表示站点当前可进入；<b>In Use</b> 表示已有操作员正在使用。操作员应先核对站点和状态，再决定进入哪个工作站。</p>
+          <div class="mini-flow">
+            <span>查找站点</span>
+            <span>确认状态</span>
+            <span>进入工作站</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="workstation" data-section="workstation">
+      <div class="section-head">
+        <div class="eyebrow">05 · WORKSTATION</div>
+        <h2>从统一入口进入各类现场作业</h2>
+        <p>操作员登录工作站后，可根据当前要处理的业务选择出库、入库或库存作业。系统只显示该工作站能够承接的入口，避免操作员进入不适用的流程。</p>
+      </div>
+
+      <figure class="shot-frame workstation-shot">
+        <button class="shot-open" type="button" data-image="workstation-home.png" aria-label="放大查看工作站首页截图">
+          <img src="workstation-home.png" alt="Orbiflow-WCS 工作站首页截图">
+        </button>
+        <figcaption><b>工作站首页</b><span>确认当前工作站和操作员后，选择与现场任务对应的作业入口。</span></figcaption>
+      </figure>
+
+      <div class="workstation-actions">
+        <article>
+          <b>Back to Admin</b>
+          <span>返回 WCS 管理页面，用于查看配置或管理信息，不结束当前工作站登录。</span>
+        </article>
+        <article>
+          <b>Logout</b>
+          <span>结束当前工作站会话并返回工作站选择页；未完成任务会按系统规则取消或退回待领取池。</span>
+        </article>
+      </div>
+
+      <div class="workstation-tabs" data-tabs>
+        <div class="tab-list" role="tablist" aria-label="工作站作业类型">
+          <button class="tab-button is-active" type="button" role="tab" aria-selected="true" aria-controls="tab-outbound" data-tab="tab-outbound">Outbound</button>
+          <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="tab-inbound" data-tab="tab-inbound">Inbound</button>
+          <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="tab-inventory" data-tab="tab-inventory">Inventory</button>
+        </div>
+        <div class="tab-panels">
+          <article class="tab-panel is-active" id="tab-outbound" role="tabpanel">
+            <h3>完成订单从拣选到待发运的处理</h3>
+            <p>根据仓库采用的一体化、分段式或整箱出库流程选择对应入口。</p>
+            <div class="operation-grid">
+              <article><b>Pick &amp; Pack</b><span>适用于单工位作业，操作员连续完成拣货、数量确认和打包，减少工序间交接。</span></article>
+              <article><b>Pick</b><span>适用于拣货与打包分开的流程，按系统提示从库存中拣取商品并放入出库容器。</span></article>
+              <article><b>PACK</b><span>适用于商品已完成拣选的场景，在独立打包工位完成包装和出库前确认。</span></article>
+              <article><b>Case Outbound</b><span>适用于整箱商品直接出库，按箱确认出库数量和容器信息。</span></article>
+              <article><b>Pick To Wall</b><span>适用于播种墙分拨，将已拣商品投入指定格口，按订单完成分单。</span></article>
+              <article><b>Picking Wall Pick</b><span>适用于从播种墙格口取出已完成分单的商品，并转入打包或集货环节。</span></article>
+              <article><b>Outbound Staging</b><span>适用于出库容器完成作业后，在发运前进入暂存区等待装车或交接。</span></article>
+              <article><b>Empty Tote Outbound</b><span>适用于空周转箱退出作业区，将不再使用的空箱送往指定位置。</span></article>
+              <article><b>Outbound Container Addition</b><span>适用于当前出库容器容量不足时，为订单追加容器以继续完成作业。</span></article>
+            </div>
+          </article>
+          <article class="tab-panel" id="tab-inbound" role="tabpanel" hidden>
+            <h3>按到货形态完成收货与容器导入</h3>
+            <p>根据到货商品是整箱、散件还是空周转箱，选择对应的接收方式。</p>
+            <div class="operation-grid">
+              <article><b>Piece Receiving</b><span>适用于散件到货，逐件扫描并确认实际收货数量。</span></article>
+              <article><b>Case Inbound</b><span>适用于整箱到货，按箱核对商品和数量后完成入库接收。</span></article>
+              <article><b>Empty Tote Inbound</b><span>适用于向作业区补充空周转箱，登记空箱进入工作站供后续任务使用。</span></article>
+            </div>
+          </article>
+          <article class="tab-panel" id="tab-inventory" role="tabpanel" hidden>
+            <h3>处理盘点、容器整理和库存核对</h3>
+            <p>用于确认账实一致，并在商品需要合并、拆分或转移时完成相应的库存操作。</p>
+            <div class="operation-grid">
+              <article><b>Count</b><span>适用于首次盘点，按任务核对库位、商品或托盘的实际数量并提交结果。</span></article>
+              <article><b>Recount</b><span>适用于首次盘点存在差异的场景，由另一轮实盘再次确认差异是否真实存在。</span></article>
+              <article><b>Inventory Check</b><span>适用于现场快速核对库存，查看容器或商品当前记录并与实物进行确认。</span></article>
+              <article><b>Picking Wall Count</b><span>适用于播种墙盘点，核对各格口内商品，避免分单过程中的库存遗漏。</span></article>
+              <article><b>Consolidate</b><span>适用于同类商品分散在多个容器中的场景，将库存合并到较少容器以释放空间。</span></article>
+              <article><b>Tote Split</b><span>适用于一个周转箱需要拆分的场景，将部分商品转入其他容器并同步库存归属。</span></article>
+              <article><b>Container Transfer</b><span>适用于更换容器或调整存放方式，将商品从源容器转移到目标容器。</span></article>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="accept-tasks" data-section="accept-tasks">
+      <article class="manual-page featured-page accept-tasks-page">
+        <div class="manual-page-title"><span>STATION · S3</span><div><h3>Accept Tasks</h3><p>追踪候选任务是否已经被工作站和操作员接手。</p></div></div>
+        <div class="manual-page-body">
+          <p>Accept Tasks 是管理端的只读追踪页面。任务到达 Workflow 的 ACCEPT 节点后会进入符合能力条件的 Workstation Accept Pool；操作员在工作站接手后，管理人员可在这里确认接手结果。此页面不能执行 Accept、Cancel 或 Retry。</p>
+
+          <div class="core-scenario">
+            <small>核心场景 · 确认任务为什么仍未进入工作站作业</small>
+            <div class="core-scenario-copy">
+              <h4>从等待接手追踪到具体工作站</h4>
+              <p>当 Job 已进入流程，但现场尚未开始处理时，可根据 Task ID 或 Business Type 查询 Accept Task。若状态为 Waiting for Acceptance，且 Station、Accepted By 和 Accepted Time 均为空，说明任务已经进入候选池，但还没有操作员在 Workstation 的 Accept Pool 接手。</p>
+            </div>
+            <div class="scenario-flow long"><span>流程到达 ACCEPT</span><i>→</i><span>进入候选池</span><i>→</i><span>能力匹配工作站</span><i>→</i><span>操作员接手</span><i>→</i><span>流程继续执行</span></div>
+          </div>
+
+          <div class="preview-intro">
+            <small>页面预览</small>
+            <div>
+              <h4>按任务或业务类型查询接手记录</h4>
+              <p>列表将 Accept Task 与原始 Job、Action、商品或容器信息关联展示。`Read-only tracking` 表示该页面只用于管理追踪，实际接手操作仍在工作站进行。</p>
+            </div>
+          </div>
+          <figure class="shot-frame page-shot">
+            <div class="shot-label">ACCEPT TASKS · PREVIEW</div>
+            <button class="shot-open" type="button" data-image="accept-tasks-list.png" aria-label="放大查看 Accept Tasks 列表截图">
+              <img src="accept-tasks-list.png" alt="Accept Tasks 列表截图">
+            </button>
+          </figure>
+
+          <div class="accept-detail-layout">
+            <figure class="shot-frame accept-detail-shot">
+              <div class="shot-label">ACCEPT TASK DETAIL · PREVIEW</div>
+              <button class="shot-open" type="button" data-image="accept-task-detail.png" aria-label="放大查看 Accept Task 详情截图">
+                <img src="accept-task-detail.png" alt="Accept Task 详情截图">
+              </button>
+            </figure>
+            <div class="accept-detail-copy">
+              <small>任务详情</small>
+              <h4>详情信息用来判断什么</h4>
+              <div><b>任务是否仍在等待？</b><span>Status 为 Waiting for Acceptance，表示任务已进入候选池但尚未接手。</span></div>
+              <div><b>任务将由哪些工作站处理？</b><span>Required Capability 决定候选工作站范围；字段为空时，不按能力限制工作站。</span></div>
+              <div><b>任务最终由谁接手？</b><span>接手后，Station、Accepted By 和 Accepted Time 会记录工作站、操作员和接手时间。</span></div>
+              <div><b>如何继续追踪流程？</b><span>通过 Workflow Instance ID 查看整条流程，通过 Node Execution ID 定位 ACCEPT 节点记录。</span></div>
+            </div>
+          </div>
+
+          <h4>Accept Task 的三种状态</h4>
+          <div class="accept-status-guide">
+            <div><small>WAITING_ACCEPT</small><b>等待接手</b><span>任务仍在候选池中，Station 与 Accepted By 尚未生成。</span></div>
+            <div><small>ACCEPTED</small><b>已经接手</b><span>任务已绑定工作站和操作员，Workflow 可以进入后续业务步骤。</span></div>
+            <div><small>CANCELLED</small><b>已经取消</b><span>ACCEPT 节点所在流程范围已被取消，任务不会继续等待接手。</span></div>
+          </div>
+
+          <div class="accept-cancel-note"><b>取消后不会自动返回候选池</b><span>被取消的 Accept Task 不会恢复为 WAITING_ACCEPT。若业务仍需重新派发，必须由上游流程创建新的 Accept Task，不能复用原记录。</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="operations">
+      <div class="section-head">
+        <div class="eyebrow">07 · OPERATIONS</div>
+        <h2>核对业务消息是否已经成功发送</h2>
+        <p>当 WCS 内部任务已经完成，但 WMS 或其他订阅方没有收到状态更新时，应从 Message Send Logs 检查消息发送结果。</p>
+      </div>
+
+      <article class="manual-page" id="message-send-logs" data-section="message-send-logs">
+        <div class="manual-page-title"><span>OPERATIONS · O1</span><div><h3>Message Send Logs</h3><p>追踪 WCS 向外部系统发送的每一条业务消息。</p></div></div>
+        <div class="manual-page-body">
+          <p>该页面用于辅助排查 WCS 向 WMS 等外部系统发送的业务消息。外部系统未收到任务结果时，可按 Job ID 查询记录，通过 Status、Retry 和 Fail Reason 判断消息是否发送失败；必要时由管理员查看详情并重新发送。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section device-manual" id="device-app">
+      <div class="section-head">
+        <div class="eyebrow">08 · DEVICE APP</div>
+        <h2>从通信、设备连接和回调记录排查现场链路</h2>
+        <p>Device App 面向系统管理和运维人员，用于判断 WCS 与 RCS、设备客户端或外部回调服务之间是否正常通信。</p>
+      </div>
+
+      <div class="device-page-guide">
+        <article id="communication-logs" data-section="communication-logs">
+          <small>DEVICE APP · D1</small>
+          <h3>Communication Logs</h3>
+          <p><b>什么时候使用：</b>设备操作没有响应、通信请求失败或接口耗时异常时，用于确认哪个客户端发起了请求，以及请求是否成功完成。</p>
+          <figure class="device-page-preview">
+            <button class="shot-open" type="button" data-image="communication-logs.png" aria-label="放大查看 Communication Logs 页面截图">
+              <img src="communication-logs.png" alt="Communication Logs 页面截图">
+            </button>
+          </figure>
+        </article>
+
+        <article id="device-debug" data-section="device-debug">
+          <small>DEVICE APP · D2</small>
+          <h3>Device/RCS Debug</h3>
+          <p><b>什么时候使用：</b>RCS 或现场设备无法连接、指令无法下发时，用于检查 RCS Clients 和 Equipment Clients 的连接状态。该页面主要供实施和运维人员诊断。</p>
+          <div class="device-page-preview device-page-preview-pair">
+            <figure>
+              <button class="shot-open" type="button" data-image="device-rcs-clients.png" aria-label="放大查看 RCS Clients 页面截图">
+                <img src="device-rcs-clients.png" alt="Device RCS Clients 页面截图">
+              </button>
+              <figcaption>RCS Clients</figcaption>
+            </figure>
+            <figure>
+              <button class="shot-open" type="button" data-image="device-equipment-clients.png" aria-label="放大查看 Equipment Clients 页面截图">
+                <img src="device-equipment-clients.png" alt="Device Equipment Clients 页面截图">
+              </button>
+              <figcaption>Equipment Clients</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article id="callback-records" data-section="callback-records">
+          <small>DEVICE APP · D3</small>
+          <h3>Callback Records</h3>
+          <p><b>什么时候使用：</b>外部设备或系统已经回调，但 WCS 没有产生预期业务结果时，用于查看回调状态、重试次数和最近一次错误。</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <strong>Orbiflow-WCS</strong>
+        <span>独立说明书网页</span>
+      </div>
+      <p>当前版本按照 Orbiflow-WCS 菜单同时覆盖管理配置、运行追踪、现场工作站和设备通信页面。</p>
+      <a href="#start">返回顶部 ↑</a>
+    </footer>
+  </main>
+
+  <dialog id="image-dialog">
+    <button id="dialog-close" aria-label="关闭图片">×</button>
+    <img id="dialog-image" alt="页面截图放大预览">
+  </dialog>
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+  <script src="app.js?v=20260824-collapsible-nav"></script>
+  <script src="i18n.js?v=20260901-task"></script>
+</body>
+</html>
