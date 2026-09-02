@@ -192,6 +192,255 @@ const I18N = {
 };
 
 Object.assign(I18N.ja, {
+  "点击 Task ID 进入详情页，包含三个标签页：": "「タスク ID」をクリックして詳細ページに入ります。このページには 3 つのタブが含まれています。",
+  "任务基本信息：Task ID、Status、Priority、Customer、Assignee、Put Back Type、Current Step、关联 Order ID 等。": "基本的なタスク情報: タスク ID、ステータス、優先度、顧客、担当者、元に戻すタイプ、現在のステップ、関連する注文 ID など。",
+  "步骤执行记录，显示 Put Back 步骤的状态和指派人。": "ステップ実行レコード。Put Back ステップのステータスと担当者を示します。",
+  "退库明细记录：每件货物退回的 SKU、数量、From LP / To LP、From Location / To Location，以及关联的 Pick Task 和 Order ID。这是确认\"货物退回到哪里\"的最直接依据。": "返品の詳細な記録: 返品された各商品の SKU、数量、LP から / LP まで、場所から / 場所へ、および関連するピッキング タスクと注文 ID。これは「商品の返送先」を確認するための最も直接的な根拠となります。",
+  "记录任务执行动作，主要用于排查状态异常和库存差异。": "タスクの実行アクションを記録します。主にステータスの異常やインベントリの差異のトラブルシューティングに使用されます。",
+  "记录系统向 WCS 发送的指令和回执，供运维排查通信问题。": "運用および保守のためにシステムから WCS に送信された指示と受領書を記録し、通信の問題をトラブルシューティングします。",
+});
+
+Object.assign(I18N.en, {
+  "点击 Task ID 进入详情页，包含三个标签页：": "Click Task ID to enter the details page, which contains three tabs:",
+  "任务基本信息：Task ID、Status、Priority、Customer、Assignee、Put Back Type、Current Step、关联 Order ID 等。": "Basic task information: Task ID, Status, Priority, Customer, Assignee, Put Back Type, Current Step, associated Order ID, etc.",
+  "步骤执行记录，显示 Put Back 步骤的状态和指派人。": "Step execution record, showing the status and assignee of the Put Back step.",
+  "退库明细记录：每件货物退回的 SKU、数量、From LP / To LP、From Location / To Location，以及关联的 Pick Task 和 Order ID。这是确认\"货物退回到哪里\"的最直接依据。": "Detailed records of returns: SKU, quantity, From LP / To LP, From Location / To Location of each piece of goods returned, and the associated Pick Task and Order ID. This is the most direct basis for confirming \"where the goods are returned to\".",
+  "记录任务执行动作，主要用于排查状态异常和库存差异。": "Record task execution actions, mainly used to troubleshoot status abnormalities and inventory differences.",
+  "记录系统向 WCS 发送的指令和回执，供运维排查通信问题。": "Record the instructions and receipts sent by the system to WCS for operation and maintenance to troubleshoot communication problems.",
+});
+
+
+Object.assign(I18N.ja, {
+  "已拣货但订单被取消，或拣出数量超过需求": "注文はピッキングされましたが、注文がキャンセルされたか、ピッキングされた数量が需要を超えました。",
+  "人工退库": "手動引き出し",
+  "管理员手动发起，将指定 LP 退回存储区": "管理者は、指定された LP のストレージ領域への返却を手動で開始します。",
+  "未发运返库": "未出荷で倉庫に返送されました",
+  "查看退库任务的执行状态": "出金タスクの実行状況を確認する",
+  "列表显示退库任务关联的 Order ID、Put Back Type 和执行状态。Put Back Type = MANUAL 表示由管理员手动创建；其他类型（订单取消、超拣）由系统自动触发。": "リストには、オーダー ID、プットバック タイプ、およびプットバック タスクに関連付けられた実行ステータスが表示されます。 Put Back Type = MANUAL は、管理者によって手動で作成されたことを意味します。他のタイプ (注文キャンセル、スーパーピッキング) はシステムによって自動的にトリガーされます。",
+  "装车后因故未能发运，货物需要重新入库": "積み込み後に何らかの理由で発送できないため、商品を補充する必要があります。",
+  "详情页说明": "詳細ページの説明",
+});
+
+Object.assign(I18N.en, {
+  "已拣货但订单被取消，或拣出数量超过需求": "The order was picked but the order was canceled, or the quantity picked exceeded the demand.",
+  "人工退库": "Manual withdrawal",
+  "管理员手动发起，将指定 LP 退回存储区": "The administrator manually initiates the return of the specified LP to the storage area.",
+  "未发运返库": "Unshipped and returned to warehouse",
+  "查看退库任务的执行状态": "Check the execution status of the withdrawal task",
+  "列表显示退库任务关联的 Order ID、Put Back Type 和执行状态。Put Back Type = MANUAL 表示由管理员手动创建；其他类型（订单取消、超拣）由系统自动触发。": "The list displays the Order ID, Put Back Type and execution status associated with the put back task. Put Back Type = MANUAL means it is created manually by the administrator; other types (order cancellation, super picking) are automatically triggered by the system.",
+  "装车后因故未能发运，货物需要重新入库": "Unable to be shipped for some reason after loading, the goods need to be restocked.",
+  "详情页说明": "Details page description",
+});
+
+
+Object.assign(I18N.ja, {
+  "AGV 仓的库存合并任务，用于把同类库存集中到更少的 Tote。": "AGV 倉庫の在庫統合タスクは、同様の在庫をより少ないトートに統合するために使用されます。",
+  "Kitting 场景下的组装任务，完成后作为套件继续出库。": "キッティング シナリオの組み立てタスクは、完了後にキットとして出荷されます。",
+  "这三种 Task 主要出现在 AGV 仓或特定客户场景，日常人工仓通常不会用到。": "これら 3 つのタスクは主に AGV 倉庫または特定の顧客シナリオで使用され、日常的な手動倉庫では通常使用されません。",
+  "AGV 仓的在库核对任务，用于确认实物与系统库存是否一致。": "AGV 倉庫の在庫検証タスクは、物理オブジェクトがシステム在庫と一致しているかどうかを確認するために使用されます。",
+  "Put Back Task 用于把已从库位取出、但因各种原因未能发运的库存归还原位或放入其他存储位置，使其重新进入可分配状态。": "戻しタスクは、保管場所から持ち出されたものの、さまざまな理由で出荷できなかった在庫を返却したり、割り当て可能な状態に戻すために他の保管場所に置いたりするために使用されます。",
+  "拣货后订单取消，货物需要归还库位": "ピッキング後に注文がキャンセルされた場合、商品は保管場所に返却される必要があります。",
+  "拣货完成后，订单因客户取消或库存问题无法发运，已拣出的货物不能留在暂存区——Put Back Task 指引操作员将这些货物送回合适的存储位置，重新变为可用库存。": "ピッキングが完了した後、顧客のキャンセルや在庫の問題により注文を出荷できず、ピッキングされた商品をステージングエリアに残すことはできません。Put Back タスクは、これらの商品を適切な保管場所に戻し、再び使用可能な在庫になるようにオペレーターをガイドします。",
+  "订单取消 / 超拣": "オーダーキャンセル/スーパーピッキング",
+});
+
+Object.assign(I18N.en, {
+  "AGV 仓的库存合并任务，用于把同类库存集中到更少的 Tote。": "The inventory consolidation task of the AGV warehouse is used to consolidate similar inventory into fewer Totes.",
+  "Kitting 场景下的组装任务，完成后作为套件继续出库。": "The assembly task in the Kitting scenario will be shipped out as a kit after completion.",
+  "这三种 Task 主要出现在 AGV 仓或特定客户场景，日常人工仓通常不会用到。": "These three tasks mainly appear in AGV warehouses or specific customer scenarios, and are usually not used in daily manual warehouses.",
+  "AGV 仓的在库核对任务，用于确认实物与系统库存是否一致。": "The inventory verification task of the AGV warehouse is used to confirm whether the physical objects are consistent with the system inventory.",
+  "Put Back Task 用于把已从库位取出、但因各种原因未能发运的库存归还原位或放入其他存储位置，使其重新进入可分配状态。": "Put Back Task is used to return inventory that has been taken out of the storage location but failed to be shipped for various reasons or put it into other storage locations so that it can be re-entered into an allocatable state.",
+  "拣货后订单取消，货物需要归还库位": "If the order is canceled after picking, the goods need to be returned to the storage location.",
+  "拣货完成后，订单因客户取消或库存问题无法发运，已拣出的货物不能留在暂存区——Put Back Task 指引操作员将这些货物送回合适的存储位置，重新变为可用库存。": "After picking is completed, the order cannot be shipped due to customer cancellation or inventory issues, and the picked goods cannot be left in the staging area - the Put Back Task guides the operator to return these goods to the appropriate storage location and become available inventory again.",
+  "订单取消 / 超拣": "Order Cancellation/Super Picking",
+});
+
+
+Object.assign(I18N.ja, {
+  "扫码确认": "コードをスキャンして確認します",
+  "扫描目标位置，库存位置更新": "ターゲットの場所をスキャンし、インベントリの場所を更新しました",
+  "Movement Task · 列表": "移動タスク・リスト",
+  "查看库内移动任务的执行状态": "ライブラリ内のモバイルタスクの実行ステータスを確認する",
+  "列表显示每条移动任务的来源库位、目标库位、关联 LP 和执行状态。Movement Task 的主要结果是更新库存物理位置；库存业务状态是否同时变化，以实际任务规则为准。": "リストには、ソースの場所、ターゲットの場所、関連する LP、および各移動タスクの実行ステータスが表示されます。移動タスクの主な結果は、在庫の物理的な場所を更新することです。在庫業務のステータスが同時に変化するかどうかは、実際のタスクのルールに依存します。",
+  "放大 Movement Task 列表截图": "移動タスクリストのスクリーンショットを拡大する",
+  "Movement Task 列表页面截图": "移動タスクリストページのスクリーンショット",
+  "特定场景 · AGV 自动化仓库": "特定のシナリオ・AGV自動倉庫",
+});
+
+Object.assign(I18N.en, {
+  "扫码确认": "Scan code to confirm",
+  "扫描目标位置，库存位置更新": "Scan target location, inventory location updated",
+  "Movement Task · 列表": "Movement Task · List",
+  "查看库内移动任务的执行状态": "Check the execution status of mobile tasks in the library",
+  "列表显示每条移动任务的来源库位、目标库位、关联 LP 和执行状态。Movement Task 的主要结果是更新库存物理位置；库存业务状态是否同时变化，以实际任务规则为准。": "The list displays the source location, target location, associated LP and execution status of each movement task. The main result of the Movement Task is to update the physical location of the inventory; whether the inventory business status changes at the same time is subject to the actual task rules.",
+  "放大 Movement Task 列表截图": "Enlarge screenshot of Movement Task list",
+  "Movement Task 列表页面截图": "Movement Task list page screenshot",
+  "特定场景 · AGV 自动化仓库": "Specific Scenario · AGV Automated Warehouse",
+});
+
+
+Object.assign(I18N.ja, {
+  "管理员先在 Load Management 创建 Load，再从对应 Load 创建装车任务。操作员执行装车扫描；满足关闭条件后由管理员关闭 Load Task，系统随之处理关联 Load，并生成 Shipment Ticket。": "管理者はまず負荷管理で負荷を作成し、次に対応する負荷から負荷タスクを作成します。オペレーターはローディングスキャンを実行します。終了条件が満たされた後、管理者は積込タスクを終了し、システムは関連する積込を処理して出荷チケットを生成します。",
+  "Movement Task 用于在仓库内部将库存从一个位置移动到另一个位置，不涉及入库或出库流程。常见于库位整理、区域调整或临时移位等场景，由管理员手动创建。": "移動タスクは、入荷または発送プロセスを介さずに、倉庫内のある場所から別の場所に在庫を移動するために使用されます。これは、保管場所の並べ替え、エリア調整、または一時的な移動などのシナリオでよく使用され、管理者によって手動で作成されます。",
+  "库内位置调整，不改变库存归属": "在庫の所有権を変更せずに、倉庫内の場所が調整されます。",
+  "Movement Task 只改变货物的物理位置，不触发入库或出库流程，也不改变库存业务状态。典型使用场景：库区规划调整、库位整理腾出整齐空间、拣货区手动补充（无 Min/Max 规则时）、设备维护临时移位等。": "移動タスクは、商品の物理的な場所を変更するだけであり、入荷または発送プロセスはトリガーされず、在庫ビジネス ステータスも変更されません。一般的な使用シナリオ: 倉庫エリア計画の調整、きれいなスペースを作成するための倉庫の場所の分類、ピッキングエリアの手動補充 (最小/最大ルールがない場合)、メンテナンスのための機器の一時的な再配置など。",
+  "管理员指定来源库存与目标位置": "管理者はソースインベントリとターゲットの場所を指定します",
+  "执行搬运": "転送の実行",
+  "创建任务": "タスクの作成",
+  "操作员确认 LP，将货物移动至目标位置": "オペレーターはLPを確認し、荷物を目的の場所まで移動します",
+});
+
+Object.assign(I18N.en, {
+  "管理员先在 Load Management 创建 Load，再从对应 Load 创建装车任务。操作员执行装车扫描；满足关闭条件后由管理员关闭 Load Task，系统随之处理关联 Load，并生成 Shipment Ticket。": "The administrator first creates a Load in Load Management, and then creates a loading task from the corresponding Load. The operator performs a loading scan; after the closing conditions are met, the administrator closes the Load Task, and the system then processes the associated Load and generates a Shipment Ticket.",
+  "Movement Task 用于在仓库内部将库存从一个位置移动到另一个位置，不涉及入库或出库流程。常见于库位整理、区域调整或临时移位等场景，由管理员手动创建。": "Movement Task is used to move inventory from one location to another within the warehouse without involving the inbound or outbound process. It is commonly used in scenarios such as storage location sorting, area adjustment or temporary shifting, and is manually created by the administrator.",
+  "库内位置调整，不改变库存归属": "The location in the warehouse is adjusted without changing the inventory ownership.",
+  "Movement Task 只改变货物的物理位置，不触发入库或出库流程，也不改变库存业务状态。典型使用场景：库区规划调整、库位整理腾出整齐空间、拣货区手动补充（无 Min/Max 规则时）、设备维护临时移位等。": "Movement Task only changes the physical location of goods, does not trigger the inbound or outbound process, and does not change the inventory business status. Typical usage scenarios: warehouse area planning adjustments, warehouse location sorting to create neat space, manual replenishment of picking areas (when there are no Min/Max rules), temporary relocation of equipment for maintenance, etc.",
+  "管理员指定来源库存与目标位置": "Administrator specifies source inventory and target location",
+  "执行搬运": "Execute transfer",
+  "创建任务": "Create tasks",
+  "操作员确认 LP，将货物移动至目标位置": "The operator confirms the LP and moves the cargo to the target location",
+});
+
+
+Object.assign(I18N.ja, {
+  "搬运到 To VLG 目标库位扫码确认入位": "To VLG ターゲットの場所に移動し、QR コードをスキャンして到着を確認します。",
+  "Drop（放下）": "落とす",
+  "Replenishment Task · 列表": "補充タスク・リスト",
+  "查看所有补货任务的执行状态": "すべての補充タスクの実行ステータスを表示する",
+  "放大 Replenishment Task 列表截图": "補充タスクリストのスクリーンショットを拡大する",
+  "列表显示每条任务的来源（From Location）、目标（To Location）、关联的 Min/Max Setting 规则及执行进度。": "リストには、ソース (From Location)、ターゲット (To Location)、関連する最小/最大設定ルール、および各タスクの実行の進行状況が表示されます。",
+  "将货物装上车，完成后触发发运记录生成": "商品を車両に積み込み、完了後に出荷記録の生成をトリガーします。",
+  "Replenishment Task 列表页面截图": "補充タスクリストページのスクリーンショット",
+});
+
+Object.assign(I18N.en, {
+  "搬运到 To VLG 目标库位扫码确认入位": "Move to the To VLG target location and scan the QR code to confirm arrival.",
+  "Drop（放下）": "Drop",
+  "Replenishment Task · 列表": "Replenishment Task · List",
+  "查看所有补货任务的执行状态": "View the execution status of all replenishment tasks",
+  "放大 Replenishment Task 列表截图": "Enlarge screenshot of Replenishment Task list",
+  "列表显示每条任务的来源（From Location）、目标（To Location）、关联的 Min/Max Setting 规则及执行进度。": "The list displays the source (From Location), target (To Location), associated Min/Max Setting rules and execution progress of each task.",
+  "将货物装上车，完成后触发发运记录生成": "Load the goods onto the vehicle and trigger the generation of shipping records after completion.",
+  "Replenishment Task 列表页面截图": "Replenishment Task list page screenshot",
+});
+
+
+Object.assign(I18N.ja, {
+  "本节说明 Pack Task 中的 CONSOLIDATE_PALLET 类型，适用于整车（TL）、零担（LTL）或自提（WILL_CALL）的发货场景。操作员将多个 CLP（箱子）扫描归入同一个 SLP（托盘），完成后托盘作为整体进入后续装车流程。": "このセクションでは、梱包タスクの CONSOLIDATE_PALLET タイプについて説明します。これは、車両全体 (TL)、トラック積載未満 (LTL)、またはセルフピックアップ (WILL_CALL) の配送シナリオに適しています。オペレータは複数の CLP (ボックス) を同じ SLP (パレット) にスキャンし、完了後、パレットは全体として次の積載プロセスに入ります。",
+  "整车发货前，把分散在库区的箱子合并到托盘上": "車両全体を出荷する前に、倉庫内に散らばる箱をパレットに集約します。",
+  "将多个已拣货箱子合并到一个托盘，准备整托装车": "選択した複数の箱を 1 つのパレットに結合し、パレット全体を積み込む準備をします",
+  "整车发货时，同一个订单的货物可能分散在多个箱子（CLP）里。在装车前需要将这些箱子归拢到一个托盘（SLP）上，方便叉车一次性搬运。Pack Task 就是这个合托动作的执行记录。合托时系统会校验所有箱子必须属于同一客户、同一承运商、同一收货地址。": "トラック全体を出荷する場合、同じ注文の商品が複数の箱に分散される場合があります (CLP)。積み込む前に、これらの箱をパレット (SLP) 上に集めて、フォークリフトによる 1 回の取り扱いを容易にする必要があります。パックタスクは、このパックアクションの実行記録です。委託の際、システムはすべての箱が同じ顧客、同じ配送業者、同じ配送先住所に属している必要があることを確認します。",
+  "一致性校验通过后，CLP 归入 SLP，相关订单状态更新为 PACKED": "整合性チェックに合格すると、CLP は SLP に分類され、関連する注文ステータスが PACKED に更新されます。",
+  "当 Min/Max 规则检测到拣货区的某个 SKU 库存低于 Min Qty 时，系统自动创建 Replenishment Task。操作员按任务指示到储存区取出对应 LP，搬运到拣货区指定库位放下，任务完成，库存位置更新。": "最小/最大ルールにより、ピッキング エリア内の SKU の在庫が最小数量を下回っていることが検出されると、システムは自動的に補充タスクを作成します。オペレータは作業指示に従い、保管エリアから該当する LP を取り出し、ピッキングエリアの指定保管場所まで搬送し、置きます。タスクが完了し、在庫の場所が更新されます。",
+  "Collect（取货）": "集める",
+  "操作员到 From VLG 扫描取出来源库存": "オペレーターは From VLG に行き、ソースインベントリをスキャンして取り出します",
+});
+
+Object.assign(I18N.en, {
+  "本节说明 Pack Task 中的 CONSOLIDATE_PALLET 类型，适用于整车（TL）、零担（LTL）或自提（WILL_CALL）的发货场景。操作员将多个 CLP（箱子）扫描归入同一个 SLP（托盘），完成后托盘作为整体进入后续装车流程。": "This section describes the CONSOLIDATE_PALLET type in Pack Task, which is suitable for full vehicle (TL), less than truckload (LTL) or self-pickup (WILL_CALL) shipping scenarios. The operator scans multiple CLPs (boxes) into the same SLP (pallet), and after completion, the pallet enters the subsequent loading process as a whole.",
+  "整车发货前，把分散在库区的箱子合并到托盘上": "Before the whole vehicle is shipped, the boxes scattered in the warehouse area are consolidated onto the pallet.",
+  "将多个已拣货箱子合并到一个托盘，准备整托装车": "Combine multiple picked boxes into one pallet and prepare the whole pallet for loading",
+  "整车发货时，同一个订单的货物可能分散在多个箱子（CLP）里。在装车前需要将这些箱子归拢到一个托盘（SLP）上，方便叉车一次性搬运。Pack Task 就是这个合托动作的执行记录。合托时系统会校验所有箱子必须属于同一客户、同一承运商、同一收货地址。": "When the entire truck is shipped, the goods of the same order may be scattered in multiple boxes (CLP). Before loading, these boxes need to be gathered on a pallet (SLP) to facilitate one-time handling by a forklift. Pack Task is the execution record of this pack action. When consigning, the system will verify that all boxes must belong to the same customer, the same carrier, and the same delivery address.",
+  "一致性校验通过后，CLP 归入 SLP，相关订单状态更新为 PACKED": "After the consistency check is passed, CLP is classified into SLP, and the related order status is updated to PACKED.",
+  "当 Min/Max 规则检测到拣货区的某个 SKU 库存低于 Min Qty 时，系统自动创建 Replenishment Task。操作员按任务指示到储存区取出对应 LP，搬运到拣货区指定库位放下，任务完成，库存位置更新。": "When the Min/Max rule detects that the inventory of a SKU in the picking area is lower than the Min Qty, the system automatically creates a Replenishment Task. The operator follows the task instructions to take out the corresponding LP from the storage area, transports it to the designated storage location in the picking area, and puts it down. The task is completed and the inventory location is updated.",
+  "Collect（取货）": "Collect",
+  "操作员到 From VLG 扫描取出来源库存": "Operator goes to From VLG to scan and take out the source inventory",
+});
+
+
+Object.assign(I18N.ja, {
+  "按 Order Plan 的 Pick Method 和 Pick Mode 创建 Pick Task": "注文計画のピッキング方法とピッキングモードに従ってピッキングタスクを作成します",
+  "Batch Assign 批量指派，或逐条指派": "一括割り当て 一括割り当て、または 1 つずつ割り当て",
+  "手持端执行拣货": "ハンディターミナルでピッキング",
+  "分配操作员": "演算子の割り当て",
+  "任务关闭": "タスクは終了しました",
+  "操作员用 RF/PDA 按路线从库位取货": "オペレーターは RF/PDA を使用して保管場所からのピックアップをルーティングします",
+  "库存状态变为 Picked，等待打包或装车": "在庫ステータスが「ピッキング済み」に変わり、梱包または積み込みを待っています。",
+  "列表关联 Order Plan ID 和 Order ID，可追溯拣货任务对应的订单和计划。Pick Method 和 Pick Mode 在任务创建时已确定，反映 Order Plan 的配置。": "このリストは、注文計画 ID と注文 ID を関連付けて、ピッキング タスクに対応する注文と計画を追跡します。ピック方法とピック モードはタスクの作成時に決定され、注文計画の構成が反映されます。",
+});
+
+Object.assign(I18N.en, {
+  "按 Order Plan 的 Pick Method 和 Pick Mode 创建 Pick Task": "Create Pick Task according to Pick Method and Pick Mode of Order Plan",
+  "Batch Assign 批量指派，或逐条指派": "Batch Assign Batch assignment, or assignment one by one",
+  "手持端执行拣货": "Picking with handheld terminal",
+  "分配操作员": "Assign operator",
+  "任务关闭": "Task closed",
+  "操作员用 RF/PDA 按路线从库位取货": "Operator uses RF/PDA to route pickup from storage location",
+  "库存状态变为 Picked，等待打包或装车": "The inventory status changes to Picked, waiting to be packed or loaded.",
+  "列表关联 Order Plan ID 和 Order ID，可追溯拣货任务对应的订单和计划。Pick Method 和 Pick Mode 在任务创建时已确定，反映 Order Plan 的配置。": "The list associates the Order Plan ID and the Order ID to trace the order and plan corresponding to the picking task. The Pick Method and Pick Mode are determined when the task is created and reflect the configuration of the Order Plan.",
+});
+
+
+Object.assign(I18N.ja, {
+  "扫描 LP 和库位，更新库存位置": "LP と場所をスキャンして在庫場所を更新します",
+  "💡 生成时机由 Customer Settings 中的 Put Away Mode 控制：DURING_RECEIVING 每完成一个 LP 即生成；AFTER_RECEIVING 整个收货任务关闭后统一生成。": "💡 生成のタイミングは、顧客設定の保管モードによって制御されます。 LP が完了するたびに DURING_RECEIVING が生成されます。 AFTER_RECEIVING は、受信タスク全体が閉じられた後に一律に生成されます。",
+  "Put Away Task · 列表": "片付けるタスク・リスト",
+  "列表显示每条上架任务关联的 Receipt ID 和 Receive Task ID，可追溯来源。Put Away Type 说明上架方式，Progress 显示已完成 LP 数 / 总数。": "リストには、各リスト タスクに関連付けられた受信 ID と受信タスク ID が表示され、ソースまで追跡できます。 Put Away Type はパッティング方法を記述し、Progress は完了した LP 数 / 総数を表示します。",
+  "出库高峰，多个订单同时等待拣货": "アウトバウンドのピーク時には、複数の注文が同時にピッキングを待っています。",
+  "查看待上架任务及关联的收货来源": "棚に置くタスクと関連する受領元を表示する",
+  "Order Dispatch 将订单按 Pick Method 生成拣货任务后，Pick Task 列表里出现一批待执行任务。管理员在这里分配操作员（Assignee），操作员用手持设备（RF/PDA）按任务路线逐库位拣货。每条任务的 Progress 实时更新，管理员可以看到哪些任务在进行中、哪些已完成。": "Order Dispatch が Pick Method に基づいてピッキング タスクを生成すると、実行されるタスクのバッチが Pick Task リストに表示されます。ここで管理者はオペレータ (Assignee) を割り当て、オペレータはハンドヘルド デバイス (RF/PDA) を使用してタスク ルートに従ってアイテムを 1 つずつピッキングします。各タスクの進捗状況はリアルタイムで更新され、管理者はどのタスクが進行中で、どのタスクが完了したかを確認できます。",
+  "Order Dispatch 生成任务": "Order Dispatch はタスクを生成します",
+});
+
+Object.assign(I18N.en, {
+  "扫描 LP 和库位，更新库存位置": "Scan LPs and locations to update inventory locations",
+  "💡 生成时机由 Customer Settings 中的 Put Away Mode 控制：DURING_RECEIVING 每完成一个 LP 即生成；AFTER_RECEIVING 整个收货任务关闭后统一生成。": "💡 The generation timing is controlled by Put Away Mode in Customer Settings: DURING_RECEIVING is generated every time an LP is completed; AFTER_RECEIVING is generated uniformly after the entire receiving task is closed.",
+  "Put Away Task · 列表": "Put Away Task · List",
+  "列表显示每条上架任务关联的 Receipt ID 和 Receive Task ID，可追溯来源。Put Away Type 说明上架方式，Progress 显示已完成 LP 数 / 总数。": "The list displays the Receipt ID and Receive Task ID associated with each listing task, which can be traced back to the source. Put Away Type describes the putting method, and Progress displays the number of completed LPs/total number.",
+  "出库高峰，多个订单同时等待拣货": "During peak outbound times, multiple orders are waiting for picking at the same time.",
+  "查看待上架任务及关联的收货来源": "View tasks to be put on the shelf and associated receipt sources",
+  "Order Dispatch 将订单按 Pick Method 生成拣货任务后，Pick Task 列表里出现一批待执行任务。管理员在这里分配操作员（Assignee），操作员用手持设备（RF/PDA）按任务路线逐库位拣货。每条任务的 Progress 实时更新，管理员可以看到哪些任务在进行中、哪些已完成。": "After Order Dispatch generates picking tasks based on the Pick Method, a batch of tasks to be executed will appear in the Pick Task list. The administrator assigns an operator (Assignee) here, and the operator uses a handheld device (RF/PDA) to pick items one by one according to the task route. The progress of each task is updated in real time, and the administrator can see which tasks are in progress and which have been completed.",
+  "Order Dispatch 生成任务": "Order Dispatch generates tasks",
+});
+
+
+Object.assign(I18N.ja, {
+  "技术向": "技術向け",
+  "放大 Receive Task 详情截图": "受信タスクの詳細のスクリーンショットを拡大する",
+  "详情页 · Steps 标签页": "詳細ページ・ステップタブページ",
+  "日": "日",
+  "根据 Put Away Strategies 匹配最优目标库位": "片付け戦略に基づいて最適なターゲット場所を照合します。",
+  "按任务指示将容器移至目标位置": "タスクの指示に従ってコンテナをターゲットの場所に移動します",
+  "操作员搬运 LP": "LPを扱うオペレーター",
+  "扫描入位确认": "スキャンして確認します",
+});
+
+Object.assign(I18N.en, {
+  "技术向": "Technical",
+  "放大 Receive Task 详情截图": "Enlarge Receive Task details screenshot",
+  "详情页 · Steps 标签页": "Details page · Steps tab page",
+  "日": "day",
+  "根据 Put Away Strategies 匹配最优目标库位": "Match the optimal target location based on Put Away Strategies",
+  "按任务指示将容器移至目标位置": "Move the container to the target location as instructed by the task",
+  "操作员搬运 LP": "Operator handling LP",
+  "扫描入位确认": "Scan to confirm",
+});
+
+
+Object.assign(I18N.ja, {
+  "点击任务 ID 进入详情页，可查看每个步骤的独立执行进度。步骤按 Sequence 顺序排列，每步有独立的 Status 和 Action Progress，方便定位具体卡在哪个动作。": "タスク ID をクリックして詳細ページに入り、各ステップの独立した実行の進行状況を表示します。ステップはシーケンス順に配置されており、各ステップには独立したステータスとアクションの進行状況があるため、どのアクションが滞っているかを簡単に特定できます。",
+  "卸货，将商品从车上移至收货区（可跳过）": "商品を降ろし、車両から受け取りエリアまで商品を移動します（省略可能）",
+  "扫描建立 LP，商品正式进入系统库存（必须执行）": "スキャンして LP を作成すると、製品が正式にシステム インベントリに登録されます (必ず実行する必要があります)。",
+  "Orbiflow WMS-Lite · Task 任务管理 功能说明": "Orbiflow WMS-Lite・タスクタスク管理機能の説明",
+  "Receive Task 详情页面截图": "受信タスクの詳細ページのスクリーンショット",
+  "中": "真ん中",
+  "货车到仓签到，确认月台（可跳过）": "トラックが倉庫に到着し、サインインしてプラットフォームを確認します (スキップ可能)",
+  "系统推荐库位": "システム推奨の場所",
+});
+
+Object.assign(I18N.en, {
+  "点击任务 ID 进入详情页，可查看每个步骤的独立执行进度。步骤按 Sequence 顺序排列，每步有独立的 Status 和 Action Progress，方便定位具体卡在哪个动作。": "Click the task ID to enter the details page and view the independent execution progress of each step. The steps are arranged in Sequence order, and each step has independent Status and Action Progress, making it easy to locate which action is stuck.",
+  "卸货，将商品从车上移至收货区（可跳过）": "Unload the goods and move the goods from the vehicle to the receiving area (can be skipped)",
+  "扫描建立 LP，商品正式进入系统库存（必须执行）": "Scan to create LP, and the product officially enters the system inventory (must be executed)",
+  "Orbiflow WMS-Lite · Task 任务管理 功能说明": "Orbiflow WMS-Lite · Task Task Management Function Description",
+  "Receive Task 详情页面截图": "Screenshot of Receive Task details page",
+  "中": "middle",
+  "货车到仓签到，确认月台（可跳过）": "Truck arrives at the warehouse to sign in and confirm the platform (can be skipped)",
+  "系统推荐库位": "System recommended location",
+});
+
+
+Object.assign(I18N.ja, {
   "进入当前步骤的执行界面，按系统指引完成 Dock Check In、Offload 或 LP Setup。卡片上实时显示步骤进度，如": "現在ステップの実行画面に入り、システム案内に沿って Dock Check In、Offload、LP Setup を完了します。カードにはステップ進捗がリアルタイムで表示されます。例:",
   "，操作员随时知道当前在哪一步。": "。作業者は現在どのステップにいるかを把握できます。",
   "💡 任务卡片顶部标签区分优先级：": "💡 タスクカード上部のラベルで優先度を区別します:",
@@ -339,6 +588,7 @@ Object.assign(I18N.en, {
 
 const ATTR_I18N = {
   ja: {
+    "语言切换": "言語切り替え",
     "说明书导航": "説明書ナビゲーション",
     "打开菜单": "メニューを開く",
     "关闭图片": "画像を閉じる",
@@ -386,6 +636,7 @@ const ATTR_I18N = {
     "放大 Load Task 列表截图": "Load Task 一覧画面を拡大"
   },
   en: {
+    "语言切换": "Language switcher",
     "说明书导航": "Manual navigation",
     "打开菜单": "Open menu",
     "关闭图片": "Close image",
@@ -452,8 +703,8 @@ function prepareI18nNodes() {
   getTextNodes(document.body).forEach((node) => {
     node.__i18nSource = node.nodeValue.trim();
   });
-  document.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
-    ["aria-label", "alt", "title"].forEach((attr) => {
+  document.querySelectorAll("[aria-label], [alt], [title], [placeholder]").forEach((element) => {
+    ["aria-label", "alt", "title", "placeholder"].forEach((attr) => {
       if (element.hasAttribute(attr)) {
         element.dataset[`i18n${attr.replace(/(^|-)([a-z])/g, (_, __, char) => char.toUpperCase())}`] = element.getAttribute(attr);
       }
@@ -478,15 +729,16 @@ function applyLanguage(lang) {
   document.documentElement.lang = meta.htmlLang;
   document.title = meta.title;
   const attrTranslations = ATTR_I18N[selectedLang] || {};
-  document.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
+  document.querySelectorAll("[aria-label], [alt], [title], [placeholder]").forEach((element) => {
     [
       ["aria-label", "i18nAriaLabel"],
       ["alt", "i18nAlt"],
-      ["title", "i18nTitle"]
+      ["title", "i18nTitle"],
+      ["placeholder", "i18nPlaceholder"]
     ].forEach(([attr, key]) => {
       const source = element.dataset[key];
       if (!source) return;
-      element.setAttribute(attr, selectedLang === "zh" ? source : (attrTranslations[source] || source));
+      element.setAttribute(attr, selectedLang === "zh" ? source : (attrTranslations[source] || translations[source] || source));
     });
   });
   document.querySelectorAll("[data-lang-option]").forEach((button) => {
@@ -508,11 +760,12 @@ function initLanguageSwitcher() {
 
   let savedLang = "zh";
   try {
-    savedLang = localStorage.getItem(LANGUAGE_STORAGE_KEY) || "zh";
+    const requestedLang = new URLSearchParams(window.location.search).get("lang");
+    savedLang = requestedLang || localStorage.getItem(LANGUAGE_STORAGE_KEY) || "zh";
   } catch {
     savedLang = "zh";
   }
   applyLanguage(savedLang);
 }
 
-initLanguageSwitcher();
+if (typeof document !== "undefined") initLanguageSwitcher();
