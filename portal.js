@@ -41,6 +41,8 @@ const currentTitle = document.querySelector("#current-title");
 const portalContent = document.querySelector(".portal-content");
 const routeLinks = [...document.querySelectorAll(".portal-route")];
 const modules = [...document.querySelectorAll(".nav-module")];
+const systemTabs = [...document.querySelectorAll("[data-system-tab]")];
+const systemMenus = [...document.querySelectorAll("[data-system-menu]")];
 let activeRoute = null;
 let language = "zh";
 let navigationSequence = 0;
@@ -64,6 +66,20 @@ function setMenu(open) {
   scrim.classList.toggle("show", open);
   menuButton.setAttribute("aria-expanded", String(open));
   menuButton.setAttribute("aria-label", translations[language][open ? "closeMenu" : "openMenu"]);
+}
+
+function setActiveSystem(system) {
+  const activeSystem = system === "wcs" ? "wcs" : "wes";
+  systemTabs.forEach((tab) => {
+    const selected = tab.dataset.systemTab === activeSystem;
+    tab.classList.toggle("selected", selected);
+    tab.setAttribute("aria-selected", String(selected));
+  });
+  systemMenus.forEach((menu) => {
+    const selected = menu.dataset.systemMenu === activeSystem;
+    menu.hidden = !selected;
+    menu.toggleAttribute("inert", !selected);
+  });
 }
 
 function moduleName(module) {
@@ -97,6 +113,11 @@ function applyPortalLanguage(nextLanguage, syncContent = true) {
 
 function updateCurrentTitle() {
   if (!activeRoute) return;
+  const titleKey = activeRoute.dataset.titleI18n;
+  if (titleKey && translations[language][titleKey]) {
+    currentTitle.textContent = translations[language][titleKey];
+    return;
+  }
   const label = activeRoute.querySelector("b") || activeRoute;
   currentTitle.textContent = label.textContent.trim().replace(/^[-–—]\s*/, "");
 }
@@ -317,11 +338,24 @@ async function loadContent(page, section, sequence) {
     stylesheet.rel = "stylesheet";
     stylesheet.href = new URL(page === "task" ? "task/styles.css" : page === "wcs" ? "wcs/styles.css" : "styles.css", location.href).href;
     const embedStyle = document.createElement("style");
+    const pageLayoutOverrides = page === "wcs" ? `
+      main > .manual-page {
+        width: 100%;
+        padding: 86px clamp(48px, 6vw, 104px) 96px !important;
+        border-top: 0 !important;
+      }
+      @media (max-width: 1080px) {
+        main > .manual-page { padding-left: 45px !important; padding-right: 45px !important; }
+      }
+      @media (max-width: 820px) {
+        main > .manual-page { padding: 62px 22px 70px !important; }
+      }
+    ` : "";
     embedStyle.textContent = `
       :host {
-        display: block; min-height: 100%; overflow-x: hidden; background: #f6f3ec;
+        display: block; min-height: 100%; overflow-x: hidden; background: #fbfaf7;
         color: #132238; font-family: "Microsoft YaHei UI", "Yu Gothic UI", "Segoe UI", sans-serif; line-height: 1.65;
-        --paper: #f6f3ec; --paper-2: #eee8dc; --paper-deep: #eee9df; --ink: #132238;
+        --paper: #fbfaf7; --paper-2: #f3f0e9; --paper-deep: #eee9df; --ink: #132238;
         --navy: #0e2a47; --muted: #637083; --blue: #246bfd; --cyan: #00a6a6;
         --teal: #0f9d9a; --amber: #e99a33; --line: #d3d8df; --white: #fff;
         --pale-blue: #eaf1ff; --pale-cyan: #e6f6f4; --pale-amber: #fff2de;
@@ -329,6 +363,28 @@ async function loadContent(page, section, sequence) {
       }
       main { width: 100% !important; max-width: none !important; margin-left: 0 !important; padding-top: 0 !important; }
       .sidebar, .mobile-header, .language-switcher, .language-switch, .language-switch-floating, .reading-line, #sidebar-scrim { display: none !important; }
+      :is(.hero, .mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview) {
+        background: #fbfaf7 !important;
+        color: var(--ink) !important;
+      }
+      :is(.hero, .mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview)::after {
+        color: rgba(14, 42, 71, .045) !important;
+      }
+      .hero > :is(h1, h2),
+      .mdm-heading h2,
+      .inbound-heading h2,
+      .outbound-overview > h2,
+      .inventory-overview > h2,
+      .cycle-count-overview > h2 { color: var(--navy) !important; }
+      .hero > .hero-lead,
+      .mdm-heading > p,
+      .inbound-heading > p,
+      .outbound-overview > p,
+      .inventory-overview > p,
+      .cycle-count-overview > p { color: var(--muted) !important; }
+      :is(.mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview) .overview-label,
+      :is(.mdm-heading, .inbound-heading) .eyebrow { color: var(--blue) !important; }
+      ${pageLayoutOverrides}
       @media (max-width: 820px) { main { width: 100% !important; margin-left: 0 !important; } }
     `;
     root.replaceChildren(stylesheet, embedStyle, document.importNode(sourceMain, true));
@@ -355,6 +411,7 @@ function selectRoute(link, pushHistory = true) {
   activeRoute = link;
   const page = link.dataset.page || "home";
   const section = link.dataset.section || "start";
+  setActiveSystem(page === "wcs" ? "wcs" : "wes");
   routeLinks.forEach((item) => item.classList.toggle("active", item === link));
   const parentModule = link.closest(".nav-module");
   if (parentModule) setModuleExpanded(parentModule, true);
@@ -377,7 +434,8 @@ function routeFromLocation() {
   const requestedPage = params.get("page");
   const requestedSection = params.get("section") || location.hash.slice(1);
   if (requestedSection) {
-    const exact = routeLinks.find((link) => (!requestedPage || link.dataset.page === requestedPage) && link.dataset.section === requestedSection);
+    const exactMatches = routeLinks.filter((link) => (!requestedPage || link.dataset.page === requestedPage) && link.dataset.section === requestedSection);
+    const exact = exactMatches.find((link) => link.closest(".module-items")) || exactMatches.find((link) => !link.matches(".system-tab")) || exactMatches[0];
     if (exact) return exact;
   }
   if (requestedPage) return routeLinks.find((link) => link.dataset.page === requestedPage);
