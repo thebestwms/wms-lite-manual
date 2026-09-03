@@ -118,8 +118,28 @@ a { color: inherit; }
 .nav-group-link { display: grid; grid-template-columns: 52px 1fr; align-items: center; min-height: 56px; margin: 0 0 18px; padding: 8px 14px; border-radius: 10px; color: white; text-decoration: none; font: 700 15px/1 Bahnschrift, sans-serif; letter-spacing: .08em; }
 .nav-group-link span { color: #72dedb; font-size: 12px; }
 .nav-group-link.active, .task-module-link { background: linear-gradient(90deg, rgba(0,166,166,.34), rgba(0,166,166,.16)); box-shadow: inset 3px 0 var(--cyan); }
-.task-main-nav .nav-submenu { gap: 5px; }
-.task-main-nav .nav-link.sub { padding-left: 28px; }
+.task-main-nav .nav-group-link {
+  grid-template-columns: 34px 1fr;
+  min-height: 38px;
+  margin: 22px 0 5px;
+  padding: 8px 42px 8px 10px;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+.task-main-nav .nav-group-link span { color: #7fded6; font-size: 10px; }
+.task-main-nav .nav-toggle { top: 7px; right: 7px; width: 29px; height: 29px; }
+.task-main-nav .nav-toggle::before { left: 9px; top: 8px; width: 7px; height: 7px; border-width: 0 1.5px 1.5px 0; }
+.task-main-nav.collapsed .nav-toggle::before { top: 11px; }
+.task-main-nav .nav-submenu { gap: 4px; max-height: 520px; }
+.task-main-nav .nav-submenu > .nav-link {
+  grid-template-columns: 34px 1fr;
+  min-height: 42px;
+  padding: 6px 10px 6px 20px;
+  font-size: 14px;
+}
 .nav-group.muted { color: #627a91; }
 .nav-placeholder { padding: 5px 10px 5px 44px; color: #60778c; font-size: 11px; }
 .sidebar-foot { margin: 30px 9px 0; color: #8399ad; font-size: 10px; }

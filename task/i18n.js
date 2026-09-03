@@ -744,6 +744,7 @@ function applyLanguage(lang) {
   document.querySelectorAll("[data-lang-option]").forEach((button) => {
     button.classList.toggle("active", button.dataset.langOption === selectedLang);
   });
+  window.dispatchEvent(new CustomEvent("wms-language-changed"));
 
   try {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, selectedLang);

@@ -38,13 +38,20 @@ navLinks.forEach((link) => link.addEventListener("click", () => toggleMenu(false
 function setNavModuleExpanded(module, expanded, persist = true) {
   const toggle = module.querySelector(".nav-toggle");
   const moduleName = module.dataset.navModule;
-  const moduleLabel = { organization: "Organization", customer: "Customer", item: "Item", industry: "Industry", hazard: "Hazard", carrier: "Carrier", address: "Address", inbound: "Inbound", outbound: "Outbound", inventory: "Inventory", "order-dispatch": "Order Dispatch" }[moduleName] || moduleName;
+  const storageKey = `wms-manual-nav-${moduleName}-v2`;
+  const moduleLabel = { task: "Task", organization: "Organization", customer: "Customer", item: "Item", industry: "Industry", hazard: "Hazard", carrier: "Carrier", address: "Address", inbound: "Inbound", outbound: "Outbound", inventory: "Inventory", "order-dispatch": "Order Dispatch" }[moduleName] || moduleName;
+  const language = document.documentElement.lang;
+  const toggleLabel = language === "ja"
+    ? `Task サブメニューを${expanded ? "折りたたむ" : "展開"}`
+    : language === "en"
+      ? `${expanded ? "Collapse" : "Expand"} ${moduleLabel} submenu`
+      : `${expanded ? "收起" : "展开"} ${moduleLabel} 子菜单`;
   module.classList.toggle("collapsed", !expanded);
   toggle.setAttribute("aria-expanded", String(expanded));
-  toggle.setAttribute("aria-label", `${expanded ? "收起" : "展开"} ${moduleLabel} 子菜单`);
+  toggle.setAttribute("aria-label", toggleLabel);
   if (persist) {
     try {
-      localStorage.setItem(`wms-manual-nav-${moduleName}`, expanded ? "open" : "closed");
+      localStorage.setItem(storageKey, expanded ? "open" : "closed");
     } catch {
       // Navigation still works when browser storage is unavailable.
     }
@@ -52,15 +59,22 @@ function setNavModuleExpanded(module, expanded, persist = true) {
 }
 
 navModules.forEach((module) => {
-  let expanded = true;
+  let expanded = !module.classList.contains("collapsed");
   try {
-    expanded = localStorage.getItem(`wms-manual-nav-${module.dataset.navModule}`) !== "closed";
+    const storedState = localStorage.getItem(`wms-manual-nav-${module.dataset.navModule}-v2`);
+    if (storedState) expanded = storedState !== "closed";
   } catch {
     expanded = true;
   }
   setNavModuleExpanded(module, expanded, false);
   module.querySelector(".nav-toggle").addEventListener("click", () => {
     setNavModuleExpanded(module, module.classList.contains("collapsed"));
+  });
+});
+
+window.addEventListener("wms-language-changed", () => {
+  navModules.forEach((module) => {
+    setNavModuleExpanded(module, !module.classList.contains("collapsed"), false);
   });
 });
 
