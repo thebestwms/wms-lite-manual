@@ -38,60 +38,30 @@ a { color: inherit; }
 .reading-line span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
 .language-switcher {
   position: fixed;
-  top: 18px;
-  right: 22px;
+  top: 1.25rem;
+  right: 1.5rem;
   z-index: 55;
   display: flex;
-  gap: 4px;
-  padding: 5px;
-  border: 1px solid rgba(255,255,255,.24);
+  gap: 0.2rem;
+  padding: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
-  background: rgba(9,28,48,.42);
-  box-shadow: 0 12px 36px rgba(5,17,31,.18);
-  backdrop-filter: blur(14px);
+  background: rgba(7, 38, 66, 0.86);
+  backdrop-filter: blur(12px);
 }
 .language-switcher button {
-  min-width: 38px;
-  height: 30px;
-  padding: 0 10px;
+  min-width: 2.25rem;
+  padding: 0.45rem 0.65rem;
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: rgba(255,255,255,.78);
+  color: #e7f2fb;
   cursor: pointer;
-  font: 700 12px/1 Bahnschrift, "Microsoft YaHei UI", sans-serif;
-  letter-spacing: .04em;
+  font: inherit;
+  font-weight: 700;
 }
 .language-switcher button:hover { color: white; background: rgba(255,255,255,.12); }
-.language-switcher button.active { color: var(--navy); background: white; box-shadow: 0 6px 18px rgba(5,17,31,.18); }
-.language-switcher {
-  position: fixed;
-  top: 18px;
-  right: 22px;
-  z-index: 55;
-  display: flex;
-  gap: 4px;
-  padding: 5px;
-  border: 1px solid rgba(255,255,255,.24);
-  border-radius: 999px;
-  background: rgba(9,28,48,.42);
-  box-shadow: 0 12px 36px rgba(5,17,31,.18);
-  backdrop-filter: blur(14px);
-}
-.language-switcher button {
-  min-width: 38px;
-  height: 30px;
-  padding: 0 10px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: rgba(255,255,255,.78);
-  cursor: pointer;
-  font: 700 12px/1 Bahnschrift, "Microsoft YaHei UI", sans-serif;
-  letter-spacing: .04em;
-}
-.language-switcher button:hover { color: white; background: rgba(255,255,255,.12); }
-.language-switcher button.active { color: var(--navy); background: white; box-shadow: 0 6px 18px rgba(5,17,31,.18); }
+.language-switcher button.active { background: #fff; color: #173f68; }
 
 .sidebar {
   position: fixed;
@@ -1321,7 +1291,6 @@ dialog img { display: block; width: 100%; max-height: calc(92vh - 60px); object-
   .sidebar-scrim { position: fixed; inset: 0; z-index: 35; background: rgba(5,17,31,.58); }
   .sidebar-scrim.show { display: block; }
   .mobile-header { position: sticky; top: 0; z-index: 30; height: 58px; display: grid; grid-template-columns: 48px 1fr auto; align-items: center; padding: 0 15px; background: rgba(246,243,236,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
-  .language-switcher { top: 68px; right: 14px; }
   .language-switcher { top: 68px; right: 14px; }
   .mobile-header button { border: 0; background: transparent; color: var(--navy); font-size: 23px; text-align: left; }
   .mobile-header strong { font-size: 13px; }
