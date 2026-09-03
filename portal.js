@@ -1,12 +1,12 @@
 const routes = {
-  home: "wms-lite.html",
-  mdm: "wms-lite.html",
+  home: "wms-lite.html?v=20260903-shared-home-v17",
+  mdm: "wms-lite.html?v=20260903-shared-home-v17",
   inbound: "inbound.html",
   outbound: "inbound.html",
   inventory: "inventory.html",
   "cycle-count": "inventory.html",
   task: "task/index.html",
-  "wcs-home": "wms-lite.html",
+  "wcs-home": "wms-lite.html?v=20260903-shared-home-v17",
   wcs: "wcs/index.html"
 };
 
@@ -317,10 +317,10 @@ async function loadContent(page, section, sequence) {
   try {
     await ensureLanguageEngine(page);
     const sourceUrl = new URL(routes[page] || routes.home, location.href);
-    const cacheKey = sourceUrl.pathname;
+    const cacheKey = sourceUrl.href;
     let sourceDocument = sourceDocumentCache.get(cacheKey);
     if (!sourceDocument) {
-      const response = await fetch(sourceUrl, { signal: contentAbortController.signal });
+      const response = await fetch(sourceUrl, { signal: contentAbortController.signal, cache: "no-store" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       sourceDocument = new DOMParser().parseFromString(await response.text(), "text/html");
       sourceDocumentCache.set(cacheKey, sourceDocument);
@@ -385,8 +385,30 @@ async function loadContent(page, section, sequence) {
       .outbound-overview > p,
       .inventory-overview > p,
       .cycle-count-overview > p { color: var(--muted) !important; }
+      .hero > .eyebrow,
       :is(.mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview) .overview-label,
-      :is(.mdm-heading, .inbound-heading) .eyebrow { color: var(--blue) !important; }
+      :is(.mdm-heading, .inbound-heading) .eyebrow,
+      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article > small,
+      .inbound-flow article > span { color: var(--blue) !important; }
+      :is(.mdm-scope, .inventory-function-grid) {
+        border-color: var(--line) !important;
+        background: var(--line) !important;
+      }
+      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article {
+        border-color: var(--line) !important;
+        background: #fff !important;
+        color: var(--ink) !important;
+      }
+      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article :is(h2, h3, b, strong),
+      .inbound-flow article b { color: var(--navy) !important; }
+      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article p,
+      .inbound-flow article small { color: var(--muted) !important; }
+      :is(.mdm-scope, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article span {
+        color: #516579 !important;
+        border-color: var(--line) !important;
+      }
+      .inbound-flow { border-color: var(--line) !important; }
+      .inbound-flow > i { color: #9aa8b6 !important; }
       ${pageLayoutOverrides}
       @media (max-width: 820px) { main { width: 100% !important; margin-left: 0 !important; } }
     `;
