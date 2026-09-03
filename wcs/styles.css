@@ -1388,7 +1388,7 @@ h1 em {
 }
 footer {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(180px, auto) minmax(0, 1fr) auto;
   align-items: end;
   gap: 18px;
   padding: 36px clamp(48px, 6vw, 104px) 42px;
@@ -1397,6 +1397,8 @@ footer {
   border-top: 1px solid var(--line);
 }
 footer strong { display: block; font-size: 18px; }
+footer > div { min-width: 180px; }
+footer > div span { display: block; white-space: nowrap; }
 footer span,
 footer p {
   color: var(--muted);
