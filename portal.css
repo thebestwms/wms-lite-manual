@@ -184,7 +184,29 @@ button { letter-spacing: 0; }
 }
 .language-switcher button.active { color: var(--navy); background: white; }
 
-.portal-content { position: fixed; inset: var(--header-height) 0 0 var(--sidebar-width); }
+.portal-content { position: fixed; inset: var(--header-height) 0 0 var(--sidebar-width); background: white; }
+.frame-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  color: #728598;
+  background: #f4f6f8;
+  font-size: 13px;
+}
+.portal-content.loading .frame-loading { display: grid; }
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #cbd6df;
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: loading-spin .7s linear infinite;
+}
+@keyframes loading-spin { to { transform: rotate(360deg); } }
 #manual-frame { display: block; width: 100%; height: 100%; border: 0; background: white; opacity: 0; transition: opacity .12s ease; }
 #manual-frame.ready { opacity: 1; }
 .portal-scrim { display: none; }

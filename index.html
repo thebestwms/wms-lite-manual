@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Orbiflow WMS-Lite、WES 与 WCS 统一功能说明书">
   <title>Orbiflow Unified Function Manual</title>
-  <link rel="stylesheet" href="portal.css?v=20260903-unified-v2">
+  <link rel="stylesheet" href="portal.css?v=20260903-nav-sync-v5">
 </head>
 <body>
   <aside class="portal-sidebar" id="portal-sidebar">
@@ -135,9 +135,13 @@
   </header>
 
   <main class="portal-content">
+    <div class="frame-loading" id="frame-loading" aria-live="polite">
+      <span class="loading-spinner" aria-hidden="true"></span>
+      <span data-i18n="loading">正在加载内容</span>
+    </div>
     <iframe id="manual-frame" title="Orbiflow Function Manual 内容" src="wms-lite.html?lang=zh#start"></iframe>
   </main>
 
-  <script src="portal.js?v=20260903-unified-v2"></script>
+  <script src="portal.js?v=20260903-nav-sync-v5"></script>
 </body>
 </html>
