@@ -6,6 +6,7 @@ const routes = {
   inventory: "inventory.html",
   "cycle-count": "inventory.html",
   task: "task/index.html",
+  "wcs-home": "wms-lite.html",
   wcs: "wcs/index.html"
 };
 
@@ -329,6 +330,8 @@ async function loadContent(page, section, sequence) {
     const sourceMain = sourceDocument.createElement("main");
     sourceMain.append(sourceSection.cloneNode(true));
     const sourceDialog = sourceDocument.querySelector("#image-dialog");
+    const startReading = sourceMain.querySelector("[data-portal-start]");
+    if (startReading && page === "wcs-home") startReading.setAttribute("href", "wcs/index.html#dashboard");
     rewriteContentUrls(sourceMain, sourceUrl);
     if (sourceDialog) rewriteContentUrls(sourceDialog, sourceUrl);
     if (sequence !== navigationSequence) return;
@@ -411,7 +414,7 @@ function selectRoute(link, pushHistory = true) {
   activeRoute = link;
   const page = link.dataset.page || "home";
   const section = link.dataset.section || "start";
-  setActiveSystem(page === "wcs" ? "wcs" : "wes");
+  setActiveSystem(page === "wcs" || page === "wcs-home" ? "wcs" : "wes");
   routeLinks.forEach((item) => item.classList.toggle("active", item === link));
   const parentModule = link.closest(".nav-module");
   if (parentModule) setModuleExpanded(parentModule, true);
