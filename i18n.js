@@ -776,12 +776,16 @@ function textNodes(root) {
   return nodes;
 }
 
-function translateText(source, lang) {
-  if (lang === "zh") return ZH_NAV_TRANSLATIONS[source] || source;
-  const pageName = location.pathname.split("/").pop() || "index.html";
+function translationDictionary(lang, pageName) {
   const common = pageName === "inbound.html" ? INBOUND_COMMON[lang] || {} : {};
   const pageTranslations = pageName === "inventory.html" ? INVENTORY_TRANSLATIONS[lang] || {} : {};
-  const dictionary = { ...(TRANSLATIONS[lang] || {}), ...(MDM_TRANSLATIONS[lang] || {}), ...(INBOUND_TRANSLATIONS[lang] || {}), ...(INBOUND_EXTRA[lang] || {}), ...(CYCLE_COUNT_DETAIL_TRANSLATIONS[lang] || {}), ...(LP_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_LOCK_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_ACTIVITY_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_OVERVIEW_DETAIL_TRANSLATIONS[lang] || {}), ...pageTranslations, ...common };
+  return { ...(TRANSLATIONS[lang] || {}), ...(MDM_TRANSLATIONS[lang] || {}), ...(INBOUND_TRANSLATIONS[lang] || {}), ...(INBOUND_EXTRA[lang] || {}), ...(CYCLE_COUNT_DETAIL_TRANSLATIONS[lang] || {}), ...(LP_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_LOCK_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_ACTIVITY_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_OVERVIEW_DETAIL_TRANSLATIONS[lang] || {}), ...pageTranslations, ...common };
+}
+
+function translateText(source, lang, pageNameOverride, preparedDictionary) {
+  if (lang === "zh") return ZH_NAV_TRANSLATIONS[source] || source;
+  const pageName = pageNameOverride || location.pathname.split("/").pop() || "index.html";
+  const dictionary = preparedDictionary || translationDictionary(lang, pageName);
   const normalized = source.replace(/[\u00a0\u2007\u202f\s]+/g, " ").trim();
   if (dictionary[source]) return dictionary[source];
   if (dictionary[normalized]) return dictionary[normalized];
@@ -792,43 +796,54 @@ function translateText(source, lang) {
     .reduce((value, [from, to]) => value.replace(new RegExp(from.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/ /g, "\\s+"), "g"), to), source);
 }
 
-function applyLanguage(lang) {
+function applyLanguage(lang, root = document.body, pageNameOverride) {
   const selected = LANGUAGE_META[lang] ? lang : "zh";
-  textNodes(document.body).forEach((node) => {
+  const pageName = pageNameOverride || location.pathname.split("/").pop() || "index.html";
+  const dictionary = selected === "zh" ? null : translationDictionary(selected, pageName);
+  textNodes(root).forEach((node) => {
     const source = node.__i18nSource || node.nodeValue.trim();
     const leading = node.nodeValue.match(/^\s*/)?.[0] || "";
     const trailing = node.nodeValue.match(/\s*$/)?.[0] || "";
-    node.nodeValue = `${leading}${translateText(source, selected)}${trailing}`;
+    node.nodeValue = `${leading}${translateText(source, selected, pageName, dictionary)}${trailing}`;
   });
-  document.documentElement.lang = LANGUAGE_META[selected].htmlLang;
-  const pageName = location.pathname.split("/").pop() || "index.html";
-  const pageLabel = PAGE_LABELS[pageName]?.[selected];
-  document.title = pageLabel ? `${LANGUAGE_META[selected].title} · ${pageLabel}` : LANGUAGE_META[selected].title;
-  document.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
+  if (root === document.body) {
+    document.documentElement.lang = LANGUAGE_META[selected].htmlLang;
+    const pageLabel = PAGE_LABELS[pageName]?.[selected];
+    document.title = pageLabel ? `${LANGUAGE_META[selected].title} · ${pageLabel}` : LANGUAGE_META[selected].title;
+  }
+  root.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
     ["aria-label", "alt", "title"].forEach((attribute) => {
       const dataKey = `i18n${attribute.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join("")}`;
       const source = element.dataset[dataKey];
-      if (source) element.setAttribute(attribute, translateText(source, selected));
+      if (source) element.setAttribute(attribute, translateText(source, selected, pageName, dictionary));
     });
   });
-  document.querySelectorAll("[data-lang-option]").forEach((button) => button.classList.toggle("active", button.dataset.langOption === selected));
+  root.querySelectorAll("[data-lang-option]").forEach((button) => button.classList.toggle("active", button.dataset.langOption === selected));
   try { localStorage.setItem(LANGUAGE_STORAGE_KEY, selected); } catch { /* optional persistence */ }
 }
 
-document.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
-  ["aria-label", "alt", "title"].forEach((attribute) => {
-    if (element.hasAttribute(attribute)) {
-      const dataKey = `i18n${attribute.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join("")}`;
-      element.dataset[dataKey] = element.getAttribute(attribute);
-    }
+function prepareI18n(root = document.body) {
+  root.querySelectorAll("[aria-label], [alt], [title]").forEach((element) => {
+    ["aria-label", "alt", "title"].forEach((attribute) => {
+      if (element.hasAttribute(attribute)) {
+        const dataKey = `i18n${attribute.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join("")}`;
+        element.dataset[dataKey] = element.getAttribute(attribute);
+      }
+    });
   });
-});
-textNodes(document.body).forEach((node) => { node.__i18nSource = node.nodeValue.trim(); });
-document.querySelectorAll("[data-lang-option]").forEach((button) => button.addEventListener("click", () => applyLanguage(button.dataset.langOption)));
-let saved = "zh";
-try { saved = localStorage.getItem(LANGUAGE_STORAGE_KEY) || "zh"; } catch { /* ignore */ }
-const requestedLanguage = new URLSearchParams(location.search).get("lang");
-if (LANGUAGE_META[requestedLanguage]) saved = requestedLanguage;
-applyLanguage(saved);
+  textNodes(root).forEach((node) => { node.__i18nSource = node.nodeValue.trim(); });
+}
+
+window.WmsManualI18n = { prepare: prepareI18n, apply: applyLanguage };
+
+if (document.documentElement.dataset.unifiedPortal !== "true") {
+  prepareI18n(document.body);
+  document.querySelectorAll("[data-lang-option]").forEach((button) => button.addEventListener("click", () => applyLanguage(button.dataset.langOption)));
+  let saved = "zh";
+  try { saved = localStorage.getItem(LANGUAGE_STORAGE_KEY) || "zh"; } catch { /* ignore */ }
+  const requestedLanguage = new URLSearchParams(location.search).get("lang");
+  if (LANGUAGE_META[requestedLanguage]) saved = requestedLanguage;
+  applyLanguage(saved);
+}
 
 

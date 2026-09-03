@@ -699,11 +699,11 @@ function getTextNodes(root) {
   return nodes;
 }
 
-function prepareI18nNodes() {
-  getTextNodes(document.body).forEach((node) => {
+function prepareI18nNodes(root = document.body) {
+  getTextNodes(root).forEach((node) => {
     node.__i18nSource = node.nodeValue.trim();
   });
-  document.querySelectorAll("[aria-label], [alt], [title], [placeholder]").forEach((element) => {
+  root.querySelectorAll("[aria-label], [alt], [title], [placeholder]").forEach((element) => {
     ["aria-label", "alt", "title", "placeholder"].forEach((attr) => {
       if (element.hasAttribute(attr)) {
         element.dataset[`i18n${attr.replace(/(^|-)([a-z])/g, (_, __, char) => char.toUpperCase())}`] = element.getAttribute(attr);
@@ -712,11 +712,11 @@ function prepareI18nNodes() {
   });
 }
 
-function applyLanguage(lang) {
+function applyLanguage(lang, root = document.body) {
   const selectedLang = LANGUAGE_META[lang] ? lang : "zh";
   const translations = I18N[selectedLang] || {};
 
-  getTextNodes(document.body).forEach((node) => {
+  getTextNodes(root).forEach((node) => {
     const source = node.__i18nSource || node.nodeValue.trim();
     const translated = selectedLang === "zh" ? source : translations[source];
     if (!translated) return;
@@ -726,10 +726,12 @@ function applyLanguage(lang) {
   });
 
   const meta = LANGUAGE_META[selectedLang];
-  document.documentElement.lang = meta.htmlLang;
-  document.title = meta.title;
+  if (root === document.body) {
+    document.documentElement.lang = meta.htmlLang;
+    document.title = meta.title;
+  }
   const attrTranslations = ATTR_I18N[selectedLang] || {};
-  document.querySelectorAll("[aria-label], [alt], [title], [placeholder]").forEach((element) => {
+  root.querySelectorAll("[aria-label], [alt], [title], [placeholder]").forEach((element) => {
     [
       ["aria-label", "i18nAriaLabel"],
       ["alt", "i18nAlt"],
@@ -741,7 +743,7 @@ function applyLanguage(lang) {
       element.setAttribute(attr, selectedLang === "zh" ? source : (attrTranslations[source] || translations[source] || source));
     });
   });
-  document.querySelectorAll("[data-lang-option]").forEach((button) => {
+  root.querySelectorAll("[data-lang-option]").forEach((button) => {
     button.classList.toggle("active", button.dataset.langOption === selectedLang);
   });
   window.dispatchEvent(new CustomEvent("wms-language-changed"));
@@ -754,7 +756,7 @@ function applyLanguage(lang) {
 }
 
 function initLanguageSwitcher() {
-  prepareI18nNodes();
+  prepareI18nNodes(document.body);
   document.querySelectorAll("[data-lang-option]").forEach((button) => {
     button.addEventListener("click", () => applyLanguage(button.dataset.langOption));
   });
@@ -769,4 +771,6 @@ function initLanguageSwitcher() {
   applyLanguage(savedLang);
 }
 
-if (typeof document !== "undefined") initLanguageSwitcher();
+window.WmsTaskI18n = { prepare: prepareI18nNodes, apply: applyLanguage };
+
+if (typeof document !== "undefined" && document.documentElement.dataset.unifiedPortal !== "true") initLanguageSwitcher();

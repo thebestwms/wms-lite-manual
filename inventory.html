@@ -105,13 +105,13 @@
         </div>
 
       <div class="inventory-screen-section inventory-tab-panel" id="inventory-summary-panel" role="tabpanel">
-        <button class="screen-frame" data-lightbox="assets/inventory-summary.png" aria-label="放大 Inventory Summary 页面截图"><span>INVENTORY · SUMMARY</span><img src="assets/inventory-summary.png" alt="Inventory Summary 页面截图"><i>点击放大</i></button>
+        <button class="screen-frame" data-lightbox="assets/inventory-summary.png" aria-label="放大 Inventory Summary 页面截图"><span>INVENTORY · SUMMARY</span><img loading="lazy" decoding="async" src="assets/inventory-summary.png" alt="Inventory Summary 页面截图"><i>点击放大</i></button>
         <div class="inventory-summary-intro"><span class="section-kicker">Summary</span><h3>先按商品查看库存汇总</h3><p>Summary 将符合查询条件的库存按 SKU、Status 和 Type 汇总，适合先判断某个商品当前有多少库存；需要确认具体库位、LP 或关联单据时，再切换到 Inventory Detail。</p></div>
         <div class="inventory-query-groups"><article><b>归属与商品</b><p>Customer、Title 和 SKU 用于限定库存属于哪个客户、货权方和商品。</p></article><article><b>状态与存放位置</b><p>Status、Location、LP 和 Original LP 用于查询库存所处阶段及当前或来源容器。</p></article><article><b>业务来源</b><p>Receipt、Order 和 Load ID 用于沿入库、出库或装载单据追查对应库存。</p></article></div>
         <div class="inventory-quantity-note"><div><span>Total Qty (UOM)</span><b>按当前计量单位显示</b><p>例如 5 CASE，表示以箱为单位记录。</p></div><div><span>Total Base Qty (UOM)</span><b>换算为基础单位</b><p>若 1 CASE = 12 EA，则 5 CASE = 60 EA。</p></div><div class="inventory-availability"><span>判断可分配量</span><b>页面库存数量不等于当前可分配数量</b><p>Open 库存还需扣除已锁定数量：100 EA - 30 EA = 70 EA 可分配。</p></div></div>
       </div>
       <div class="inventory-detail-section inventory-tab-panel" id="inventory-detail-panel" role="tabpanel" hidden>
-        <button class="screen-frame" data-lightbox="assets/inventory-detail.png" aria-label="放大 Inventory Detail 页面截图"><span>INVENTORY · DETAIL</span><img src="assets/inventory-detail.png" alt="Inventory Detail 页面截图"><i>点击放大</i></button>
+        <button class="screen-frame" data-lightbox="assets/inventory-detail.png" aria-label="放大 Inventory Detail 页面截图"><span>INVENTORY · DETAIL</span><img loading="lazy" decoding="async" src="assets/inventory-detail.png" alt="Inventory Detail 页面截图"><i>点击放大</i></button>
         <div class="inventory-detail-intro"><span class="section-kicker">Inventory Detail</span><h3>把商品汇总量拆解为具体库存记录</h3><p>同一个 SKU 可能分布在不同客户、货权、LP、批次或库存状态下。Inventory Detail 按记录逐行展示这些差异，用于确认某一部分库存的实际归属和存放载体。</p></div>
         <div class="inventory-detail-fields"><article><span>01</span><div><b>归属对象</b><p>Customer 表示库存所属客户，Title 表示库存货权。即使 SKU 相同，归属不同的库存也会分别记录。</p></div></article><article><span>02</span><div><b>商品与数量</b><p>SKU 识别商品；Qty (UOM) 显示当前单位下的数量，Base Qty 统一换算为基础单位。</p></div></article><article><span>03</span><div><b>库存属性</b><p>Status 表示当前作业阶段，Type 表示货物类型，Lot# 用于区分需要批次追踪的库存。</p></div></article><article><span>04</span><div><b>容器与追查入口</b><p>LP 表示当前承载库存的容器；点击 View 可进入该条库存记录，继续查看 Location 和关联单据等信息。</p></div></article></div>
         <p class="inventory-detail-usage"><b>实际使用：</b>Summary 用于判断“这个 SKU 总共有多少”，Inventory Detail 用于回答“这些数量分别属于谁、装在哪个 LP、处于什么状态”。</p>
@@ -153,7 +153,7 @@
 
       <div class="lock-page-section">
         <button class="screen-frame" data-lightbox="assets/inventory-lock-list.png" aria-label="放大 Inventory Lock 列表页面截图">
-          <span>INVENTORY LOCK · LIST</span><img src="assets/inventory-lock-list.png" alt="Inventory Lock 列表页面截图"><i>点击放大</i>
+          <span>INVENTORY LOCK · LIST</span><img loading="lazy" decoding="async" src="assets/inventory-lock-list.png" alt="Inventory Lock 列表页面截图"><i>点击放大</i>
         </button>
         <div class="lock-page-intro">
           <span class="section-kicker">锁定记录</span>
@@ -169,7 +169,7 @@
 
       <div class="lock-detail-layout">
         <button class="screen-frame" data-lightbox="assets/inventory-lock-detail.png" aria-label="放大 Inventory Lock Detail 页面截图">
-          <span>INVENTORY LOCK · DETAIL</span><img src="assets/inventory-lock-detail.png" alt="Inventory Lock Detail 页面截图"><i>点击放大</i>
+          <span>INVENTORY LOCK · DETAIL</span><img loading="lazy" decoding="async" src="assets/inventory-lock-detail.png" alt="Inventory Lock Detail 页面截图"><i>点击放大</i>
         </button>
         <div class="lock-detail-copy">
           <span class="section-kicker">Lock Detail</span>
@@ -214,7 +214,7 @@
         </div>
         <button class="screen-frame" data-lightbox="assets/inventory-activity-list.png" aria-label="放大 Inventory Activity 列表页面截图">
           <span>INVENTORY ACTIVITY · LIST</span>
-          <img src="assets/inventory-activity-list.png" alt="Inventory Activity 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/inventory-activity-list.png" alt="Inventory Activity 列表页面截图">
           <i>点击放大</i>
         </button>
         <div class="activity-field-groups">
@@ -253,7 +253,7 @@
         </div>
         <button class="screen-frame" data-lightbox="assets/lp-list.png" aria-label="放大 LP List 页面截图">
           <span>LP · LIST</span>
-          <img src="assets/lp-list.png" alt="LP List 页面截图">
+          <img loading="lazy" decoding="async" src="assets/lp-list.png" alt="LP List 页面截图">
           <i>点击放大</i>
         </button>
         <div class="lp-list-guide">
@@ -288,7 +288,7 @@
         </div>
         <button class="screen-frame" data-lightbox="assets/lp-create.png" aria-label="放大 Create LP 页面截图">
           <span>LP · CREATE</span>
-          <img src="assets/lp-create.png" alt="Create LP 页面截图">
+          <img loading="lazy" decoding="async" src="assets/lp-create.png" alt="Create LP 页面截图">
           <i>点击放大</i>
         </button>
         <div class="lp-create-fields">
@@ -306,7 +306,7 @@
         </div>
         <button class="screen-frame" data-lightbox="assets/lp-detail.png" aria-label="放大 LP Detail 页面截图">
           <span>LP · DETAIL</span>
-          <img src="assets/lp-detail.png" alt="LP Detail 页面截图">
+          <img loading="lazy" decoding="async" src="assets/lp-detail.png" alt="LP Detail 页面截图">
           <i>点击放大</i>
         </button>
         <div class="lp-detail-points">
@@ -349,7 +349,7 @@
         </div>
         <button class="screen-frame" data-lightbox="assets/adjustment-list.png?v=approve" aria-label="放大 Adjustment List 页面截图">
           <span>ADJUSTMENT · LIST</span>
-          <img src="assets/adjustment-list.png?v=approve" alt="Adjustment List 页面截图">
+          <img loading="lazy" decoding="async" src="assets/adjustment-list.png?v=approve" alt="Adjustment List 页面截图">
           <i>点击放大</i>
         </button>
         <div class="adjustment-status-row">
@@ -369,10 +369,10 @@
         <div class="screen-frame adjustment-create-frame">
           <span>ADJUSTMENT · CREATE</span>
           <button class="adjustment-create-shot" data-lightbox="assets/adjustment-create-basic.png" aria-label="放大 Create Adjustment 上半部分截图">
-            <img src="assets/adjustment-create-basic.png" alt="Create Adjustment Basic Info 页面截图">
+            <img loading="lazy" decoding="async" src="assets/adjustment-create-basic.png" alt="Create Adjustment Basic Info 页面截图">
           </button>
           <button class="adjustment-create-shot" data-lightbox="assets/adjustment-create-lines.png" aria-label="放大 Create Adjustment 下半部分截图">
-            <img src="assets/adjustment-create-lines.png" alt="Create Adjustment Add Line 与 Adjustment Lines 页面截图">
+            <img loading="lazy" decoding="async" src="assets/adjustment-create-lines.png" alt="Create Adjustment Add Line 与 Adjustment Lines 页面截图">
           </button>
         </div>
         <div class="adjustment-type-heading">
@@ -400,7 +400,7 @@
         </div>
         <button class="screen-frame" data-lightbox="assets/adjustment-detail.png?v=decline" aria-label="放大 Adjustment Detail 页面截图">
           <span>ADJUSTMENT · DETAIL</span>
-          <img src="assets/adjustment-detail.png?v=decline" alt="Adjustment Detail 页面截图">
+          <img loading="lazy" decoding="async" src="assets/adjustment-detail.png?v=decline" alt="Adjustment Detail 页面截图">
           <i>点击放大</i>
         </button>
         <p class="adjustment-detail-action-note"><b>NEW 单据操作：</b>从列表点击 View 进入详情页，右上角可选择 Approve、Decline 或 Edit。Approve 后执行库存调整；Decline 后单据变为 DECLINED，库存保持不变。</p>
@@ -441,7 +441,7 @@
       <div class="minmax-list-section">
         <button class="screen-frame" data-lightbox="assets/min-max-list-v2.png" aria-label="放大 Min/Max Setting 列表截图">
           <span>MIN/MAX SETTING · REPLENISHMENT SETTING</span>
-          <img src="assets/min-max-list-v2.png" alt="Min/Max Setting 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/min-max-list-v2.png" alt="Min/Max Setting 列表页面截图">
           <i>点击放大</i>
         </button>
         <div class="minmax-page-intro">
@@ -454,7 +454,7 @@
       <div class="minmax-create-section">
         <button class="screen-frame" data-lightbox="assets/min-max-create-setting.png" aria-label="放大 Create Setting 页面截图">
           <span>MIN/MAX SETTING · CREATE SETTING</span>
-          <img src="assets/min-max-create-setting.png" alt="Create Setting 页面截图">
+          <img loading="lazy" decoding="async" src="assets/min-max-create-setting.png" alt="Create Setting 页面截图">
           <i>点击放大</i>
         </button>
         <div class="minmax-create-copy">
@@ -471,7 +471,7 @@
       <div class="minmax-scheduler-section">
         <button class="screen-frame" data-lightbox="assets/min-max-scheduler-v2.png" aria-label="放大 Scheduler Config 截图">
           <span>MIN/MAX SETTING · SCHEDULER CONFIG</span>
-          <img src="assets/min-max-scheduler-v2.png" alt="Scheduler Config 页面截图">
+          <img loading="lazy" decoding="async" src="assets/min-max-scheduler-v2.png" alt="Scheduler Config 页面截图">
           <i>点击放大</i>
         </button>
         <div class="minmax-scheduler-copy">
@@ -497,7 +497,7 @@
 
       <div style="display:flex;gap:32px;align-items:flex-start;margin:20px 0;">
         <div style="flex:0 0 320px;max-width:320px;">
-          <img src="assets/add-holiday.png" alt="Add Holiday 弹窗截图" style="width:100%;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+          <img loading="lazy" decoding="async" src="assets/add-holiday.png" alt="Add Holiday 弹窗截图" style="width:100%;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         </div>
         <div style="flex:1;">
           <div class="subsection-title"><span>01</span><h3>两种休息日类型</h3></div>
@@ -543,7 +543,7 @@
           <p>可按 Ticket No、Customer 和 Status 查询盘点单。列表同时显示范围类型、库位数量和计划日期，并提供 View、Create Task 与 Cancel 入口。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-tickets-list.png" aria-label="放大 Count Tickets 列表截图">
-          <span>COUNT TICKETS · LIST</span><img src="assets/count-tickets-list.png" alt="Count Tickets 列表页面截图"><i>点击放大</i>
+          <span>COUNT TICKETS · LIST</span><img loading="lazy" decoding="async" src="assets/count-tickets-list.png" alt="Count Tickets 列表页面截图"><i>点击放大</i>
         </button>
         <div class="count-ticket-statuses">
           <div><b>NEW</b><span>范围已保存，可编辑、创建任务或取消。</span></div>
@@ -560,7 +560,7 @@
           <p>先选择 Customer，再确定 Count Type、Count Method 和 Count Category；页面会根据选择启用对应的 Count Scope。Schedule Date 和 Target Completion Date 用于安排执行窗口，Blind Count 决定现场是否可见账面数量。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-ticket-create.png" aria-label="放大 Create Count Ticket 页面截图">
-          <span>COUNT TICKETS · CREATE</span><img src="assets/count-ticket-create.png" alt="Create Count Ticket 页面截图"><i>点击放大</i>
+          <span>COUNT TICKETS · CREATE</span><img loading="lazy" decoding="async" src="assets/count-ticket-create.png" alt="Create Count Ticket 页面截图"><i>点击放大</i>
         </button>
 
         <div class="count-ticket-choice-grid">
@@ -579,7 +579,7 @@
           <p>详情页汇总 Ticket 的规则、时间和 Count Lines，并列出由它创建的所有 Count Task。一个 Ticket 可以拆成多个任务，适合将不同区域分配给不同操作员。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-ticket-detail.png" aria-label="放大 Count Ticket Detail 页面截图">
-          <span>COUNT TICKETS · DETAIL</span><img src="assets/count-ticket-detail.png" alt="Count Ticket Detail 页面截图"><i>点击放大</i>
+          <span>COUNT TICKETS · DETAIL</span><img loading="lazy" decoding="async" src="assets/count-ticket-detail.png" alt="Count Ticket Detail 页面截图"><i>点击放大</i>
         </button>
         <div class="count-ticket-detail-points">
           <article><span>01</span><div><b>Basic / Time Information</b><p>确认 Customer、Count Type、Method、Category、Blind Count 与计划日期。</p></div></article>
@@ -611,7 +611,7 @@
           <p>列表按 Task No、Status 或 Assignee 查询任务。Task 只能从 Count Ticket 创建；这里用于查看来源 Ticket、盘点方式、当前负责人和执行状态。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-tasks-list.png" aria-label="放大 Count Tasks 列表截图">
-          <span>COUNT TASKS · LIST</span><img src="assets/count-tasks-list.png" alt="Count Tasks 列表页面截图"><i>点击放大</i>
+          <span>COUNT TASKS · LIST</span><img loading="lazy" decoding="async" src="assets/count-tasks-list.png" alt="Count Tasks 列表页面截图"><i>点击放大</i>
         </button>
         <div class="count-task-list-points">
           <article><b>任务来源</b><p>Ticket No 说明任务由哪张盘点单生成；Count Type 与 Count Method 沿用 Ticket 的盘点规则。</p></article>
@@ -633,7 +633,7 @@
           <p>详情页是 Web 管理视图，不提供盘点数量录入。页面展示来源 Ticket、Assignee、Blind Count、Recount、整体进度，以及按 Location、SKU、LP 展开的 Action 明细。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-task-detail.png" aria-label="放大 Count Task Detail 截图">
-          <span>COUNT TASK · DETAIL</span><img src="assets/count-task-detail.png" alt="Count Task Detail 页面截图"><i>点击放大</i>
+          <span>COUNT TASK · DETAIL</span><img loading="lazy" decoding="async" src="assets/count-task-detail.png" alt="Count Task Detail 页面截图"><i>点击放大</i>
         </button>
         <div class="count-task-detail-points">
           <article><span>01</span><div><b>Basic Information</b><p>确认 Task 与 Ticket 的关系、盘点规则、负责人，以及是否为 Blind Count 或 Recount。</p></div></article>
@@ -682,7 +682,7 @@
           <p>列表按商品和 LP 汇总盘点结果；Results 是分组内的结果总数，Pending 包含 PENDING 和 ACKNOWLEDGED 状态的待处理结果。展开后可核对 System Qty、Count Qty、Difference 及库位、批次日期等信息。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-results-list.png" aria-label="放大 Count Results 列表与状态截图">
-          <span>COUNT RESULTS · LIST &amp; ACTIONS</span><img src="assets/count-results-list.png" alt="Count Results 列表及 Pending 和 Acknowledged 状态截图"><i>点击放大</i>
+          <span>COUNT RESULTS · LIST &amp; ACTIONS</span><img loading="lazy" decoding="async" src="assets/count-results-list.png" alt="Count Results 列表及 Pending 和 Acknowledged 状态截图"><i>点击放大</i>
         </button>
       </div>
 
@@ -704,7 +704,7 @@
           <p class="count-result-match-note"><b>MATCH 结果：</b>仍需完成 Acknowledge 和 Approve 才会关闭，但因为没有差异，不会生成 Adjustment。</p>
         </div>
         <button class="screen-frame compact-screen" data-lightbox="assets/count-result-approve.png" aria-label="放大 Approve Count Result 弹窗截图">
-          <span>COUNT RESULTS · APPROVE</span><img src="assets/count-result-approve.png" alt="Approve Count Result 弹窗截图"><i>点击放大</i>
+          <span>COUNT RESULTS · APPROVE</span><img loading="lazy" decoding="async" src="assets/count-result-approve.png" alt="Approve Count Result 弹窗截图"><i>点击放大</i>
         </button>
       </div>
 

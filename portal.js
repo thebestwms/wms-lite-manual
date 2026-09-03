@@ -33,7 +33,7 @@ const translations = {
   }
 };
 
-const frame = document.querySelector("#manual-frame");
+const contentHost = document.querySelector("#manual-host");
 const sidebar = document.querySelector("#portal-sidebar");
 const scrim = document.querySelector("#portal-scrim");
 const menuButton = document.querySelector("#portal-menu");
@@ -44,6 +44,13 @@ const modules = [...document.querySelectorAll(".nav-module")];
 let activeRoute = null;
 let language = "zh";
 let navigationSequence = 0;
+let loadedPage = null;
+let loadedSection = null;
+let contentRoot = null;
+let contentTranslator = null;
+let contentAbortController = null;
+const languageEnginePromises = new Map();
+const sourceDocumentCache = new Map();
 
 try {
   const saved = localStorage.getItem("orbiflow-unified-manual-language");
@@ -85,12 +92,7 @@ function applyPortalLanguage(nextLanguage, syncContent = true) {
   setMenu(sidebar.classList.contains("open"));
   updateCurrentTitle();
   try { localStorage.setItem("orbiflow-unified-manual-language", language); } catch { /* optional persistence */ }
-  if (syncContent) syncFrameLanguage();
-}
-
-function frameUrl(page, section) {
-  const base = routes[page] || routes.home;
-  return `${base}?lang=${language}${section ? `#${section}` : ""}`;
+  if (syncContent) applyLoadedLanguage();
 }
 
 function updateCurrentTitle() {
@@ -99,95 +101,253 @@ function updateCurrentTitle() {
   currentTitle.textContent = label.textContent.trim().replace(/^[-–—]\s*/, "");
 }
 
-function setFrameLoading(loading) {
+function setContentLoading(loading) {
   portalContent.classList.toggle("loading", loading);
-  frame.setAttribute("aria-busy", String(loading));
+  contentHost.setAttribute("aria-busy", String(loading));
 }
 
-function scrollFrameTo(section) {
-  let doc;
-  try { doc = frame.contentDocument; } catch { return false; }
-  const target = doc?.getElementById(section);
+function scrollContentTo(section) {
+  const target = contentRoot?.getElementById(section);
   if (!target) return false;
-  const scroller = doc.scrollingElement || doc.documentElement;
-  const top = target.getBoundingClientRect().top + scroller.scrollTop;
-  scroller.scrollTop = Math.max(0, top);
+  const hostTop = contentHost.getBoundingClientRect().top;
+  const targetTop = target.getBoundingClientRect().top;
+  contentHost.scrollTop = Math.max(0, contentHost.scrollTop + targetTop - hostTop);
   return true;
 }
 
-function stabilizeFrameSection(section, sequence = navigationSequence) {
-  scrollFrameTo(section);
+function stabilizeContentSection(section, sequence = navigationSequence) {
+  scrollContentTo(section);
   [80, 200, 500, 1000, 2000].forEach((delay) => {
     setTimeout(() => {
-      if (sequence === navigationSequence) scrollFrameTo(section);
+      if (sequence === navigationSequence) scrollContentTo(section);
     }, delay);
   });
 }
 
-function prepareFrame(section = activeRoute?.dataset.section) {
-  let doc;
-  try { doc = frame.contentDocument; } catch { return; }
-  if (!doc?.head) return;
-  let style = doc.querySelector("#portal-embed-style");
-  if (!style) {
-    style = doc.createElement("style");
-    style.id = "portal-embed-style";
-    style.textContent = `
-      .sidebar, .mobile-header, .language-switcher, .language-switch,
-      .language-switch-floating, .reading-line, #sidebar-scrim { display: none !important; }
-      html, body { width: 100% !important; min-height: 100% !important; }
-      body { overflow-x: hidden !important; }
-      main { width: 100% !important; max-width: none !important; margin-left: 0 !important; padding-top: 0 !important; }
-      @media (max-width: 820px) { main { margin-left: 0 !important; } }
-    `;
-    doc.head.appendChild(style);
+function ensureLanguageEngine(page) {
+  const engine = page === "task" ? "task" : page === "wcs" ? "wcs" : "wms";
+  if (!languageEnginePromises.has(engine)) {
+    const source = engine === "task"
+      ? "./task/i18n.js?v=20260903-native-content-v10"
+      : engine === "wcs"
+        ? "./wcs/translations.js?v=20260903-native-content-v10"
+        : "./i18n.js?v=20260903-native-content-v11";
+    languageEnginePromises.set(engine, import(source));
   }
-  if (!doc.documentElement.dataset.portalLinked) {
-    doc.documentElement.dataset.portalLinked = "true";
-    doc.addEventListener("click", (event) => {
-      const link = event.target.closest("a[href]");
-      if (!link) return;
-      const target = new URL(link.href, frame.src);
-      if (target.origin !== location.origin || !target.hash) return;
-      const matchingRoute = routeLinks.find((route) => {
-        const routePath = new URL(routes[route.dataset.page], location.href).pathname;
-        return routePath === target.pathname && route.dataset.section === target.hash.slice(1);
+  return languageEnginePromises.get(engine);
+}
+
+const wcsTranslator = {
+  prepare(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (!node.nodeValue.trim() || node.parentElement?.closest("script,style,noscript")) continue;
+      node.__portalI18nSource = node.nodeValue;
+    }
+    root.querySelectorAll("[aria-label], [alt], [title], [placeholder], [content]").forEach((element) => {
+      element.__portalI18nAttributes = {};
+      ["aria-label", "alt", "title", "placeholder", "content"].forEach((attribute) => {
+        if (element.hasAttribute(attribute)) element.__portalI18nAttributes[attribute] = element.getAttribute(attribute);
       });
-      if (!matchingRoute) return;
-      event.preventDefault();
-      selectRoute(matchingRoute);
+    });
+  },
+  apply(lang, root) {
+    const dictionary = window.ORBIFLOW_TRANSLATIONS?.[lang] || {};
+    const translate = (value) => {
+      if (lang === "zh") return value;
+      const content = value.trim();
+      if (!content || !dictionary[content]) return value;
+      return `${value.match(/^\s*/)?.[0] || ""}${dictionary[content]}${value.match(/\s*$/)?.[0] || ""}`;
+    };
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (node.__portalI18nSource !== undefined) node.nodeValue = translate(node.__portalI18nSource);
+    }
+    root.querySelectorAll("*").forEach((element) => {
+      Object.entries(element.__portalI18nAttributes || {}).forEach(([attribute, source]) => {
+        element.setAttribute(attribute, translate(source));
+      });
     });
   }
-  syncFrameLanguage();
-  if (section) stabilizeFrameSection(section);
-  frame.classList.add("ready");
-  const sequence = navigationSequence;
-  setTimeout(() => {
-    if (sequence === navigationSequence) setFrameLoading(false);
-  }, 1100);
+};
+
+function moduleTranslator(page) {
+  if (page === "task") return window.WmsTaskI18n;
+  if (page === "wcs") return wcsTranslator;
+  const pageName = (routes[page] || routes.home).split("/").pop();
+  return {
+    prepare: (root) => window.WmsManualI18n.prepare(root),
+    apply: (lang, root) => window.WmsManualI18n.apply(lang, root, pageName)
+  };
 }
 
-function waitForFrameDocument(sequence, section) {
-  const startedAt = Date.now();
-  const check = () => {
-    if (sequence !== navigationSequence) return;
-    let doc;
-    try { doc = frame.contentDocument; } catch { return; }
-    if (doc?.readyState !== "loading" && doc.getElementById(section)) {
-      prepareFrame(section);
+function applyLoadedLanguage() {
+  if (!contentRoot || !contentTranslator) return;
+  contentTranslator.apply(language, contentRoot);
+  if (activeRoute?.dataset.section) stabilizeContentSection(activeRoute.dataset.section);
+}
+
+function rewriteContentUrls(root, sourceUrl) {
+  const attributes = ["src", "href", "data-lightbox", "data-image"];
+  root.querySelectorAll("*").forEach((element) => {
+    attributes.forEach((attribute) => {
+      const value = element.getAttribute(attribute);
+      if (!value || value.startsWith("#") || value.startsWith("data:") || value.startsWith("javascript:")) return;
+      element.setAttribute(attribute, new URL(value, sourceUrl).href);
+    });
+  });
+}
+
+function bindContentInteractions(root) {
+  if (root.__portalInteractionsBound) return;
+  root.__portalInteractionsBound = true;
+  root.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-lightbox], .shot-open");
+    if (trigger) {
+      const dialog = root.getElementById("image-dialog");
+      const dialogImage = root.getElementById("dialog-image");
+      if (dialog && dialogImage) {
+        dialogImage.src = trigger.dataset.lightbox || trigger.dataset.image || trigger.querySelector("img")?.src || "";
+        dialogImage.alt = trigger.querySelector("img")?.alt || dialogImage.alt;
+        dialog.showModal();
+      }
       return;
     }
-    if (Date.now() - startedAt < 15000) setTimeout(check, 50);
-  };
-  check();
+
+    const close = event.target.closest("#dialog-close");
+    if (close) {
+      root.getElementById("image-dialog")?.close();
+      return;
+    }
+
+    const tab = event.target.closest("[data-settings-tab], [data-item-info-tab], [data-item-config-tab], [data-inventory-tab]");
+    if (tab) {
+      const attribute = ["data-settings-tab", "data-item-info-tab", "data-item-config-tab", "data-inventory-tab"].find((name) => tab.hasAttribute(name));
+      root.querySelectorAll(`[${attribute}]`).forEach((item) => {
+        const selected = item === tab;
+        item.classList.toggle("active", selected);
+        item.setAttribute("aria-selected", String(selected));
+        const panel = root.getElementById(item.getAttribute(attribute));
+        if (panel) panel.hidden = !selected;
+      });
+      return;
+    }
+
+    const wcsTab = event.target.closest("[data-tab]");
+    if (wcsTab) {
+      const tabs = wcsTab.closest("[data-tabs]");
+      if (tabs) {
+        tabs.querySelectorAll("[data-tab]").forEach((item) => {
+          const selected = item === wcsTab;
+          item.classList.toggle("is-active", selected);
+          item.setAttribute("aria-selected", String(selected));
+        });
+        tabs.querySelectorAll("[role=tabpanel]").forEach((panel) => {
+          const selected = panel.id === wcsTab.dataset.tab;
+          panel.classList.toggle("is-active", selected);
+          panel.hidden = !selected;
+        });
+      }
+      return;
+    }
+
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const targetUrl = new URL(link.href, location.href);
+    if (targetUrl.origin !== location.origin || !targetUrl.hash) return;
+    const matchingRoute = routeLinks.find((route) => {
+      const routePath = new URL(routes[route.dataset.page], location.href).pathname;
+      return routePath === targetUrl.pathname && route.dataset.section === targetUrl.hash.slice(1);
+    });
+    if (matchingRoute) {
+      event.preventDefault();
+      selectRoute(matchingRoute);
+    } else if (targetUrl.pathname === new URL(routes[loadedPage] || routes.home, location.href).pathname) {
+      event.preventDefault();
+      stabilizeContentSection(targetUrl.hash.slice(1));
+    }
+  });
+
+  const dialog = root.getElementById("image-dialog");
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
 }
 
-function syncFrameLanguage() {
-  let doc;
-  try { doc = frame.contentDocument; } catch { return; }
-  if (!doc) return;
-  const button = doc.querySelector(`[data-lang-option="${language}"]`) || doc.querySelector(`[data-language="${language}"]`);
-  if (button && !button.classList.contains("active") && button.getAttribute("aria-pressed") !== "true") button.click();
+function renderContentError() {
+  const messages = {
+    zh: "内容暂时无法载入，请通过本地服务器或线上地址打开说明书。",
+    ja: "コンテンツを読み込めません。ローカルサーバーまたは公開 URL からマニュアルを開いてください。",
+    en: "The content could not be loaded. Open the manual from a local server or the published URL."
+  };
+  const root = contentHost.shadowRoot || contentHost.attachShadow({ mode: "open" });
+  root.innerHTML = `<style>:host{display:grid;min-height:100%;place-items:center;background:#f6f3ec;color:#405266;font:14px/1.6 "Microsoft YaHei UI","Yu Gothic UI",sans-serif}.error{max-width:520px;padding:28px;text-align:center}</style><p class="error">${messages[language]}</p>`;
+  contentRoot = root;
+  contentTranslator = null;
+}
+
+async function loadContent(page, section, sequence) {
+  contentAbortController?.abort();
+  contentAbortController = new AbortController();
+  setContentLoading(true);
+  try {
+    await ensureLanguageEngine(page);
+    const sourceUrl = new URL(routes[page] || routes.home, location.href);
+    const cacheKey = sourceUrl.pathname;
+    let sourceDocument = sourceDocumentCache.get(cacheKey);
+    if (!sourceDocument) {
+      const response = await fetch(sourceUrl, { signal: contentAbortController.signal });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      sourceDocument = new DOMParser().parseFromString(await response.text(), "text/html");
+      sourceDocumentCache.set(cacheKey, sourceDocument);
+    }
+    const sourceSection = sourceDocument.getElementById(section) || sourceDocument.querySelector("main");
+    if (!sourceSection) throw new Error("Manual content is missing");
+    const sourceMain = sourceDocument.createElement("main");
+    sourceMain.append(sourceSection.cloneNode(true));
+    const sourceDialog = sourceDocument.querySelector("#image-dialog");
+    rewriteContentUrls(sourceMain, sourceUrl);
+    if (sourceDialog) rewriteContentUrls(sourceDialog, sourceUrl);
+    if (sequence !== navigationSequence) return;
+
+    const root = contentHost.shadowRoot || contentHost.attachShadow({ mode: "open" });
+    const stylesheet = document.createElement("link");
+    stylesheet.rel = "stylesheet";
+    stylesheet.href = new URL(page === "task" ? "task/styles.css" : page === "wcs" ? "wcs/styles.css" : "styles.css", location.href).href;
+    const embedStyle = document.createElement("style");
+    embedStyle.textContent = `
+      :host {
+        display: block; min-height: 100%; overflow-x: hidden; background: #f6f3ec;
+        color: #132238; font-family: "Microsoft YaHei UI", "Yu Gothic UI", "Segoe UI", sans-serif; line-height: 1.65;
+        --paper: #f6f3ec; --paper-2: #eee8dc; --paper-deep: #eee9df; --ink: #132238;
+        --navy: #0e2a47; --muted: #637083; --blue: #246bfd; --cyan: #00a6a6;
+        --teal: #0f9d9a; --amber: #e99a33; --line: #d3d8df; --white: #fff;
+        --pale-blue: #eaf1ff; --pale-cyan: #e6f6f4; --pale-amber: #fff2de;
+        --shadow: 0 22px 70px rgba(14, 42, 71, .12); --sidebar: 0px;
+      }
+      main { width: 100% !important; max-width: none !important; margin-left: 0 !important; padding-top: 0 !important; }
+      .sidebar, .mobile-header, .language-switcher, .language-switch, .language-switch-floating, .reading-line, #sidebar-scrim { display: none !important; }
+      @media (max-width: 820px) { main { width: 100% !important; margin-left: 0 !important; } }
+    `;
+    root.replaceChildren(stylesheet, embedStyle, document.importNode(sourceMain, true));
+    if (sourceDialog) root.append(document.importNode(sourceDialog, true));
+    contentRoot = root;
+    contentTranslator = moduleTranslator(page);
+    contentTranslator.prepare(root);
+    contentTranslator.apply(language, root);
+    loadedPage = page;
+    loadedSection = section;
+    bindContentInteractions(root);
+    setContentLoading(false);
+    stabilizeContentSection(section, sequence);
+  } catch (error) {
+    if (error.name === "AbortError" || sequence !== navigationSequence) return;
+    renderContentError();
+    setContentLoading(false);
+    console.error("Manual content load failed", error);
+  }
 }
 
 function selectRoute(link, pushHistory = true) {
@@ -198,27 +358,13 @@ function selectRoute(link, pushHistory = true) {
   routeLinks.forEach((item) => item.classList.toggle("active", item === link));
   const parentModule = link.closest(".nav-module");
   if (parentModule) setModuleExpanded(parentModule, true);
-  const expectedPath = new URL(routes[page] || routes.home, location.href).pathname;
-  let loadedPath = "";
-  let frameDocument;
-  try {
-    loadedPath = frame.contentWindow.location.pathname;
-    frameDocument = frame.contentDocument;
-  } catch {
-    // The next iframe load will finish synchronization.
-  }
   const sequence = ++navigationSequence;
-  if (loadedPath === expectedPath && frameDocument?.readyState !== "loading") {
-    try { frame.contentWindow.history.replaceState(null, "", `#${section}`); } catch { /* same-origin fallback below */ }
-    syncFrameLanguage();
-    stabilizeFrameSection(section, sequence);
-    frame.classList.add("ready");
-    setFrameLoading(false);
+  if (loadedPage === page && loadedSection === section && contentRoot) {
+    applyLoadedLanguage();
+    stabilizeContentSection(section, sequence);
+    setContentLoading(false);
   } else {
-    frame.classList.remove("ready");
-    setFrameLoading(true);
-    if (loadedPath !== expectedPath) frame.src = frameUrl(page, section);
-    waitForFrameDocument(sequence, section);
+    loadContent(page, section, sequence);
   }
   updateCurrentTitle();
   if (pushHistory) history.pushState({ page, section }, "", `?page=${encodeURIComponent(page)}&section=${encodeURIComponent(section)}`);
@@ -250,7 +396,6 @@ modules.forEach((module) => {
 document.querySelectorAll("[data-portal-lang]").forEach((button) => button.addEventListener("click", () => applyPortalLanguage(button.dataset.portalLang)));
 menuButton.addEventListener("click", () => setMenu(!sidebar.classList.contains("open")));
 scrim.addEventListener("click", () => setMenu(false));
-frame.addEventListener("load", () => prepareFrame(activeRoute?.dataset.section));
 window.addEventListener("popstate", () => selectRoute(routeFromLocation(), false));
 
 applyPortalLanguage(language, false);
