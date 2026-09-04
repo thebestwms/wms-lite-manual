@@ -45,6 +45,7 @@ const modules = [...document.querySelectorAll(".nav-module")];
 const systemTabs = [...document.querySelectorAll("[data-system-tab]")];
 const systemMenus = [...document.querySelectorAll("[data-system-menu]")];
 let activeRoute = null;
+let activeSystem = "wes";
 let language = "zh";
 let navigationSequence = 0;
 let loadedPage = null;
@@ -70,7 +71,7 @@ function setMenu(open) {
 }
 
 function setActiveSystem(system) {
-  const activeSystem = system === "wcs" ? "wcs" : "wes";
+  activeSystem = system === "wcs" ? "wcs" : "wes";
   systemTabs.forEach((tab) => {
     const selected = tab.dataset.systemTab === activeSystem;
     tab.classList.toggle("selected", selected);
@@ -433,12 +434,19 @@ async function loadContent(page, section, sequence) {
 
 function selectRoute(link, pushHistory = true) {
   if (!link) return;
-  activeRoute = link;
-  const page = link.dataset.page || "home";
-  const section = link.dataset.section || "start";
+  let page = link.dataset.page || "home";
+  let section = link.dataset.section || "start";
+  if (link.classList.contains("portal-home") && activeSystem === "wcs") {
+    page = "wcs-home";
+    section = "start";
+  }
   setActiveSystem(page === "wcs" || page === "wcs-home" ? "wcs" : "wes");
-  routeLinks.forEach((item) => item.classList.toggle("active", item === link));
-  const parentModule = link.closest(".nav-module");
+  const activeNavLink = link.matches(".system-tab") && page === "wcs-home"
+    ? document.querySelector(".portal-home")
+    : link;
+  activeRoute = activeNavLink || link;
+  routeLinks.forEach((item) => item.classList.toggle("active", item === activeRoute));
+  const parentModule = activeRoute.closest(".nav-module");
   if (parentModule) setModuleExpanded(parentModule, true);
   const sequence = ++navigationSequence;
   if (loadedPage === page && loadedSection === section && contentRoot) {
@@ -450,7 +458,7 @@ function selectRoute(link, pushHistory = true) {
   }
   updateCurrentTitle();
   if (pushHistory) history.pushState({ page, section }, "", `?page=${encodeURIComponent(page)}&section=${encodeURIComponent(section)}`);
-  requestAnimationFrame(() => link.scrollIntoView({ block: "nearest" }));
+  requestAnimationFrame(() => activeRoute.scrollIntoView({ block: "nearest" }));
   if (window.innerWidth <= 820) setMenu(false);
 }
 
