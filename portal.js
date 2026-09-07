@@ -343,16 +343,16 @@ async function loadContent(page, section, sequence) {
     stylesheet.href = new URL(page === "task" ? "task/styles.css" : page === "wcs" ? "wcs/styles.css" : "styles.css", location.href).href;
     const embedStyle = document.createElement("style");
     const pageLayoutOverrides = page === "wcs" ? `
-      main > .manual-page {
+      main > :is(.manual-page, section.section, article) {
         width: 100%;
         padding: 86px clamp(48px, 6vw, 104px) 96px !important;
         border-top: 0 !important;
       }
       @media (max-width: 1080px) {
-        main > .manual-page { padding-left: 45px !important; padding-right: 45px !important; }
+        main > :is(.manual-page, section.section, article) { padding-left: 45px !important; padding-right: 45px !important; }
       }
       @media (max-width: 820px) {
-        main > .manual-page { padding: 62px 22px 70px !important; }
+        main > :is(.manual-page, section.section, article) { padding: 62px 22px 70px !important; }
       }
     ` : "";
     embedStyle.textContent = `
