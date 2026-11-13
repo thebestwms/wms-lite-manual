@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Orbiflow WMS-Lite 功能说明书网站样章">
   <title>Orbiflow WMS-Lite · Inbound / Outbound 仓储履约</title>
-  <link rel="stylesheet" href="styles.css?v=20260825-page-nav">
+  <link rel="stylesheet" href="styles.css?v=20261303-points">
 </head>
 <body class="page-inbound">  <div class="language-switcher" aria-label="Language switcher"><button type="button" data-lang-option="zh" class="active">中</button><button type="button" data-lang-option="ja">日</button><button type="button" data-lang-option="en">EN</button></div>
   <!-- 内容规则：不复述截图中显而易见的界面结构、按钮或必填标记；正文只解释业务场景、选择依据、配置结果和非显性约束。 -->
@@ -31,7 +31,7 @@
       <div class="nav-module main-nav-module inbound-main-nav" data-nav-module="inbound">
         <div class="nav-module-head"><a href="inbound.html#inbound" class="nav-link nav-group-link inbound-nav"><span>IN</span>Inbound</a><button class="nav-toggle" type="button" aria-label="收起 Inbound 子菜单" aria-expanded="true" aria-controls="inbound-submenu"></button></div>
         <div class="nav-submenu" id="inbound-submenu">
-          <a href="inbound.html#receipt" class="nav-link"><span>01</span>Receipt</a><a href="inbound.html#rma" class="nav-link"><span>02</span>RMA Management</a>
+          <a href="inbound.html#receipt" class="nav-link"><span>01</span>Receipt</a><a href="inbound.html#receipt-filter-templates" class="nav-link"><span>02</span>Receipt Filter Templates</a><a href="inbound.html#rma" class="nav-link"><span>03</span>RMA Management</a>
         </div>
       </div>
       <div class="nav-module main-nav-module outbound-main-nav" data-nav-module="outbound">
@@ -114,25 +114,28 @@
         <p>Receipt 用来管理一批预计到仓的货物。仓库先记录客户、到货来源和预计商品，货物抵达后再以 Receipt 创建收货任务，核对实际到货并推进上架，最终形成库存。</p>
       </div>
 
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>供应商通知一批货物即将到仓</h3>
+        <p>例如客户安排一批商品通过承运商送达仓库。操作人员先建立 Receipt，记录这批货属于哪个客户、采用哪种入库类型、预计何时到达，并列出计划接收的 SKU 和数量。货物到仓后，现场人员直接依据这张单据创建 Receiving Task，不需要重新录入到货资料。</p>
+      </div>
+
       <div class="module-page-preview receipt-preview">
         <div class="preview-heading">
           <span class="section-kicker">页面预览</span>
           <h3>从列表掌握待收货单据及任务进度</h3>
-          <p>状态汇总用于查看 Open、In Progress、Closed 和 Exception 的数量；列表同时显示 Receipt Type、Receive Task 与 Put Away Task，便于追踪每张单据所处阶段。</p>
+          <p>状态汇总用于查看 Open、In Progress、Closed 和 Exception 的数量；列表同时显示 Receipt Type、Receive Task 与 Put Away Task，便于追踪每张单据所处阶段。左上角的 Presets 可以把当前设好的一组筛选条件保存为预设，下次在下拉中直接选用，适合每天重复使用的查单口径。</p>
         </div>
-        <button class="screen-frame inbound-list-screen" data-lightbox="assets/receipt-list.png" aria-label="放大 Receipt 列表截图">
-          <span>RECEIPT LIST · PREVIEW</span><img loading="lazy" decoding="async" src="assets/receipt-list.png" alt="Receipt 列表页面截图"><i>点击放大</i>
+        <button class="screen-frame inbound-list-screen" data-lightbox="assets/receipt-list.png?v=20261125" aria-label="放大 Receipt 列表截图">
+          <span>RECEIPT LIST · PREVIEW</span><img loading="lazy" decoding="async" src="assets/receipt-list.png?v=20261125" alt="Receipt 列表页面截图"><i>点击放大</i>
         </button>
       </div>
 
       <div class="receipt-create-guide">
-        <span class="section-kicker">核心场景</span>
-        <h3>供应商通知一批货物即将到仓</h3>
-        <p class="receipt-scenario-copy">例如客户安排一批商品通过承运商送达仓库。操作人员先建立 Receipt，记录这批货属于哪个客户、采用哪种入库类型、预计何时到达，并列出计划接收的 SKU 和数量。货物到仓后，现场人员直接依据这张单据创建 Receiving Task，不需要重新录入到货资料。</p>
         <div class="receipt-screen-grid">
           <div class="receipt-screen-block">
-            <button class="screen-frame" data-lightbox="assets/receipt-create.png" aria-label="放大 Create Receipt 页面截图">
-              <span>CREATE RECEIPT · BASIC INFORMATION</span><img loading="lazy" decoding="async" src="assets/receipt-create.png" alt="Create Receipt Basic Information 页面截图"><i>点击放大</i>
+            <button class="screen-frame" data-lightbox="assets/receipt-create.png?v=20261126" aria-label="放大 Create Receipt 页面截图">
+              <span>CREATE RECEIPT · BASIC INFORMATION</span><img loading="lazy" decoding="async" src="assets/receipt-create.png?v=20261126" alt="Create Receipt Basic Information 页面截图"><i>点击放大</i>
             </button>
             <div class="receipt-info-groups basic-groups">
               <article><small>单据归属</small><b>Customer · Receipt Type · Reference</b><p>确定货物属于哪个客户、采用哪类入库场景，并以 Reference 记录本次到货的外部识别信息。</p></article>
@@ -152,8 +155,8 @@
           </div>
 
           <div class="receipt-screen-block item-line-block">
-            <button class="screen-frame" data-lightbox="assets/receipt-item-line.png" aria-label="放大 Add Item Line 页面截图">
-              <span>ADD ITEM LINE</span><img loading="lazy" decoding="async" src="assets/receipt-item-line.png?v=20260812-2" alt="Receipt Add Item Line 页面截图"><i>点击放大</i>
+            <button class="screen-frame" data-lightbox="assets/receipt-item-line.png?v=20261126" aria-label="放大 Add Item Line 页面截图">
+              <span>ADD ITEM LINE</span><img loading="lazy" decoding="async" src="assets/receipt-item-line.png?v=20261126" alt="Receipt Add Item Line 页面截图"><i>点击放大</i>
             </button>
             <div class="receipt-info-groups item-line-groups">
               <article><small>货权与商品</small><b>Title · SKU</b><p>Title 确定这批库存的货权方，SKU 确定实际计划接收的商品。</p></article>
@@ -179,8 +182,45 @@
       <p class="inbound-boundary"><b>取消条件</b> Receipt 仅在 Open 且尚未开始收货时可以取消；收货任务开始后将不能取消。</p>
     </section>
 
-<section class="module rma-module" id="rma" data-section="rma">
+<section class="module receipt-filter-module" id="receipt-filter-templates" data-section="receipt-filter-templates">
       <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">INBOUND · RECEIPT FILTER TEMPLATES</div>
+        <h2>把常用的收货单筛选条件存成模板，一键套用</h2>
+        <p>Receipt Filter Templates 用来保存 Receipt 列表里反复使用的筛选组合。模板建好后，在 Receipt 列表左上角的 Presets 中选用，不必每次重新逐项设置。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>每天开工先看同一批单据</h3>
+        <p>例如收货组长每天都要先处理加急到货，或只看某个客户处于 In Progress 的单据。把这些条件存成模板后，便于不同班次用同一套口径查单。</p>
+      </div>
+
+      <div class="dispatch-screen-section compact-first-screen">
+        <button class="screen-frame" data-lightbox="assets/receipt-filter-template-list.png?v=20261124" aria-label="放大 Receipt Filter Templates 列表截图">
+          <span>RECEIPT FILTER TEMPLATES · LIST</span><img loading="lazy" decoding="async" src="assets/receipt-filter-template-list.png?v=20261124" alt="Receipt Filter Templates 列表页面截图"><i>点击放大</i>
+        </button>
+        <div class="outbound-screen-copy">
+          <b>在列表里管理已有模板</b>
+          <p>Selected Fields 概括了每个模板包含哪些条件，名称建议体现用途，方便同事一眼选对。点击 Create Filter Template 新建。</p>
+        </div>
+      </div>
+
+      <div class="dispatch-screen-section">
+        <button class="screen-frame" data-lightbox="assets/receipt-filter-template-create.png?v=20261124" aria-label="放大 Create Filter Template 截图">
+          <span>CREATE FILTER TEMPLATE</span><img loading="lazy" decoding="async" src="assets/receipt-filter-template-create.png?v=20261124" alt="Create Filter Template 页面截图"><i>点击放大</i>
+        </button>
+        <div class="dispatch-reference">
+          <div><b>先命名</b><span>Basic Information</span><p>填写模板名称，并用 Note 说明适用场景。</p></div>
+          <div><b>再挑条件</b><span>Supported Fields</span><p>在左侧勾选要用的筛选项，右侧会出现对应的条件输入。</p></div>
+          <div><b>设定取值</b><span>Filter Criteria</span><p>为每个条件选择匹配方式并填写值，保存后到 Receipt 列表左上角的 Presets 中选用。</p></div>
+        </div>
+        <p class="dispatch-filter-footnote">模板只保存筛选条件，不会改动任何 Receipt 数据。</p>
+      </div>
+    </section>
+
+<section class="module rma-module" id="rma" data-section="rma">
+      <div class="module-number">03</div>
       <div class="module-heading">
         <div class="eyebrow">INBOUND · RMA MANAGEMENT</div>
         <h2>先确认退货范围，再安排商品返仓</h2>
@@ -203,8 +243,8 @@
         <h3>记录本次允许退回的商品范围</h3>
         <p class="rma-create-copy">RMA No 和 RMA Type 用于识别退货申请，SKU Lines 记录计划退回的商品、UOM、预计数量和原因。Original Order ID 可补充原订单线索，但当前不是必填项，也不会自动限制退货数量不得超过原出库数量。</p>
         <div class="rma-screen-grid single-screen">
-          <button class="screen-frame" data-lightbox="assets/rma-edit.png" aria-label="放大 Edit RMA 页面截图">
-            <span>EDIT RMA · BASIC INFORMATION &amp; SKU LINES</span><img loading="lazy" decoding="async" src="assets/rma-edit.png" alt="Edit RMA 页面截图"><i>点击放大</i>
+          <button class="screen-frame" data-lightbox="assets/rma-edit.png?v=20261126" aria-label="放大 Create RMA 页面截图">
+            <span>CREATE RMA · BASIC INFORMATION &amp; SKU LINES</span><img loading="lazy" decoding="async" src="assets/rma-edit.png?v=20261126" alt="Create RMA 页面截图"><i>点击放大</i>
           </button>
         </div>
       </div>
@@ -219,12 +259,7 @@
         <i>→</i>
         <article><small>接收实物</small><b>In Progress｜回写实收数量</b><p>Receiving Task 的实收结果更新 Received Qty，Receipt 关闭后完成退货入库。</p></article>
         </div>
-        <div class="rma-screen-grid single-screen rma-receipt-screen">
-          <button class="screen-frame" data-lightbox="assets/rma-receipt-create.png" aria-label="放大创建 RMA Receipt 页面截图">
-            <span>CREATE RECEIPT · SELECT RMA</span><img loading="lazy" decoding="async" src="assets/rma-receipt-create.png" alt="创建 RMA Receipt 并选择关联 RMA 的页面截图"><i>点击放大</i>
-          </button>
-          <p class="rma-create-copy">创建退货收货单时，将 Receipt Type 设为 RMA Receipt，再选择本次收货所依据的 RMA。</p>
-        </div>
+        <p class="rma-create-copy rma-receipt-note">创建退货收货单时，将 Receipt Type 设为 RMA Receipt，再选择本次收货所依据的 RMA。</p>
       </div>
 
       <p class="inbound-boundary"><b>取消边界</b> RMA 只有在 Open 状态可以取消；一旦已创建 Receipt 并进入 In Progress，就不能再取消原 RMA。</p>
@@ -262,140 +297,153 @@
       <div class="module-heading">
         <div class="eyebrow">OUTBOUND · OUTBOUND ORDER</div>
         <h2>先把客户的发货要求转成仓库可以执行的订单</h2>
-        <p>Outbound Order 是出库作业的起点。它记录本次订单属于哪个客户、需要发出哪些商品和数量、送往哪里、由谁承运以及计划何时完成；库存锁定、拣货、包装和装车都以这些订单资料为依据。</p>
+        <p>Outbound Order 是出库作业的起点。库存锁定、拣货、包装和装车都以订单资料为依据，订单也可由客户系统通过接口导入。</p>
       </div>
 
-      <div class="outbound-order-screen-section order-list-preview">
-        <button class="screen-frame" data-lightbox="assets/outbound-order-list.png" aria-label="放大 Outbound Order 列表页面截图">
-          <span>OUTBOUND ORDER · LIST</span><img loading="lazy" decoding="async" src="assets/outbound-order-list.png" alt="Outbound Order 列表页面截图"><i>点击放大</i>
-        </button>
-        <div class="outbound-screen-copy">
-          <b>从列表掌握待处理订单与当前进度</b>
-          <p>顶部汇总区显示 Imported、Processing、Shipped 和 Total；订单列表进一步显示 Order Plan 与 Status，用于判断订单是否尚待处理、库存承诺受阻、已经进入计划或完成发运。</p>
-        </div>
-      </div>
-
-      <div class="outbound-order-scenario">
+      <div class="wg-scenario">
         <span class="section-kicker">核心场景</span>
         <h3>客户要求仓库把一批商品发往指定收货地址</h3>
-        <p>操作人员先选择 Customer，确认订单类型与运输要求，再填写 Ship To Address 和计划时间，最后添加 SKU Lines。订单保存后形成出库需求，但此时还没有扣减库存；后续 Inventory Commitment 才会为订单匹配并锁定可用库存。</p>
-        <div class="outbound-order-decisions">
-          <article><small>订单归属</small><b>谁要发货</b><p>Customer 确定订单归属，并影响后续库存分配策略和 Load 分组。</p></article>
-          <article><small>发货内容</small><b>发什么、发多少</b><p>SKU Lines 记录 Item、UOM、Title 和 Qty，作为库存匹配与数量换算依据。</p></article>
-          <article><small>履约要求</small><b>发到哪里、如何运输</b><p>Address、Carrier、Ship Method 和时间字段共同描述交付要求。</p></article>
-        </div>
+        <p>操作人员选择 Customer，确认订单类型与运输要求，补充收货地址和计划时间，最后添加 SKU Lines。订单保存后只形成出库需求，不会扣减库存；后续 Inventory Commitment 才会为订单匹配并锁定可用库存。</p>
       </div>
 
-      <div class="outbound-order-screen-section">
-        <button class="screen-frame" data-lightbox="assets/outbound-order-basic.png" aria-label="放大 Outbound Order Basic Info 截图">
-          <span>ORDER DETAIL · ORDER</span><img loading="lazy" decoding="async" src="assets/outbound-order-basic.png" alt="Outbound Order 的 Order 信息区域截图"><i>点击放大</i>
-        </button>
-        <div class="order-field-list">
-          <div><b>Customer</b><span>订单所属客户，决定可选商品及适用的库存分配策略。</span></div>
-          <div><b>Retailer</b><span>订单对应的零售渠道或门店体系。</span></div>
-          <div><b>Order Type</b><span>出库业务类型，如 Regular Order。</span></div>
-
-          <div><b>Reference No</b><span>客户或上游系统提供的业务参考编号，用于查询与对账。</span></div>
-          <div><b>Sales Order No</b><span>关联的销售订单编号。</span></div>
-          <div><b>PO No</b><span>关联的采购订单编号。</span></div>
-          <div><b>Batch No</b><span>出库订单的批次编号，用于归集同批导入或同批处理的订单。</span></div>
-          <div><b>Master Tracking No</b><span>整票货件或主包裹的总追踪编号。</span></div>
-          <div><b>Source</b><span>订单来源，如页面手工创建或接口导入。</span></div>
-          <div><b>Signature Type</b><span>承运交付时要求的签名服务类型。</span></div>
-          <div><b>Total Weight</b><span>整张订单的预计总重量，供运输安排参考。</span></div>
-          <div><b>Total Pallets</b><span>整张订单预计使用的托盘数量。</span></div>
-          <div><b>Consolidation No</b><span>需要合并处理的订单所使用的归集编号。</span></div>
-          <div><b>Priority</b><span>订单的业务优先级，供后续计划与派发使用。</span></div>
-          <div><b>Single QTY</b><span>标识订单是否属于单件数量场景，由系统根据订单内容显示。</span></div>
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">订单列表</span>
+          <h3>一眼看清订单进行到哪一步</h3>
+          <p>顶部汇总区快速反映待处理与已发运的订单规模；列表里的 Order Plan、Pick Task、Pack Task、Load Task 几列，能直接看出订单已经进入哪个环节，不必再逐个任务页面去查。</p>
         </div>
+        <button class="screen-frame" data-lightbox="assets/outbound-order-list.png?v=20261301" aria-label="放大 Outbound Order 列表页面截图"><span>OUTBOUND ORDER · LIST</span><img loading="lazy" decoding="async" src="assets/outbound-order-list.png?v=20261301" alt="Outbound Order 列表页面截图"><i>点击放大</i></button>
+        <p class="wg-note"><b>批量处理：</b>勾选多张订单后，可在 Actions 中批量取消、关闭、挂起、解除挂起或回滚；常用的查询条件可存为 Presets，需要对账时用 Export 导出。</p>
       </div>
 
-      <div class="outbound-order-screen-section">
-        <button class="screen-frame" data-lightbox="assets/outbound-order-shipping-time.png" aria-label="放大 Outbound Order Shipping 和 Time 截图">
-          <span>ORDER DETAIL · SHIPPING &amp; TIME</span><img loading="lazy" decoding="async" src="assets/outbound-order-shipping-time.png" alt="Outbound Order 的 Shipping 和 Time 区域截图"><i>点击放大</i>
-        </button>
-        <div class="outbound-screen-copy two-column-copy">
-          <article><b>运输安排</b><p>Carrier 表示实际承运商，Ship Method 决定订单采用的运输场景：Truckload（整车）、Less Than Truckload（零担）、Will Call（客户自提）或 Small Parcel（小包裹）。Delivery Service、Freight Term 和运输单号用于补充具体交接要求。</p></article>
-          <article><b>履约时间</b><p>Schedule Date、Ship Not Before / Later 和 Appointment Time 用来描述计划作业及允许发货的时间窗口；Shipped Time、Canceled Date 等由后续状态记录实际结果。</p></article>
+      <div class="inventory-content-guide">
+        <div class="settings-tabs inventory-tabs" role="tablist" aria-label="Outbound Order 创建与详情">
+          <button class="settings-tab active" role="tab" aria-selected="true" aria-controls="outbound-order-basic-panel" data-inventory-tab="outbound-order-basic-panel"><span>01</span>Basic Info</button>
+          <button class="settings-tab" role="tab" aria-selected="false" aria-controls="outbound-order-dynamic-panel" data-inventory-tab="outbound-order-dynamic-panel"><span>02</span>Dynamic Fields</button>
+        </div>
+
+        <div class="inventory-screen-section inventory-tab-panel" id="outbound-order-basic-panel" role="tabpanel">
+          <div class="preview-heading">
+            <span class="section-kicker">Create Order</span>
+            <h3>创建订单时先确定归属与运输方式</h3>
+            <p>Customer 决定可选商品和库存分配策略；Order Type 与 Ship Method 决定后续走哪条履约路径，例如 Small Parcel 订单会进入小包裹打包工位，整车和零担订单则通过 Load 交接承运商。</p>
+          </div>
+          <button class="screen-frame" data-lightbox="assets/ob-order-create-a.png?v=20261301" aria-label="放大 Create Order 的 Order 与 Shipping 区域截图"><span>CREATE ORDER · ORDER & SHIPPING</span><img loading="lazy" decoding="async" src="assets/ob-order-create-a.png?v=20261301" alt="Create Order 的 Order 与 Shipping 区域截图"><i>点击放大</i></button>
+          <button class="screen-frame" data-lightbox="assets/ob-order-create-b.png?v=20261301" aria-label="放大 Create Order 的 Time、Address 与 SKU Lines 区域截图"><span>CREATE ORDER · TIME, ADDRESS & SKU LINES</span><img loading="lazy" decoding="async" src="assets/ob-order-create-b.png?v=20261301" alt="Create Order 的 Time、Address 与 SKU Lines 区域截图"><i>点击放大</i></button>
+          <div class="wg-points">
+            <article><span>01</span><div><b>时间窗口</b><p>Schedule Date 安排计划作业日，Ship Not Before 与 Ship No Later 限定允许发货的区间，需要预约承运商时再填 Appointment Time。</p></div></article>
+            <article><span>02</span><div><b>地址随单保存</b><p>Ship From、Ship To、Bill To 选定后作为快照保存在订单中，之后修改地址主档不会影响已创建的订单。</p></div></article>
+            <article><span>03</span><div><b>SKU Lines</b><p>通过 Add Item Lines 添加商品，UOM 与 Qty 表示需求数量，Title 用来限定货权，是库存锁定的匹配依据。</p></div></article>
+          </div>
+          <div class="preview-heading" style="margin-top:46px">
+            <span class="section-kicker">Order Detail</span>
+            <h3>订单创建后，在详情页继续跟进</h3>
+            <p>详情页在创建页的基础上增加了订单状态，并提供 Print 和 Actions 等操作入口。Status、Source 这类由系统维护的信息以灰色只读显示，不能手工改动。</p>
+          </div>
+          <button class="screen-frame" data-lightbox="assets/ob-order-detail-a.png?v=20261301" aria-label="放大 Order Detail 的 Order 与 Shipping 区域截图"><span>ORDER DETAIL · ORDER & SHIPPING</span><img loading="lazy" decoding="async" src="assets/ob-order-detail-a.png?v=20261301" alt="Order Detail 的 Order 与 Shipping 区域截图"><i>点击放大</i></button>
+          <button class="screen-frame" data-lightbox="assets/ob-order-detail-b.png?v=20261301" aria-label="放大 Order Detail 的 Time、Address 与 SKU Lines 区域截图"><span>ORDER DETAIL · TIME, ADDRESS & SKU LINES</span><img loading="lazy" decoding="async" src="assets/ob-order-detail-b.png?v=20261301" alt="Order Detail 的 Time、Address 与 SKU Lines 区域截图"><i>点击放大</i></button>
+          <p class="wg-note"><b>执行记录：</b>订单创建后，详情页还会出现 Picked Inventory、Parcels、Shipment 和 Put Back History 四个页签，分别记录已拣货的库存、包裹与运单信息、发运结果和退回上架记录。它们随作业进度才有内容，多数订单只会用到前几项，Put Back History 通常为空。</p>
+        </div>
+
+        <div class="inventory-screen-section inventory-tab-panel" id="outbound-order-dynamic-panel" role="tabpanel" hidden>
+          <div class="preview-heading">
+            <span class="section-kicker">Dynamic Fields</span>
+            <h3>承接客户自定义的业务信息</h3>
+            <p>当客户有标准字段无法容纳的信息，如项目编号、内部分类或特殊处理标记，可以放在 Dynamic Fields 中随订单保存。它提供文本与日期两类自定义字段，字段含义由客户和仓库自行约定。</p>
+          </div>
+          <button class="screen-frame" data-lightbox="assets/ob-order-dynamic.png?v=20261301" aria-label="放大 Order 的 Dynamic Fields 页签截图"><span>ORDER · DYNAMIC FIELDS</span><img loading="lazy" decoding="async" src="assets/ob-order-dynamic.png?v=20261301" alt="Order 的 Dynamic Fields 页签截图"><i>点击放大</i></button>
+          
         </div>
       </div>
-
-      <div class="outbound-order-screen-section">
-        <button class="screen-frame" data-lightbox="assets/outbound-order-address-lines.png" aria-label="放大 Outbound Order Address 和 SKU Lines 截图">
-          <span>ORDER DETAIL · ADDRESS &amp; SKU LINES</span><img loading="lazy" decoding="async" src="assets/outbound-order-address-lines.png" alt="Outbound Order 的 Address 和 SKU Lines 区域截图"><i>点击放大</i>
-        </button>
-        <div class="outbound-screen-copy two-column-copy">
-          <article><b>Address</b><p>Ship From 表示本次发货方，Ship To 表示实际收货目的地，Bill To 用于账单资料。选定后地址内容随订单保存，后续主档修改不会改变该订单。</p></article>
-          <article><b>SKU Lines</b><p>SKU 确定商品，UOM 与 Qty 表示需求数量，Title 限定货权。Inventory Commitment 会按照这些条件匹配并锁定库存；保存订单本身不会直接扣减库存。</p></article>
-        </div>
-      </div>
-
-
     </section>
-
 <section class="module inventory-commitment-module" id="inventory-commitment-guide" data-section="inventory-commitment-guide">
       <div class="module-number">02</div>
       <div class="module-heading">
         <div class="eyebrow">OUTBOUND · INVENTORY COMMITMENT</div>
         <h2>在订单进入拣货前，确认库存是否能够兑现需求</h2>
-        <p>Inventory Commitment 将 Outbound Order 的需求与当前可用库存进行匹配。它先显示订单行的库存缺口，再由用户执行锁定；锁定结果会直接更新订单状态，并决定订单能否继续进入拣货计划。</p>
+        <p>Inventory Commitment 把订单需求与当前可用库存对上号：先看缺口，再锁定库存，锁定结果决定订单能否继续进入拣货计划。</p>
       </div>
 
-      <div class="commitment-scenario">
+      <div class="wg-scenario">
         <span class="section-kicker">核心场景</span>
-        <h3>先看缺口，再决定哪些订单可以进入履约</h3>
-        <p>当多个订单同时等待出库时，操作人员可以先预览每个 SKU 的需求、已锁定数量和缺口数量，判断库存不足会影响哪些订单，再执行 Commit。库存充足的订单进入 Committed；只有部分库存可用时进入 Partial Committed。</p>
-        <div class="commitment-scenario-flow">
-          <article><small>01 · 检查</small><b>Gap Preview</b><p>查看订单行的需求数量、已锁定数量和缺口数量。</p></article><i>→</i>
-          <article><small>02 · 锁定</small><b>Commit</b><p>按订单优先级和库存匹配规则立即创建 ACTIVE 库存锁。</p></article><i>→</i>
-          <article><small>03 · 结果</small><b>Committed / Partial Committed</b><p>订单根据锁定结果更新状态，继续等待后续计划。</p></article>
-        </div>
+        <h3>多张订单同时等待出库，库存不一定够所有人</h3>
+        <p>操作人员先在 Build Commitment 中查出待处理订单，用 Gap Preview 判断哪些订单缺货、缺多少，再决定是否执行 Commit。库存不足的订单会停在 Commit Blocked 等待补货，不会占用其他订单的库存；已锁定的订单可以在 Commitment Report 中查看，必要时回滚释放。</p>
       </div>
 
-      <div class="commitment-screen-section">
-        <button class="screen-frame" data-lightbox="assets/inventory-commitment-build.png" aria-label="放大 Build Commitment 页面截图">
-          <span>BUILD COMMITMENT</span><img loading="lazy" decoding="async" src="assets/inventory-commitment-build.png" alt="Build Commitment 页面截图"><i>点击放大</i>
-        </button>
-        <div class="commitment-screen-copy">
-          <b>Build Commitment：选择订单并执行库存锁定</b>
-          <p>页面按 Order ID、Order Type、Status、Customer、Carrier、Ship Method 和 Schedule Date 筛选待处理订单。选中订单后，可先查看 Gap Preview，再点击 Commit 立即执行锁定。</p>
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Build Commitment</span>
+          <h3>选出要锁定库存的订单</h3>
+          <p>Status 筛选决定处理哪一类订单：Open 与 Imported 是等待首次锁定的订单，Commit Blocked 和 Commit Failed 则是上次尝试未成功、需要重新处理的订单。勾选订单后，可先预览缺口，再点击 Commit 立即锁定。</p>
         </div>
+        <button class="screen-frame" data-lightbox="assets/inventory-commitment-build.png?v=20261301" aria-label="放大Build Commitment 页面截图"><span>BUILD COMMITMENT</span><img loading="lazy" decoding="async" src="assets/inventory-commitment-build.png?v=20261301" alt="Build Commitment 页面截图"><i>点击放大</i></button>
       </div>
 
-      <div class="commitment-gap-preview-section">
-        <button class="screen-frame" data-lightbox="assets/inventory-commitment-gap.png" aria-label="放大 Gap Preview 弹窗截图">
-          <span>GAP PREVIEW · SHORTAGE DETAIL</span><img loading="lazy" decoding="async" src="assets/inventory-commitment-gap.png" alt="Gap Preview 缺口明细弹窗截图"><i>点击放大</i>
-        </button>
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Gap Preview</span>
+          <h3>锁定之前，先知道缺多少</h3>
+          <p>弹窗按订单行对比需求数量与可用数量，Shortage Base Qty 为红色标记的行就是库存不足的商品。可以据此提前安排补货或调整订单，避免提交后才发现被阻塞。预览只做检查，不会锁定库存。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/inventory-commitment-gap.png?v=20261301" aria-label="放大Gap Preview 弹窗截图"><span>GAP PREVIEW</span><img loading="lazy" decoding="async" src="assets/inventory-commitment-gap.png?v=20261301" alt="Gap Preview 弹窗截图"><i>点击放大</i></button>
       </div>
 
-      <div class="commitment-gap-guide">
-        <span class="section-kicker">Gap Preview 关注的数量关系</span>
-        <div class="commitment-gap-grid">
-          <article><b>需求数量</b><span>订单要求发出的数量。</span></article>
-          <article><b>已锁定数量</b><span>当前已经成功占用的库存数量。</span></article>
-          <article><b>缺口数量</b><span>仍未匹配到库存的数量。</span></article>
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Commitment Report</span>
+          <h3>查看已经建立的库存承诺</h3>
+          <p>订单锁定后会进入 Committed，并随着计划、拣货、打包、发运逐步更新状态，所以这里也可以当作订单履约进度的查询入口。订单需要重新分配库存时，勾选后使用 Rollback 释放已锁定的库存。</p>
         </div>
-      </div>
-
-      <div class="commitment-report-section">
-        <button class="screen-frame" data-lightbox="assets/inventory-commitment-report.png" aria-label="放大 Commitment Report 页面截图">
-          <span>COMMITMENT REPORT</span><img loading="lazy" decoding="async" src="assets/inventory-commitment-report.png" alt="Commitment Report 页面截图"><i>点击放大</i>
-        </button>
-        <div class="commitment-screen-copy">
-          <b>Commitment Report：查看与回滚已建立的库存承诺</b>
-          <p>报告按订单、客户、状态、承运商和 Batch No 查询已建立的承诺。只有 Committed 或 Partial Committed 订单可以 Rollback；回滚后库存锁释放，订单回到 Open。</p>
-        </div>
+        <button class="screen-frame" data-lightbox="assets/inventory-commitment-report.png?v=20261301" aria-label="放大Commitment Report 页面截图"><span>COMMITMENT REPORT</span><img loading="lazy" decoding="async" src="assets/inventory-commitment-report.png?v=20261301" alt="Commitment Report 页面截图"><i>点击放大</i></button>
       </div>
     </section>
 
 <section class="module" id="order-plans-guide" data-section="order-plans-guide">
       <div class="module-number">03</div>
-      <div class="module-heading"><div class="eyebrow">OUTBOUND · ORDER PLANS</div><h2>把待出库订单组织成可执行的拣货计划</h2><p>Order Plans 将一个或多个已承诺库存的订单打包到同一个计划中，并指定该计划使用的 Pick Method、Pick Mode 和 Task Priority。计划创建后释放，系统据此生成拣货任务。</p></div>
-      <div class="commitment-scenario"><span class="section-kicker">核心场景</span><h3>从已承诺订单到可执行任务</h3><p>当一批订单完成库存锁定后，计划员需要决定这些订单的拣货策略——是逐单拣还是合并拣、用人工推车还是 AGV，以及优先级如何。Order Plans 就是这个决策的执行入口。</p><div class="commitment-scenario-flow"><article><small>01 · 创建</small><b>Create Plan</b><p>选择拣货方法和模式，添加待处理订单。</p></article><i>→</i><article><small>02 · 释放</small><b>Release</b><p>计划释放后，系统自动生成拣货任务。</p></article><i>→</i><article><small>03 · 执行</small><b>Pick Tasks</b><p>拣货人员或设备按任务执行拣货作业。</p></article></div></div>
-      <div class="commitment-screen-section"><button class="screen-frame" data-lightbox="assets/order-plan-create.png" aria-label="放大 Create Plan 截图"><span>CREATE PLAN</span><img loading="lazy" decoding="async" src="assets/order-plan-create.png" alt="Create Plan 页面截图"><i>点击放大</i></button><div class="commitment-screen-copy"><b>Create Plan：配置拣货策略并关联订单</b><p>创建计划时先确定 Pick Method 和 Pick Mode，再从已承诺库存的订单中选择要纳入本次计划的订单。</p></div></div>
-      <div class="commitment-gap-guide"><span class="section-kicker">Pick Method</span><p class="order-plan-group-intro">决定订单如何分配到拣货任务。</p><div class="commitment-gap-grid"><article><b>Single Order Pick</b><span>一个订单对应一个拣货任务。适合大件商品、高价值订单或定制化包装。</span></article><article><b>Batch Order Pick</b><span>多个订单合并到一个任务，一次路线拣取多单商品，再按订单拆分。</span></article><article><b>Wave Pick by Item</b><span>汇总多个订单中相同 SKU 的需求，按商品集中拣取。</span></article></div></div>
-      <div class="commitment-gap-guide"><span class="section-kicker">Pick Mode</span><p class="order-plan-group-intro">指定拣货时使用的设备或工位方式。</p><div class="commitment-gap-grid"><article><b>Pick to Wall</b><span>批量拣取后，在播种墙按订单投放到对应格口。</span></article><article><b>Pick by Tote Cart</b><span>使用多层推车边拣边按订单分配到不同 Tote。</span></article><article><b>Pick by AGV</b><span>由 AGV 将货架送至固定工位，采用货到人方式拣货。</span></article></div></div>
-      <div class="commitment-gap-guide"><span class="section-kicker">其他配置</span><div class="commitment-gap-grid"><article><b>Task Priority</b><span>影响任务在拣货队列中的顺序。</span></article><article><b>Max Order Qty Per Pick Task</b><span>限制单个任务可包含的订单数量。</span></article><article><b>Assignment Mode / Default Assignee</b><span>决定任务采用手动或自动指派，并可设置默认执行人。</span></article><article><b>Pick From VLGs</b><span>限定拣货库存的来源区域。</span></article><article><b>Plan Tags</b><span>为计划添加标签，便于后续筛选分类。</span></article></div></div>
+      <div class="module-heading">
+        <div class="eyebrow">OUTBOUND · ORDER PLANS</div>
+        <h2>把已锁定库存的订单组织成可执行的拣货计划</h2>
+        <p>Order Plan 决定一批订单怎样被拣、由谁拣、先拣哪一批。计划释放后，系统据此生成拣货任务。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>一批订单完成库存锁定，需要决定现场怎么拣</h3>
+        <p>计划员把订单纳入同一个计划，选择拣货方式（逐单拣还是合并拣）、拣货载具（推车、播种墙或 AGV）和任务优先级，再指定默认执行人。计划释放后，现场人员就能在手持端领取任务；整个计划的进度也都能在这里追踪。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">计划列表</span>
+          <h3>一眼看清每个计划走到哪一步</h3>
+          <p>Status 反映计划从构建、生成任务到释放、完成的进度；orders、Pick Tasks 两列可直接看出计划规模，不必进入详情页逐个核对。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/ob-plan-list.png?v=20261301" aria-label="放大Order Plans 列表页面截图"><span>ORDER PLANS · LIST</span><img loading="lazy" decoding="async" src="assets/ob-plan-list.png?v=20261301" alt="Order Plans 列表页面截图"><i>点击放大</i></button>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Create Plan</span>
+          <h3>先定拣货策略，再添加订单</h3>
+          <p>Pick Method 与 Pick Mode 是最关键的两项：前者决定订单如何分配到任务，例如一单一任务，或多单合并一次拣完再拆分；后者决定现场用什么方式拣，例如推车、播种墙或 AGV。设置好之后，通过 Add Orders 添加已锁定库存的订单即可创建。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/order-plan-create.png?v=20261301" aria-label="放大Create Plan 页面截图"><span>CREATE PLAN</span><img loading="lazy" decoding="async" src="assets/order-plan-create.png?v=20261301" alt="Create Plan 页面截图"><i>点击放大</i></button>
+        <div class="wg-points">
+          <article><span>01</span><div><b>控制任务规模</b><p>Max Order Qty Per Pick Task 限制单个任务包含的订单数量，避免任务过大、拣货员一次推车装不下。</p></div></article>
+          <article><span>02</span><div><b>指派方式</b><p>Assignment Mode 与 Default Assignee 决定任务是由系统自动分配，还是预先指给固定的拣货员。</p></div></article>
+          <article><span>03</span><div><b>限定拣货来源</b><p>Pick From Virtual Location Groups 可把拣货范围限制在指定区域，Plan Tags 则用于给计划打标签，便于后续筛选。</p></div></article>
+        </div>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Plan Detail</span>
+          <h3>计划创建后，在详情页跟进任务进展</h3>
+          <p>详情页除 Basic Info 外，还有 Pick Strategies、Pick Tasks、Task Actions 和 Picked Inventory 四个页签，分别对应拣货策略、已生成的任务、任务操作记录和已拣出的库存。大多数情况下只需看 Basic Info 与 Pick Tasks，判断计划是否已释放、任务是否在正常推进。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/ob-plan-detail-basic.png?v=20261301" aria-label="放大Order Plan 详情页截图"><span>PLAN DETAIL · BASIC INFO</span><img loading="lazy" decoding="async" src="assets/ob-plan-detail-basic.png?v=20261301" alt="Order Plan 详情页截图"><i>点击放大</i></button>
+        <button class="screen-frame" data-lightbox="assets/ob-plan-detail-tasks.png?v=20261301" aria-label="放大Order Plan 的 Pick Tasks 页签截图"><span>PLAN DETAIL · PICK TASKS</span><img loading="lazy" decoding="async" src="assets/ob-plan-detail-tasks.png?v=20261301" alt="Order Plan 的 Pick Tasks 页签截图"><i>点击放大</i></button>
+      </div>
     </section>
 
 <section class="module order-dispatch-overview" id="order-dispatch" data-section="order-dispatch">
@@ -414,22 +462,93 @@
 
 <section class="module order-dispatch-detail" id="order-filters" data-section="order-filters">
       <div class="module-number">04.1</div>
-      <div class="module-heading"><div class="eyebrow">ORDER DISPATCH · ORDER FILTERS</div><h2>用筛选模板定义哪些订单可以进入 Dispatch</h2><p>Order Filters 保存可重复使用的订单条件。Dispatch 只处理满足条件且尚未关联 Order Plan 的订单。</p></div>
-      <div class="dispatch-core-scenario"><span class="section-kicker">核心场景</span><h3>为不同履约场景准备独立的订单入口</h3><p>小包裹订单可按 Ship Method 和订单状态建立模板；内部调拨或退货订单可按 Order Type 分开处理。不同字段同时填写时需全部满足，同一字段多选时匹配任一值。</p></div>
-      <div class="dispatch-screen-section compact-first-screen"><button class="screen-frame" data-lightbox="assets/order-filter-list.png" aria-label="放大 Order Filters 列表截图"><span>ORDER FILTERS · LIST</span><img loading="lazy" decoding="async" src="assets/order-filter-list.png" alt="Order Filters 列表页面截图"><i>点击放大</i></button></div>
-      <div class="dispatch-screen-section"><button class="screen-frame" data-lightbox="assets/order-filter-add.png" aria-label="放大 Add Order Filter 截图"><span>ADD ORDER FILTER</span><img loading="lazy" decoding="async" src="assets/order-filter-add.png" alt="Add Order Filter 页面截图"><i>点击放大</i></button>
-        <div class="dispatch-reference">
-          <div><b>Order Status</b><span>订单当前状态</span><p>选择 Open、Imported 或其他待处理状态。</p></div><div><b>Order Type</b><span>业务类型</span><p>区分 Regular、Dropship、Internal Transfer 和 Return Goods。</p></div><div><b>Carrier / Ship Methods</b><span>运输属性</span><p>区分 Small Parcel、LTL、Truckload 或 Will Call。</p></div><div><b>Retailer / Ship To</b><span>零售商和收货方</span><p>按门店、渠道或配送区域归集订单。</p></div><div><b>Single Item / Order Qty</b><span>订单结构和数量</span><p>筛选单品订单、批量订单或数量范围。</p></div><div><b>Data Channel / Freight Term</b><span>来源和运费条款</span><p>按订单来源或运费责任区分履约方案。</p></div><div><b>MABD / Ship No Later</b><span>履约期限</span><p>优先筛选临近截止日期的订单。</p></div><div><b>Appointment / Shipped Time</b><span>时间范围</span><p>按预约或发运时间查询订单。</p></div><div><b>Dynamic Text Value</b><span>自定义动态字段</span><p>按客户项目号、渠道标识等动态值筛选。</p></div>
-        </div><p class="dispatch-filter-footnote">系统会排除已经关联 Order Plan 的订单，避免重复 Dispatch。</p>
+      <div class="module-heading">
+        <div class="eyebrow">ORDER DISPATCH · ORDER FILTERS</div>
+        <h2>用筛选模板定义哪些订单可以进入 Dispatch</h2>
+        <p>Order Filters 保存可重复使用的订单条件。Dispatch 只处理满足条件、且尚未关联 Order Plan 的订单。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>不同履约场景，需要各自独立的订单入口</h3>
+        <p>仓库往往同时处理几类订单：一件代发订单适合按商品汇总拣货，普通订单适合逐单拣货，小包裹订单则要走打包工位。为每一类订单建一个筛选模板，Dispatch 就能分别圈出对应的订单，互不干扰。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">模板列表</span>
+          <h3>一眼看清每个模板圈了哪些订单</h3>
+          <p>Selected Fields 列直接显示模板用到的条件和取值，不必逐个打开就能区分模板的用途。同一类订单只需要维护一个模板，供不同的派单方案重复引用。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/of-list.png?v=20261302" aria-label="放大Order Filters 列表页面截图"><span>ORDER FILTERS · LIST</span><img loading="lazy" decoding="async" src="assets/of-list.png?v=20261302" alt="Order Filters 列表页面截图"><i>点击放大</i></button>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Add Order Filter</span>
+          <h3>从左侧挑选条件，右侧设置取值</h3>
+          <p>左侧 Supported Fields 列出所有可用的筛选条件，点选后会出现在右侧 Filter Criteria 中，再为它选择取值。条件越多范围越窄：不同条件需要同时满足，同一条件下选择多个值时，满足其中任意一个即可。保存之前可以用 Preview Orders 看一下当前条件能匹配到哪些订单。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/of-add.png?v=20261302" aria-label="放大Add Order Filter 页面截图"><span>ADD ORDER FILTER</span><img loading="lazy" decoding="async" src="assets/of-add.png?v=20261302" alt="Add Order Filter 页面截图"><i>点击放大</i></button>
+        <p class="wg-note"><b>建模板的思路：</b>订单状态与订单类型通常是最基础的两项，再按承运商、运输方式或时间窗口收窄；需要按客户自定义字段区分订单时，可使用 Dynamic Text Value。已经关联 Order Plan 的订单会被自动排除，不会被重复派单。</p>
       </div>
     </section>
 
 <section class="module order-dispatch-detail" id="order-dispatch-settings" data-section="order-dispatch-settings">
-      <div class="module-number">04.2</div><div class="module-heading"><div class="eyebrow">ORDER DISPATCH · SETTINGS</div><h2>定义筛选后的订单如何形成计划与任务</h2><p>Dispatch Settings 将 Filter 模板与拣货配置组合为可执行方案，可手动 Execute Dispatch，也可按 Schedule 自动运行。</p></div>
-      <div class="dispatch-core-scenario"><span class="section-kicker">核心场景</span><h3>同一批订单，按仓库作业方式生成不同任务</h3><p>小件订单可以采用 Batch Order Pick 与 Tote Cart，自动化区域可以采用 Pick by AGV，并通过任务容量控制现场作业规模。</p></div>
-      <div class="dispatch-screen-section compact-first-screen"><button class="screen-frame" data-lightbox="assets/order-dispatch-settings-list.png" aria-label="放大 Order Dispatch Settings 列表截图"><span>ORDER DISPATCH SETTINGS · LIST</span><img loading="lazy" decoding="async" src="assets/order-dispatch-settings-list.png" alt="Order Dispatch Settings 列表页面截图"><i>点击放大</i></button><div class="dispatch-list-guide"><div class="dispatch-list-purpose"><span class="section-kicker">页面用途</span><h3>管理并执行仓库内的 Dispatch 方案</h3><p>查询区用于定位配置，列表用于比较订单来源、拣货方式、优先级、自动释放与定时状态。</p></div><div class="dispatch-list-operations"><div><b>Execute Dispatch</b><span>立即执行当前方案</span></div><div><b>History</b><span>查看历次执行结果</span></div><div><b>Copy</b><span>复制后调整为新方案</span></div></div></div></div>
-      <div class="dispatch-screen-section"><button class="screen-frame" data-lightbox="assets/order-dispatch-setting-add-top.png" aria-label="放大 Dispatch Setting 配置截图"><span>ADD DISPATCH SETTING</span><img loading="lazy" decoding="async" src="assets/order-dispatch-setting-add-top.png" alt="Dispatch Setting 配置截图"><i>点击放大</i></button><div class="dispatch-setting-groups"><article><span>01</span><div><b>确定订单来源</b><p>Apply Template 引用 Filter，Customer 可进一步缩小订单范围。</p></div></article><article><span>02</span><div><b>选择拣货组织方式</b><p>Pick Method 和 Pick Mode 决定订单如何组合、由什么设备或工位执行。</p></div></article><article><span>03</span><div><b>安排任务执行</b><p>Task Priority、Assignment Mode、Pre-Assignee 和 Task Tags 随任务使用。</p></div></article></div></div>
-      <div class="dispatch-screen-section"><button class="screen-frame" data-lightbox="assets/order-dispatch-setting-add-bottom.png" aria-label="放大 Dispatch Setting 执行配置截图"><span>DISPATCH SETTING · EXECUTION</span><img loading="lazy" decoding="async" src="assets/order-dispatch-setting-add-bottom.png" alt="Dispatch Setting 执行配置截图"><i>点击放大</i></button><div class="dispatch-execution-guide"><article><span>计划规模</span><b>多少订单组成一个 Plan</b><p>Min / Max Orders Per Plan 控制订单如何分批。</p></article><article><span>任务规模</span><b>一个任务处理多少订单</b><p>Max Orders Per Pick Task 限制任务规模。</p></article><article><span>计划释放</span><b>生成后是否立即执行</b><p>Auto Release 开启后自动释放 Order Plan。</p></article><article><span>异常处理</span><b>失败订单是否继续</b><p>Exclude If Commitment Fails 和 Exclude If Strategy Fails 控制失败订单处理。</p></article><article><span>自动执行</span><b>何时运行方案</b><p>Enable Schedule 后按间隔、每日、工作日或 Cron 执行。</p></article></div></div>
+      <div class="module-number">04.2</div>
+      <div class="module-heading">
+        <div class="eyebrow">ORDER DISPATCH · SETTINGS</div>
+        <h2>定义筛选后的订单如何形成计划与任务</h2>
+        <p>Dispatch Settings 把筛选模板和拣货配置组合成一个可执行的方案，可以手动执行，也可以按时间表自动运行。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>同一批订单，按现场作业方式生成不同的计划和任务</h3>
+        <p>小件订单可以合并拣货、使用推车；自动化区域的订单可以交给 AGV。把这些做法分别保存成方案后，仓库只需要在合适的时间执行对应方案，或者让系统按时间表自动运行，不必每次手工创建计划。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">方案列表</span>
+          <h3>管理并执行仓库内的派单方案</h3>
+          <p>每一行是一个方案。Auto Release 与 Schedule 两列的开关能直接看出方案是否会自动释放、是否按时间表运行。行尾的操作按钮依次是预览订单、立即执行、查看执行历史、复制和删除。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/od-list.png?v=20261302" aria-label="放大Order Dispatch Settings 列表页面截图"><span>ORDER DISPATCH SETTINGS · LIST</span><img loading="lazy" decoding="async" src="assets/od-list.png?v=20261302" alt="Order Dispatch Settings 列表页面截图"><i>点击放大</i></button>
+        <p class="wg-note"><b>日常使用：</b>新方案可以从相近的方案 Copy 后调整；执行前先用 Preview 确认会处理哪些订单；方案越多越要靠名称区分，建议把客户、拣货方式写进名称。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Add Dispatch Setting</span>
+          <h3>按“订单来源、拣货方式、计划规模、执行时间”四步配置</h3>
+          <p>页面从上到下分为六个区块，实际决策主要集中在这四件事上。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/od-add-a.png?v=20261302" aria-label="放大Add Dispatch Setting 的订单来源与拣货设置截图"><span>ADD DISPATCH SETTING · SOURCE & PICK</span><img loading="lazy" decoding="async" src="assets/od-add-a.png?v=20261302" alt="Add Dispatch Setting 的订单来源与拣货设置截图"><i>点击放大</i></button>
+        <div class="wg-points">
+          <article><span>01</span><div><b>订单来源</b><p>Apply Filters 引用第一步建好的筛选模板，Customer 可进一步限定客户，Preview Orders 用来在保存前确认范围。</p></div></article>
+          <article><span>02</span><div><b>拣货方式</b><p>Pick Method 与 Pick Mode 决定订单如何合并成任务、由什么方式拣货；Task Priority、Assignment Mode、Default Assignee 决定任务的优先级和指派方式。</p></div></article>
+          <article><span>03</span><div><b>计划分组</b><p>Order Plan Group By 用来决定订单分组生成计划的依据，需要把不同订单分开作业时使用。</p></div></article>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/od-add-b.png?v=20261302" aria-label="放大Add Dispatch Setting 的计划规模与高级选项截图"><span>ADD DISPATCH SETTING · PLAN SIZE & OPTIONS</span><img loading="lazy" decoding="async" src="assets/od-add-b.png?v=20261302" alt="Add Dispatch Setting 的计划规模与高级选项截图"><i>点击放大</i></button>
+        <div class="wg-points">
+          <article><span>04</span><div><b>计划规模</b><p>Min Orders Per Plan 与 Max Orders Per Plan 控制一个计划至少、至多容纳多少订单，避免计划过碎或者过大。</p></div></article>
+          <article><span>05</span><div><b>自动释放与异常订单</b><p>开启 Auto Release 后计划生成即释放，现场可立刻领取任务。库存锁定失败的订单是否排除、带错误的订单是否移出计划并标记异常，也在这里选择，用于避免个别订单拖住整批作业。</p></div></article>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/od-add-c.png?v=20261302" aria-label="放大Add Dispatch Setting 的定时配置截图"><span>ADD DISPATCH SETTING · SCHEDULE</span><img loading="lazy" decoding="async" src="assets/od-add-c.png?v=20261302" alt="Add Dispatch Setting 的定时配置截图"><i>点击放大</i></button>
+        <div class="wg-points">
+          <article><span>06</span><div><b>执行时间</b><p>开启 Enable Schedule 后，可按固定间隔、每天、工作日或 Cron 表达式运行。页面会同步列出接下来的 10 次执行时间，保存前先核对时间是否符合预期。</p></div></article>
+        </div>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Dispatch History</span>
+          <h3>方案没有按预期生成计划时，先看历史</h3>
+          <p>History 记录每次执行的结果：处理了多少订单、生成了多少计划、有多少订单锁定库存失败。没有生成计划时，Exception 列会说明原因，例如没有订单匹配筛选条件，就应回到 Order Filters 检查条件。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/od-history.png?v=20261302" aria-label="放大Dispatch History 页面截图"><span>DISPATCH HISTORY</span><img loading="lazy" decoding="async" src="assets/od-history.png?v=20261302" alt="Dispatch History 页面截图"><i>点击放大</i></button>
+      </div>
     </section>
 
 <section class="module small-parcel-station-guide" id="small-parcel-station" data-section="small-parcel-station">
@@ -440,27 +559,30 @@
         <p>Small Parcel Station 是小包裹出库的打包工位。操作员扫描已拣货的容器或任务调出订单，核对商品，录入包裹信息并打印面单，完成包裹从仓内作业到承运商交接的准备。</p>
       </div>
 
-      <div class="small-parcel-scenario">
+      <div class="wg-scenario">
         <span class="section-kicker">核心场景</span>
         <h3>已拣货的容器到达小包裹工位，需要完成一票订单的打包发运</h3>
-        <p>拣货在手持端完成后，容器被送到打包工位。操作员在这里调出订单，确认每件商品与数量，补充包裹尺寸和重量，最后打印 Shipping Label 和需要随货附上的装箱单。</p>
+        <p>拣货在手持端完成后，容器被送到打包工位。操作员在这里调出订单，确认每件商品与数量，补充包裹尺寸和重量，最后打印 Shipping Label 和需要随货附上的装箱单。处理完一票后，可以用 Reset 清空页面，再扫描下一票。</p>
       </div>
 
-      <div class="commitment-screen-section small-parcel-main-screen">
-        <button class="screen-frame" data-lightbox="assets/small-parcel-station.png" aria-label="放大 Small Parcel Station 页面截图">
-          <span>SMALL PARCEL STATION</span><img loading="lazy" decoding="async" src="assets/small-parcel-station.png" alt="Small Parcel Station 页面截图"><i>点击放大</i>
-        </button>
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">工位主页</span>
+          <h3>上方调出订单，下方完成打印</h3>
+          <p>页面顶部是扫描框和功能入口，扫描后订单与待打包的商品显示在中间区域，底部固定着可勾选的单据和 Print All。Operation Log 记录工位上的操作过程，需要回溯时可展开查看。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/sp-main.png?v=20261302" aria-label="放大Small Parcel Station 工位主页截图"><span>SMALL PARCEL STATION</span><img loading="lazy" decoding="async" src="assets/sp-main.png?v=20261302" alt="Small Parcel Station 工位主页截图"><i>点击放大</i></button>
       </div>
 
       <div class="small-parcel-guide">
         <div class="small-parcel-guide-section">
-          <div class="subsection-title"><span>01</span><h3>左侧扫描框：调出订单</h3></div>
+          <div class="subsection-title"><span>01</span><h3>调出订单</h3></div>
           <p>扫描 LP、Task ID、Tote Cart 或 Tracking No，系统根据对应关系调出订单及待打包物料；已发货的 Tracking No 用于只读重打面单。</p>
           <div class="small-parcel-inline-fields"><div><b>LP / Task ID</b><span>调出当前待打包订单。</span></div><div><b>Tote Cart</b><span>按推车关联的 Tote 和 LP 批量查找订单。</span></div><div><b>Tracking No</b><span>进入 Reprint 模式查看已发货记录。</span></div></div>
         </div>
         <div class="small-parcel-guide-section">
-          <div class="subsection-title cyan-text"><span>02</span><h3>右侧扫描框：逐件核验</h3></div>
-          <p>逐件扫描 UPC、Item Name、Case UPC 或其他商品编码，系统将扫描结果与当前订单物料匹配并扣减待扫数量。</p>
+          <div class="subsection-title cyan-text"><span>02</span><h3>逐件核验</h3></div>
+          <p>逐件扫描 UPC、Item Name、Case UPC 或其他商品编码，系统将扫描结果与当前订单物料匹配并扣减待扫数量。是否必须逐件扫描，由工位设置中的 Require Item Scan 控制。</p>
           <div class="small-parcel-inline-fields"><div><b>UPC / Item</b><span>确认商品属于当前订单。</span></div><div><b>Case UPC</b><span>按整箱换算数量一次性确认。</span></div><div><b>SN / Lot No</b><span>按订单和商品规则校验序列号或批次。</span></div></div>
         </div>
         <div class="small-parcel-guide-section">
@@ -469,15 +591,105 @@
           <div class="small-parcel-inline-fields"><div><b>Shipping Label（默认勾选）</b><span>物流面单，包含收发件信息和运单条码。适用于交接承运商的所有包裹，每个包裹打印一张。</span></div><div><b>Packing List by Order</b><span>按订单汇总商品和数量，不区分商品装在哪个包裹。适用于客户按订单核对收货内容。</span></div><div><b>Packing List by Shipping</b><span>按包裹分别列出所装商品。适用于一票订单拆成多个包裹发货，方便收货方确认每箱内容。</span></div></div>
         </div>
       </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">工位设置</span>
+          <h3>按本工位的作业习惯调整行为</h3>
+          <p>点击右上角的 Settings 可以调整当前工位的作业方式，不同工位可以采用不同习惯。</p>
+        </div>
+        <div class="load-create-task-section">
+          <button class="screen-frame load-task-modal-frame" data-lightbox="assets/sp-settings.png?v=20261302" aria-label="放大Station Settings 抽屉截图"><span>STATION SETTINGS</span><img loading="lazy" decoding="async" src="assets/sp-settings.png?v=20261302" alt="Station Settings 抽屉截图"><i>点击放大</i></button>
+          <div class="load-create-task-copy">
+            <span class="section-kicker">三项开关与两台打印机</span>
+            <h3>让扫描和打印更贴合现场</h3>
+            <div class="wg-points">
+              <article><span>01</span><div><b>Require Item Scan</b><p>控制打包时是否要求逐件扫描商品。是否开启取决于现场对核验精度和打包速度的取舍。</p></div></article>
+              <article><span>02</span><div><b>Auto Print Label / Auto Close Order</b><p>两项都属于自动化选项，用来减少操作员的重复点击：前者与面单打印有关，后者与订单关闭有关。</p></div></article>
+              <article><span>03</span><div><b>ZPL Printer / PDF Printer</b><p>分别填写 ZPL 标签打印机和 PDF 文档打印机的名称，面单和装箱单可以输出到各自对应的设备。</p></div></article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">其他入口</span>
+          <h3>补发面单、处理异常、查看订单汇总</h3>
+          <p>顶部另外三个入口用于特殊情况，日常打包通常不需要。</p>
+        </div>
+        <div class="load-create-task-section">
+          <button class="screen-frame load-task-modal-frame" data-lightbox="assets/sp-exception.png?v=20261302" aria-label="放大View Exception 弹窗截图"><span>VIEW EXCEPTION</span><img loading="lazy" decoding="async" src="assets/sp-exception.png?v=20261302" alt="View Exception 弹窗截图"><i>点击放大</i></button>
+          <div class="load-create-task-copy">
+            <div class="wg-points">
+              <article><span>01</span><div><b>Reprint</b><p>面单损坏或需要补发时使用，针对已发货的包裹重新打印单据。</p></div></article>
+              <article><span>02</span><div><b>View Exception</b><p>集中查看被标记为异常的记录，没有异常时会显示 No exceptions。</p></div></article>
+              <article><span>03</span><div><b>Order Summary</b><p>需要先调出订单才能使用，用来查看当前订单的汇总信息。</p></div></article>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
 <section class="module load-management-guide" id="load-management" data-section="load-management">
-      <div class="module-number">06</div><div class="module-heading"><div class="eyebrow">OUTBOUND · LOAD MANAGEMENT</div><h2>把待发订单组织成可交接给承运商的装载批次</h2><p>Load Management 归集同一次运输中的出库订单，维护承运商、地址、预约时间和运输编号。Load Task 必须基于已有 Load 创建；Task &gt; Load Tasks 只管理和执行已创建的任务。</p></div>
-      <div class="load-core-scenario"><span class="section-kicker">核心场景</span><h3>一辆预约到仓的车辆，需要一次带走多个订单</h3><p>例如承运商安排一辆整车下午 3 点到仓，同时提取三个已完成拣货的客户订单。仓库用一个 Load 归集它们，统一记录 Carrier、预约时间、Ship From / Ship To、Master BOL No 和 PRO No。</p></div>
-      <div class="load-screen-section"><button class="screen-frame" data-lightbox="assets/load-management-list.png" aria-label="放大 Load Management 列表截图"><span>LOAD MANAGEMENT · LIST</span><img loading="lazy" decoding="async" src="assets/load-management-list.png" alt="Load Management 列表截图"><i>点击放大</i></button><div class="load-list-guide"><div><b>状态概览</b><p>New、In Progress、Loaded 和 Shipped 反映装载批次所处阶段。</p></div><div><b>运输查询</b><p>按 Load、状态、类型、Customer、Carrier、BOL 和时间范围定位批次。</p></div><div><b>任务关联</b><p>Load Tasks 列显示已创建的现场任务编号。</p></div></div></div>
-      <div class="load-create-task-section"><button class="screen-frame load-task-modal-frame" data-lightbox="assets/load-create-task.png" aria-label="放大 Create Load Task 弹窗截图"><span>CREATE LOAD TASK</span><img loading="lazy" decoding="async" src="assets/load-create-task.png" alt="Create Load Task 弹窗截图"><i>点击放大</i></button><div class="load-create-task-copy"><span class="section-kicker">任务创建入口</span><h3>Load Task 必须基于已有 Load 创建</h3><p>在 Load Management 列表勾选 Load 后点击 Create Task。Task &gt; Load Tasks 当前不支持手工新建，只管理和执行已经创建的任务。</p><div class="load-task-fields"><div><b>Dock / Load Mode</b><span>月台和装车方式。</span></div><div><b>Carrier / Equipment Type</b><span>承运商及设备类型。</span></div><div><b>Priority / Assignee</b><span>优先级和负责人。</span></div><div><b>Selected Loads</b><span>本次任务包含的 Load。</span></div></div></div></div>
-      <div class="load-screen-section"><button class="screen-frame" data-lightbox="assets/load-create-basic.png" aria-label="放大 New Load 页面截图"><span>NEW LOAD</span><img loading="lazy" decoding="async" src="assets/load-create-basic.png" alt="New Load 页面上半部分截图"><i>点击放大</i></button><div class="load-explanation-heading"><span class="section-kicker">基本信息</span><h3>记录本次装载的运输安排</h3></div><div class="load-field-matrix"><div><b>Load No</b><span>装载批次编号。</span></div><div><b>Customer / Carrier</b><span>所属客户和承运商。</span></div><div><b>Load Type</b><span>FTL、LTL、SPL、CONSOL、IMDL 或 TRANSLOAD 分类。</span></div><div><b>Freight Term / Cost</b><span>运费责任和运输费用。</span></div><div><b>Appointment Time</b><span>预约到场时间。</span></div><div><b>Master BOL No / PRO No</b><span>主提单和货运追踪编号。</span></div><div><b>ARN</b><span>装载参考编号。</span></div><div><b>Note / Consignee Note</b><span>内部及收货方备注。</span></div></div></div>
-      <div class="load-screen-section"><button class="screen-frame" data-lightbox="assets/load-create-orders.png" aria-label="放大 New Load 地址和订单截图"><span>NEW LOAD</span><img loading="lazy" decoding="async" src="assets/load-create-orders.png" alt="New Load 页面下半部分截图"><i>点击放大</i></button><div class="load-explanation-heading"><span class="section-kicker">地址与订单</span><h3>确认运输地址，并加入本次装载的订单</h3></div><div class="load-order-layout"><div><span class="section-kicker">运输地址</span><h3>Ship From、Ship To 和 Bill To</h3><p>保存本次 Load 的发货、收货和账单地址快照。</p></div><div class="load-order-copy"><span class="section-kicker">Order Lines</span><h3>选择本次装载包含的出库订单</h3><p>可加入 Picked、Packed、Palletized 或 Ready to Ship 的订单，并可启用装载顺序。</p></div></div></div>
+      <div class="module-number">06</div>
+      <div class="module-heading">
+        <div class="eyebrow">OUTBOUND · LOAD MANAGEMENT</div>
+        <h2>把待发订单组织成可交接给承运商的装载批次</h2>
+        <p>Load Management 归集同一次运输中的出库订单，维护承运商、地址、预约时间和运输编号。装车现场的 Load Task 必须基于已有的 Load 创建。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>一辆预约到仓的车辆，需要一次带走多个订单</h3>
+        <p>例如承运商安排一辆整车下午 3 点到仓，同时提取三个已完成拣货的客户订单。仓库用一个 Load 归集它们，统一记录承运商、预约时间、收发货地址和运输编号。车辆到达后，再基于这个 Load 创建装车任务，交给现场人员执行。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Load 列表</span>
+          <h3>从装载批次的状态，判断今天的装车进度</h3>
+          <p>顶部的状态汇总反映各阶段的批次数量，列表中的 Orders 列显示每个批次包含多少订单。Import 用于批量导入已有的装载数据，Export 用于导出列表，新建单个批次则点击 Add。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/ld-list.png?v=20261302" aria-label="放大Load Management 列表页面截图"><span>LOAD MANAGEMENT · LIST</span><img loading="lazy" decoding="async" src="assets/ld-list.png?v=20261302" alt="Load Management 列表页面截图"><i>点击放大</i></button>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Create Load Task</span>
+          <h3>装车任务从已有的 Load 创建</h3>
+          <p>在列表中勾选 Load 后点击 Create Task，指定月台、装车方式，按需补充承运商和设备类型，再设置优先级和负责人。Task 菜单下的 Load Tasks 只用于管理和执行已经创建的任务，不能手工新建。</p>
+        </div>
+        <div class="load-create-task-section">
+          <button class="screen-frame load-task-modal-frame" data-lightbox="assets/ld-create-task.png?v=20261302" aria-label="放大Create Load Task 弹窗截图"><span>CREATE LOAD TASK</span><img loading="lazy" decoding="async" src="assets/ld-create-task.png?v=20261302" alt="Create Load Task 弹窗截图"><i>点击放大</i></button>
+          <div class="load-create-task-copy">
+            <div class="wg-points">
+              <article><span>01</span><div><b>一次可选多个 Load</b><p>弹窗下方的 Selected Loads 会列出本次选中的批次，多个 Load 可以放进同一个装车任务。</p></div></article>
+              <article><span>02</span><div><b>必填项与优先级</b><p>Dock、Load Mode、Priority 和 Assignee 带红色星号，是创建任务必填的内容；需要加急的车辆可以调高 Priority。</p></div></article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">New Load</span>
+          <h3>先记录运输安排，再加入订单</h3>
+          <p>创建页分为两部分：上半部分是承运商、运费条款、Load Type 和预约时间等运输信息；下半部分是 Ship From、Ship To、Bill To 三个地址和本次装载的订单行。Load Type 对应不同的运输方式，例如整车 FTL 与零担 LTL，按实际运输方式选择即可。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/ld-add-a.png?v=20261303" aria-label="放大New Load 的运输信息截图"><span>NEW LOAD · TRANSPORT INFO</span><img loading="lazy" decoding="async" src="assets/ld-add-a.png?v=20261303" alt="New Load 的运输信息截图"><i>点击放大</i></button>
+        <button class="screen-frame" data-lightbox="assets/ld-add-b.png?v=20261302" aria-label="放大New Load 的订单行截图"><span>NEW LOAD · ORDER LINES</span><img loading="lazy" decoding="async" src="assets/ld-add-b.png?v=20261302" alt="New Load 的订单行截图"><i>点击放大</i></button>
+        <p class="wg-note"><b>加入订单：</b>通过 Add Order Lines 添加已完成拣货、等待发运的订单。需要按顺序装车时，可开启 Enable Load Sequence。地址会作为快照保存在这个 Load 中，之后修改地址主档不会影响已创建的批次。</p>
+      </div>
+
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Load 详情</span>
+          <h3>创建之后，在详情页核对和跟进</h3>
+          <p>详情页上方汇总运输信息和签收状态，下方的 Orders 页签列出本批次包含的订单，Photos 页签用于查看照片，没有照片时显示 No photos。右上角的 Print 用于打印单据，More Actions 中可以执行批次级别的操作，例如 Close Load。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/ld-detail.png?v=20261302" aria-label="放大Load 详情页截图"><span>LOAD DETAIL</span><img loading="lazy" decoding="async" src="assets/ld-detail.png?v=20261302" alt="Load 详情页截图"><i>点击放大</i></button>
+      </div>
     </section>
 
 <section class="module shipment-tickets-guide" id="shipment-tickets" data-section="shipment-tickets">
@@ -485,29 +697,22 @@
       <div class="module-heading">
         <div class="eyebrow">OUTBOUND · SHIPMENT TICKETS</div>
         <h2>记录订单实际发运结果，并向客户系统发送 Delivery Confirmation</h2>
-        <p>Shipment Ticket 是订单级的发运结果记录。系统在 Load Task 关闭后，根据订单、运输方式、Tracking No 和 Load 对已发运库存进行分组并自动生成。每张 Ticket 记录本次发出的 LP、Tracking No 等信息，并作为打印 Packing List 和发送 DC（Delivery Confirmation）的数据入口。</p>
+        <p>Shipment Ticket 是订单级的发运结果记录。装车任务关闭后，系统根据订单、运输方式、Tracking No 和 Load 对已发运库存分组并自动生成，同时作为打印 Packing List 和发送 DC（Delivery Confirmation）的数据入口。</p>
       </div>
 
-      <div class="commitment-scenario">
+      <div class="wg-scenario">
         <span class="section-kicker">核心场景</span>
         <h3>货物离开仓库后，通知客户系统“已发货”</h3>
-        <p>装车任务关闭后，仓库需要保留正式发运记录，说明哪些商品、装在哪些容器中、通过什么运单号发出；客户的 OMS / ERP 也需要接收发货确认并更新订单状态。Shipment Ticket 就是这份记录和通知的数据载体。</p>
-        <div class="commitment-scenario-flow">
-          <article><small>01 · 触发</small><b>Close Load Task</b><p>装车任务关闭，系统自动生成发运记录。</p></article><i>→</i>
-          <article><small>02 · 生成</small><b>Auto Create Ticket</b><p>按订单分组，记录 LP 和 Tracking No。</p></article><i>→</i>
-          <article><small>03 · 通知</small><b>Send DC</b><p>将发运信息推送至客户 Webhook。</p></article>
-        </div>
+        <p>装车任务关闭后，仓库需要保留正式的发运记录，说明哪些商品、装在哪些容器中、通过什么运单号发出；客户的 OMS 或 ERP 也需要收到发货确认，才能更新订单状态。Shipment Ticket 就是这份记录和通知的数据载体。</p>
       </div>
 
-      <div class="commitment-screen-section shipment-list-screen">
-        <button class="screen-frame" data-lightbox="assets/shipment-tickets-list.png" aria-label="放大 Shipment Tickets 列表截图">
-          <span>SHIPMENT TICKETS LIST</span><img loading="lazy" decoding="async" src="assets/shipment-tickets-list.png" alt="Shipment Tickets 列表页面截图"><i>点击放大</i>
-        </button>
-        <div class="shipment-list-copy">
-          <span class="section-kicker">页面用途</span>
-          <h3>查询已生成的发运记录，并处理后续单据与通知</h3>
-          <p>列表用于按订单、Load、Tracking No 等条件定位 Ticket。进入对应记录后，可核对本次实际发出的 LP 和商品，并根据需要打印 Packing List 或执行 Send DC。</p>
+      <div class="module-page-preview">
+        <div class="preview-heading">
+          <span class="section-kicker">Ticket 列表</span>
+          <h3>查询发运记录，并确认是否已通知客户</h3>
+          <p>可以按 Ticket、订单、Load 或客户定位记录。DC Sent 一列用来判断发运结果有没有成功发送给客户系统，Status 则区分 Ticket 是新建还是已关闭。需要统一补发时，勾选多条记录后使用 Batch Send/Resend DC；需要对账时用 Export 导出。</p>
         </div>
+        <button class="screen-frame" data-lightbox="assets/st-list.png?v=20261302" aria-label="放大 Shipment Tickets 列表截图"><span>SHIPMENT TICKETS · LIST</span><img loading="lazy" decoding="async" src="assets/st-list.png?v=20261302" alt="Shipment Tickets 列表截图"><i>点击放大</i></button>
       </div>
 
       <div class="shipment-dc-section">
@@ -544,7 +749,7 @@
   <div class="sidebar-scrim" id="sidebar-scrim"></div>
 
   <script src="app.js?v=20260813-inventory-tabs"></script>
-  <script src="i18n.js?v=20260828-menu-zh-fix1"></script></body>
+  <script src="i18n.js?v=20261304-customer"></script></body>
 </html>
 
 

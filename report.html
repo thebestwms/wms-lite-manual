@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Orbiflow WMS-Lite 功能说明书网站样章">
+  <title>Orbiflow WMS-Lite · Report 报表</title>
+  <link rel="stylesheet" href="styles.css?v=20261118-wes-batch1">
+</head>
+<body class="page-report">  <div class="language-switcher" aria-label="Language switcher"><button type="button" data-lang-option="zh" class="active">中</button><button type="button" data-lang-option="ja">日</button><button type="button" data-lang-option="en">EN</button></div>
+  <!-- 内容规则：不复述截图中显而易见的界面结构、按钮或必填标记；正文只解释业务场景、选择依据、配置结果和非显性约束。 -->
+  <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">O</span>
+      <div>
+        <strong>ORBIFLOW</strong>
+        <small>WMS-Lite Manual</small>
+      </div>
+    </div>
+
+    <nav aria-label="说明书导航">
+      <a href="index.html#start" class="nav-link active"><span>00</span>阅读指南</a>
+      <div class="nav-module main-nav-module template-main-nav" data-nav-module="report">
+        <div class="nav-module-head"><a href="report.html#report" class="nav-link nav-group-link"><span>RPT</span>Report</a><button class="nav-toggle" type="button" aria-label="收起 Report 子菜单" aria-expanded="true" aria-controls="report-submenu"></button></div>
+        <div class="nav-submenu" id="report-submenu">
+      <a href="report.html#report-inbound-outbound-guide" class="nav-link"><span>01</span>Receiving & Shipping</a><a href="report.html#report-inventory-guide" class="nav-link"><span>02</span>Inventory Reports</a><a href="report.html#report-field-config-guide" class="nav-link"><span>03</span>Field Configuration</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="status-dot"></span>
+      基于当前系统页面整理
+    </div>
+  </aside>
+
+  <header class="mobile-header">
+    <button id="menu-button" aria-label="打开菜单" aria-expanded="false">☰</button>
+    <strong>WMS-Lite 功能说明书</strong>
+    <span>RPT</span>
+  </header>
+
+  <main>
+
+<section class="wg-overview report-overview" id="report" data-section="report">
+      <div class="overview-label">REPORT · MODULE OVERVIEW</div>
+      <h2>Report 按客户汇总入库、出库与库存数据，并支持导出</h2>
+      <p class="wg-lead">报表统一先选择客户再查询，适合做对账、盘点分析和向客户提供数据；Field Configuration 还可以让不同客户导出不同的字段。</p>
+
+      <div class="wg-function-grid">
+        <article><small>01 · 单据</small><b>入库与出库的业务汇总</b><p>按时间范围汇总收货与发运情况，用来核对一段时间内的收发货量。</p><div class="wg-scope-links"><span>Receiving</span><span>Shipping</span></div></article>
+        <article><small>02 · 库存</small><b>库存、调整与动态分析</b><p>看当前库存分布、库存状态汇总、调整原因和某个 SKU 的全部库存变动。</p><div class="wg-scope-links"><span>Inventory</span><span>Inventory Status</span><span>Adjustment</span><span>SKU Activity</span></div></article>
+        <article><small>03 · 字段</small><b>按客户定制导出字段</b><p>为不同客户设定各自的导出字段和显示名称，并可设默认配置。</p><div class="wg-scope-links"><span>Field Configuration</span></div></article>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="report-inbound-outbound-guide" data-section="report-inbound-outbound-guide">
+      <div class="module-number">01</div>
+      <div class="module-heading">
+        <div class="eyebrow">REPORT · INBOUND & OUTBOUND</div>
+        <h2>用收货与发运报表核对一段时间的进出量</h2>
+        <p>Receiving 汇总客户的收货单，Shipping 汇总客户的装车与发运。两者都必须先选择客户，再设置时间范围查询。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>月底与客户对账，确认当月收了多少、发了多少</h3>
+        <p>运营人员选择该客户和当月时间范围，分别查询 Receiving 与 Shipping，核对单据状态后导出，作为与客户对账的依据。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Receiving</span>
+          <h3>按收货时间和状态汇总收货单</h3>
+          <p>除了常规的单号和状态，可用 Received Time 看实际收货完成的时间，用 In Yard Time 看车辆进场时间，两者结合可评估卸货等待与作业效率。需要导出时点击 Export。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-report-receiving.png?v=20261128" aria-label="放大 Receiving 截图">
+          <span>REPORT · RECEIVING</span><img loading="lazy" decoding="async" src="assets/wes-report-receiving.png?v=20261128" alt="Receiving 报表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Shipping</span>
+          <h3>按装车号和发运时间追踪出库</h3>
+          <p>适合按 Load No 追踪某一车货的出库情况，或用 Shipped Time 统计某段时间的实际发运量。Created Time 与 Shipped Time 之间的差距，可以反映订单从创建到发出的时效。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-report-shipping.png?v=20261128" aria-label="放大 Shipping 截图">
+          <span>REPORT · SHIPPING</span><img loading="lazy" decoding="async" src="assets/wes-report-shipping.png?v=20261128" alt="Shipping 报表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="report-inventory-guide" data-section="report-inventory-guide">
+      <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">REPORT · INVENTORY</div>
+        <h2>从库存现状、状态、调整到动态，多角度分析库存</h2>
+        <p>四个库存类报表回答四类问题：现在有多少、处于什么状态、为什么被调整、某个 SKU 经历了什么。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>客户质疑库存数量，需要拿出依据</h3>
+        <p>先用 Inventory 查出该 SKU 当前分布在哪些库位和 LP；再用 Inventory Status 看不同状态（如可用、冻结）的数量；最后用 SKU Activity 回溯进出和调整的全过程，并结合 Adjustment 说明差异原因。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Inventory</span>
+          <h3>明细级库存，精确到库位和 LP</h3>
+          <p>可按 SKU、库位、LP 或批次精确定位库存，适合排查某批货放在哪里。选择 Location Level 可以按库位层级汇总，查看整个区域或货架的存量。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-report-inventory.png?v=20261128" aria-label="放大 Inventory 截图">
+          <span>REPORT · INVENTORY</span><img loading="lazy" decoding="async" src="assets/wes-report-inventory.png?v=20261128" alt="Inventory 报表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Inventory Status</span>
+          <h3>按状态汇总每个 SKU 的数量</h3>
+          <p>把同一个 SKU 的库存按状态拆开，一眼看出可发货的数量和被冻结、待处理的数量，用于判断是否需要补货或处理异常库存。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-report-inventory-status.png?v=20261128" aria-label="放大 Inventory Status 截图">
+          <span>REPORT · INVENTORY STATUS</span><img loading="lazy" decoding="async" src="assets/wes-report-inventory-status.png?v=20261128" alt="Inventory Status 报表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Adjustment</span>
+          <h3>按原因复盘库存调整</h3>
+          <p>按 Reason 筛选可统计破损、盘盈盘亏等各类原因造成的调整量，帮助管理者发现反复出现的问题环节，并按时间范围做月度或季度复盘。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-report-adjustment.png?v=20261128" aria-label="放大 Adjustment 截图">
+          <span>REPORT · ADJUSTMENT</span><img loading="lazy" decoding="async" src="assets/wes-report-adjustment.png?v=20261128" alt="Adjustment 报表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">SKU Activity</span>
+          <h3>查看一个 SKU 的完整库存变动</h3>
+          <p>按 Activity Type 可只看入库、出库、移库或调整等某一类动作，配合 Activity Time 还原某个时间段内库存增减的来龙去脉，是排查库存差异最直接的报表。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-report-sku-activity.png?v=20261128" aria-label="放大 SKU Activity 截图">
+          <span>REPORT · SKU ACTIVITY</span><img loading="lazy" decoding="async" src="assets/wes-report-sku-activity.png?v=20261128" alt="SKU Activity 报表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="report-field-config-guide" data-section="report-field-config-guide">
+      <div class="module-number">03</div>
+      <div class="module-heading">
+        <div class="eyebrow">REPORT · FIELD CONFIGURATION</div>
+        <h2>让不同客户导出不同的报表字段</h2>
+        <p>Field Configuration 为每类报表设置要显示和导出的字段及名称，可以针对某个客户，也可以设置为所有客户通用的默认配置。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>某客户只需要部分字段，且希望使用自己习惯的列名</h3>
+        <p>为该客户新建一条配置，选择报表类型并挑选需要的字段、修改显示名称；之后该客户的报表只出现这些列。其余没有专属配置的客户，则沿用默认配置。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Field Configuration</span>
+          <h3>在列表中管理各客户与默认配置</h3>
+          <p>列表按报表类别和客户展示已有配置，并标明哪条是默认配置，方便确认某个客户到底在用哪一套字段；修改后点击 Refresh 可重新加载最新数据。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-report-field-config.png?v=20261128" aria-label="放大 Field Configuration 截图">
+          <span>REPORT · FIELD CONFIGURATION</span><img loading="lazy" decoding="async" src="assets/wes-report-field-config.png?v=20261128" alt="Field Configuration 列表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">New Configuration</span>
+          <h3>先选范围，再逐个映射字段</h3>
+          <p>Customer 选择 Default (no customer) 并将 Is Default 设为 Yes，即作为所有客户的通用配置；选择具体客户则只对该客户生效。Field Mappings 用来决定报表出现哪些列、叫什么名字；通用字段建议先放进默认配置，再按客户差异做微调。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-report-field-config-new.png?v=20261128" aria-label="放大 New Configuration 截图">
+          <span>REPORT · FIELD CONFIGURATION · NEW</span><img loading="lazy" decoding="async" src="assets/wes-report-field-config-new.png?v=20261128" alt="New Configuration 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <dialog id="image-dialog">
+    <button id="dialog-close" aria-label="关闭图片">×</button>
+    <img id="dialog-image" alt="页面截图放大预览">
+  </dialog>
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+  <script src="app.js?v=20260813-inventory-tabs"></script>
+  <script src="i18n.js?v=20261128-iam-report"></script></body>
+</html>
+
+
+
+
+
+

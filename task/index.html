@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Orbiflow WMS-Lite · Task 任务管理 功能说明</title>
-  <link rel="stylesheet" href="styles.css?v=20260903-task-nav-v2">
+  <link rel="stylesheet" href="styles.css?v=20261123-task">
 </head>
 <body>
   <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
@@ -24,14 +24,19 @@
         <div class="nav-submenu" id="task-submenu">
         <a href="#receive-task" class="nav-link"><span>01</span>Receive Task</a>
         <a href="#put-away-task" class="nav-link"><span>02</span>Put Away Task</a>
-        <a href="#pick-task" class="nav-link"><span>03</span>Pick Task</a>
-        <a href="#pack-task" class="nav-link"><span>04</span>Pack Task</a>
-        <a href="#replenishment-task" class="nav-link"><span>05</span>Replenishment Task</a>
-        <a href="#load-task" class="nav-link"><span>06</span>Load Task</a>
-        <a href="#movement-task" class="nav-link"><span>07</span>Movement Task</a>
-        <a href="#consolidate-task" class="nav-link"><span>—</span>特定场景 Task</a>
+        <a href="#movement-task" class="nav-link"><span>03</span>Movement Task</a>
+        <a href="#pick-task" class="nav-link"><span>04</span>Pick Task</a>
+        <a href="#pack-task" class="nav-link"><span>05</span>Pack Task</a>
+        <a href="#consolidate-task" class="nav-link"><span>06</span>Consolidate Task</a>
+        <a href="#assembly-task" class="nav-link"><span>07</span>Assembly Task</a>
+        <a href="#sort-task" class="nav-link"><span>08</span>Sort Task</a>
         <a href="#put-back-task" class="nav-link"><span>09</span>Put Back Task</a>
-        <a href="#other-tasks" class="nav-link"><span>—</span>技术向</a>
+        <a href="#replenishment-task" class="nav-link"><span>10</span>Replenishment Task</a>
+        <a href="#inventory-check-task" class="nav-link"><span>11</span>Inventory Check Task</a>
+        <a href="#load-task" class="nav-link"><span>12</span>Load Task</a>
+        <a href="#task-action" class="nav-link"><span>13</span>Task Action</a>
+        <a href="#wcs-send-log" class="nav-link"><span>14</span>WCS Send Log</a>
+        <a href="#task-assignment" class="nav-link"><span>15</span>Task Assignment</a>
         </div>
       </div>
     </nav>
@@ -47,26 +52,26 @@
       <div class="eyebrow">TASK · 任务管理</div>
       <h1>Task 连接系统计划与仓库现场作业</h1>
       <p class="hero-lead">Task 用来承载需要操作员执行的扫描、搬运、拣货、合托和装车动作。管理员通过 Task 查看任务来源、分配责任人、跟踪进度，并确认库存、订单或发运记录已经按预期更新。</p>
-      <div class="task-overview-cards" aria-label="Task 覆盖的主要作业范围">
-        <article>
-          <small>01 · 入库执行</small>
-          <h2>把到仓货物转成可用库存</h2>
-          <p>从车辆签到、卸货、建立 LP，到把货物上架到储存库位。</p>
-          <div><span>Receive Task</span><span>Put Away Task</span></div>
-        </article>
-        <article>
-          <small>02 · 出库执行</small>
-          <h2>把订单需求转成现场作业</h2>
-          <p>组织拣货、合托和装车确认，确保货物按订单要求完成出库。</p>
-          <div><span>Pick Task</span><span>Pack Task</span><span>Load Task</span></div>
-        </article>
-        <article>
-          <small>03 · 辅助与专项</small>
-          <h2>处理补货、移库、退库与特殊场景</h2>
-          <p>覆盖库存位置调整、拣货区补货、退库回仓，以及 AGV 或 Kitting 场景。</p>
-          <div><span>Movement</span><span>Replenishment</span><span>Put Back</span></div>
-        </article>
-      </div>
+      <div class="task-groups" aria-label="Task 类型一览">
+          <article>
+            <small>01 · 入库与库内搬运</small>
+            <b>把货收进仓库，并放到该在的位置</b>
+            <p>覆盖货车到仓后的收货与上架，以及库内移库、补货和退库，让库存始终落在正确的库位。</p>
+            <div class="task-group-links"><a href="#receive-task">Receive</a><a href="#put-away-task">Put Away</a><a href="#movement-task">Movement</a><a href="#replenishment-task">Replenishment</a><a href="#put-back-task">Put Back</a></div>
+          </article>
+          <article>
+            <small>02 · 出库与发运</small>
+            <b>按订单取货，直到装车离仓</b>
+            <p>指引操作员拣货、分拣和包装，最后装车并生成发运记录。</p>
+            <div class="task-group-links"><a href="#pick-task">Pick</a><a href="#sort-task">Sort</a><a href="#pack-task">Pack</a><a href="#load-task">Load</a></div>
+          </article>
+          <article>
+            <small>03 · 整理、盘点与任务跟踪</small>
+            <b>整理库存，并跟进任务执行情况</b>
+            <p>合并或组装库存、核对实物与账面，同时查看任务的指派情况和下发 WCS 的结果。</p>
+            <div class="task-group-links"><a href="#consolidate-task">Consolidate</a><a href="#assembly-task">Assembly</a><a href="#inventory-check-task">Inventory Check</a><a href="#task-action">Task Action</a><a href="#wcs-send-log">WCS Send Log</a><a href="#task-assignment">Task Assignment</a></div>
+          </article>
+        </div>
     </section>
 
     <section class="module" id="receive-task" data-section="receive-task">
@@ -93,21 +98,40 @@
           <h3>实时追踪每条收货任务的执行步骤与进度</h3>
           <p>Current Step 是日常巡检的关键字段。如果一批任务的 Current Step 长时间停在 Dock Check In，说明月台还没有人去签到；停在 Offload，说明卸货还没开始。Progress 显示已完成 LP 数 / 总数，让管理员不用逐条点开就能判断整体进度。</p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/receive-task.png" aria-label="放大 Receive Task 列表截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/receive-task.png?v=20261120" aria-label="放大 Receive Task 列表截图">
           <span>RECEIVE TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/receive-task.png" alt="Receive Task 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/receive-task.png?v=20261120" alt="Receive Task 列表页面截图">
           <i>点击放大</i>
         </button>
       </div>
-      <div class="screen-explainer reverse">
-        <button class="screen-frame" data-lightbox="assets/receive-task-detail.png" aria-label="放大 Receive Task 详情截图">
-          <span>RECEIVE TASK DETAIL · STEPS</span>
-          <img loading="lazy" decoding="async" src="assets/receive-task-detail.png" alt="Receive Task 详情页面截图">
-          <i>点击放大</i>
-        </button>
-        <div class="field-copy">
-          <div class="subsection-title"><span>—</span><h3>详情页 · Steps 标签页</h3></div>
-          <p style="font-size:14px;color:#475569;margin:0;line-height:1.6;">点击任务 ID 进入详情页，可查看每个步骤的独立执行进度。步骤按 Sequence 顺序排列，每步有独立的 Status 和 Action Progress，方便定位具体卡在哪个动作。</p>
+      <div class="screen-explainer reverse detail-tabs-block">
+        <div class="subsection-title"><span>—</span><h3>详情页</h3></div>
+        <p style="font-size:14px;color:#475569;margin:0 0 18px;line-height:1.6;">点击 Task ID 进入详情页，上方是任务的基本信息，下方按标签页查看执行情况。Steps 一开始就有；任务开始建立 LP 后会多出 LP Setup 标签。</p>
+        <div class="settings-tabs detail-tabs" role="tablist" aria-label="Receive Task 详情标签" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+          <button class="settings-tab active" role="tab" aria-selected="true" aria-controls="receive-detail-steps" data-detail-tab="receive-detail-steps"><span>01</span>Steps</button>
+          <button class="settings-tab" role="tab" aria-selected="false" aria-controls="receive-detail-lp" data-detail-tab="receive-detail-lp"><span>02</span>LP Setup</button>
+        </div>
+        <div class="detail-tab-panel" id="receive-detail-steps" role="tabpanel">
+          <div class="field-copy">
+            <div class="subsection-title"><span>—</span><h3>Steps：看每个步骤走到哪里</h3></div>
+            <p style="font-size:14px;color:#475569;margin:0;line-height:1.6;">每个步骤有独立的 Status 和 Action Progress，步骤按 Sequence 顺序排列。想知道一张任务卡在哪个动作，先看这里。</p>
+          </div>
+          <button class="screen-frame" data-lightbox="assets/receive-task-detail.png?v=20261121" aria-label="放大 Receive Task 详情 Steps 截图">
+            <span>RECEIVE TASK DETAIL · STEPS</span>
+            <img loading="lazy" decoding="async" src="assets/receive-task-detail.png?v=20261121" alt="Receive Task 详情 Steps页面截图">
+            <i>点击放大</i>
+          </button>
+        </div>
+        <div class="detail-tab-panel" id="receive-detail-lp" role="tabpanel" hidden>
+          <div class="field-copy">
+            <div class="subsection-title"><span>—</span><h3>LP Setup：核对实际收了什么</h3></div>
+            <p style="font-size:14px;color:#475569;margin:0;line-height:1.6;">记录这张任务实际建立的 LP，包括 LP 所在位置和 LP 类型，以及每个 SKU 的数量、批次和保质期。收货后对账或追溯某个 LP 的来源，从这里查。</p>
+          </div>
+          <button class="screen-frame" data-lightbox="assets/receive-task-lp-setup.png?v=20261121" aria-label="放大 Receive Task 详情 LP Setup 截图">
+            <span>RECEIVE TASK DETAIL · LP SETUP</span>
+            <img loading="lazy" decoding="async" src="assets/receive-task-lp-setup.png?v=20261121" alt="Receive Task 详情 LP Setup页面截图">
+            <i>点击放大</i>
+          </button>
         </div>
       </div>
     </section>
@@ -133,18 +157,51 @@
         <div class="section-intro">
           <span class="section-kicker">Put Away Task · 列表</span>
           <h3>查看待上架任务及关联的收货来源</h3>
-          <p>列表显示每条上架任务关联的 Receipt ID 和 Receive Task ID，可追溯来源。Put Away Type 说明上架方式，Progress 显示已完成 LP 数 / 总数。<br><span style="font-size:13px;color:#64748b;">💡 生成时机由 Customer Settings 中的 Put Away Mode 控制：DURING_RECEIVING 每完成一个 LP 即生成；AFTER_RECEIVING 整个收货任务关闭后统一生成。</span></p>
+          <p>每条上架任务都能追溯到来源收货单和收货任务；Progress 反映已经归位的 LP 占比，可以用来判断这批货还剩多少没上架。<br><span style="font-size:13px;color:#64748b;">💡 生成时机由 Customer Settings 中的 Put Away Mode 控制：DURING_RECEIVING 每完成一个 LP 即生成；AFTER_RECEIVING 整个收货任务关闭后统一生成。</span></p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/put-away-task.png" aria-label="放大 Put Away Task 列表截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/put-away-task.png?v=20261120" aria-label="放大 Put Away Task 列表截图">
           <span>PUT AWAY TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/put-away-task.png" alt="Put Away Task 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/put-away-task.png?v=20261120" alt="Put Away Task 列表页面截图">
           <i>点击放大</i>
         </button>
       </div>
     </section>
 
-    <section class="module" id="pick-task" data-section="pick-task">
+    <section class="module" id="movement-task" data-section="movement-task">
       <div class="module-number">03</div>
+      <div class="module-heading">
+        <div class="eyebrow">TASK · MOVEMENT TASK</div>
+        <h2>库内任意位置之间的货物移动</h2>
+        <p>Movement Task 用于在仓库内部将库存从一个位置移动到另一个位置，不涉及入库或出库流程。常见于库位整理、区域调整或临时移位等场景，由管理员手动创建。</p>
+      </div>
+      <div class="scenario-band">
+        <div class="section-kicker">典型场景</div>
+        <h3>库内位置调整，不改变库存归属</h3>
+        <p class="scenario-intro">Movement Task 只改变货物的物理位置，不触发入库或出库流程，也不改变库存业务状态。典型使用场景：库区规划调整、库位整理腾出整齐空间、拣货区手动补充（无 Min/Max 规则时）、设备维护临时移位等。</p>
+        <ol>
+          <li><b>创建任务</b><span>管理员指定来源库存与目标位置</span></li>
+          <li><b>执行搬运</b><span>操作员确认 LP，将货物移动至目标位置</span></li>
+          <li><b>扫码确认</b><span>扫描目标位置，库存位置更新</span></li>
+        </ol>
+      </div>
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">Movement Task · 列表</span>
+          <h3>查看库内移动任务的执行状态</h3>
+          <p>移库任务只负责改变货物的物理位置。想确认某次移位有没有执行完，在这里看任务状态即可；库存业务状态是否同时变化，以实际任务规则为准。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/movement-task.png?v=20261120" aria-label="放大 Movement Task 列表截图">
+          <span>MOVEMENT TASK · LIST</span>
+          <img loading="lazy" decoding="async" src="assets/movement-task.png?v=20261120" alt="Movement Task 列表页面截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== CONSOLIDATE TASK ==================== -->
+
+    <section class="module" id="pick-task" data-section="pick-task">
+      <div class="module-number">04</div>
       <div class="module-heading">
         <div class="eyebrow">TASK · PICK TASK</div>
         <h2>出库订单分配到位后，指引操作员从库位取货</h2>
@@ -167,16 +224,16 @@
           <h3>监控所有拣货任务的执行状态</h3>
           <p>列表关联 Order Plan ID 和 Order ID，可追溯拣货任务对应的订单和计划。Pick Method 和 Pick Mode 在任务创建时已确定，反映 Order Plan 的配置。</p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/pick-task.png" aria-label="放大 Pick Task 列表截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/pick-task.png?v=20261120" aria-label="放大 Pick Task 列表截图">
           <span>PICK TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/pick-task.png" alt="Pick Task 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/pick-task.png?v=20261120" alt="Pick Task 列表页面截图">
           <i>点击放大</i>
         </button>
       </div>
     </section>
 
     <section class="module" id="pack-task" data-section="pack-task">
-      <div class="module-number">04</div>
+      <div class="module-number">05</div>
       <div class="module-heading">
         <div class="eyebrow">TASK · PACK TASK</div>
         <h2>将多个已拣货箱子合并到一个托盘，准备整托装车</h2>
@@ -198,16 +255,221 @@
           <h3>查看合托任务的执行状态</h3>
           <p>Pack Task 可由管理员在 PC 端手动创建（选择已 PICKED 状态的订单），也可在 Order Plan 配置 autoCreatePackTask 后由系统在拣货完成时自动创建。</p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/pack-task.png" aria-label="放大 Pack Task 列表截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/pack-task.png?v=20261120" aria-label="放大 Pack Task 列表截图">
           <span>PACK TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/pack-task.png" alt="Pack Task 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/pack-task.png?v=20261120" alt="Pack Task 列表页面截图">
           <i>点击放大</i>
         </button>
       </div>
     </section>
 
+    <section class="module" id="consolidate-task" data-section="consolidate-task">
+      <div class="module-number">06</div>
+      <div class="module-heading">
+        <div class="eyebrow">TASK · CONSOLIDATE TASK</div>
+        <h2>把分散在多个 Tote 的库存合并，腾出空容器</h2>
+        <p>Consolidate Task 用于 AGV 自动化仓：把同一客户、库存状态为 OPEN 的库存集中到更少的 Tote，SKU 不要求相同。</p>
+      </div>
+      <div class="scenario-band">
+        <div class="section-kicker">核心场景</div>
+        <h3>多个 Tote 只装了一点货，需要合并腾出空容器</h3>
+        <p class="scenario-intro">AGV 自动化仓里，同一客户的库存常常散落在多个半空的 Tote 中，占着容器和库位。管理员在 Add 页面用筛选条件挑出这些半空 Tote，加入合并清单后创建任务，系统把货集中到更少的 Tote，空出来的容器可以循环使用。</p>
+        <ol>
+          <li><b>查找 Tote</b><span>筛出库存分散、填充率低的 Tote</span></li>
+          <li><b>加入合并清单</b><span>勾选结果后点 Add to Consolidate Line</span></li>
+          <li><b>创建任务</b><span>选择是否经过 ST（工作站）</span></li>
+          <li><b>跟踪进度</b><span>在详情页查看来源 Tote 和步骤</span></li>
+        </ol>
+      </div>
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">Consolidate Task · 列表</span>
+          <h3>合并任务的执行进展在这里跟踪</h3>
+          <p>任务创建后，可以在这里查看每个合并任务是在等待、进行中还是已完成，由哪个站点和执行人处理。点击 Task ID 进入详情，查看来源 Tote 和合并过程。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/consolidate-task-list.png?v=20261120" aria-label="放大 Consolidate Task 列表截图">
+          <span>CONSOLIDATE TASK · LIST</span>
+          <img loading="lazy" decoding="async" src="assets/consolidate-task-list.png?v=20261120" alt="Consolidate Task 列表截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+      <div class="screen-explainer reverse">
+        <button class="screen-frame" data-lightbox="assets/consolidate-task-create.png?v=20261119" aria-label="放大创建页截图">
+          <span>CONSOLIDATE TASK · ADD</span>
+          <img loading="lazy" decoding="async" src="assets/consolidate-task-create.png?v=20261119" alt="Create Tote Consolidate Task 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title"><span>—</span><h3>创建合并任务</h3></div>
+          <dl>
+            <div><dt>Inventory Search</dt><dd>先用 Customer、SKU、Fill Rate (%)、SKU Count、Total Qty、Single Item Qty、Lot No 找出候选 Tote。Fill Rate 越低表示越空。</dd></div>
+            <div><dt>Consolidate Line</dt><dd>勾选搜索结果后加入清单，清单里可以移除不需要的 Tote。</dd></div>
+            <div><dt>Create Task</dt><dd>Create Task Without ST 与 Create Task With ST 二选一；Cancel 放弃创建。</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="screen-explainer reverse">
+        <button class="screen-frame tall" data-lightbox="assets/consolidate-task-detail-1.png?v=20261119" aria-label="放大详情截图">
+          <span>CONSOLIDATE TASK · DETAIL</span>
+          <img loading="lazy" decoding="async" src="assets/consolidate-task-detail-1.png?v=20261119" alt="Consolidate Task 详情截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title"><span>—</span><h3>详情页：来源 Tote 与步骤</h3></div>
+          <p style="font-size:14px;color:#475569;margin:0 0 12px;line-height:1.6;">点击 Task ID 进入详情页，顶部有 Back 和 Assign 按钮。</p>
+          <dl>
+            <div><dt>Basic Info</dt><dd>Task ID、状态、客户、目标库位、开始与结束时间、创建人。</dd></div>
+            <div><dt>Source Totes</dt><dd>列出参与合并的 Tote、所在库位和 LP ID，数量显示在标题里。</dd></div>
+            <div><dt>Steps</dt><dd>显示 CONSOLIDATE 步骤的状态和 Action Progress（已完成动作数 / 总数）。</dd></div>
+            <div><dt>Consolidate History</dt><dd>记录每次合并的明细，用来确认货搬到了哪个 Tote。</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="module" id="assembly-task" data-section="assembly-task">
+      <div class="module-number">07</div>
+      <div class="module-heading">
+        <div class="eyebrow">TASK · ASSEMBLY TASK</div>
+        <h2>按 BOM 把组件装配成套件，再继续出库</h2>
+        <p>Assembly Task 用在 Kitting 场景：组件装配完成后，套件作为一个整体继续出库。</p>
+      </div>
+      <div class="scenario-band">
+        <div class="section-kicker">核心场景</div>
+        <h3>订单要的是套件，需要先把组件装配起来</h3>
+        <p class="scenario-intro">出库订单里含有 Is Kitting 商品时，系统会生成 Assembly Task；管理员也可以在 Create 页面手动建一个。操作员按 BOM 取出各组件完成组装，完成后的套件继续走出库流程。只有配置了 Kitting 商品的客户才会用到。</p>
+      </div>
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">Assembly Task · 列表</span>
+          <h3>组装任务在这里指派和启动</h3>
+          <p>行末三个图标依次是 Start（开始）、Delete（删除）、Assign（指派）。需要一次指派多条任务时，勾选后使用 Batch Assign。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/assembly-task-list.png?v=20261120" aria-label="放大 Assembly Task 列表截图">
+          <span>ASSEMBLY TASK · LIST</span>
+          <img loading="lazy" decoding="async" src="assets/assembly-task-list.png?v=20261120" alt="Assembly Task 列表截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+      <div class="screen-explainer reverse">
+        <button class="screen-frame" data-lightbox="assets/assembly-task-create.png?v=20261119" aria-label="放大创建页截图">
+          <span>ASSEMBLY TASK · CREATE</span>
+          <img loading="lazy" decoding="async" src="assets/assembly-task-create.png?v=20261119" alt="Create Assembly Task 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title"><span>—</span><h3>手动创建套件任务</h3></div>
+          <dl>
+            <div><dt>Customer</dt><dd>先选客户。未选客户时 Add Item 不能点。</dd></div>
+            <div><dt>Kit Items</dt><dd>点击 Add Item，在 Search kit item 中搜索套件商品并填写 Qty，Action 列可移除该行。</dd></div>
+            <div><dt>Submit</dt><dd>提交后生成 Assembly Task；Cancel 返回列表。</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="module" id="sort-task" data-section="sort-task">
+      <div class="module-number">08</div>
+      <div class="module-heading">
+        <div class="eyebrow">TASK · SORT TASK</div>
+        <h2>把批量拣出的货按订单分拣</h2>
+        <p>Sort Task 对应批量拣货之后的分拣步骤，用来查看分拣任务的批次、模式和状态。</p>
+      </div>
+      <div class="scenario-band">
+        <div class="section-kicker">核心场景</div>
+        <h3>一批拣好的货要按订单分拣</h3>
+        <p class="scenario-intro">批量拣货（Batch / Wave）把多个订单的货一起拣出来，之后需要按订单拆开。Sort Task 记录这一步，列表里能看到它来自哪个批次（Batch No）、哪个波次（Wave No）、关联哪条 Pick Task，以及按哪种模式（Manual、WCS Auto、Hybrid）分拣。</p>
+      </div>
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">Sort Task · 列表</span>
+          <h3>分拣任务按批次跟踪进度</h3>
+          <p>每条分拣任务都关联到所属批次和拣货任务，用来跟踪这批订单的分拣进度。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/sort-task-list.png?v=20261120" aria-label="放大 Sort Task 列表截图">
+          <span>SORT TASK · LIST</span>
+          <img loading="lazy" decoding="async" src="assets/sort-task-list.png?v=20261120" alt="Sort Task 列表截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+    <section class="module" id="put-back-task" data-section="put-back-task">
+      <div class="module-number">09</div>
+      <div class="module-heading">
+        <div class="eyebrow">TASK · PUT BACK TASK</div>
+        <h2>将已拣货但未发运的库存退回可用存储区</h2>
+        <p>Put Back Task 用于把已从库位取出、但因各种原因未能发运的库存归还原位或放入其他存储位置，使其重新进入可分配状态。</p>
+      </div>
+      <div class="scenario-band">
+        <div class="section-kicker">典型触发场景</div>
+        <h3>拣货后订单取消，货物需要归还库位</h3>
+        <p class="scenario-intro">拣货完成后，订单因客户取消或库存问题无法发运，已拣出的货物不能留在暂存区——Put Back Task 指引操作员将这些货物送回合适的存储位置，重新变为可用库存。</p>
+        <ol>
+          <li><b>订单取消 / 超拣</b><span>已拣货但订单被取消，或拣出数量超过需求</span></li>
+          <li><b>人工退库</b><span>管理员手动发起，将指定 LP 退回存储区</span></li>
+          <li><b>未发运返库</b><span>装车后因故未能发运，货物需要重新入库</span></li>
+        </ol>
+      </div>
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">Put Back Task · 列表</span>
+          <h3>查看退库任务的执行状态</h3>
+          <p>每条退库任务都对应一张订单。Put Back Type 为 MANUAL 表示由管理员手动创建；其他类型（订单取消、超拣）由系统自动触发。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/put-back-task-list.png?v=20261120" aria-label="放大 Put Back Task 列表截图">
+          <span>PUT BACK TASK · LIST</span>
+          <img loading="lazy" decoding="async" src="assets/put-back-task-list.png?v=20261120" alt="Put Back Task 列表页面截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+
+      <div class="screen-explainer reverse detail-tabs-block">
+        <div class="subsection-title"><span>—</span><h3>详情页</h3></div>
+        <p style="font-size:14px;color:#475569;margin:0 0 18px;line-height:1.6;">点击 Task ID 进入详情页，包含三个标签页。</p>
+        <div class="settings-tabs detail-tabs" role="tablist" aria-label="Put Back Task 详情标签" style="grid-template-columns:repeat(3,minmax(0,1fr));">
+          <button class="settings-tab active" role="tab" aria-selected="true" aria-controls="putback-detail-basic" data-detail-tab="putback-detail-basic"><span>01</span>Basic Info</button>
+          <button class="settings-tab" role="tab" aria-selected="false" aria-controls="putback-detail-steps" data-detail-tab="putback-detail-steps"><span>02</span>Task Steps</button>
+          <button class="settings-tab" role="tab" aria-selected="false" aria-controls="putback-detail-history" data-detail-tab="putback-detail-history"><span>03</span>Put Back History</button>
+        </div>
+        <div class="detail-tab-panel" id="putback-detail-basic" role="tabpanel">
+          <div class="field-copy">
+            <div class="subsection-title"><span>—</span><h3>Basic Info：确认这张退库任务的来由</h3></div>
+            <p style="font-size:14px;color:#475569;margin:0;line-height:1.6;">显示任务对应的订单、退库类型、状态和指派人。想知道为什么会产生这张任务，先看 Put Back Type。</p>
+          </div>
+          <button class="screen-frame" data-lightbox="assets/put-back-task-detail.png?v=20261121" aria-label="放大 Put Back Task 详情 Basic Info 截图">
+            <span>PUT BACK TASK DETAIL · BASIC INFO</span>
+            <img loading="lazy" decoding="async" src="assets/put-back-task-detail.png?v=20261121" alt="Put Back Task 详情 Basic Info页面截图">
+            <i>点击放大</i>
+          </button>
+        </div>
+        <div class="detail-tab-panel" id="putback-detail-steps" role="tabpanel" hidden>
+          <div class="field-copy">
+            <div class="subsection-title"><span>—</span><h3>Task Steps：确认执行到哪一步</h3></div>
+            <p style="font-size:14px;color:#475569;margin:0;line-height:1.6;">显示 Put Back 步骤的状态和指派人。</p>
+          </div>
+          <button class="screen-frame" data-lightbox="assets/put-back-task-steps.png?v=20261121" aria-label="放大 Put Back Task 详情 Task Steps 截图">
+            <span>PUT BACK TASK DETAIL · TASK STEPS</span>
+            <img loading="lazy" decoding="async" src="assets/put-back-task-steps.png?v=20261121" alt="Put Back Task 详情 Task Steps页面截图">
+            <i>点击放大</i>
+          </button>
+        </div>
+        <div class="detail-tab-panel" id="putback-detail-history" role="tabpanel" hidden>
+          <div class="field-copy">
+            <div class="subsection-title"><span>—</span><h3>Put Back History：确认货物退回到哪里</h3></div>
+            <p style="font-size:14px;color:#475569;margin:0;line-height:1.6;">任务执行后，每件货物的退回记录会出现在这里，包括退回的 SKU、数量，以及从哪个 LP 和库位退到了哪个 LP 和库位。这是确认货物最终去向的最直接依据。</p>
+          </div>
+          <button class="screen-frame" data-lightbox="assets/put-back-task-history.png?v=20261121" aria-label="放大 Put Back Task 详情 Put Back History 截图">
+            <span>PUT BACK TASK DETAIL · PUT BACK HISTORY</span>
+            <img loading="lazy" decoding="async" src="assets/put-back-task-history.png?v=20261121" alt="Put Back Task 详情 Put Back History页面截图">
+            <i>点击放大</i>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <section class="module" id="replenishment-task" data-section="replenishment-task">
-      <div class="module-number">05</div>
+      <div class="module-number">10</div>
       <div class="module-heading">
         <div class="eyebrow">TASK · REPLENISHMENT TASK</div>
         <h2>将库存从储存区搬运到拣货区，保障拣货区不断货</h2>
@@ -226,18 +488,58 @@
         <div class="section-intro">
           <span class="section-kicker">Replenishment Task · 列表</span>
           <h3>查看所有补货任务的执行状态</h3>
-          <p>列表显示每条任务的来源（From Location）、目标（To Location）、关联的 Min/Max Setting 规则及执行进度。</p>
+          <p>补货任务的 Source 说明它是怎么产生的，MANUAL 表示手动创建，方便排查为什么会出现这次补货；SKUs 是该任务涉及的商品数。具体的来源与目标库位在任务详情里查看。页面上方的 Scheduler Config 用于配置自动补货的调度，Execution Log 记录调度的执行情况，Add 可手动创建补货任务。</p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/replenishment-task.png" aria-label="放大 Replenishment Task 列表截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/replenishment-task.png?v=20261120" aria-label="放大 Replenishment Task 列表截图">
           <span>REPLENISHMENT TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/replenishment-task.png" alt="Replenishment Task 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/replenishment-task.png?v=20261120" alt="Replenishment Task 列表页面截图">
           <i>点击放大</i>
         </button>
       </div>
     </section>
 
+    <section class="module" id="inventory-check-task" data-section="inventory-check-task">
+      <div class="module-number">11</div>
+      <div class="module-heading">
+        <div class="eyebrow">TASK · INVENTORY CHECK TASK</div>
+        <h2>叫容器到工作站，核对实物与系统库存</h2>
+        <p>Inventory Check Task 用来确认自动化仓里的实物是否与系统库存一致。</p>
+      </div>
+      <div class="scenario-band">
+        <div class="section-kicker">核心场景</div>
+        <h3>怀疑某批库存与系统不符，叫容器到工作站核对</h3>
+        <p class="scenario-intro">Inventory Check Task 适用于自动化仓：管理员在 Add 页面用筛选条件圈定要核对的库存，比如某个客户的商品、填充率偏低的容器，或很久没被拣过的容器。创建任务后，系统把对应容器呼叫到工作站，由人核对实物和系统库存是否一致。</p>
+      </div>
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">Inventory Check Task · 列表</span>
+          <h3>查看每个盘点核对任务的进展</h3>
+          <p>每条记录对应一个需要核对的容器，Station 表示容器被呼叫到的工作站。状态变为完成后，说明该容器的实物与系统库存已核对完毕。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/inventory-check-task-list.png?v=20261120" aria-label="放大 Inventory Check Task 列表截图">
+          <span>INVENTORY CHECK TASK · LIST</span>
+          <img loading="lazy" decoding="async" src="assets/inventory-check-task-list.png?v=20261120" alt="Inventory Check Task 列表截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+      <div class="screen-explainer reverse">
+        <button class="screen-frame" data-lightbox="assets/inventory-check-task-add.png?v=20261119" aria-label="放大创建页截图">
+          <span>INVENTORY CHECK TASK · ADD</span>
+          <img loading="lazy" decoding="async" src="assets/inventory-check-task-add.png?v=20261119" alt="Add Inventory Check Task 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title"><span>—</span><h3>先查库存，再创建核对任务</h3></div>
+          <dl>
+            <div><dt>Inventory Search</dt><dd>条件有 Customer、SKU、Location、Fill Rate（范围，单位 %）、Lot No、Tote ID、Recent Picking Time。其中 Customer 为必填，未选会提示 Customer is required。</dd></div>
+            <div><dt>Search / Reset</dt><dd>Search 查出符合条件的库存，Reset 清空条件。</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <section class="module" id="load-task" data-section="load-task">
-      <div class="module-number">06</div>
+      <div class="module-number">12</div>
       <div class="module-heading">
         <div class="eyebrow">TASK · LOAD TASK</div>
         <h2>将货物装上车，完成后触发发运记录生成</h2>
@@ -264,127 +566,103 @@
         <div class="section-intro">
           <span class="section-kicker">Load Task · 列表</span>
           <h3>查看装车任务及关联 Load 信息</h3>
-          <p>列表展示 Task ID、Order ID、Loads、Customer、Carrier 等信息。<b>Detail</b> 用于查看任务详情，<b>Start</b> 用于开始装车；装车完成后的关闭动作会触发后续发运记录处理。</p>
+          <p>每条装车任务对应一个或多个 Load，Current Step 和 Progress 显示现场装车进行到哪一步。<b>Detail</b> 用于查看任务详情，<b>Start</b> 用于开始装车；装车完成后的关闭动作会触发后续发运记录处理。</p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/load-task.png" aria-label="放大 Load Task 列表截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/load-task.png?v=20261120" aria-label="放大 Load Task 列表截图">
           <span>LOAD TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/load-task.png" alt="Load Task 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/load-task.png?v=20261120" alt="Load Task 列表页面截图">
           <i>点击放大</i>
         </button>
       </div>
     </section>
 
-    <section class="module" id="movement-task" data-section="movement-task">
-      <div class="module-number">07</div>
+    <section class="module" id="task-action" data-section="task-action">
+      <div class="module-number">13</div>
       <div class="module-heading">
-        <div class="eyebrow">TASK · MOVEMENT TASK</div>
-        <h2>库内任意位置之间的货物移动</h2>
-        <p>Movement Task 用于在仓库内部将库存从一个位置移动到另一个位置，不涉及入库或出库流程。常见于库位整理、区域调整或临时移位等场景，由管理员手动创建。</p>
+        <div class="eyebrow">TASK · TASK ACTION</div>
+        <h2>任务执行动作的明细，排查状态与库存差异</h2>
+        <p>Task Action 覆盖所有任务类型，主要用于排查任务状态异常和库存位置不一致。</p>
       </div>
       <div class="scenario-band">
-        <div class="section-kicker">典型场景</div>
-        <h3>库内位置调整，不改变库存归属</h3>
-        <p class="scenario-intro">Movement Task 只改变货物的物理位置，不触发入库或出库流程，也不改变库存业务状态。典型使用场景：库区规划调整、库位整理腾出整齐空间、拣货区手动补充（无 Min/Max 规则时）、设备维护临时移位等。</p>
+        <div class="section-kicker">核心场景</div>
+        <h3>任务状态或库存位置不对，要回溯每一步动作</h3>
+        <p class="scenario-intro">Task Action 是所有任务类型的动作明细。管理员遇到任务卡住、库存位置和预期不一致时，可以按 Task ID、Action ID 或 Task Type 找到对应动作，看它从哪个库位到哪个库位、数量多少、有没有发给 WCS，以及 WCS 的处理状态。</p>
+      </div>
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">Task Action · 列表</span>
+          <h3>每个具体动作是否成功交给 WCS，在这里确认</h3>
+          <p>每条记录是任务拆出来的一个具体动作，Send To WCS 与 WCS Status 用来判断它有没有成功交给 WCS，Status 为 Failed 的动作需要优先排查。Task Type 覆盖收货、上架、拣货、盘点、装车等十类任务。表格较宽，需要左右滚动，下面分成左右两段展示。每行的 Detail 可查看动作详情。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/task-action-list.png?v=20261119" aria-label="放大 Task Action 列表左半部分">
+          <span>TASK ACTION · LIST (LEFT)</span>
+          <img loading="lazy" decoding="async" src="assets/task-action-list.png?v=20261119" alt="Task Action 列表左半部分截图">
+          <i>点击放大</i>
+        </button>
+        <button class="screen-frame list-screen" data-lightbox="assets/task-action-list-right.png?v=20261119" aria-label="放大 Task Action 列表右半部分">
+          <span>TASK ACTION · LIST (RIGHT)</span>
+          <img loading="lazy" decoding="async" src="assets/task-action-list-right.png?v=20261119" alt="Task Action 列表右半部分截图">
+          <i>点击放大</i>
+        </button>
+      </div>
+      <div class="list-page-tip"><b>入口</b><span>列表上方的 WCS Send Records 按钮会跳到 WCS Send Log 页面。</span></div>
+    </section>
+
+    <section class="module" id="wcs-send-log" data-section="wcs-send-log">
+      <div class="module-number">14</div>
+      <div class="module-heading">
+        <div class="eyebrow">TASK · WCS SEND LOG</div>
+        <h2>系统发给 WCS 的每条指令及其结果</h2>
+        <p>WCS Send Log 记录系统向 WCS 发送指令的成败，用于排查设备或接口通信问题。</p>
+      </div>
+      <div class="scenario-band">
+        <div class="section-kicker">核心场景</div>
+        <h3>设备没有动，要确认指令有没有成功发给 WCS</h3>
+        <p class="scenario-intro">系统每次向 WCS 发出指令都会留一条记录。设备不动或任务停在发送环节时，可以按 Action ID 或 Result 找到对应记录，看发送是否成功、WCS 返回的 Job ID 和 HTTP 状态；失败的记录可以用行末的 Retry 重新发送。</p>
+      </div>
+      <div class="list-page-preview">
+        <div class="section-intro">
+          <span class="section-kicker">WCS Send Log · 列表</span>
+          <h3>发送失败的记录在这里排查与重发</h3>
+          <p>把 Result 筛选为 Failed，就能快速找到下发失败的记录。Result 是开关样式，开启表示成功。点行首箭头可展开本次发送的请求头与请求内容，结合 HTTP Status 和 WCS Job ID 判断 WCS 是否收到。Retry 会重新向 WCS 发送，请确认原因已处理后再点。</p>
+        </div>
+        <button class="screen-frame list-screen" data-lightbox="assets/wcs-send-log-list.png?v=20261120" aria-label="放大 WCS Send Log 截图">
+          <span>WCS SEND LOG · LIST</span>
+          <img loading="lazy" decoding="async" src="assets/wcs-send-log-list.png?v=20261120" alt="WCS Send Log 列表截图（筛选 Result = Failed）">
+          <i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+    <section class="module" id="task-assignment" data-section="task-assignment">
+      <div class="module-number">15</div>
+      <div class="module-heading">
+        <div class="eyebrow">TASK · TASK ASSIGNMENT</div>
+        <h2>用一张看板了解每位操作员的任务负载</h2>
+        <p>Task Assignment 汇总各类任务在每位操作员手上的 NEW 与 IN PROG 数量，帮助管理员在派发任务前判断人力分布。</p>
+      </div>
+      <div class="scenario-band">
+        <div class="section-kicker">核心场景</div>
+        <h3>高峰时段，管理员要看谁手上任务多、谁空闲</h3>
+        <p class="scenario-intro">任务分配前，管理员常常需要先了解每位操作员当前手上有多少待办。Task Assignment 把所有操作员和各类任务放在同一张看板里，每个格子显示该操作员在这类任务上的 NEW（未开始）和 IN PROG（进行中）数量，方便把新任务派给手上较少的人。</p>
         <ol>
-          <li><b>创建任务</b><span>管理员指定来源库存与目标位置</span></li>
-          <li><b>执行搬运</b><span>操作员确认 LP，将货物移动至目标位置</span></li>
-          <li><b>扫码确认</b><span>扫描目标位置，库存位置更新</span></li>
+          <li><b>看板</b><span>一行一位操作员，一列一种任务</span></li>
+          <li><b>筛选任务类型</b><span>点击顶部的任务类型按钮显示或隐藏对应列</span></li>
+          <li><b>找到空闲的人</b><span>数字小的操作员更适合接新任务</span></li>
+          <li><b>回到列表指派</b><span>到对应任务列表执行 Assign 或 Batch Assign</span></li>
         </ol>
       </div>
       <div class="list-page-preview">
         <div class="section-intro">
-          <span class="section-kicker">Movement Task · 列表</span>
-          <h3>查看库内移动任务的执行状态</h3>
-          <p>列表显示每条移动任务的来源库位、目标库位、关联 LP 和执行状态。Movement Task 的主要结果是更新库存物理位置；库存业务状态是否同时变化，以实际任务规则为准。</p>
+          <span class="section-kicker">Task Assignment · 列表</span>
+          <h3>看板显示每位操作员的任务负载</h3>
+          <p>顶部可选择 Receive、Put Away、Pick、Movement、Replenishment、Pack、Put Back、Assembly、Cycle Count、Load 十类任务；点击按钮可隐藏或重新显示对应列，Refresh 重新读取数据。列表底部的 Unassigned 行统计还没有指派人的任务，便于优先处理。这个页面只用来查看，指派动作在各任务的列表里完成。</p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/movement-task.png" aria-label="放大 Movement Task 列表截图">
-          <span>MOVEMENT TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/movement-task.png" alt="Movement Task 列表页面截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/task-assignment-board.png?v=20261120" aria-label="放大 Task Assignment 截图">
+          <span>TASK ASSIGNMENT · BOARD</span>
+          <img loading="lazy" decoding="async" src="assets/task-assignment-board.png?v=20261120" alt="Task Assignment 看板截图">
           <i>点击放大</i>
         </button>
-      </div>
-    </section>
-
-    <!-- ==================== CONSOLIDATE TASK ==================== -->
-    <section class="detail-section" id="consolidate-task" data-section="consolidate-task">
-      <div class="section-intro">
-        <span class="section-kicker">特定场景 · AGV 自动化仓库</span>
-        <h2>Consolidate Task、Assembly Task、Inventory Check Task</h2>
-        <p>这三种 Task 主要出现在 AGV 仓或特定客户场景，日常人工仓通常不会用到。</p>
-      </div>
-      <div class="screen-explainer">
-        <div class="field-copy">
-          <dl>
-            <div><dt>Consolidate Task</dt><dd>AGV 仓的库存合并任务，用于把同类库存集中到更少的 Tote。</dd></div>
-            <div><dt>Assembly Task</dt><dd>Kitting 场景下的组装任务，完成后作为套件继续出库。</dd></div>
-            <div><dt>Inventory Check Task</dt><dd>AGV 仓的在库核对任务，用于确认实物与系统库存是否一致。</dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== PUT BACK TASK ==================== -->
-    <section class="module" id="put-back-task" data-section="put-back-task">
-      <div class="module-number">09</div>
-      <div class="module-heading">
-        <div class="eyebrow">TASK · PUT BACK TASK</div>
-        <h2>将已拣货但未发运的库存退回可用存储区</h2>
-        <p>Put Back Task 用于把已从库位取出、但因各种原因未能发运的库存归还原位或放入其他存储位置，使其重新进入可分配状态。</p>
-      </div>
-      <div class="scenario-band">
-        <div class="section-kicker">典型触发场景</div>
-        <h3>拣货后订单取消，货物需要归还库位</h3>
-        <p class="scenario-intro">拣货完成后，订单因客户取消或库存问题无法发运，已拣出的货物不能留在暂存区——Put Back Task 指引操作员将这些货物送回合适的存储位置，重新变为可用库存。</p>
-        <ol>
-          <li><b>订单取消 / 超拣</b><span>已拣货但订单被取消，或拣出数量超过需求</span></li>
-          <li><b>人工退库</b><span>管理员手动发起，将指定 LP 退回存储区</span></li>
-          <li><b>未发运返库</b><span>装车后因故未能发运，货物需要重新入库</span></li>
-        </ol>
-      </div>
-      <div class="list-page-preview">
-        <div class="section-intro">
-          <span class="section-kicker">Put Back Task · 列表</span>
-          <h3>查看退库任务的执行状态</h3>
-          <p>列表显示退库任务关联的 Order ID、Put Back Type 和执行状态。Put Back Type = MANUAL 表示由管理员手动创建；其他类型（订单取消、超拣）由系统自动触发。</p>
-        </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/put-back-task-list.png" aria-label="放大 Put Back Task 列表截图">
-          <span>PUT BACK TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/put-back-task-list.png" alt="Put Back Task 列表页面截图">
-          <i>点击放大</i>
-        </button>
-      </div>
-
-      <div class="screen-explainer reverse">
-        <button class="screen-frame" data-lightbox="assets/put-back-task-detail.png" aria-label="放大 Put Back Task 详情截图">
-          <span>PUT BACK TASK DETAIL · BASIC INFO</span>
-          <img loading="lazy" decoding="async" src="assets/put-back-task-detail.png" alt="Put Back Task 详情页面截图">
-          <i>点击放大</i>
-        </button>
-        <div class="field-copy">
-          <div class="subsection-title"><span>—</span><h3>详情页说明</h3></div>
-          <p style="font-size:14px;color:#475569;margin:0 0 12px;line-height:1.6;">点击 Task ID 进入详情页，包含三个标签页：</p>
-          <dl>
-            <div><dt>Basic Info</dt><dd>任务基本信息：Task ID、Status、Priority、Customer、Assignee、Put Back Type、Current Step、关联 Order ID 等。</dd></div>
-            <div><dt>Task Steps</dt><dd>步骤执行记录，显示 Put Back 步骤的状态和指派人。</dd></div>
-            <div><dt>Put Back History</dt><dd>退库明细记录：每件货物退回的 SKU、数量、From LP / To LP、From Location / To Location，以及关联的 Pick Task 和 Order ID。这是确认"货物退回到哪里"的最直接依据。</dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 其余 Task 简介 ==================== -->
-    <section class="detail-section" id="other-tasks" data-section="other-tasks">
-      <div class="section-intro">
-        <span class="section-kicker">技术向</span>
-        <h2>Task Action · WCS Send Log</h2>
-      </div>
-      <div class="screen-explainer">
-        <div class="field-copy">
-          <dl>
-            <div><dt>Task Action</dt><dd>记录任务执行动作，主要用于排查状态异常和库存差异。</dd></div>
-            <div><dt>WCS Send Log</dt><dd>记录系统向 WCS 发送的指令和回执，供运维排查通信问题。</dd></div>
-          </dl>
-        </div>
       </div>
     </section>
 
@@ -399,7 +677,7 @@
     <img id="dialog-image" alt="页面截图放大预览">
   </dialog>
   <div class="sidebar-scrim" id="sidebar-scrim"></div>
-  <script src="app.js?v=20260903-task-nav-v2"></script>
-  <script src="i18n.js?v=20260903-task-nav-v2"></script>
+  <script src="app.js?v=20261123-task"></script>
+  <script src="i18n.js?v=20261123-task"></script>
 </body>
 </html>

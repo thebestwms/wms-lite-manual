@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Orbiflow WMS-Lite 功能说明书网站样章">
+  <title>Orbiflow WMS-Lite · Appointment 预约</title>
+  <link rel="stylesheet" href="styles.css?v=20261118-wes-batch1">
+</head>
+<body class="page-appointment">  <div class="language-switcher" aria-label="Language switcher"><button type="button" data-lang-option="zh" class="active">中</button><button type="button" data-lang-option="ja">日</button><button type="button" data-lang-option="en">EN</button></div>
+  <!-- 内容规则：不复述截图中显而易见的界面结构、按钮或必填标记；正文只解释业务场景、选择依据、配置结果和非显性约束。 -->
+  <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">O</span>
+      <div>
+        <strong>ORBIFLOW</strong>
+        <small>WMS-Lite Manual</small>
+      </div>
+    </div>
+
+    <nav aria-label="说明书导航">
+      <a href="index.html#start" class="nav-link active"><span>00</span>阅读指南</a>
+      <div class="nav-module main-nav-module appointment-main-nav" data-nav-module="appointment">
+        <div class="nav-module-head"><a href="appointment.html#appointment" class="nav-link nav-group-link"><span>APT</span>Appointment</a><button class="nav-toggle" type="button" aria-label="收起 Appointment 子菜单" aria-expanded="true" aria-controls="appointment-submenu"></button></div>
+        <div class="nav-submenu" id="appointment-submenu">
+          <a href="appointment.html#appointment-list-guide" class="nav-link"><span>01</span>Appointment List</a><a href="appointment.html#appointment-calendar-guide" class="nav-link"><span>02</span>Appointment Calendar</a><a href="appointment.html#pending-carrier-guide" class="nav-link"><span>03</span>Pending Carrier Appointment</a><a href="appointment.html#appointment-settings-guide" class="nav-link"><span>04</span>Appointment Settings</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="status-dot"></span>
+      基于当前系统页面整理
+    </div>
+  </aside>
+
+  <header class="mobile-header">
+    <button id="menu-button" aria-label="打开菜单" aria-expanded="false">☰</button>
+    <strong>WMS-Lite 功能说明书</strong>
+    <span>APT</span>
+  </header>
+
+  <main>
+<section class="wg-overview appointment-overview" id="appointment" data-section="appointment">
+      <div class="overview-label">APPOINTMENT · MODULE OVERVIEW</div>
+      <h2>Appointment 统筹承运商预约、日历排期与时段容量</h2>
+      <p class="wg-lead">Appointment 用于管理承运商到仓卸货或提货的预约。模块覆盖预约单的创建与到场、日历排期、尚未预约单据的催办，以及可预约时段与通知邮箱的设置。</p>
+
+      <div class="wg-function-grid">
+        <article><small>01 · 预约单</small><b>登记承运商何时到、做什么</b><p>选择承运商和作业类型，挂上收货单或装载单，再选定到仓日期与时段。</p><div class="wg-scope-links"><span>Appointment List</span></div></article>
+        <article><small>02 · 排期</small><b>在日历上看全天到场安排</b><p>按月、周、日查看预约，并按服务类型筛选。</p><div class="wg-scope-links"><span>Appointment Calendar</span></div></article>
+        <article><small>03 · 催办</small><b>找出还没预约的单据</b><p>列出尚未预约的 Load 和收货单，向承运商发提醒或批量创建预约。</p><div class="wg-scope-links"><span>Pending Carrier Appointment</span></div></article>
+        <article><small>04 · 规则</small><b>决定哪些时段可以约</b><p>设置通知邮箱，以及每天各时段可承接的预约数量。</p><div class="wg-scope-links"><span>Appointment Settings</span></div></article>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="appointment-list-guide" data-section="appointment-list-guide">
+      <div class="module-number">01</div>
+      <div class="module-heading">
+        <div class="eyebrow">APPOINTMENT · APPOINTMENT LIST</div>
+        <h2>先约定承运商到仓的时间和作业，再让现场按预约接车</h2>
+        <p>Appointment 是仓库与承运商之间的到仓约定：谁来、做入库还是出库、关联哪些单据、什么时间到。预约确定后，月台和人员可以提前安排，承运商到场时再执行 Check In。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>承运商要送一批货进仓，仓库需要提前排好月台和人手</h3>
+        <p>例如承运商准备送货，计划员新建预约，选择 Live Delivery 并关联对应收货单，再挑选当天仍有空位的时段。预约保存后，可以向承运商发送确认邮件；到场当天在列表中对该预约执行 Check In。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Appointment List</span>
+          <h3>从列表查询预约，并处理到场、修改和取消</h3>
+          <p>可按 APPT#、Carrier、Service Type 查询预约，点击 Expand 可在行内查看类型、服务类型、Load Number、PO# 和 Ref#。每行提供 Check In、Edit、Cancel 和 Manage Confirmation 四个操作。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-list.png?v=20261118" aria-label="放大 Appointment List 截图">
+          <span>APPOINTMENT · LIST</span><img loading="lazy" decoding="async" src="assets/wes-appointment-list.png?v=20261118" alt="Appointment 列表页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-list-expanded.png?v=20261118" aria-label="放大 Appointment List Expanded 截图">
+          <span>APPOINTMENT · LIST · EXPANDED</span><img loading="lazy" decoding="async" src="assets/wes-appointment-list-expanded.png?v=20261118" alt="Appointment 列表展开行截图"><i>点击放大</i>
+        </button>
+        <p class="wg-note"><b>Check In 与 Cancel：</b>这两个操作会改变预约状态，请先确认承运商、预约号和时间无误后再执行。</p>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">New / Edit Appointment</span>
+          <h3>先选承运商和作业，再选日期时段</h3>
+          <p>新建与编辑使用同一个向导。第 1 步先选 Carrier，再选择入库或出库作业并关联单据；第 2 步在日历中选定日期，切换 AM／PM 后点选某个小时，系统按每 15 分钟列出时段并显示剩余可约数（如 10 available），点选时段后右侧弹出 Appointment Confirmation 摘要。若该时段没有容量，会提示 No slots available。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-new-step1.png?v=20261118" aria-label="放大 New Appointment Step 1 截图">
+          <span>APPOINTMENT · STEP 1</span><img loading="lazy" decoding="async" src="assets/wes-appointment-new-step1.png?v=20261118" alt="新建预约第 1 步页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-new-step2.png?v=20261118" aria-label="放大 Appointment Step 2 截图">
+          <span>APPOINTMENT · STEP 2</span><img loading="lazy" decoding="async" src="assets/wes-appointment-new-step2.png?v=20261118" alt="预约第 2 步选择日期时段页面截图"><i>点击放大</i>
+        </button>
+        <div class="wg-choice">
+          <article><span>Live Delivery</span><b>入库：卸货期间车辆留场</b><p>承运商在仓库卸货的整个过程中不离场，适合需要现场确认的送货。</p></article>
+          <article><span>Drop Off Delivery</span><b>入库：放下拖车即离场</b><p>承运商卸下拖车后离开，仓库在方便时再卸货。</p></article>
+          <article><span>Live Load</span><b>出库：装货期间车辆留场</b><p>承运商在装货过程中留场，装完直接发车。</p></article>
+          <article><span>Pickup Preload</span><b>出库：提取已备好的货</b><p>货物已提前装好，承运商到场后直接提走。</p></article>
+          <article><span>Pick Up Empty</span><b>出库：提走空车</b><p>承运商到场提走空拖车，用于后续装货。</p></article>
+          <article><span>关联单据</span><b>入库类关联收货单，出库类关联装载单</b><p>选择入库类作业后可用 + Add Receipt 添加收货单；出库类作业则用 + Add Load 添加装载单。</p></article>
+        </div>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Manage Confirmation</span>
+          <h3>向承运商发送预约确认</h3>
+          <p>Manage Confirmation 会生成预约确认邮件，内容包括承运商、APPT#、到仓时间、服务类型和关联收货单。核对收件人、主题和正文后，可通过 Open in Outlook 发出。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-confirmation.png?v=20261118" aria-label="放大 Appointment Confirmation 截图">
+          <span>APPOINTMENT · CONFIRMATION</span><img loading="lazy" decoding="async" src="assets/wes-appointment-confirmation.png?v=20261118" alt="预约确认弹窗截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="appointment-calendar-guide" data-section="appointment-calendar-guide">
+      <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">APPOINTMENT · CALENDAR</div>
+        <h2>在日历上一眼看清哪天、哪个时段车辆集中到场</h2>
+        <p>Appointment Calendar 以月、周、日三种视图展示所有预约，适合计划员排班和安排月台。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>排下周月台和人手前，先看哪几天预约扎堆</h3>
+        <p>例如准备下周班次时，切到周视图查看每天的预约分布，再按 Inbound 或 Outbound 服务类型筛选。对集中到场的日子提前加人，或把新的预约错开到较空的时段。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Appointment Calendar</span>
+          <h3>按服务类型筛选，并查看单个预约</h3>
+          <p>日历支持月、周、日三种视图。Service 过滤可按 Inbound（Live Delivery、Drop Off Delivery）和 Outbound（Live Load、Pickup Preload、Pick Up Empty）显示，也可开启 Group by Service Type。点击日历上的预约，右侧会滑出该服务类型的预约列表，每条显示 APPT#、状态、预约时间、承运商和服务类型；同一时段有多条预约时，会一并列出。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-calendar.png?v=20261118" aria-label="放大 Appointment Calendar 截图">
+          <span>APPOINTMENT · CALENDAR</span><img loading="lazy" decoding="async" src="assets/wes-appointment-calendar.png?v=20261118" alt="Appointment 日历页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-calendar-popup.png?v=20261118" aria-label="放大 Appointment Calendar Detail 截图">
+          <span>APPOINTMENT · CALENDAR · DETAIL</span><img loading="lazy" decoding="async" src="assets/wes-appointment-calendar-popup.png?v=20261118" alt="Appointment 日历点击预约后的右侧列表截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="pending-carrier-guide" data-section="pending-carrier-guide">
+      <div class="module-number">03</div>
+      <div class="module-heading">
+        <div class="eyebrow">APPOINTMENT · PENDING CARRIER APPOINTMENT</div>
+        <h2>找出还没有预约的单据，主动推动承运商预约</h2>
+        <p>Pending Carrier Appointment 是预约的发起入口：它找出还没有关联预约的 Load 和收货单，帮助管理员主动联系承运商，创建预约或发送提醒。它不管理已有预约，已有预约在 Appointment List 中处理。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>货已经建单，承运商却迟迟没来约时间</h3>
+        <p>例如一批收货单已经创建，承运商还没有预约到仓时间。计划员在 Receipt 标签里找到这些收货单，点击 Make Appointment 代为创建预约，或用 Send Reminder 给承运商发提醒邮件；单据较多时，勾选后批量发送提醒或批量创建预约。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Load · Receipt</span>
+          <h3>在 Load 与 Receipt 标签里找出还没有预约的单据</h3>
+          <p>Load 标签列出已指定承运商、尚未关联预约的发货单；Receipt 标签列出已指定承运商、尚未关联预约且未关闭或取消的收货单。两个标签都可按 Carrier、单号、Ref No、PO No 和 Customer 筛选，Email Reminders 列显示是否已向承运商发过提醒。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-pending-load.png?v=20261118" aria-label="放大 Pending Carrier Appointment Load 截图">
+          <span>PENDING CARRIER APPOINTMENT · LOAD</span><img loading="lazy" decoding="async" src="assets/wes-appointment-pending-load.png?v=20261118" alt="Pending Carrier Appointment Load 标签页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-pending-receipt.png?v=20261118" aria-label="放大 Pending Carrier Appointment Receipt 截图">
+          <span>PENDING CARRIER APPOINTMENT · RECEIPT</span><img loading="lazy" decoding="async" src="assets/wes-appointment-pending-receipt.png?v=20261118" alt="Pending Carrier Appointment Receipt 标签页面截图"><i>点击放大</i>
+        </button>
+        <div class="wg-points">
+          <article><span>01</span><div><b>Make Appointment</b><p>选择服务类型：Load 对应出库类（Pick Up Empty、Pickup Preload、Live Load），Receipt 对应入库类（Live Delivery、Drop Off Delivery）。确认后进入新建预约页面，承运商和单据自动带入。</p></div></article>
+          <article><span>02</span><div><b>Send Reminder</b><p>弹窗中预填承运商邮箱和邮件内容，通过 Outlook 发出。发出后该行的 Email Reminders 由 NO 变为 YES，并在 Generated Invitations 中生成一条记录。</p></div></article>
+          <article><span>03</span><div><b>批量操作</b><p>勾选多行后，两个按钮后面的数字随勾选的行数变化（勾选 2 行显示 (2)）。Batch Send Reminders 一次发出多封提醒，Batch Create Appointment 带着多个单据一起进入新建预约页面。</p></div></article>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-pending-load-selected.png?v=20261118" aria-label="放大 Pending Carrier Appointment Load Selected 截图">
+          <span>PENDING CARRIER APPOINTMENT · LOAD · SELECTED</span><img loading="lazy" decoding="async" src="assets/wes-pending-load-selected.png?v=20261118" alt="Pending Carrier Appointment Load 标签勾选两行后，批量按钮显示数量的截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-pending-receipt-selected.png?v=20261118" aria-label="放大 Pending Carrier Appointment Receipt Selected 截图">
+          <span>PENDING CARRIER APPOINTMENT · RECEIPT · SELECTED</span><img loading="lazy" decoding="async" src="assets/wes-pending-receipt-selected.png?v=20261118" alt="Pending Carrier Appointment Receipt 标签勾选两行后，批量按钮显示数量的截图"><i>点击放大</i>
+        </button>
+        <p class="wg-note"><b>操作前先核对：</b>批量操作会对勾选的每一行生效，请先确认勾选的单据和承运商无误。</p>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Generated Invitations</span>
+          <h3>跟进已经发出的提醒</h3>
+          <p>Generated Invitations 保存 Send Reminder 产生的邀请记录，可按 Carrier、Customer 和 Status 查询，列表显示 Load No、关联收货单、设备号和邀请状态。通过操作列可以重新发送提醒或查看详情，用来判断哪些承运商还需要继续催办。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-pending-invitations.png?v=20261118" aria-label="放大 Generated Invitations 截图">
+          <span>PENDING CARRIER APPOINTMENT · INVITATIONS</span><img loading="lazy" decoding="async" src="assets/wes-appointment-pending-invitations.png?v=20261118" alt="Generated Invitations 标签页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="appointment-settings-guide" data-section="appointment-settings-guide">
+      <div class="module-number">04</div>
+      <div class="module-heading">
+        <div class="eyebrow">APPOINTMENT · APPOINTMENT SETTINGS</div>
+        <h2>先设定通知邮箱和时段容量，预约才有可约的空位</h2>
+        <p>Appointment Settings 决定预约确认邮件发给谁，以及每天哪些时间段可以接受预约、每个时段最多接几单。没有设置容量的时段，在预约向导里会显示为没有可用时段。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>新开放一个收货窗口，或要限制高峰时段的预约量</h3>
+        <p>例如仓库周一到周五 06:00 至 22:00 收货，每个 15 分钟时段最多接 2 单。在 Slot Capacity 中设置可预约日、开始与结束时间和时段长度，再用 Fill All 统一填入容量，需要时对个别时段单独调整。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Appointment Settings</span>
+          <h3>通知邮箱与时段容量</h3>
+          <p>通知邮箱和时段容量在同一页维护，保存后用于后续预约。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-appointment-settings-top.png?v=20261118" aria-label="放大 Appointment Settings 截图">
+          <span>APPOINTMENT · SETTINGS</span><img loading="lazy" decoding="async" src="assets/wes-appointment-settings-top.png?v=20261118" alt="Appointment Settings 页面截图"><i>点击放大</i>
+        </button>
+        <div class="wg-points">
+          <article><span>01</span><div><b>Default Notification Email</b><p>默认接收预约通知的邮箱，保存后对所有承运商生效。</p></div></article>
+          <article><span>02</span><div><b>Carrier-Specific Notification Email</b><p>为个别承运商单独指定通知邮箱，通过 + Add 逐个添加。</p></div></article>
+          <article><span>03</span><div><b>Appointment Slot Capacity</b><p>按可预约日（MON 到 SUN）、Start、End 和 Duration 生成时段表，并为每个时段设置 Capacity；保存 Slot Capacity 后生效。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+</main>
+
+  <dialog id="image-dialog">
+    <button id="dialog-close" aria-label="关闭图片">×</button>
+    <img id="dialog-image" alt="页面截图放大预览">
+  </dialog>
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+  <script src="app.js?v=20260813-inventory-tabs"></script>
+  <script src="i18n.js?v=20261118-wes-batch1"></script></body>
+</html>
+
+
+
+
+
+

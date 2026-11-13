@@ -9,7 +9,13 @@ const LANGUAGE_META = {
 const PAGE_LABELS = {
   "index.html": { zh: "首页 + MDM", ja: "ホーム + MDM", en: "Home + MDM" },
   "inbound.html": { zh: "Inbound + Outbound", ja: "入庫 + 出庫", en: "Inbound + Outbound" },
-  "inventory.html": { zh: "Inventory + Cycle Count", ja: "在庫 + 棚卸", en: "Inventory + Cycle Count" }
+  "inventory.html": { zh: "Inventory + Cycle Count", ja: "在庫 + 棚卸", en: "Inventory + Cycle Count" },
+  "dashboard.html": { zh: "Dashboard 仪表盘", ja: "Dashboard ダッシュボード", en: "Dashboard" },
+  "appointment.html": { zh: "Appointment 预约", ja: "Appointment 予約", en: "Appointment" },
+  "iam.html": { zh: "IAM 账号与权限", ja: "IAM アカウントと権限", en: "IAM" },
+  "report.html": { zh: "Report 报表", ja: "Report レポート", en: "Report" },
+  "template.html": { zh: "Template 模板", ja: "Template テンプレート", en: "Template" },
+  "facility.html": { zh: "Facility 设施", ja: "Facility 施設", en: "Facility" }
 };
 
 // Homepage + MDM core copy; extend this page-scoped dictionary in reviewed batches.
@@ -203,6 +209,7 @@ const MDM_TRANSLATIONS = {
     ,"可为 Item、Receipt、Order、明细和 Inventory 配置扩展字段名称，用于页面展示、导入导出、接口同步和精确查询。": "Item、Receipt、Order、明細、Inventory に拡張フィールド名を設定し、画面表示、インポート・エクスポート、API 同期、詳細検索に利用できます。"
   },
   en: {
+    "Basic Info｜客户资料": "Basic Info | Customer profile",
     "从业务场景出发，": "Start from business scenarios and", "看懂系统如何落地仓储要求": "understand how warehouse requirements are implemented",
     "理解模块": "Understand the module", "对应场景": "Map the scenario", "查看页面": "Review the screen", "落地作业": "Put it into operation",
     "业务主体": "Business parties", "建立客户与组织身份": "Establish customer and organization identities", "商品与包装": "Products and packaging", "让商品可识别、可换算": "Make products identifiable and convertible",
@@ -450,7 +457,7 @@ const CYCLE_COUNT_DETAIL_PAIRS = {
   "现场发现库存可能不准，需要安排一次复核盘点": ["現場で在庫の不一致が疑われるため、確認棚卸を手配する", "Possible inventory discrepancies on site require a verification count"],
   "例如拣货员发现某片库位的实物与系统记录可能不一致，主管可以建立 Count Ticket，圈定需要复核的库存范围并安排人员清点，而不是直接修改库存。盘点完成后复核差异，确认有误时再通过 Adjustment 更正库存。": ["例えば、ピッキング担当者が特定エリアの実在庫とシステム記録の不一致に気付いた場合、責任者は在庫を直接変更せず、Count Ticket を作成して確認対象を指定し、担当者に棚卸を割り当てます。棚卸後に差異を確認し、誤りが確定した場合は Adjustment で在庫を是正します。", "For example, if a picker notices that physical stock in an area may not match the system record, a supervisor can create a Count Ticket, define the inventory scope to verify, and assign staff to count it instead of changing inventory directly. After counting, review the discrepancy and correct confirmed errors through Adjustment."],
   "从列表掌握盘点单的准备与执行状态": ["一覧で棚卸伝票の準備状況と実行状況を把握する", "Track the preparation and execution status of count tickets from the list"],
-  "可按 Ticket No、Customer 和 Status 查询盘点单。列表同时显示范围类型、库位数量和计划日期，并提供 View、Create Task 与 Cancel 入口。": ["Ticket No、Customer、Status で棚卸伝票を検索できます。一覧には範囲タイプ、ロケーション数、予定日も表示され、View、Create Task、Cancel を実行できます。", "Search count tickets by Ticket No, Customer, and Status. The list also shows scope type, number of locations, and scheduled date, with actions for View, Create Task, and Cancel."],
+    "按 Ticket No、Customer 和 Status 快速找到要跟进的盘点单，Status 能直接看出盘点是刚建立、已拆任务还是正在清点。点击 Ticket No 进入详情；行内的 Create Task 可直接把盘点单拆成现场任务。新的盘点单从右上方 Create Count Ticket 建立，常用的查询条件可存为 Presets 反复使用。": ["Ticket No、Customer、Status で確認したい棚卸伝票をすぐに見つけられます。Status を見れば、作成直後か、タスク分割済みか、現場で棚卸中かが分かります。Ticket No をクリックすると詳細へ移動し、行内の Create Task から棚卸伝票を現場タスクに分割できます。新しい棚卸伝票は右上の Create Count Ticket から作成し、よく使う検索条件は Presets に保存して繰り返し使えます。", "Find the count ticket you need by Ticket No, Customer, or Status; the Status shows at a glance whether a ticket is newly created, split into tasks, or being counted. Click a Ticket No to open its detail, and use Create Task on the row to split a ticket into field tasks. Create new tickets with Create Count Ticket at the top right, and save frequently used search conditions as Presets."],
   "放大 Count Tickets 列表截图": ["Count Tickets 一覧のスクリーンショットを拡大", "Enlarge the Count Tickets list screenshot"],
   "Count Tickets 列表页面截图": ["Count Tickets 一覧画面のスクリーンショット", "Count Tickets list page screenshot"],
   "范围已保存，可编辑、创建任务或取消。": ["範囲は保存済みで、編集、タスク作成、取消が可能です。", "The scope is saved and can be edited, converted into tasks, or canceled."],
@@ -478,7 +485,7 @@ const CYCLE_COUNT_DETAIL_PAIRS = {
   "Count Ticket Detail 页面截图": ["Count Ticket Detail 画面のスクリーンショット", "Count Ticket Detail page screenshot"],
   "确认 Customer、Count Type、Method、Category、Blind Count 与计划日期。": ["Customer、Count Type、Method、Category、Blind Count、予定日を確認します。", "Confirm the Customer, Count Type, Method, Category, Blind Count setting, and scheduled date."],
   "展示本次 Ticket 选中的 SKU、Location 或对应盘点范围。": ["今回の Ticket で選択した SKU、Location、または棚卸範囲を表示します。", "Show the SKU, Location, or count scope selected for this Ticket."],
-  "查看已创建的任务、负责人和状态，并进入具体 Count Task。": ["作成済みタスク、担当者、ステータスを確認し、個別の Count Task を開きます。", "Review created tasks, assignees, and statuses, and open a specific Count Task."],
+    "查看已创建的任务及其优先级和状态，并进入具体 Count Task。": ["作成済みのタスクとその優先度・ステータスを確認し、個別の Count Task を開けます。", "Review the tasks created from this ticket with their priority and status, and open a specific Count Task."],
   "把 Ticket 范围生成一个或多个现场盘点任务。Ticket 进入 COUNTING 后不可取消；所有关联任务结束后，Ticket 自动变为 COMPLETED。": ["Ticket の範囲から1件以上の現場棚卸タスクを作成します。Ticket が COUNTING になると取り消せません。すべての関連タスクが終了すると Ticket は自動的に COMPLETED になります。", "Create one or more field count tasks from the Ticket scope. A Ticket cannot be canceled after it enters COUNTING; it changes automatically to COMPLETED when all related tasks finish."]
 };
 Object.assign(CYCLE_COUNT_DETAIL_PAIRS, {
@@ -487,7 +494,7 @@ Object.assign(CYCLE_COUNT_DETAIL_PAIRS, {
   "把一张跨多个库位的盘点单分给不同操作员": ["複数ロケーションにまたがる棚卸伝票を担当者ごとに分割する", "Split a count ticket covering multiple locations among different operators"],
   "当一个 Count Ticket 覆盖多个库位、商品或 LP 时，主管可以选择其中一部分明细创建 Task，再将剩余明细创建为其他 Task。每名操作员只执行分配给自己的范围，所有 Task 共同完成原 Ticket。": ["Count Ticket が複数のロケーション、商品、LP を対象とする場合、責任者は一部の明細から Task を作成し、残りを別の Task に分けられます。各担当者は割り当てられた範囲だけを実行し、すべての Task で元の Ticket を完了します。", "When a Count Ticket covers multiple locations, items, or LPs, a supervisor can create one Task from selected lines and other Tasks from the remaining lines. Each operator executes only the assigned scope, and all Tasks together complete the original Ticket."],
   "分配任务，并掌握每张盘点任务的执行状态": ["タスクを割り当て、各棚卸タスクの実行状況を把握する", "Assign tasks and track the execution status of each count task"],
-  "列表按 Task No、Status 或 Assignee 查询任务。Task 只能从 Count Ticket 创建；这里用于查看来源 Ticket、盘点方式、当前负责人和执行状态。": ["Task No、Status、Assignee でタスクを検索できます。Task は Count Ticket からのみ作成でき、元の Ticket、棚卸方法、現在の担当者、実行状況を確認します。", "Search tasks by Task No, Status, or Assignee. Tasks can only be created from a Count Ticket; use this list to review the source Ticket, counting method, current assignee, and execution status."],
+  "按 Task No、Status 或 Assignee 找到要跟进的任务，例如按 Assignee 查看某位操作员手上还有哪些盘点。Task 只能从 Count Ticket 创建，这里用于分配人员并跟进执行进度；常用的查询条件可存为 Presets。": ["Task No、Status、Assignee でフォローしたいタスクを探せます。たとえば Assignee で、特定の作業者の未完了の棚卸を確認できます。Task は Count Ticket からのみ作成でき、この画面では担当者の割り当てと進捗の確認を行います。よく使う検索条件は Presets に保存できます。", "Find the tasks you need by Task No, Status, or Assignee, for example to see what counts a given operator still has open. Tasks can only be created from a Count Ticket; use this page to assign people and follow progress, and save common search conditions as Presets."],
   "放大 Count Tasks 列表截图": ["Count Tasks 一覧のスクリーンショットを拡大", "Enlarge the Count Tasks list screenshot"],
   "Count Tasks 列表页面截图": ["Count Tasks 一覧画面のスクリーンショット", "Count Tasks list page screenshot"],
   "任务来源": ["タスクの作成元", "Task source"],
@@ -495,7 +502,7 @@ Object.assign(CYCLE_COUNT_DETAIL_PAIRS, {
   "人员分配": ["担当者の割り当て", "Staff assignment"],
   "Assign 或 Batch Assign 指定执行人员；重新分配只更新 Assignee，不会改变任务状态。": ["Assign または Batch Assign で実行担当者を指定します。再割り当てでは Assignee だけが更新され、タスクのステータスは変わりません。", "Assign or Batch Assign selects the operator; reassignment updates only the Assignee and does not change task status."],
   "执行状态": ["実行ステータス", "Execution status"],
-  "Pending 等待开始，In Progress 表示现场盘点中；结束后进入 Closed、Force Closed 或 Cancelled。": ["Pending は開始待ち、In Progress は現場棚卸中です。終了後は Closed、Force Closed、または Cancelled になります。", "Pending means waiting to start, and In Progress means field counting is underway. The task ends as Closed, Force Closed, or Cancelled."],
+  "New 表示任务已生成、等待开始，In Progress 表示现场正在清点，全部清点完成后变为 Completed；任务被取消时为 Cancelled。": ["New はタスク作成済みで開始待ち、In Progress は現場で棚卸中、すべて完了すると Completed になります。タスクが取り消されると Cancelled になります。", "New means the task has been created and is waiting to start, In Progress means counting is under way, and Completed is set once everything has been counted. A cancelled task shows Cancelled."],
   "WEB · 管理端": ["WEB · 管理画面", "WEB · Management"],
   "拆分、分配与监控": ["分割、割り当て、監視", "Split, assign, and monitor"],
   "从 Ticket 创建 Task，在 Count Tasks 中分配或重新分配人员，并查看进度、明细和结果状态。": ["Ticket から Task を作成し、Count Tasks で担当者を割り当てまたは再割り当てして、進捗、明細、結果ステータスを確認します。", "Create a Task from a Ticket, assign or reassign staff in Count Tasks, and review progress, line details, and result status."],
@@ -526,14 +533,14 @@ Object.assign(CYCLE_COUNT_DETAIL_PAIRS, {
   "实盘数量与系统记录不同，需要主管决定是否调整库存": ["実数とシステム記録が異なるため、責任者が在庫調整の要否を判断する", "Physical quantities differ from system records and require a supervisor's adjustment decision"],
   "例如系统记录某商品为 1 EA，现场实盘为 10 EA，Count Result 会显示差异 9 EA。主管先确认该结果已被查看，再结合商品、LP、库位和盘点证据决定批准、拒绝，或安排复盘；只有批准有效差异后，系统库存才会更新。": ["例えば、システム数量が 1 EA、実数が 10 EA の場合、Count Result には 9 EA の差異が表示されます。責任者は結果を確認済みにした後、商品、LP、ロケーション、棚卸根拠を確認して承認、却下、または再棚卸を判断します。有効な差異を承認した場合だけシステム在庫が更新されます。", "For example, if the system records 1 EA and the physical count is 10 EA, the Count Result shows a 9 EA discrepancy. The supervisor first acknowledges the result, then reviews the item, LP, location, and count evidence to approve, reject, or arrange a recount. System inventory updates only after a valid discrepancy is approved."],
   "从分组列表查看待处理结果，并进入对应的复核动作": ["グループ一覧で未処理結果を確認し、該当する確認操作を実行する", "Review pending results from the grouped list and open the appropriate review action"],
-  "列表按商品和 LP 汇总盘点结果；Results 是分组内的结果总数，Pending 包含 PENDING 和 ACKNOWLEDGED 状态的待处理结果。展开后可核对 System Qty、Count Qty、Difference 及库位、批次日期等信息。": ["一覧は商品と LP ごとに棚卸結果を集約します。Results はグループ内の総件数、Pending は PENDING と ACKNOWLEDGED の未処理件数です。展開すると System Qty、Count Qty、Difference、ロケーション、ロット日付などを確認できます。", "The list groups count results by item and LP. Results is the total number in the group, while Pending includes results in PENDING and ACKNOWLEDGED status. Expand a group to verify System Qty, Count Qty, Difference, location, lot dates, and other details."],
+    "列表按 SKU、LP、Location 分组汇总盘点结果，Results 是分组内的结果条数，Pending 是仍待处理的数量，可以先从 Pending 较多的分组入手。展开后逐条核对账实差异。Result Type 筛选能快速找出数量差异、缺失或新增商品等需要重点处理的结果；Source Type 区分结果来源，Cycle Count 来自周期盘点，Inventory Check 来自 WCS 工作站对到站容器的在库确认。": ["一覧は SKU・LP・Location ごとに棚卸結果をまとめて表示します。Results はグループ内の結果件数、Pending は未処理の件数で、Pending が多いグループから確認すると効率的です。展開すると結果を 1 件ずつ照合できます。Result Type で数量差異・欠品・新規商品など重点的に確認すべき結果を絞り込め、Source Type で結果の発生元を区別できます。Cycle Count は定期棚卸、Inventory Check は WCS ステーションに到着したコンテナの在庫確認によるものです。", "The list groups count results by SKU, LP, and Location. Results is the number of records in the group and Pending is how many still need handling, so start with groups that have more pending items. Expand a group to check records one by one. Use Result Type to focus on quantity differences, missing items, or new items, and Source Type to tell where a result came from: Cycle Count comes from a periodic count, while Inventory Check comes from an in-stock check of containers arriving at a WCS station."],
   "放大 Count Results 列表与状态截图": ["Count Results の一覧とステータスのスクリーンショットを拡大", "Enlarge the Count Results list and status screenshot"],
   "Count Results 列表及 Pending 和 Acknowledged 状态截图": ["Count Results 一覧および Pending・Acknowledged ステータスのスクリーンショット", "Count Results list with Pending and Acknowledged status screenshot"],
   "Count Result 复核状态流程": ["Count Result の確認ステータスフロー", "Count Result review status flow"],
   "确认已收到该结果并进入人工复核，不代表差异已经获批。": ["結果を受領して人による確認を開始したことを示します。差異の承認ではありません。", "Confirm that the result has been received and entered manual review; this does not approve the discrepancy."],
-  "接受结果；有差异时自动生成并批准 Adjustment，库存随即更新。": ["結果を承認します。差異がある場合は Adjustment を自動作成して承認し、在庫を直ちに更新します。", "Accept the result; when a discrepancy exists, automatically create and approve an Adjustment and update inventory immediately."],
+  "接受结果；有差异时自动生成并批准 Adjustment，库存随即更新。同组其他未处理的结果会被自动驳回，批准前请确认选对了那一条。": ["結果を採用します。差異がある場合は Adjustment が自動作成・承認され、在庫が更新されます。同じグループの他の未処理結果は自動的に却下されるため、承認前に対象の結果を確認してください。", "Accepts the result. If there is a difference, an Adjustment is created and approved automatically and stock is updated. Other unprocessed results in the same group are rejected automatically, so confirm you picked the right one before approving."],
   "或": ["または", "or"],
-  "不采用本次盘点结果，不生成 Adjustment，也不修改库存。": ["今回の棚卸結果を採用せず、Adjustment を作成せず、在庫も変更しません。", "Reject this count result without creating an Adjustment or changing inventory."],
+  "不采用本次盘点结果，不生成 Adjustment，也不修改库存。待处理和已确认的结果都可以驳回。": ["今回の棚卸結果を採用せず、Adjustment も作成せず、在庫も変更しません。未処理・確認済みのどちらの結果も却下できます。", "Does not use this count result: no Adjustment is created and stock is unchanged. Both pending and acknowledged results can be rejected."],
   "批准前再次确认差异及差异库存的处理方式": ["承認前に差異と差異在庫の処理方法を再確認する", "Confirm the discrepancy and handling of discrepancy inventory before approval"],
   "弹窗再次列出 System Qty、Count Qty 与 Difference。需要新增库存时，应确认正确的 Title (Owner)；勾选": ["ダイアログには System Qty、Count Qty、Difference が再表示されます。在庫を追加する場合は、正しい Title (Owner) を確認します。", "The dialog lists System Qty, Count Qty, and Difference again. When inventory must be added, confirm the correct Title (Owner). Selecting"],
   "后，本次新增的差异库存会先进入 On-Hold，适合仍需质检或进一步确认的情况。": ["を選択すると、今回追加する差異在庫はまず On-Hold になり、品質検査や追加確認が必要な場合に使用できます。", "places the newly added discrepancy inventory in On-Hold first, which is suitable when quality inspection or further confirmation is still required."],
@@ -776,10 +783,2630 @@ function textNodes(root) {
   return nodes;
 }
 
+// WES batch 1 (Dashboard / Appointment / Template)
+const WES_BATCH1_PAIRS = {
+ "主管开班巡场：先看量，再看异常，最后看待办": [
+  "管理者の始業時の巡回：まず量、次に例外、最後に未処理タスク",
+  "Supervisor shift walk-through: volume first, then exceptions, then pending work"
+ ],
+ "例如早班主管打开 Dashboard，先看今天已收货和已建订单的数量，并与昨日对比，判断工作量是否异常；再看 Operations Alert Center 里是否有异常或取消的入库、出库单；最后从 Pending Tasks 看哪些任务还没人处理，据此安排人手。": [
+  "たとえば早番の管理者は Dashboard を開き、まず本日の入荷数と受注数を前日と比較して作業量に異常がないか確認します。次に Operations Alert Center で例外・キャンセルされた入庫／出庫伝票がないかを見て、最後に Pending Tasks で未対応のタスクを確認し、人員配置を決めます。",
+  "For example, the morning supervisor opens the Dashboard, checks today's receipts and new orders against yesterday to judge whether the workload is unusual, then looks at the Operations Alert Center for exception or cancelled inbound and outbound documents, and finally uses Pending Tasks to see which tasks are still unattended before assigning staff."
+ ],
+ "核心场景": [
+  "コアシナリオ",
+  "Core scenario"
+ ],
+ "当天的收、发、装、任务和库容": [
+  "当日の入荷・出荷・積込・タスク・庫容",
+  "Today's receiving, orders, loading, tasks and capacity"
+ ],
+ "New Receipts、New Orders、Loading、Pending Tasks 反映当天业务量与处理进度，Total locations 与 Total docks 反映库位利用率和月台占用。每张卡同时给出与昨日的对比百分比、进度比例和更新时间，页面顶部可通过 Refresh data 手动刷新。": [
+  "New Receipts、New Orders、Loading、Pending Tasks は当日の業務量と進捗を、Total locations と Total docks はロケーション使用率とドックの占有状況を示します。各カードには前日比、進捗率、更新時刻が表示され、ページ上部の Refresh data で手動更新できます。",
+  "New Receipts, New Orders, Loading and Pending Tasks show today's volume and progress, while Total locations and Total docks show location utilization and dock occupancy. Each card also shows the change against yesterday, a progress ratio and the last update time; use Refresh data at the top of the page to refresh manually."
+ ],
+ "Dashboard 指标卡页面截图": [
+  "Dashboard 指標カード画面のスクリーンショット",
+  "Dashboard KPI cards screenshot"
+ ],
+ "放大 Dashboard KPI 截图": [
+  "Dashboard KPI のスクリーンショットを拡大",
+  "Enlarge Dashboard KPI screenshot"
+ ],
+ "点击放大": [
+  "クリックして拡大",
+  "Click to enlarge"
+ ],
+ "按自然日统计：": [
+  "暦日ごとの集計：",
+  "Counted per calendar day: "
+ ],
+ "指标按自然日累计，跨过零点后当日数值会从零重新计算，所以夜班交接时看到数字很小属于正常现象。": [
+  "指標は暦日ごとに累計され、日付が変わると当日の数値は 0 から再計算されます。夜勤の引き継ぎ時に数値が小さく見えるのは正常です。",
+  "Metrics accumulate per calendar day and restart from zero after midnight, so small numbers during a night-shift handover are normal."
+ ],
+ "按订单类型看走势，判断业务结构变化": [
+  "注文タイプ別の推移で業務構成の変化を確認",
+  "Read the trend by order type to spot changes in business mix"
+ ],
+ "切换 Day、Week、Month 可查看订单量的变化，曲线按订单类型分线，例如 REGULAR_ORDER、INTERNAL_TRANSFER、DROPSHIP。某类订单突然增多时，可以提前准备对应的拣货和包装资源。": [
+  "Day、Week、Month を切り替えて注文量の推移を確認できます。線は REGULAR_ORDER、INTERNAL_TRANSFER、DROPSHIP などの注文タイプ別に分かれています。特定タイプの注文が急増した場合は、対応するピッキングや梱包のリソースを事前に準備できます。",
+  "Switch between Day, Week and Month to see how order volume changes. Lines are split by order type, such as REGULAR_ORDER, INTERNAL_TRANSFER and DROPSHIP. When one type suddenly grows, you can prepare the matching picking and packing resources in advance."
+ ],
+ "Order Volume Trends 页面截图": [
+  "Order Volume Trends 画面のスクリーンショット",
+  "Order Volume Trends screenshot"
+ ],
+ "放大 Order Volume Trends 截图": [
+  "Order Volume Trends のスクリーンショットを拡大",
+  "Enlarge Order Volume Trends screenshot"
+ ],
+ "异常提醒、作业量与待办任务": [
+  "例外アラート・作業量・未処理タスク",
+  "Alerts, workload and pending tasks"
+ ],
+ "这一部分用来回答三个问题：有哪些单据出了问题，今天各环节做了多少，还有哪些任务没人处理。": [
+  "この部分では、どの伝票に問題があるか、本日各工程でどれだけ処理したか、未対応のタスクが何かという 3 点を確認できます。",
+  "This area answers three questions: which documents have problems, how much each step has handled today, and which tasks are still waiting."
+ ],
+ "Dashboard 异常提醒与待办任务页面截图": [
+  "Dashboard のアラートと未処理タスク画面のスクリーンショット",
+  "Dashboard alerts and pending tasks screenshot"
+ ],
+ "放大 Dashboard Alerts 截图": [
+  "Dashboard Alerts のスクリーンショットを拡大",
+  "Enlarge Dashboard Alerts screenshot"
+ ],
+ "统计异常和已取消的入库、出库单数量，用来发现需要人工介入的单据。": [
+  "例外およびキャンセルされた入庫・出庫伝票の件数を集計し、人手での対応が必要な伝票を見つけます。",
+  "Counts exception and cancelled inbound and outbound documents so you can find those that need manual attention."
+ ],
+ "按 SKU 数统计当天已收货、上架、拣货、发运、移库和调整的作业量。": [
+  "本日の入荷・棚入れ・ピッキング・出荷・移動・調整の作業量を SKU 数で集計します。",
+  "Shows today's received, shelved, picked, shipped, moved and adjusted volume in SKU counts."
+ ],
+ "分页列出待处理任务的类型、状态、负责人和时间，便于判断是否需要增派人手。": [
+  "未処理タスクの種類・状態・担当者・時刻をページ分けして表示し、増員が必要か判断できます。",
+  "Lists pending tasks with type, status, assignee and time, helping you decide whether more people are needed."
+ ],
+ "Quick Actions：": [
+  "Quick Actions：",
+  "Quick Actions: "
+ ],
+ "看板上的快捷入口可以直接进入库存查询、任务列表和报表等常用页面，不必再逐级展开菜单。": [
+  "ダッシュボード上のショートカットから、在庫照会・タスク一覧・レポートなどよく使う画面へ直接移動できます。",
+  "Shortcuts on the dashboard open frequently used pages such as inventory query, the task list and reports without expanding the menu."
+ ],
+ "按岗位习惯调整布局": [
+  "担当業務に合わせてレイアウトを調整",
+  "Adjust the layout to each role"
+ ],
+ "点击 Edit dashboard 进入编辑模式：用 Add widget 增加组件，在 Appearance & widgets 中调整外观，并通过拖动或箭头调整顺序。点击 Save dashboard 前的修改只是预览，Cancel 会放弃修改，也可以恢复默认布局。": [
+  "Edit dashboard をクリックすると編集モードになります。Add widget でウィジェットを追加し、Appearance & widgets で外観を調整し、ドラッグまたは矢印で順序を変更します。Save dashboard を押すまでの変更はプレビューのみで、Cancel で破棄、既定レイアウトに戻すこともできます。",
+  "Click Edit dashboard to enter edit mode: add components with Add widget, adjust the look in Appearance & widgets, and reorder by dragging or with the arrows. Changes are only a preview until you click Save dashboard; Cancel discards them and the default layout can be restored."
+ ],
+ "Dashboard 编辑模式页面截图": [
+  "Dashboard 編集モード画面のスクリーンショット",
+  "Dashboard edit mode screenshot"
+ ],
+ "放大 Dashboard Edit 截图": [
+  "Dashboard Edit のスクリーンショットを拡大",
+  "Enlarge Dashboard Edit screenshot"
+ ],
+ "开班先看一眼，就知道今天仓库忙在哪里": [
+  "始業時にひと目で、今日どこが忙しいかが分かる",
+  "One look at shift start shows where the warehouse is busiest today"
+ ],
+ "Dashboard 汇总当前设施当天的收货、订单、装车、待办任务和库位占用情况。它不替代各业务页面，作用是帮助主管在开班和巡场时快速判断哪里需要优先处理。": [
+  "Dashboard は現在の施設における当日の入荷・注文・積込・未処理タスク・ロケーション使用状況をまとめて表示します。各業務画面の代わりではなく、管理者が始業時や巡回時に優先対応すべき箇所を素早く判断するための画面です。",
+  "The Dashboard brings together today's receiving, orders, loading, pending tasks and location usage for the current facility. It does not replace the business pages; it helps supervisors decide quickly what needs attention first at shift start and during walk-throughs."
+ ],
+ "Appointment 统筹承运商预约、日历排期与时段容量": [
+  "Appointment は配送業者の予約・カレンダー管理・枠の容量を統括します",
+  "Appointment coordinates carrier bookings, calendar scheduling and slot capacity"
+ ],
+ "Appointment 用于管理承运商到仓卸货或提货的预约。模块覆盖预约单的创建与到场、日历排期、尚未预约单据的催办，以及可预约时段与通知邮箱的设置。": [
+  "Appointment は配送業者の入荷・集荷の来場予約を管理します。予約の作成と来場処理、カレンダーでの調整、未予約伝票の催促、予約可能な時間枠と通知先メールの設定を扱います。",
+  "Appointment manages carrier bookings for delivering to or collecting from the warehouse. It covers creating appointments and check-in, calendar scheduling, chasing documents that are not yet booked, and configuring bookable slots and notification emails."
+ ],
+ "01 · 预约单": [
+  "01 · 予約",
+  "01 · Bookings"
+ ],
+ "登记承运商何时到、做什么": [
+  "配送業者がいつ来て何をするかを登録",
+  "Record when a carrier arrives and what it does"
+ ],
+ "选择承运商和作业类型，挂上收货单或装载单，再选定到仓日期与时段。": [
+  "配送業者と作業タイプを選び、入荷伝票または積込を関連付け、来場日と時間枠を決めます。",
+  "Pick the carrier and activity, attach receipts or loads, then choose the arrival date and slot."
+ ],
+ "02 · 排期": [
+  "02 · スケジュール",
+  "02 · Scheduling"
+ ],
+ "在日历上看全天到场安排": [
+  "カレンダーで来場予定を確認",
+  "See arrivals on the calendar"
+ ],
+ "按月、周、日查看预约，并按服务类型筛选。": [
+  "月・週・日表示で予約を確認し、サービスタイプで絞り込みます。",
+  "View appointments by month, week or day and filter by service type."
+ ],
+ "03 · 催办": [
+  "03 · 催促",
+  "03 · Follow-up"
+ ],
+ "找出还没预约的单据": [
+  "未予約の伝票を洗い出す",
+  "Find documents that are not yet booked"
+ ],
+ "列出尚未预约的 Load 和收货单，向承运商发提醒或批量创建预约。": [
+  "予約が未登録の Load と入荷伝票を一覧し、配送業者へリマインドを送るか、予約を一括作成します。",
+  "Lists loads and receipts without an appointment so you can send reminders or create appointments in bulk."
+ ],
+ "04 · 规则": [
+  "04 · ルール",
+  "04 · Rules"
+ ],
+ "决定哪些时段可以约": [
+  "予約できる時間枠を決める",
+  "Decide which slots can be booked"
+ ],
+ "设置通知邮箱，以及每天各时段可承接的预约数量。": [
+  "通知先メールと、各時間枠で受け付けられる予約数を設定します。",
+  "Set notification emails and how many bookings each slot can accept."
+ ],
+ "承运商要送一批货进仓，仓库需要提前排好月台和人手": [
+  "配送業者が入荷する前に、ドックと人員を手配しておきたい",
+  "A carrier is delivering a load and the warehouse must plan docks and labor in advance"
+ ],
+ "例如承运商准备送货，计划员新建预约，选择 Live Delivery 并关联对应收货单，再挑选当天仍有空位的时段。预约保存后，可以向承运商发送确认邮件；到场当天在列表中对该预约执行 Check In。": [
+  "たとえば配送業者が納品に来る場合、計画担当者は予約を新規作成し、Live Delivery を選んで該当する入荷伝票を関連付け、空きのある時間枠を選びます。保存後は配送業者に確認メールを送れます。来場当日は一覧でその予約に対して Check In を行います。",
+  "For example, when a carrier is about to deliver, the planner creates an appointment, selects Live Delivery, attaches the matching receipts and picks a slot that still has room. After saving, a confirmation email can be sent to the carrier; on arrival day the appointment is checked in from the list."
+ ],
+ "从列表查询预约，并处理到场、修改和取消": [
+  "一覧で予約を検索し、来場・変更・取消を処理",
+  "Search appointments and handle check-in, edits and cancellations from the list"
+ ],
+ "可按 APPT#、Carrier、Service Type 查询预约，点击 Expand 可在行内查看类型、服务类型、Load Number、PO# 和 Ref#。每行提供 Check In、Edit、Cancel 和 Manage Confirmation 四个操作。": [
+  "APPT#、Carrier、Service Type で予約を検索できます。Expand をクリックすると、行内でタイプ・サービスタイプ・Load Number・PO#・Ref# を確認できます。各行には Check In、Edit、Cancel、Manage Confirmation の操作があります。",
+  "Search by APPT#, Carrier and Service Type. Click Expand to see the type, service type, Load Number, PO# and Ref# inline. Each row offers Check In, Edit, Cancel and Manage Confirmation."
+ ],
+ "Appointment 列表页面截图": [
+  "Appointment 一覧画面のスクリーンショット",
+  "Appointment list screenshot"
+ ],
+ "放大 Appointment List 截图": [
+  "Appointment List のスクリーンショットを拡大",
+  "Enlarge Appointment List screenshot"
+ ],
+ "Appointment 列表展开行截图": [
+  "Appointment 一覧の展開行のスクリーンショット",
+  "Appointment list expanded row screenshot"
+ ],
+ "放大 Appointment List Expanded 截图": [
+  "Appointment List Expanded のスクリーンショットを拡大",
+  "Enlarge Appointment List Expanded screenshot"
+ ],
+ "Check In 与 Cancel：": [
+  "Check In と Cancel：",
+  "Check In and Cancel: "
+ ],
+ "这两个操作会改变预约状态，请先确认承运商、预约号和时间无误后再执行。": [
+  "この 2 つの操作は予約の状態を変更します。配送業者・予約番号・時間を確認してから実行してください。",
+  "Both actions change the appointment status. Confirm the carrier, appointment number and time before running them."
+ ],
+ "先选承运商和作业，再选日期时段": [
+  "配送業者と作業を選び、日時を選ぶ",
+  "Choose the carrier and activity, then pick a date and slot"
+ ],
+ "新建与编辑使用同一个向导。第 1 步先选 Carrier，再选择入库或出库作业并关联单据；第 2 步在日历中选定日期，切换 AM／PM 后点选某个小时，系统按每 15 分钟列出时段并显示剩余可约数（如 10 available），点选时段后右侧弹出 Appointment Confirmation 摘要。若该时段没有容量，会提示 No slots available。": [
+  "新規作成と編集は同じウィザードを使います。ステップ 1 で Carrier を選び、入庫または出庫の作業を選んで伝票を関連付けます。ステップ 2 ではカレンダーで日付を選び、AM／PM を切り替えて時間を選ぶと、15 分ごとの枠と残り予約可能数（例：10 available）が表示されます。枠を選ぶと右側に Appointment Confirmation の概要が表示されます。空きがない場合は No slots available と表示されます。",
+  "Creating and editing share one wizard. Step 1 selects the Carrier, then an inbound or outbound activity and the related documents. Step 2 picks a date on the calendar, switches between AM and PM and chooses an hour; the page then lists 15-minute slots with the remaining capacity (for example 10 available), and the Appointment Confirmation summary appears beside the chosen slot. If nothing is left it shows No slots available."
+ ],
+ "新建预约第 1 步页面截图": [
+  "予約作成ステップ 1 の画面のスクリーンショット",
+  "New appointment step 1 screenshot"
+ ],
+ "放大 New Appointment Step 1 截图": [
+  "New Appointment Step 1 のスクリーンショットを拡大",
+  "Enlarge New Appointment Step 1 screenshot"
+ ],
+ "预约第 2 步选择日期时段页面截图": [
+  "予約ステップ 2 の日時選択画面のスクリーンショット",
+  "Appointment step 2 date and time screenshot"
+ ],
+ "放大 Appointment Step 2 截图": [
+  "Appointment Step 2 のスクリーンショットを拡大",
+  "Enlarge Appointment Step 2 screenshot"
+ ],
+ "入库：卸货期间车辆留场": [
+  "入庫：荷降ろし中は車両が待機",
+  "Inbound: truck stays during unloading"
+ ],
+ "承运商在仓库卸货的整个过程中不离场，适合需要现场确认的送货。": [
+  "配送業者は荷降ろしの間ずっと留まります。現場での確認が必要な納品に向いています。",
+  "The carrier stays on site throughout unloading, suited to deliveries that need confirmation on the spot."
+ ],
+ "入库：放下拖车即离场": [
+  "入庫：トレーラーを置いて退場",
+  "Inbound: drop the trailer and leave"
+ ],
+ "承运商卸下拖车后离开，仓库在方便时再卸货。": [
+  "配送業者はトレーラーを置いて帰り、倉庫は都合のよい時に荷降ろしします。",
+  "The carrier leaves the trailer and goes; the warehouse unloads it when convenient."
+ ],
+ "出库：装货期间车辆留场": [
+  "出庫：積込中は車両が待機",
+  "Outbound: truck stays during loading"
+ ],
+ "承运商在装货过程中留场，装完直接发车。": [
+  "積込の間配送業者が留まり、完了後そのまま出発します。",
+  "The carrier waits during loading and departs once it is finished."
+ ],
+ "出库：提取已备好的货": [
+  "出庫：準備済みの荷を引き取り",
+  "Outbound: collect pre-loaded freight"
+ ],
+ "货物已提前装好，承运商到场后直接提走。": [
+  "荷物は事前に積込済みで、配送業者は到着後そのまま引き取ります。",
+  "The freight is already loaded and the carrier simply collects it on arrival."
+ ],
+ "出库：提走空车": [
+  "出庫：空車を引き取り",
+  "Outbound: collect an empty trailer"
+ ],
+ "承运商到场提走空拖车，用于后续装货。": [
+  "配送業者が空のトレーラーを引き取り、以降の積込に使用します。",
+  "The carrier takes an empty trailer for later loading."
+ ],
+ "关联单据": [
+  "関連伝票",
+  "Related documents"
+ ],
+ "入库类关联收货单，出库类关联装载单": [
+  "入庫系は入荷伝票、出庫系は積込を関連付け",
+  "Receipts for inbound, loads for outbound"
+ ],
+ "选择入库类作业后可用 + Add Receipt 添加收货单；出库类作业则用 + Add Load 添加装载单。": [
+  "入庫系の作業では + Add Receipt で入荷伝票を、出庫系では + Add Load で積込を追加します。",
+  "Inbound activities add receipts with + Add Receipt; outbound activities add loads with + Add Load."
+ ],
+ "向承运商发送预约确认": [
+  "配送業者へ予約確認を送信",
+  "Send the appointment confirmation to the carrier"
+ ],
+ "Manage Confirmation 会生成预约确认邮件，内容包括承运商、APPT#、到仓时间、服务类型和关联收货单。核对收件人、主题和正文后，可通过 Open in Outlook 发出。": [
+  "Manage Confirmation は、配送業者・APPT#・来場時間・サービスタイプ・関連入荷伝票を含む予約確認メールを作成します。宛先・件名・本文を確認し、Open in Outlook から送信します。",
+  "Manage Confirmation drafts a confirmation email with the carrier, APPT#, arrival time, service type and related receipts. After checking the recipient, subject and body, send it through Open in Outlook."
+ ],
+ "预约确认弹窗截图": [
+  "予約確認ダイアログのスクリーンショット",
+  "Appointment confirmation dialog screenshot"
+ ],
+ "放大 Appointment Confirmation 截图": [
+  "Appointment Confirmation のスクリーンショットを拡大",
+  "Enlarge Appointment Confirmation screenshot"
+ ],
+ "先约定承运商到仓的时间和作业，再让现场按预约接车": [
+  "来場時間と作業を先に約束し、現場は予約に沿って受け入れる",
+  "Agree the arrival time and activity first, then receive trucks by appointment"
+ ],
+ "Appointment 是仓库与承运商之间的到仓约定：谁来、做入库还是出库、关联哪些单据、什么时间到。预约确定后，月台和人员可以提前安排，承运商到场时再执行 Check In。": [
+  "Appointment は倉庫と配送業者の間の来場の取り決めで、誰が、入庫か出庫か、どの伝票に関わるか、いつ来るかを定めます。予約が決まればドックと人員を事前に手配でき、到着時に Check In を行います。",
+  "An appointment is the arrangement between warehouse and carrier: who comes, whether it is inbound or outbound, which documents are involved and when. Once booked, docks and people can be planned ahead and the carrier is checked in on arrival."
+ ],
+ "排下周月台和人手前，先看哪几天预约扎堆": [
+  "来週のドックと人員を決める前に、予約が集中する日を確認",
+  "Before planning next week's docks and staff, see which days are crowded"
+ ],
+ "例如准备下周班次时，切到周视图查看每天的预约分布，再按 Inbound 或 Outbound 服务类型筛选。对集中到场的日子提前加人，或把新的预约错开到较空的时段。": [
+  "たとえば来週のシフトを準備する際、週表示で毎日の予約分布を確認し、Inbound または Outbound のサービスタイプで絞り込みます。集中する日は事前に人員を追加し、新しい予約は空いている時間帯にずらします。",
+  "When preparing next week's shifts, switch to the week view to see the daily spread and filter by Inbound or Outbound service type. Add people for crowded days ahead of time, or move new bookings to quieter slots."
+ ],
+ "按服务类型筛选，并查看单个预约": [
+  "サービスタイプで絞り込み、個別の予約を確認",
+  "Filter by service type and open a single appointment"
+ ],
+ "日历支持月、周、日三种视图。Service 过滤可按 Inbound（Live Delivery、Drop Off Delivery）和 Outbound（Live Load、Pickup Preload、Pick Up Empty）显示，也可开启 Group by Service Type。点击日历上的预约，右侧会滑出该服务类型的预约列表，每条显示 APPT#、状态、预约时间、承运商和服务类型；同一时段有多条预约时，会一并列出。": [
+  "カレンダーは月・週・日の 3 種類の表示に対応しています。Service フィルターで Inbound（Live Delivery、Drop Off Delivery）と Outbound（Live Load、Pickup Preload、Pick Up Empty）を切り替えられ、Group by Service Type も使えます。予約をクリックすると、右側にそのサービスタイプの予約一覧が表示され、各行に APPT#、状態、予約時間、配送業者、サービスタイプが表示されます。同じ時間帯に複数の予約がある場合は、まとめて一覧表示されます。",
+  "The calendar supports month, week and day views. The Service filter shows Inbound (Live Delivery, Drop Off Delivery) and Outbound (Live Load, Pickup Preload, Pick Up Empty), and Group by Service Type can be switched on. Clicking an appointment slides in a panel on the right listing the appointments of that service type, each with APPT#, status, appointment time, carrier and service type. If several appointments share the slot, they are all listed."
+ ],
+ "Appointment 日历页面截图": [
+  "Appointment カレンダー画面のスクリーンショット",
+  "Appointment calendar screenshot"
+ ],
+ "放大 Appointment Calendar 截图": [
+  "Appointment Calendar のスクリーンショットを拡大",
+  "Enlarge Appointment Calendar screenshot"
+ ],
+ "Appointment 日历点击预约后的右侧列表截图": [
+  "Appointment カレンダーで予約をクリックした後の右側一覧のスクリーンショット",
+  "Appointment calendar side panel after clicking an appointment"
+ ],
+ "放大 Appointment Calendar Detail 截图": [
+  "Appointment Calendar Detail のスクリーンショットを拡大",
+  "Enlarge Appointment Calendar Detail screenshot"
+ ],
+ "在日历上一眼看清哪天、哪个时段车辆集中到场": [
+  "どの日・どの時間帯に車両が集中するかをカレンダーで把握",
+  "See on the calendar which days and slots get crowded"
+ ],
+ "Appointment Calendar 以月、周、日三种视图展示所有预约，适合计划员排班和安排月台。": [
+  "Appointment Calendar は月・週・日の 3 種類の表示ですべての予約を表示し、計画担当者のシフト調整やドック手配に役立ちます。",
+  "Appointment Calendar shows every appointment in month, week and day views, which helps planners arrange shifts and docks."
+ ],
+ "货已经建单，承运商却迟迟没来约时间": [
+  "伝票は作成済みなのに、配送業者が予約を入れてこない",
+  "Documents exist, but the carrier has not booked a time"
+ ],
+ "例如一批收货单已经创建，承运商还没有预约到仓时间。计划员在 Receipt 标签里找到这些收货单，点击 Make Appointment 代为创建预约，或用 Send Reminder 给承运商发提醒邮件；单据较多时，勾选后批量发送提醒或批量创建预约。": [
+  "たとえば入荷伝票は作成済みでも、配送業者がまだ来場時間を予約していない場合があります。計画担当者は Receipt タブでそれらの伝票を見つけ、Make Appointment で代理予約を作成するか、Send Reminder で配送業者にリマインドメールを送ります。伝票が多い場合は、選択して一括でリマインド送信または一括予約作成を行います。",
+  "For example, receipts have been created but the carrier has not booked an arrival time. The planner finds them on the Receipt tab and either creates the appointment with Make Appointment or emails the carrier with Send Reminder. When there are many documents, select them and send reminders or create appointments in bulk."
+ ],
+ "在 Load 与 Receipt 标签里找出还没有预约的单据": [
+  "Load と Receipt タブで予約のない伝票を探す",
+  "Find documents without an appointment on the Load and Receipt tabs"
+ ],
+ "Load 标签列出已指定承运商、尚未关联预约的发货单；Receipt 标签列出已指定承运商、尚未关联预约且未关闭或取消的收货单。两个标签都可按 Carrier、单号、Ref No、PO No 和 Customer 筛选，Email Reminders 列显示是否已向承运商发过提醒。": [
+  "Load タブには、配送業者が指定済みで予約に関連付けられていない出荷伝票が、Receipt タブには、配送業者が指定済みで予約に関連付けられておらず、クローズやキャンセルされていない入荷伝票が表示されます。どちらも Carrier、伝票番号、Ref No、PO No、Customer で絞り込め、Email Reminders 列は配送業者へリマインドを送信済みかどうかを示します。",
+  "The Load tab lists outbound loads that have a carrier but no appointment yet; the Receipt tab lists receipts that have a carrier, no appointment, and are not closed or cancelled. Both tabs filter by Carrier, document number, Ref No, PO No and Customer, and the Email Reminders column shows whether a reminder has already been sent to the carrier."
+ ],
+ "Pending Carrier Appointment Load 标签页面截图": [
+  "Pending Carrier Appointment の Load タブ画面のスクリーンショット",
+  "Pending Carrier Appointment Load tab screenshot"
+ ],
+ "放大 Pending Carrier Appointment Load 截图": [
+  "Pending Carrier Appointment Load のスクリーンショットを拡大",
+  "Enlarge Pending Carrier Appointment Load screenshot"
+ ],
+ "Pending Carrier Appointment Receipt 标签页面截图": [
+  "Pending Carrier Appointment の Receipt タブ画面のスクリーンショット",
+  "Pending Carrier Appointment Receipt tab screenshot"
+ ],
+ "放大 Pending Carrier Appointment Receipt 截图": [
+  "Pending Carrier Appointment Receipt のスクリーンショットを拡大",
+  "Enlarge Pending Carrier Appointment Receipt screenshot"
+ ],
+ "选择服务类型：Load 对应出库类（Pick Up Empty、Pickup Preload、Live Load），Receipt 对应入库类（Live Delivery、Drop Off Delivery）。确认后进入新建预约页面，承运商和单据自动带入。": [
+  "サービスタイプを選択します。Load は出庫系（Pick Up Empty、Pickup Preload、Live Load）、Receipt は入庫系（Live Delivery、Drop Off Delivery）に対応します。確定すると予約作成画面に移動し、配送業者と伝票が自動入力されます。",
+  "Choose the service type: Load maps to outbound types (Pick Up Empty, Pickup Preload, Live Load) and Receipt to inbound types (Live Delivery, Drop Off Delivery). After confirming, the new appointment page opens with the carrier and documents prefilled."
+ ],
+ "弹窗中预填承运商邮箱和邮件内容，通过 Outlook 发出。发出后该行的 Email Reminders 由 NO 变为 YES，并在 Generated Invitations 中生成一条记录。": [
+  "ダイアログに配送業者のメールアドレスと本文が自動入力され、Outlook から送信します。送信後、その行の Email Reminders は NO から YES に変わり、Generated Invitations に記録が作成されます。",
+  "The dialog prefills the carrier's email and the message, which is sent through Outlook. Afterwards the row's Email Reminders changes from NO to YES and a record appears under Generated Invitations."
+ ],
+ "批量操作": [
+  "一括操作",
+  "Bulk actions"
+ ],
+ "勾选多行后，两个按钮后面的数字随勾选的行数变化（勾选 2 行显示 (2)）。Batch Send Reminders 一次发出多封提醒，Batch Create Appointment 带着多个单据一起进入新建预约页面。": [
+  "複数行を選択すると、Batch Send Reminders で複数のリマインドを一度に送信でき、Batch Create Appointment で複数の伝票をまとめて予約作成画面に引き継げます。",
+  "After selecting several rows, Batch Send Reminders sends multiple reminders at once and Batch Create Appointment carries all selected documents into the new appointment page."
+ ],
+ "Pending Carrier Appointment Load 标签勾选两行后，批量按钮显示数量的截图": [
+  "Pending Carrier Appointment の Load タブで 2 行を選択し、一括ボタンに件数が表示された画面のスクリーンショット",
+  "Pending Carrier Appointment Load tab with two rows selected and the bulk buttons showing the count"
+ ],
+ "放大 Pending Carrier Appointment Load Selected 截图": [
+  "Pending Carrier Appointment Load Selected のスクリーンショットを拡大",
+  "Enlarge Pending Carrier Appointment Load Selected screenshot"
+ ],
+ "Pending Carrier Appointment Receipt 标签勾选两行后，批量按钮显示数量的截图": [
+  "Pending Carrier Appointment の Receipt タブで 2 行を選択し、一括ボタンに件数が表示された画面のスクリーンショット",
+  "Pending Carrier Appointment Receipt tab with two rows selected and the bulk buttons showing the count"
+ ],
+ "放大 Pending Carrier Appointment Receipt Selected 截图": [
+  "Pending Carrier Appointment Receipt Selected のスクリーンショットを拡大",
+  "Enlarge Pending Carrier Appointment Receipt Selected screenshot"
+ ],
+ "操作前先核对：": [
+  "操作前の確認：",
+  "Check before acting: "
+ ],
+ "批量操作会对勾选的每一行生效，请先确认勾选的单据和承运商无误。": [
+  "一括操作は選択したすべての行に適用されます。選択した伝票と配送業者に誤りがないか確認してください。",
+  "Bulk actions apply to every selected row, so confirm the selected documents and carriers first."
+ ],
+ "跟进已经发出的提醒": [
+  "送信済みのリマインドをフォローする",
+  "Follow up on reminders already sent"
+ ],
+ "Generated Invitations 保存 Send Reminder 产生的邀请记录，可按 Carrier、Customer 和 Status 查询，列表显示 Load No、关联收货单、设备号和邀请状态。通过操作列可以重新发送提醒或查看详情，用来判断哪些承运商还需要继续催办。": [
+  "Generated Invitations には Send Reminder で作成された招待の記録が保存されます。Carrier、Customer、Status で検索でき、Load No、関連入荷伝票、機材番号、招待の状態が表示されます。操作列からリマインドの再送や詳細の確認ができ、引き続き催促が必要な配送業者を判断できます。",
+  "Generated Invitations keeps the records created by Send Reminder. Filter by Carrier, Customer and Status to see the Load No, related receipts, equipment number and invitation status. The action column lets you resend a reminder or open the details, so you can tell which carriers still need chasing."
+ ],
+ "Generated Invitations 标签页面截图": [
+  "Generated Invitations タブ画面のスクリーンショット",
+  "Generated Invitations tab screenshot"
+ ],
+ "放大 Generated Invitations 截图": [
+  "Generated Invitations のスクリーンショットを拡大",
+  "Enlarge Generated Invitations screenshot"
+ ],
+ "找出还没有预约的单据，主动推动承运商预约": [
+  "予約のない伝票を見つけ、配送業者の予約を積極的に促す",
+  "Find documents without an appointment and drive carriers to book"
+ ],
+ "Pending Carrier Appointment 是预约的发起入口：它找出还没有关联预约的 Load 和收货单，帮助管理员主动联系承运商，创建预约或发送提醒。它不管理已有预约，已有预约在 Appointment List 中处理。": [
+  "Pending Carrier Appointment は予約の起点となる画面です。予約に関連付けられていない Load と入荷伝票を見つけ、管理者が配送業者へ連絡して予約を作成したりリマインドを送ったりできます。既存の予約は管理せず、Appointment List で処理します。",
+  "Pending Carrier Appointment is the starting point for bookings: it finds loads and receipts that are not yet linked to an appointment so administrators can contact carriers, create appointments or send reminders. It does not manage existing appointments, which are handled in Appointment List."
+ ],
+ "新开放一个收货窗口，或要限制高峰时段的预约量": [
+  "新しい受入時間帯を開放する、またはピーク時の予約数を制限する",
+  "Opening a new receiving window, or capping bookings in peak hours"
+ ],
+ "例如仓库周一到周五 06:00 至 22:00 收货，每个 15 分钟时段最多接 2 单。在 Slot Capacity 中设置可预约日、开始与结束时间和时段长度，再用 Fill All 统一填入容量，需要时对个别时段单独调整。": [
+  "たとえば倉庫が月曜から金曜の 06:00～22:00 に入荷を受け付け、15 分ごとの枠で最大 2 件とする場合、Slot Capacity で予約可能日・開始／終了時刻・枠の長さを設定し、Fill All で容量を一括入力し、必要に応じて個別の枠を調整します。",
+  "For example, if the warehouse receives from 06:00 to 22:00 on weekdays and takes at most two bookings per 15-minute slot, set the bookable days, start and end time and slot length in Slot Capacity, fill the capacity with Fill All, and adjust individual slots where needed."
+ ],
+ "通知邮箱与时段容量": [
+  "通知メールと枠の容量",
+  "Notification emails and slot capacity"
+ ],
+ "通知邮箱和时段容量在同一页维护，保存后用于后续预约。": [
+  "通知先メールと枠の容量は同じ画面で管理し、保存後の予約に反映されます。",
+  "Notification emails and slot capacity are maintained on one page and apply to appointments made after saving."
+ ],
+ "Appointment Settings 页面截图": [
+  "Appointment Settings 画面のスクリーンショット",
+  "Appointment Settings screenshot"
+ ],
+ "放大 Appointment Settings 截图": [
+  "Appointment Settings のスクリーンショットを拡大",
+  "Enlarge Appointment Settings screenshot"
+ ],
+ "默认接收预约通知的邮箱，保存后对所有承运商生效。": [
+  "予約通知を受け取る既定のメールアドレス。保存後はすべての配送業者に適用されます。",
+  "The default mailbox for appointment notifications, applied to all carriers once saved."
+ ],
+ "为个别承运商单独指定通知邮箱，通过 + Add 逐个添加。": [
+  "特定の配送業者に個別の通知先メールを指定します。+ Add で 1 件ずつ追加します。",
+  "Assign a separate notification mailbox to individual carriers, added one by one with + Add."
+ ],
+ "按可预约日（MON 到 SUN）、Start、End 和 Duration 生成时段表，并为每个时段设置 Capacity；保存 Slot Capacity 后生效。": [
+  "予約可能日（MON～SUN）、Start、End、Duration から枠の表を作成し、各枠に Capacity を設定します。Save Slot Capacity で反映されます。",
+  "Generates the slot table from the bookable days (MON to SUN), Start, End and Duration, and sets a Capacity for each slot; it takes effect after Save Slot Capacity."
+ ],
+ "先设定通知邮箱和时段容量，预约才有可约的空位": [
+  "通知先メールと枠の容量を設定して、はじめて予約できる空きが生まれる",
+  "Set notification emails and slot capacity first so there are slots to book"
+ ],
+ "Appointment Settings 决定预约确认邮件发给谁，以及每天哪些时间段可以接受预约、每个时段最多接几单。没有设置容量的时段，在预约向导里会显示为没有可用时段。": [
+  "Appointment Settings は、予約確認メールの宛先と、毎日どの時間帯で予約を受け付けるか、各枠で何件まで受け付けるかを決めます。容量を設定していない枠は、予約ウィザードで空き枠なしと表示されます。",
+  "Appointment Settings decides who receives confirmation emails, which times of day accept bookings and how many each slot can take. Slots without capacity show as unavailable in the appointment wizard."
+ ],
+ "Template 管理打印模板，并决定每次打印用哪一份": [
+  "Template は印刷テンプレートを管理し、毎回どれを使うかを決めます",
+  "Template manages print templates and decides which one each print uses"
+ ],
+ "Template 用于维护标签、装车单等打印模板，并按标签类型、客户、设施和零售商指定使用哪份模板；LP Batch Print 则用来批量打印库存 LP 标签。": [
+  "Template はラベルや積込票などの印刷テンプレートを管理し、ラベルタイプ・顧客・施設・小売業者ごとに使用するテンプレートを指定します。LP Batch Print は在庫 LP ラベルを一括印刷します。",
+  "Template maintains print templates such as labels and loading tickets and assigns which one to use per label type, customer, facility and retailer. LP Batch Print prints inventory LP labels in bulk."
+ ],
+ "01 · 模板": [
+  "01 · テンプレート",
+  "01 · Templates"
+ ],
+ "维护打印内容和纸张": [
+  "印刷内容と用紙を管理",
+  "Maintain print content and paper"
+ ],
+ "新建 ZPL 或 HTML 模板，设置纸张尺寸、密度，并用示例数据预览。": [
+  "ZPL または HTML のテンプレートを作成し、用紙サイズと密度を設定してサンプルデータで確認します。",
+  "Create ZPL or HTML templates, set paper size and density, and preview with sample data."
+ ],
+ "02 · 规则": [
+  "02 · ルール",
+  "02 · Rules"
+ ],
+ "指定什么情况用哪份模板": [
+  "どの場面でどのテンプレートを使うかを指定",
+  "Decide which template applies when"
+ ],
+ "把模板绑定到标签类型、客户、设施或零售商，并可设置默认模板。": [
+  "テンプレートをラベルタイプ・顧客・施設・小売業者に関連付け、既定テンプレートを設定できます。",
+  "Bind templates to label type, customer, facility or retailer and mark a default."
+ ],
+ "03 · 打印": [
+  "03 · 印刷",
+  "03 · Printing"
+ ],
+ "批量打印 LP 标签": [
+  "LP ラベルを一括印刷",
+  "Print LP labels in bulk"
+ ],
+ "按条件筛选库存 LP，勾选后一次批量打印。": [
+  "条件で在庫 LP を絞り込み、選択して一括印刷します。",
+  "Filter inventory LPs by condition, select them and print in one go."
+ ],
+ "客户要求使用自己的标签版式": [
+  "顧客が自社のラベルレイアウトを指定している",
+  "A customer requires its own label layout"
+ ],
+ "例如某客户要求收货标签带上自家的编码规则。管理员新建一份模板，粘贴 ZPL 或 HTML 内容，填写示例数据确认效果，保存后再到 Template Settings 把它绑定给该客户。": [
+  "たとえば顧客が自社のコード体系を入れた入荷ラベルを求める場合、管理者は新しいテンプレートを作成して ZPL または HTML の内容を貼り付け、サンプルデータで表示を確認して保存し、Template Settings でその顧客に関連付けます。",
+  "For example, a customer wants receiving labels to carry its own coding rule. The administrator creates a template, pastes the ZPL or HTML content, checks the result with sample data, saves it, and then binds it to that customer in Template Settings."
+ ],
+ "按名称、类型和状态管理模板": [
+  "名称・タイプ・状態でテンプレートを管理",
+  "Manage templates by name, type and status"
+ ],
+ "可按 Template Name、Template Type、Status 查询。列表显示子类型、文档类型（ZPL 或 HTML）、状态和创建时间，每行提供 Edit、Preview、Deactivate 和 Delete。点击 Preview 会在新标签页打开 PDF 预览。": [
+  "Template Name、Template Type、Status で検索できます。一覧にはサブタイプ、ドキュメントタイプ（ZPL または HTML）、状態、作成日時が表示され、各行に Edit、Preview、Deactivate、Delete があります。Preview をクリックすると、新しいタブで PDF プレビューが開きます。",
+  "Search by Template Name, Template Type and Status. The list shows the sub type, document type (ZPL or HTML), status and creation time, and each row offers Edit, Preview, Deactivate and Delete. Preview opens a PDF preview in a new tab."
+ ],
+ "Template Management 列表页面截图": [
+  "Template Management 一覧画面のスクリーンショット",
+  "Template Management list screenshot"
+ ],
+ "放大 Template Management 截图": [
+  "Template Management のスクリーンショットを拡大",
+  "Enlarge Template Management screenshot"
+ ],
+ "内容、纸张与参数一起维护": [
+  "内容・用紙・パラメータをまとめて管理",
+  "Content, paper and parameters together"
+ ],
+ "Add 页面包含 Template Content 编辑区，并要填写 Template Name、Paper Size、Document Type、Template Type、Density 和 Status。Sample Data 用于预览，必须是合法的 JSON 数组；Parameter Config 必须是 JSON 对象。格式不符时请先修正再保存。": [
+  "Add 画面には Template Content の編集エリアがあり、Template Name、Paper Size、Document Type、Template Type、Density、Status を入力します。Sample Data はプレビュー用で有効な JSON 配列、Parameter Config は JSON オブジェクトである必要があります。形式が合わない場合は修正してから保存してください。",
+  "The Add page has a Template Content editor and asks for Template Name, Paper Size, Document Type, Template Type, Density and Status. Sample Data is used for preview and must be a valid JSON array; Parameter Config must be a JSON object. Fix any format problem before saving."
+ ],
+ "Add Template 页面截图": [
+  "Add Template 画面のスクリーンショット",
+  "Add Template screenshot"
+ ],
+ "放大 Add Template 截图": [
+  "Add Template のスクリーンショットを拡大",
+  "Enlarge Add Template screenshot"
+ ],
+ "先把模板做好并启用，打印时才有可选的版式": [
+  "テンプレートを整えて有効にして、はじめて印刷時に使える",
+  "Prepare and activate templates so print jobs have layouts to use"
+ ],
+ "Template Management 保存各类打印版式，例如 LP Label、Receiving Plate、BOL、Master Loading Ticket 和 UCC Label。模板可以是 ZPL 或 HTML 两种文档类型，并通过 Status 启用或停用。": [
+  "Template Management は LP Label、Receiving Plate、BOL、Master Loading Ticket、UCC Label などの印刷レイアウトを保存します。テンプレートのドキュメントタイプは ZPL または HTML で、Status で有効・無効を切り替えます。",
+  "Template Management stores print layouts such as LP Label, Receiving Plate, BOL, Master Loading Ticket and UCC Label. A template is either ZPL or HTML and is enabled or disabled through Status."
+ ],
+ "不同客户的标签版式不同，希望打印时系统自动选对": [
+  "顧客ごとにラベルが異なり、印刷時にシステムが自動で正しいものを選んでほしい",
+  "Customers use different label layouts and printing should pick the right one automatically"
+ ],
+ "例如仓库同时服务两个客户：A 客户的 LP 标签要带品牌 Logo，B 客户的要带保质期。管理员为 A、B 各配一条设置并选择对应模板，打印时系统自动匹配，操作员不必每次手动选择，也不容易选错。": [
+  "たとえば倉庫が 2 社の顧客を扱い、A 社の LP ラベルにはブランドロゴ、B 社には賞味期限を入れる場合、管理者は A 社・B 社それぞれの設定を作成して対応するテンプレートを選びます。印刷時にシステムが自動で照合するため、作業者が毎回選ぶ必要はなく、選び間違いも防げます。",
+  "For example, a warehouse serves two customers: customer A needs a brand logo on the LP label and customer B needs the expiry date. The administrator creates one setting for each with the matching template, so printing picks the right one automatically and operators no longer choose by hand or pick the wrong one."
+ ],
+ "从列表核对哪些条件绑定了哪份模板": [
+  "どの条件にどのテンプレートが紐づくかを一覧で確認",
+  "Check from the list which conditions use which template"
+ ],
+ "可按 Label Type、Customer、Retailer ID、Template ID、Label Code、Facility ID、Status 和 UCC Type 查询。列表显示设置名称、绑定的模板、客户、设施、零售商、文档类型、状态以及是否为默认设置。": [
+  "Label Type、Customer、Retailer ID、Template ID、Label Code、Facility ID、Status、UCC Type で検索できます。一覧には設定名、紐づくテンプレート、顧客、施設、小売業者、ドキュメントタイプ、状態、既定かどうかが表示されます。",
+  "Search by Label Type, Customer, Retailer ID, Template ID, Label Code, Facility ID, Status and UCC Type. The list shows the setting name, bound template, customer, facility, retailer, document type, status and whether it is the default."
+ ],
+ "Template Settings 列表页面截图": [
+  "Template Settings 一覧画面のスクリーンショット",
+  "Template Settings list screenshot"
+ ],
+ "放大 Template Settings 截图": [
+  "Template Settings のスクリーンショットを拡大",
+  "Enlarge Template Settings screenshot"
+ ],
+ "选模板，再限定适用范围": [
+  "テンプレートを選び、適用範囲を絞る",
+  "Pick the template, then limit where it applies"
+ ],
+ "填写 Name 并选择 Template Name，再按需要限定 Label Type、Customer、Facility ID、Retailer ID、UCC Type 和 Label Code，并设置 Document Type 与 Density。Is Default 决定这条设置是否作为默认选择。": [
+  "Name を入力して Template Name を選び、必要に応じて Label Type、Customer、Facility ID、Retailer ID、UCC Type、Label Code で適用範囲を絞り、Document Type と Density を設定します。Is Default は、この設定を既定にするかどうかを決めます。",
+  "Enter a Name and choose the Template Name, then narrow the scope with Label Type, Customer, Facility ID, Retailer ID, UCC Type and Label Code, and set the Document Type and Density. Is Default decides whether this setting is the default choice."
+ ],
+ "Add Template Setting 页面截图": [
+  "Add Template Setting 画面のスクリーンショット",
+  "Add Template Setting screenshot"
+ ],
+ "放大 Add Template Setting 截图": [
+  "Add Template Setting のスクリーンショットを拡大",
+  "Enlarge Add Template Setting screenshot"
+ ],
+ "按条件匹配": [
+  "条件で照合",
+  "Match by condition"
+ ],
+ "打印时系统按客户、设施、零售商等条件查找符合的设置，并使用其绑定的模板。": [
+  "印刷時、システムは顧客・施設・小売業者などの条件に合う設定を探し、紐づくテンプレートを使用します。",
+  "At print time the system looks for the setting that fits the customer, facility, retailer and other conditions, and uses its template."
+ ],
+ "取最精确的一条": [
+  "最も具体的な設定を採用",
+  "The most specific one wins"
+ ],
+ "多条设置同时符合时，选用匹配条件最多、范围最具体的那一条。": [
+  "複数の設定が該当する場合は、一致する条件が最も多く範囲が最も具体的なものを採用します。",
+  "When several settings match, the one with the most matching conditions and the narrowest scope is used."
+ ],
+ "默认设置兜底": [
+  "既定設定でフォールバック",
+  "Default as the fallback"
+ ],
+ "标记 Is Default 的设置在没有更具体规则时使用，保证任何情况下都有模板可用；停用的设置不再参与匹配。": [
+  "Is Default を付けた設定は、より具体的な設定がない場合に使用され、どの場合でもテンプレートが使えるようにします。無効にした設定は照合の対象外になります。",
+  "A setting marked Is Default is used when no more specific rule applies, so a template is always available; a deactivated setting no longer takes part in matching."
+ ],
+ "用 Template Settings 让系统按条件自动选对打印模板": [
+  "Template Settings で条件に応じて印刷テンプレートを自動選択",
+  "Use Template Settings to pick the right print template automatically"
+ ],
+ "Template Settings 是打印模板的自动匹配规则：把模板与客户、设施、零售商等条件绑定，打印标签时由系统自动选择，不必每次手动挑选。": [
+  "Template Settings は印刷テンプレートの自動照合ルールです。テンプレートを顧客・施設・小売業者などの条件に紐づけ、ラベル印刷時にシステムが自動で選択するため、毎回手動で選ぶ必要がありません。",
+  "Template Settings holds the automatic matching rules for print templates: it binds templates to conditions such as customer, facility and retailer, so the system picks one when a label is printed and nobody has to choose by hand."
+ ],
+ "一批货的托盘标签损坏，需要整批补打": [
+  "ある荷物のパレットラベルが破損し、まとめて再印刷したい",
+  "Pallet labels for a batch are damaged and must be reprinted together"
+ ],
+ "例如某张收货单对应的 LP 标签被污损，操作员按 Receipt ID 或 Location 筛出这批 LP，全选后点击 Batch Print，一次打印完毕，而不必逐个 LP 补打。": [
+  "たとえばある入荷伝票に対応する LP ラベルが汚れた場合、作業者は Receipt ID や Location でその LP を絞り込み、全選択して Batch Print をクリックします。LP を 1 件ずつ再印刷する必要はありません。",
+  "For example, if the LP labels for one receipt are smudged, the operator filters those LPs by Receipt ID or Location, selects them all and clicks Batch Print, instead of reprinting each LP one by one."
+ ],
+ "先筛选，再勾选，最后打印": [
+  "絞り込み、選択し、印刷",
+  "Filter, select, then print"
+ ],
+ "可按 Customer、LP ID、Location、Status、Receipt ID、SKU 和 Container 筛选。列表显示 SKU、Lot No、数量、UOM、LP ID 和 Receipt ID；Batch Print 按钮后的数字是勾选的 LP 个数。同一个 LP 下有多个 SKU 行时，这些行会一起选中、一起取消，只算一个 LP，所以高亮的行数可能比数字多。点击 Batch Print 会弹出 Batch Print LP Labels 窗口，左侧列出选中的 LP，右侧选择 Printer（必选），点击 Print 开始打印，Cancel 可退出。": [
+  "Customer、LP ID、Location、Status、Receipt ID、SKU、Container で絞り込めます。一覧には SKU、Lot No、数量、UOM、LP ID、Receipt ID が表示され、Batch Print ボタンの数字は選択した LP の個数です。同じ LP に複数の SKU 行がある場合、それらの行はまとめて選択・解除され、1 件として数えられるため、ハイライトされた行数より数字が小さくなることがあります。Batch Print をクリックすると Batch Print LP Labels ウィンドウが開き、左側に選択した LP、右側に Printer（必須）を選択します。Print で印刷を開始し、Cancel で閉じます。",
+  "Filter by Customer, LP ID, Location, Status, Receipt ID, SKU and Container. The list shows SKU, Lot No, quantity, UOM, LP ID and Receipt ID; the number on the Batch Print button is how many distinct LPs are selected. When one LP has several SKU rows, they are selected and cleared together and count as one LP, so the number can be lower than the highlighted rows. Clicking Batch Print opens the Batch Print LP Labels window: the selected LPs are listed on the left, choose a Printer (required) on the right, then click Print, or Cancel to leave."
+ ],
+ "LP Batch Print 页面截图": [
+  "LP Batch Print 画面のスクリーンショット",
+  "LP Batch Print screenshot"
+ ],
+ "放大 LP Batch Print 截图": [
+  "LP Batch Print のスクリーンショットを拡大",
+  "Enlarge LP Batch Print screenshot"
+ ],
+ "LP Batch Print 勾选后 Batch Print 按钮显示 LP 个数的截图": [
+  "LP Batch Print で行を選択した後、Batch Print ボタンに LP の個数が表示される画面のスクリーンショット",
+  "LP Batch Print with rows selected, the Batch Print button showing the LP count"
+ ],
+ "放大 LP Batch Print Selected 截图": [
+  "LP Batch Print Selected のスクリーンショットを拡大",
+  "Enlarge LP Batch Print Selected screenshot"
+ ],
+ "Batch Print LP Labels 弹窗截图，左侧为选中的 LP，右侧选择 Printer": [
+  "Batch Print LP Labels ダイアログのスクリーンショット。左に選択した LP、右に Printer の選択",
+  "Batch Print LP Labels dialog: selected LPs on the left, Printer selection on the right"
+ ],
+ "放大 LP Batch Print Dialog 截图": [
+  "LP Batch Print Dialog のスクリーンショットを拡大",
+  "Enlarge LP Batch Print Dialog screenshot"
+ ],
+ "筛出一批 LP，一次打印标签": [
+  "LP をまとめて絞り込み、一度にラベル印刷",
+  "Filter a batch of LPs and print their labels at once"
+ ],
+ "LP Batch Print 按条件列出库存里的 LP，勾选后批量打印 LP 标签，适合换标签、补打或整批重贴。": [
+  "LP Batch Print は条件に合う在庫の LP を一覧表示し、選択して LP ラベルを一括印刷します。ラベルの交換、再印刷、まとめての貼り直しに向いています。",
+  "LP Batch Print lists inventory LPs by condition and prints their labels in bulk once selected, which suits label replacement, reprints and relabeling a whole batch."
+ ]
+};
+const WES_BATCH1_TRANSLATIONS = {
+  ja: Object.fromEntries(Object.entries(WES_BATCH1_PAIRS).map(([source, targets]) => [source, targets[0]])),
+  en: Object.fromEntries(Object.entries(WES_BATCH1_PAIRS).map(([source, targets]) => [source, targets[1]]))
+};
+
+// WES batch 2 (Facility)
+const WES_BATCH2_PAIRS = {
+ "Facility 维护仓库、库位、设备、容器与分组等基础资料": [
+  "Facility は倉庫・ロケーション・設備・容器・グループなどの基礎データを管理します",
+  "Facility maintains the base data for warehouses, locations, equipment, containers and groups"
+ ],
+ "Facility 是 WES 运行的底座：先建好设施和库位，再接入设备与服务器，定义容器规格、播种墙和库位分组，之后入库、出库、任务等业务才有可用的资源。DB Change Log 则用来追查基础数据被谁改过。": [
+  "Facility は WES の土台です。まず施設とロケーションを作り、次に設備とサーバーを接続し、容器仕様・ソーティングウォール・ロケーショングループを定義します。これにより入庫・出庫・タスクなどの業務で使えるリソースが揃います。DB Change Log では基礎データの変更履歴を追跡できます。",
+  "Facility is the foundation WES runs on: create the facility and its locations first, then connect equipment and servers and define container specs, walls and location groups, so inbound, outbound and task work has resources to use. DB Change Log traces who changed the base data."
+ ],
+ "01 · 设施": [
+  "01 · 施設",
+  "01 · Facility"
+ ],
+ "建立仓库并设定如何连接 WCS": [
+  "倉庫を作成し、WCS との接続方法を設定",
+  "Create a warehouse and decide how it reaches WCS"
+ ],
+ "填写设施名称、编码、时区和地址，设置 LP 标签前缀，并选择 WCS 通讯方式。": [
+  "施設名・コード・タイムゾーン・住所を入力し、LP ラベルの接頭辞と WCS 通信方式を設定します。",
+  "Enter the name, code, time zone and address, set the LP prefix and choose the WCS communication mode."
+ ],
+ "02 · 库位": [
+  "02 · ロケーション",
+  "02 · Locations"
+ ],
+ "维护仓内每一个库位": [
+  "倉庫内のすべてのロケーションを管理",
+  "Maintain every location in the warehouse"
+ ],
+ "按类型、货架坐标、尺寸与容量定义库位，支持导入导出。": [
+  "タイプ・棚座標・寸法・容量でロケーションを定義し、インポート／エクスポートに対応します。",
+  "Define locations by type, rack coordinates, size and capacity, with import and export."
+ ],
+ "03 · 设备": [
+  "03 · 設備",
+  "03 · Equipment"
+ ],
+ "登记设备、客户端与服务器": [
+  "設備・クライアント・サーバーを登録",
+  "Register equipment, clients and servers"
+ ],
+ "设备管理记录分拣机等设备，RCS Client 记录对接的控制系统客户端，Warehouse Server 记录仓内服务器。": [
+  "設備管理では仕分機などを、RCS Client では連携する制御システムのクライアントを、Warehouse Server では倉庫内サーバーを登録します。",
+  "Equipment records devices such as sorters, RCS Client records connected control-system clients, and Warehouse Server records in-house servers."
+ ],
+ "04 · 灯光": [
+  "04 · ライト",
+  "04 · Lights"
+ ],
+ "管理信号灯与拣选灯控制器": [
+  "シグナルライトとピックライトのコントローラーを管理",
+  "Manage signal-light and pick-to-light controllers"
+ ],
+ "按信号灯与电子拣选灯分别维护控制器，并提供测试工具验证灯光指令。": [
+  "シグナルライトとピックトゥライトのコントローラーを分けて管理し、テストツールで点灯指示を確認できます。",
+  "Maintain controllers separately for signal lights and pick-to-light, with a test tool to verify light commands."
+ ],
+ "05 · 容器与墙": [
+  "05 · 容器とウォール",
+  "05 · Containers and walls"
+ ],
+ "定义周转箱规格，管理播种墙": [
+  "容器仕様を定義し、ウォールを管理",
+  "Define container specs and manage walls"
+ ],
+ "先建容器规格再批量生成容器；播种墙、分拣墙按规格创建，并可绑定站点与设备。": [
+  "先に容器仕様を作り、容器を一括生成します。ウォールは仕様に基づいて作成し、ステーションや設備に紐づけられます。",
+  "Create the container spec first, then generate containers in bulk; walls are created from specs and can be tied to stations and equipment."
+ ],
+ "06 · 分组与审计": [
+  "06 · グループと監査",
+  "06 · Groups and audit"
+ ],
+ "VLG 归组库位，DB Change Log 追踪改动": [
+  "VLG でロケーションをグループ化、DB Change Log で変更を追跡",
+  "VLG groups locations, DB Change Log tracks changes"
+ ],
+ "VLG 把库位归成组并设置混放与上架规则；DB Change Log 按表名、数据 ID 或请求追踪变更。": [
+  "VLG はロケーションをまとめ、混載や棚入れのルールを設定します。DB Change Log はテーブル名・データ ID・リクエストで変更を追跡します。",
+  "VLG groups locations and sets mixing and putaway rules; DB Change Log traces changes by table, data ID or request."
+ ],
+ "新开一个仓，要让系统知道它在哪里、用什么时区、怎么连到 WCS": [
+  "新しい倉庫を開設するとき、場所・タイムゾーン・WCS との接続方法をシステムに登録する",
+  "Opening a new warehouse and telling the system where it is, which time zone it uses and how it reaches WCS"
+ ],
+ "例如实施人员为东京仓新建设施：填写名称和编码，选择 Asia/Tokyo 时区，设置 LP 标签前缀，再按现场网络情况选择 WCS 通讯方式。保存后，这个设施就可以在右上角的设施选择中使用。": [
+  "たとえば導入担当者が東京倉庫の施設を新規作成します。名称とコードを入力し、タイムゾーンに Asia/Tokyo を選び、LP ラベルの接頭辞を設定して、現場のネットワークに合わせて WCS 通信方式を選びます。保存後、この施設は画面右上の施設選択で利用できます。",
+  "For example, an implementer creates a facility for the Tokyo warehouse: enter the name and code, pick the Asia/Tokyo time zone, set the LP label prefix and choose the WCS communication mode that fits the site network. After saving, the facility can be chosen from the facility selector at the top right."
+ ],
+ "Facility Management 列表 页面截图": [
+  "Facility Management 列表 画面のスクリーンショット",
+  "Facility Management 列表 screenshot"
+ ],
+ "放大 Facility Management 列表 截图": [
+  "Facility Management 列表 のスクリーンショットを拡大",
+  "Enlarge Facility Management 列表 screenshot"
+ ],
+ "查看全部设施及其状态": [
+  "すべての施設と状態を確認",
+  "See every facility and its status"
+ ],
+ "可按 Facility Name、Facility Type、Status 查询。列表显示设施编码、类型（如 Physical Warehouse）、时区、状态和创建时间，Status 开关可直接启用或停用，行尾提供编辑和删除。": [
+  "Facility Name、Facility Type、Status で検索できます。一覧には施設コード、タイプ（Physical Warehouse など）、タイムゾーン、状態、作成日時が表示され、Status のスイッチで有効・無効を切り替えられます。行末には編集と削除があります。",
+  "Search by Facility Name, Facility Type and Status. The list shows the facility code, type (such as Physical Warehouse), time zone, status and creation time; the Status switch enables or disables a facility, and each row has edit and delete."
+ ],
+ "Add Facility 基础信息 页面截图": [
+  "Add Facility 基础信息 画面のスクリーンショット",
+  "Add Facility 基础信息 screenshot"
+ ],
+ "放大 Add Facility 基础信息 截图": [
+  "Add Facility 基础信息 のスクリーンショットを拡大",
+  "Enlarge Add Facility 基础信息 screenshot"
+ ],
+ "Add Facility LP 设置与 WCS 通讯 页面截图": [
+  "Add Facility LP 设置与 WCS 通讯 画面のスクリーンショット",
+  "Add Facility LP 设置与 WCS 通讯 screenshot"
+ ],
+ "放大 Add Facility LP 设置与 WCS 通讯 截图": [
+  "Add Facility LP 设置与 WCS 通讯 のスクリーンショットを拡大",
+  "Enlarge Add Facility LP 设置与 WCS 通讯 screenshot"
+ ],
+ "基础信息、地址与 LP 设置": [
+  "基本情報・住所・LP 設定",
+  "Basic information, address and LP settings"
+ ],
+ "Basic Information 中的 Facility Name、Facility Code、Facility Type 和 Time Zone 为必填。Address 记录公司、国家、省州、城市和详细地址；LP Settings 设置 LP Label Size 与 LP Prefix。": [
+  "Basic Information の Facility Name、Facility Code、Facility Type、Time Zone は必須です。Address には会社・国・州／省・市・住所を、LP Settings には LP Label Size と LP Prefix を設定します。",
+  "In Basic Information, Facility Name, Facility Code, Facility Type and Time Zone are required. Address records the company, country, state or province, city and street address; LP Settings sets the LP Label Size and LP Prefix."
+ ],
+ "通过 Nacos 自动发现": [
+  "Nacos で自動検出",
+  "Discovered automatically through Nacos"
+ ],
+ "系统通过 Nacos 注册中心自动发现 WCS 服务实例，无需额外配置，适合 WMS 与 WCS 在同一网络且使用 Nacos 的环境。": [
+  "システムが Nacos レジストリから WCS サービスを自動検出します。追加設定は不要で、WMS と WCS が同じネットワークにあり Nacos を使う環境に向いています。",
+  "The system finds WCS service instances through the Nacos registry with no extra setup, suited to WMS and WCS on the same network with Nacos."
+ ],
+ "通过 HTTP 直连": [
+  "HTTP で直接接続",
+  "Direct HTTP connection"
+ ],
+ "WMS 通过 HTTP 直接连接 WCS 服务节点，需要手动配置服务地址和认证令牌（点击 Add Endpoint 添加），适合没有 Nacos 或跨网络直连的环境。": [
+  "WMS が HTTP で WCS のサービスノードへ直接接続します。サービス URL と認証トークンを手動で設定し（Add Endpoint で追加）、Nacos がない環境やネットワークをまたぐ直接接続に向いています。",
+  "WMS connects to WCS service nodes directly over HTTP. Service URLs and authentication tokens are configured by hand (add them with Add Endpoint), suited to sites without Nacos or with cross-network direct links."
+ ],
+ "通过网关中继": [
+  "ゲートウェイ経由で中継",
+  "Relay through a gateway"
+ ],
+ "WMS 经 Gateway 中继层转发请求，需要填写 Relay Token，适合 WCS 部署在远端、WMS 无法直接访问的环境。": [
+  "WMS は Gateway の中継層を経由してリクエストを転送します。Relay Token を入力します。WCS が遠隔地にあり、WMS から直接アクセスできない環境に向いています。",
+  "WMS forwards requests through a Gateway relay layer and needs a Relay Token, suited to a remotely deployed WCS that WMS cannot reach directly."
+ ],
+ "Direct Connection 通讯方式 页面截图": [
+  "Direct Connection 通讯方式 画面のスクリーンショット",
+  "Direct Connection 通讯方式 screenshot"
+ ],
+ "放大 Direct Connection 通讯方式 截图": [
+  "Direct Connection 通讯方式 のスクリーンショットを拡大",
+  "Enlarge Direct Connection 通讯方式 screenshot"
+ ],
+ "Relay Mode 通讯方式 页面截图": [
+  "Relay Mode 通讯方式 画面のスクリーンショット",
+  "Relay Mode 通讯方式 screenshot"
+ ],
+ "放大 Relay Mode 通讯方式 截图": [
+  "Relay Mode 通讯方式 のスクリーンショットを拡大",
+  "Enlarge Relay Mode 通讯方式 screenshot"
+ ],
+ "选错通讯方式：": [
+  "通信方式の選択ミス：",
+  "Choosing the wrong mode: "
+ ],
+ "通讯方式与现场网络不匹配时，WES 将无法连到 WCS。保存前请先向实施或网络同事确认现场实际采用哪一种。": [
+  "通信方式が現場のネットワークと合わないと、WES から WCS に接続できません。保存前に、導入またはネットワーク担当へ現場でどの方式を使うか確認してください。",
+  "If the mode does not match the site network, WES cannot reach WCS. Confirm with the implementation or network team which mode the site uses before saving."
+ ],
+ "三种 WCS 通讯方式与选择依据": [
+  "3 つの WCS 通信方式と選び方",
+  "Three WCS communication modes and how to choose"
+ ],
+ "WCS Communication Mode 决定 WES 如何找到并连接 WCS。选择不同方式时，下方会显示对应的说明和需要填写的内容。": [
+  "WCS Communication Mode は、WES が WCS をどのように見つけて接続するかを決めます。方式を切り替えると、下に対応する説明と入力項目が表示されます。",
+  "WCS Communication Mode decides how WES finds and connects to WCS. Switching the mode shows the matching explanation and the fields you need to fill in below."
+ ],
+ "先建好设施，其他资料才有地方存放": [
+  "まず施設を作成すると、他のデータの置き場所ができる",
+  "Create the facility first so everything else has a home"
+ ],
+ "Facility Management 保存每个仓库的基本信息、LP 标签设置，以及 WES 与 WCS 之间的通讯方式。": [
+  "Facility Management は各倉庫の基本情報、LP ラベル設定、WES と WCS の通信方式を保存します。",
+  "Facility Management stores each warehouse's basic information, LP label settings and the communication mode between WES and WCS."
+ ],
+ "仓库新增一片货架区，需要把库位一次建好并区分用途": [
+  "倉庫に新しい棚エリアが増え、ロケーションをまとめて作り用途を分けたい",
+  "A new rack area opens and its locations must be created together and given a purpose"
+ ],
+ "例如仓库新增一排货架：按 Aisle、Bay、Level、Slot 记录每个库位的货架坐标，类型选择 Storage，补充尺寸与容量。月台、暂存区、站点也在这里作为库位类型维护，库位很多时可以用 Import 批量导入。": [
+  "たとえば新しい棚列が増えた場合、Aisle・Bay・Level・Slot で各ロケーションの棚座標を記録し、タイプに Storage を選び、寸法と容量を補います。ドック、仮置き場、ステーションもここでロケーションタイプとして管理し、数が多いときは Import で一括登録できます。",
+  "For example, when a new rack row opens, record each location's rack coordinates with Aisle, Bay, Level and Slot, choose the Storage type and add its size and capacity. Docks, staging areas and stations are also kept here as location types, and Import creates many locations at once."
+ ],
+ "Location Management 列表 页面截图": [
+  "Location Management 列表 画面のスクリーンショット",
+  "Location Management 列表 screenshot"
+ ],
+ "放大 Location Management 列表 截图": [
+  "Location Management 列表 のスクリーンショットを拡大",
+  "Enlarge Location Management 列表 screenshot"
+ ],
+ "按类型、楼层和状态查找库位": [
+  "タイプ・フロア・状態でロケーションを検索",
+  "Find locations by type, floor and status"
+ ],
+ "可按 Location Name、Location Type、Floor、Status、Space Status 查询。列表显示库位类型（Dock、Staging、Storage、Station 等）、可用状态、占用情况（Occupied、Empty、Reserved）、启用开关和顺序，并提供 Export、Import、Add 和 Refresh。": [
+  "Location Name、Location Type、Floor、Status、Space Status で検索できます。一覧にはロケーションタイプ（Dock、Staging、Storage、Station など）、利用状態、占有状況（Occupied、Empty、Reserved）、有効スイッチ、順序が表示され、Export、Import、Add、Refresh が使えます。",
+  "Search by Location Name, Location Type, Floor, Status and Space Status. The list shows the location type (Dock, Staging, Storage, Station and more), usable status, occupancy (Occupied, Empty, Reserved), the enable switch and sequence, with Export, Import, Add and Refresh."
+ ],
+ "Add Location 基础与货架信息 页面截图": [
+  "Add Location 基础与货架信息 画面のスクリーンショット",
+  "Add Location 基础与货架信息 screenshot"
+ ],
+ "放大 Add Location 基础与货架信息 截图": [
+  "Add Location 基础与货架信息 のスクリーンショットを拡大",
+  "Enlarge Add Location 基础与货架信息 screenshot"
+ ],
+ "Add Location 尺寸与容量 页面截图": [
+  "Add Location 尺寸与容量 画面のスクリーンショット",
+  "Add Location 尺寸与容量 screenshot"
+ ],
+ "放大 Add Location 尺寸与容量 截图": [
+  "Add Location 尺寸与容量 のスクリーンショットを拡大",
+  "Enlarge Add Location 尺寸与容量 screenshot"
+ ],
+ "Add Location 附加属性 页面截图": [
+  "Add Location 附加属性 画面のスクリーンショット",
+  "Add Location 附加属性 screenshot"
+ ],
+ "放大 Add Location 附加属性 截图": [
+  "Add Location 附加属性 のスクリーンショットを拡大",
+  "Enlarge Add Location 附加属性 screenshot"
+ ],
+ "基础信息、货架坐标、尺寸容量与附加属性": [
+  "基本情報・棚座標・寸法容量・追加属性",
+  "Basics, rack coordinates, size and capacity, extra attributes"
+ ],
+ "表单分为几块。基础部分填写 Location Name、Alias Name、Location Type、Status、Enabled、Sequence 和 Floor；Rack Information 记录 Aisle、Bay、Section、Level、Slot；Dimension and Capacity 记录长宽高、单位、最大尺寸、容量类型、容量和堆叠；Additional Attributes 可补充 Coordinate、Tag、Support Pick Type、RFIDs、HLP ID 并设置是否启用库位 HLP。": [
+  "フォームはいくつかのブロックに分かれます。基本部分では Location Name、Alias Name、Location Type、Status、Enabled、Sequence、Floor を入力します。Rack Information は Aisle・Bay・Section・Level・Slot、Dimension and Capacity は縦横高さ・単位・最大サイズ・容量タイプ・容量・段積み、Additional Attributes は Coordinate、Tag、Support Pick Type、RFIDs、HLP ID を記録し、ロケーション HLP の有効化も設定できます。",
+  "The form has several blocks. The basics are Location Name, Alias Name, Location Type, Status, Enabled, Sequence and Floor; Rack Information records Aisle, Bay, Section, Level and Slot; Dimension and Capacity records length, width, height, unit, max size, capacity type, capacity and stack; Additional Attributes adds Coordinate, Tag, Support Pick Type, RFIDs and HLP ID, and decides whether location HLP is enabled."
+ ],
+ "库位定义清楚，上架与拣货才找得到地方": [
+  "ロケーションを明確に定義すれば、棚入れとピッキングが場所を見つけられる",
+  "Define locations clearly so putaway and picking can find them"
+ ],
+ "Location Management 维护仓内全部库位，包括存储位、月台、暂存区和站点，并记录它们的货架坐标、尺寸、容量和占用情况。": [
+  "Location Management は倉庫内のすべてのロケーション（保管棚、ドック、仮置き場、ステーション）を管理し、棚座標・寸法・容量・占有状況を記録します。",
+  "Location Management maintains every location in the warehouse, including storage, docks, staging areas and stations, with their rack coordinates, size, capacity and occupancy."
+ ],
+ "仓里接入了一台分拣机，需要先在系统里登记它": [
+  "倉庫に仕分機を導入したので、まずシステムに登録する",
+  "A sorter has been installed and must be registered in the system first"
+ ],
+ "例如现场新装 SORTER-011：在这里新增设备，填写设备编码，选择通信协议（如 Libiao 3D Sort）并启用。之后在 Wall Management 里创建分拣墙时，就可以把这台设备绑定到墙上。": [
+  "たとえば現場に SORTER-011 を新設した場合、ここで設備を追加し、設備コードを入力して通信プロトコル（Libiao 3D Sort など）を選び、有効にします。その後、Wall Management でソーティングウォールを作成するとき、この設備をウォールに紐づけられます。",
+  "For example, when SORTER-011 is installed on site, add it here with its equipment code, choose the communication protocol (such as Libiao 3D Sort) and enable it. Later, when a sort wall is created in Wall Management, this device can be bound to the wall."
+ ],
+ "Equipment Management 列表 页面截图": [
+  "Equipment Management 列表 画面のスクリーンショット",
+  "Equipment Management 列表 screenshot"
+ ],
+ "放大 Equipment Management 列表 截图": [
+  "Equipment Management 列表 のスクリーンショットを拡大",
+  "Enlarge Equipment Management 列表 screenshot"
+ ],
+ "设备及其通信协议": [
+  "設備と通信プロトコル",
+  "Devices and their communication protocol"
+ ],
+ "可按 Keyword、Equipment Type、Communication Protocol、Enabled 查询。列表显示设备编码、名称、序列号、通信协议和启用开关。": [
+  "Keyword、Equipment Type、Communication Protocol、Enabled で検索できます。一覧には設備コード、名称、シリアル番号、通信プロトコル、有効スイッチが表示されます。",
+  "Search by Keyword, Equipment Type, Communication Protocol and Enabled. The list shows the equipment code, name, serial number, communication protocol and enable switch."
+ ],
+ "Add Equipment 页面截图": [
+  "Add Equipment 画面のスクリーンショット",
+  "Add Equipment screenshot"
+ ],
+ "放大 Add Equipment 截图": [
+  "Add Equipment のスクリーンショットを拡大",
+  "Enlarge Add Equipment screenshot"
+ ],
+ "必填项与启用开关": [
+  "必須項目と有効スイッチ",
+  "Required fields and the Enabled switch"
+ ],
+ "Equipment Code 和 Communication Protocol 为必填，Equipment Name 与 Serial Number 可选，Enabled 开关决定设备是否启用。": [
+  "Equipment Code と Communication Protocol は必須、Equipment Name と Serial Number は任意です。Enabled スイッチで設備を有効にするかを決めます。",
+  "Equipment Code and Communication Protocol are required, Equipment Name and Serial Number are optional, and the Enabled switch decides whether the device is active."
+ ],
+ "先登记设备，才能把它用在墙和任务上": [
+  "設備を登録して初めてウォールやタスクで使える",
+  "Register a device before using it on walls and tasks"
+ ],
+ "Equipment Management 记录仓内的自动化设备，如分拣机，并保存它们使用的通信协议。": [
+  "Equipment Management は倉庫内の自動化設備（仕分機など）と、その通信プロトコルを記録します。",
+  "Equipment Management records the warehouse's automation devices, such as sorters, and the communication protocol each one uses."
+ ],
+ "设备厂商的控制系统要和 WES 对接，需要先登记对应的客户端": [
+  "設備メーカーの制御システムを WES と連携するため、対応するクライアントを先に登録する",
+  "A vendor control system must connect to WES, so its client is registered first"
+ ],
+ "例如接入 Libiao AirRob 机器人：在这里新增一个 Client，填写客户端编码和名称，类型选择 Libiao AirRob 并启用。": [
+  "たとえば Libiao AirRob ロボットを接続する場合、ここでクライアントを追加し、クライアントコードと名称を入力して、タイプに Libiao AirRob を選び有効にします。",
+  "For example, to connect Libiao AirRob robots, add a client here with its code and name, choose the Libiao AirRob type and enable it."
+ ],
+ "RCS Client Management 列表 页面截图": [
+  "RCS Client Management 列表 画面のスクリーンショット",
+  "RCS Client Management 列表 screenshot"
+ ],
+ "放大 RCS Client Management 列表 截图": [
+  "RCS Client Management 列表 のスクリーンショットを拡大",
+  "Enlarge RCS Client Management 列表 screenshot"
+ ],
+ "Add RCS Client 页面截图": [
+  "Add RCS Client 画面のスクリーンショット",
+  "Add RCS Client screenshot"
+ ],
+ "放大 Add RCS Client 截图": [
+  "Add RCS Client のスクリーンショットを拡大",
+  "Enlarge Add RCS Client screenshot"
+ ],
+ "查询、列表与新增": [
+  "検索・一覧・追加",
+  "Search, list and add"
+ ],
+ "可按 Keyword、Client Type、Enabled 查询，列表显示客户端类型（如 Libiao AirRob、Libiao 3D Sort）、编码、名称和启用开关。新增时填写 Client Code、Client Name、Client Type，并设置 Enabled。": [
+  "Keyword、Client Type、Enabled で検索できます。一覧にはクライアントタイプ（Libiao AirRob、Libiao 3D Sort など）、コード、名称、有効スイッチが表示されます。追加時は Client Code、Client Name、Client Type を入力し、Enabled を設定します。",
+  "Search by Keyword, Client Type and Enabled. The list shows the client type (such as Libiao AirRob and Libiao 3D Sort), code, name and enable switch. To add one, enter Client Code, Client Name and Client Type and set Enabled."
+ ],
+ "登记对接设备控制系统的客户端": [
+  "設備制御システムと連携するクライアントを登録",
+  "Register the clients that connect to device control systems"
+ ],
+ "RCS Client Management 维护与设备控制系统对接的客户端，并按厂商类型区分。": [
+  "RCS Client Management は設備制御システムと連携するクライアントを管理し、メーカーのタイプで区別します。",
+  "RCS Client Management maintains the clients that connect to device control systems, told apart by vendor type."
+ ],
+ "仓内有需要被系统访问的服务器，需要登记它的地址和端口": [
+  "システムからアクセスする倉庫内サーバーのアドレスとポートを登録する",
+  "An in-house server must be reachable by the system, so its address and port are registered"
+ ],
+ "例如现场部署了一台服务器：新增记录，选择 Server Type 和 Protocol，填写 IP Address、Port 与 URL Prefix，Status 设为 Active。": [
+  "たとえば現場にサーバーを設置した場合、レコードを追加し、Server Type と Protocol を選び、IP Address、Port、URL Prefix を入力して Status を Active にします。",
+  "For example, when a server is deployed on site, add a record, choose its Server Type and Protocol, enter the IP Address, Port and URL Prefix, and set Status to Active."
+ ],
+ "Warehouse Server Management 列表 页面截图": [
+  "Warehouse Server Management 列表 画面のスクリーンショット",
+  "Warehouse Server Management 列表 screenshot"
+ ],
+ "放大 Warehouse Server Management 列表 截图": [
+  "Warehouse Server Management 列表 のスクリーンショットを拡大",
+  "Enlarge Warehouse Server Management 列表 screenshot"
+ ],
+ "Add Warehouse Server 页面截图": [
+  "Add Warehouse Server 画面のスクリーンショット",
+  "Add Warehouse Server screenshot"
+ ],
+ "放大 Add Warehouse Server 截图": [
+  "Add Warehouse Server のスクリーンショットを拡大",
+  "Enlarge Add Warehouse Server screenshot"
+ ],
+ "查询服务器，并新增连接信息": [
+  "サーバーの検索と接続情報の追加",
+  "Search servers and add connection details"
+ ],
+ "可按 Keyword、Server Type、Status 查询。列表显示服务器名称、IP 地址、端口、类型、状态和 URL 前缀。新增表单包括 Server Name、Server Type、Status、Protocol、IP Address、Port、URL Prefix，以及 Description 与 Extension 两个说明类字段。": [
+  "Keyword、Server Type、Status で検索できます。一覧にはサーバー名、IP アドレス、ポート、タイプ、状態、URL プレフィックスが表示されます。追加フォームは Server Name、Server Type、Status、Protocol、IP Address、Port、URL Prefix と、補足用の Description、Extension です。",
+  "Search by Keyword, Server Type and Status. The list shows the server name, IP address, port, type, status and URL prefix. The add form has Server Name, Server Type, Status, Protocol, IP Address, Port, URL Prefix, plus Description and Extension for notes."
+ ],
+ "集中记录仓内服务器的连接信息": [
+  "倉庫内サーバーの接続情報を一元管理",
+  "Keep the connection details of in-house servers in one place"
+ ],
+ "Warehouse Server Management 保存仓内服务器的地址、端口、协议和状态。": [
+  "Warehouse Server Management は倉庫内サーバーのアドレス、ポート、プロトコル、状態を保存します。",
+  "Warehouse Server Management stores the address, port, protocol and status of in-house servers."
+ ],
+ "上线前要确认灯能亮、颜色对，现场不用再临时接线调试": [
+  "稼働前にライトが点灯し色が合っているかを確認し、現場での配線調整を避ける",
+  "Before go-live, confirm that lights turn on in the right colour without wiring changes on site"
+ ],
+ "例如新装一批信号灯：先在 Signal Light 页签创建控制器，再到 Test Tool 连接灯光服务器，选择控制器和灯号，试一下 Light On、Flash 与不同颜色，确认没问题再投入使用。": [
+  "たとえばシグナルライトを新設した場合、Signal Light タブでコントローラーを作成し、Test Tool でライトサーバーに接続し、コントローラーとライト ID を選んで Light On、Flash、各色を試し、問題がなければ運用に入ります。",
+  "For example, after a batch of signal lights is installed, create the controllers on the Signal Light tab, then use Test Tool to connect to the light server, pick a controller and light ID and try Light On, Flash and the colours before putting them into use."
+ ],
+ "Signal Light 页签 页面截图": [
+  "Signal Light 页签 画面のスクリーンショット",
+  "Signal Light 页签 screenshot"
+ ],
+ "放大 Signal Light 页签 截图": [
+  "Signal Light 页签 のスクリーンショットを拡大",
+  "Enlarge Signal Light 页签 screenshot"
+ ],
+ "信号灯与电子拣选灯的分开维护": [
+  "シグナルライトとピックトゥライトの個別管理",
+  "Separate maintenance of signal lights and pick-to-light"
+ ],
+ "两个页签的布局一致，都可按 Controller Code 查询，列表显示控制器编码、名称和启用状态，并提供 Create Controller、Download template、Import、Export 和 Refresh。大量控制器可以先下载模板，填好后再导入。": [
+  "2 つのタブはレイアウトが同じで、Controller Code で検索できます。一覧にはコントローラーコード、名称、有効状態が表示され、Create Controller、Download template、Import、Export、Refresh が使えます。コントローラーが多い場合は、テンプレートをダウンロードして入力後にインポートします。",
+  "Both tabs share one layout. Search by Controller Code; the list shows the controller code, name and enabled state, with Create Controller, Download template, Import, Export and Refresh. For many controllers, download the template, fill it in and import it."
+ ],
+ "Light Test Tool 页面截图": [
+  "Light Test Tool 画面のスクリーンショット",
+  "Light Test Tool screenshot"
+ ],
+ "放大 Light Test Tool 截图": [
+  "Light Test Tool のスクリーンショットを拡大",
+  "Enlarge Light Test Tool screenshot"
+ ],
+ "在线上环境使用时：": [
+  "本番環境で使うとき：",
+  "Using it in production: "
+ ],
+ "测试工具会把指令发给真实的灯光设备，现场有人作业时请先与现场同事确认再操作。": [
+  "テストツールは実際のライト設備へ指示を送ります。現場で作業者がいるときは、先に現場担当へ確認してから操作してください。",
+  "The test tool sends commands to real light equipment, so check with people on the floor before using it while work is under way."
+ ],
+ "直接向灯发送指令": [
+  "ライトへ直接指示を送信",
+  "Send commands straight to the lights"
+ ],
+ "Server Connection 先选择灯光服务器并点击 Connect。Quick Operations 里选择 Controller 和 Light ID，再选颜色（R、G、B、Y、P、W、S、O），执行 Light On、Light Off、Flash、Set ID 或 Unlock。Custom Command 可直接填写 IP、Port 和 Command 后点击 Send，所有收发记录会显示在 Response Log。": [
+  "Server Connection でライトサーバーを選び Connect をクリックします。Quick Operations では Controller と Light ID、色（R、G、B、Y、P、W、S、O）を選び、Light On、Light Off、Flash、Set ID、Unlock を実行します。Custom Command では IP、Port、Command を入力して Send をクリックでき、送受信の記録は Response Log に表示されます。",
+  "Under Server Connection, pick a light server and click Connect. In Quick Operations choose a Controller and Light ID, then a colour (R, G, B, Y, P, W, S, O) and run Light On, Light Off, Flash, Set ID or Unlock. Custom Command takes an IP, Port and Command to send, and every exchange is listed in the Response Log."
+ ],
+ "先建控制器，再用测试工具验证灯光": [
+  "コントローラーを作成し、テストツールでライトを検証",
+  "Create controllers first, then verify the lights with the test tool"
+ ],
+ "Light Management 分为 Signal Light、Pick-to-Light 和 Test Tool 三个页签，分别管理信号灯控制器、电子拣选灯控制器以及灯光指令测试。": [
+  "Light Management は Signal Light、Pick-to-Light、Test Tool の 3 つのタブに分かれ、シグナルライトのコントローラー、ピックトゥライトのコントローラー、ライト指示のテストを扱います。",
+  "Light Management has three tabs, Signal Light, Pick-to-Light and Test Tool, for signal-light controllers, pick-to-light controllers and light command testing."
+ ],
+ "新增一批周转箱，需要先定规格，再按编号规则一次生成": [
+  "新しい容器を一括で用意するため、先に仕様を決め、採番ルールでまとめて生成する",
+  "A new batch of totes is needed: set the spec first, then generate them in one go by numbering rule"
+ ],
+ "例如要新增 100 个周转箱：先在 Container Specs 建一个规格（类型 Tote，填写长宽高），再到 Containers 点击 Batch Create，选择规格，填写 Code Prefix、Start Number 和 Count，先 Preview 核对编号，确认无误后点击 Create Batch。": [
+  "たとえば 100 個のトートを追加する場合、Container Specs でまず仕様（タイプ Tote、縦横高さ）を作り、Containers の Batch Create で仕様を選び、Code Prefix、Start Number、Count を入力します。Preview で採番を確認し、問題なければ Create Batch をクリックします。",
+  "For example, to add 100 totes, first create a spec under Container Specs (type Tote, with length, width and height), then click Batch Create under Containers, choose the spec and enter Code Prefix, Start Number and Count. Preview the numbering and click Create Batch once it looks right."
+ ],
+ "Container Specs 列表 页面截图": [
+  "Container Specs 列表 画面のスクリーンショット",
+  "Container Specs 列表 screenshot"
+ ],
+ "放大 Container Specs 列表 截图": [
+  "Container Specs 列表 のスクリーンショットを拡大",
+  "Enlarge Container Specs 列表 screenshot"
+ ],
+ "Add Container Spec 页面截图": [
+  "Add Container Spec 画面のスクリーンショット",
+  "Add Container Spec screenshot"
+ ],
+ "放大 Add Container Spec 截图": [
+  "Add Container Spec のスクリーンショットを拡大",
+  "Enlarge Add Container Spec screenshot"
+ ],
+ "类型、尺寸与格口": [
+  "タイプ・寸法・区画",
+  "Type, size and slots"
+ ],
+ "可按 Spec Code、Spec Name、Customer、Container Type 查询。列表显示类型（如 Tote、Tote Cart）、长宽高和格口数。新增规格时 Spec Code 与 Container Type 必填，可填写长宽高、Photo ID、Container Code Regex，并在 Slot layout 里通过 Add layer、Split selected、Merge selected 设计料车的格口布局。": [
+  "Spec Code、Spec Name、Customer、Container Type で検索できます。一覧にはタイプ（Tote、Tote Cart など）、縦横高さ、区画数が表示されます。仕様の追加では Spec Code と Container Type が必須で、縦横高さ、Photo ID、Container Code Regex を入力でき、Slot layout では Add layer、Split selected、Merge selected でカートの区画レイアウトを設計します。",
+  "Search by Spec Code, Spec Name, Customer and Container Type. The list shows the type (such as Tote and Tote Cart), dimensions and slot count. When adding a spec, Spec Code and Container Type are required; you can enter dimensions, Photo ID and Container Code Regex, and design a cart's slot layout in Slot layout with Add layer, Split selected and Merge selected."
+ ],
+ "Containers 列表 页面截图": [
+  "Containers 列表 画面のスクリーンショット",
+  "Containers 列表 screenshot"
+ ],
+ "放大 Containers 列表 截图": [
+  "Containers 列表 のスクリーンショットを拡大",
+  "Enlarge Containers 列表 screenshot"
+ ],
+ "Batch Create Containers 页面截图": [
+  "Batch Create Containers 画面のスクリーンショット",
+  "Batch Create Containers screenshot"
+ ],
+ "放大 Batch Create Containers 截图": [
+  "Batch Create Containers のスクリーンショットを拡大",
+  "Enlarge Batch Create Containers screenshot"
+ ],
+ "单个新增与批量生成": [
+  "個別追加と一括生成",
+  "Add one by one or generate in bulk"
+ ],
+ "Containers 页签可按 Container Code、Container Spec、Container Type、LP ID、LP ID(Batch/Prefix)、Status、Location 查询，列表显示容器编码、规格、类型、LP ID、状态、库位和创建时间。Batch Create 中，Container Type 随所选规格带出，不能手工填写；Code Prefix、Start Number、Count 必填，Preview 用来先看生成结果。": [
+  "Containers タブでは Container Code、Container Spec、Container Type、LP ID、LP ID(Batch/Prefix)、Status、Location で検索でき、一覧には容器コード、仕様、タイプ、LP ID、状態、ロケーション、作成日時が表示されます。Batch Create では Container Type が選択した仕様から設定され、手入力はできません。Code Prefix、Start Number、Count は必須で、Preview で生成結果を先に確認できます。",
+  "On the Containers tab, search by Container Code, Container Spec, Container Type, LP ID, LP ID(Batch/Prefix), Status and Location; the list shows the container code, spec, type, LP ID, status, location and creation time. In Batch Create, Container Type follows the chosen spec and cannot be typed in; Code Prefix, Start Number and Count are required, and Preview shows the result before anything is created."
+ ],
+ "先定规格，再生成容器": [
+  "仕様を決めてから容器を生成",
+  "Set the spec first, then generate the containers"
+ ],
+ "Container Management 分为 Container Specs 和 Containers 两个页签：规格描述一类容器长什么样，容器则是具体的每一个箱子或料车。": [
+  "Container Management は Container Specs と Containers の 2 つのタブに分かれます。仕様はある種類の容器の形を、容器は個々の箱やカートを表します。",
+  "Container Management has two tabs, Container Specs and Containers: a spec describes what a kind of container looks like, and a container is each individual tote or cart."
+ ],
+ "播种或分拣需要一面墙，先定规格，再建墙并绑到站点和设备": [
+  "ソーティング作業にウォールが必要。仕様を決めてからウォールを作り、ステーションや設備に紐づける",
+  "Sorting needs a wall: set the spec, create the wall, then bind it to a station and equipment"
+ ],
+ "例如新建一面 3×3 的播种墙：先在 Wall Specs 确认规格，再在 Walls 点击 Create，选择规格、关联站点并启用。已建好的墙在列表里会显示绑定的站点、设备，以及格口占用情况。": [
+  "たとえば 3×3 のソーティングウォールを作る場合、Wall Specs で仕様を確認し、Walls で Create をクリックして仕様を選び、ステーションを関連付けて有効にします。作成済みのウォールは一覧にステーション、設備、区画の使用状況が表示されます。",
+  "For example, to build a 3×3 put wall, confirm the spec in Wall Specs, then click Create in Walls, choose the spec, link a station and enable it. Existing walls show their station, equipment and slot usage in the list."
+ ],
+ "Walls 列表 页面截图": [
+  "Walls 列表 画面のスクリーンショット",
+  "Walls 列表 screenshot"
+ ],
+ "放大 Walls 列表 截图": [
+  "Walls 列表 のスクリーンショットを拡大",
+  "Enlarge Walls 列表 screenshot"
+ ],
+ "墙的站点、设备与格口使用情况": [
+  "ウォールのステーション・設備・区画の使用状況",
+  "Each wall's station, equipment and slot usage"
+ ],
+ "Walls 页签列表显示墙编码、规格编码、墙类型（PUT_WALL、SORT_WALL）、站点编码、设备编码、启用开关和 Occupied。Occupied 以「已占用/总格口」显示，例如 3/9 对应 3×3 的规格。": [
+  "Walls タブの一覧にはウォールコード、仕様コード、ウォールタイプ（PUT_WALL、SORT_WALL）、ステーションコード、設備コード、有効スイッチ、Occupied が表示されます。Occupied は「使用中／総区画」で表示され、たとえば 3/9 は 3×3 の仕様に対応します。",
+  "The Walls tab lists the wall code, spec code, wall type (PUT_WALL, SORT_WALL), station code, equipment code, enable switch and Occupied. Occupied reads as used slots over total slots, so 3/9 matches a 3×3 spec."
+ ],
+ "Wall Specs 列表 页面截图": [
+  "Wall Specs 列表 画面のスクリーンショット",
+  "Wall Specs 列表 screenshot"
+ ],
+ "放大 Wall Specs 列表 截图": [
+  "Wall Specs 列表 のスクリーンショットを拡大",
+  "Enlarge Wall Specs 列表 screenshot"
+ ],
+ "类型、大小与编号规则": [
+  "タイプ・サイズ・採番ルール",
+  "Type, size and numbering rule"
+ ],
+ "Wall Specs 页签上方列出各墙类型的编号规则（Wall Code Prefix 与 Wall Code Digits），下方列出规格编码、名称、墙类型、大小（如 3 × 3）、是否绑定设备以及设备类型。": [
+  "Wall Specs タブの上部にはウォールタイプごとの採番ルール（Wall Code Prefix と Wall Code Digits）が、下部には仕様コード、名称、ウォールタイプ、サイズ（3 × 3 など）、設備の紐づけ、設備タイプが表示されます。",
+  "The Wall Specs tab lists each wall type's numbering rule (Wall Code Prefix and Wall Code Digits) at the top, and below it the spec code, name, wall type, size (such as 3 × 3), equipment binding and equipment type."
+ ],
+ "规格在先，墙在后": [
+  "仕様が先、ウォールが後",
+  "Spec first, wall second"
+ ],
+ "Wall Management 管理播种墙和分拣墙：Wall Specs 定义墙的类型和大小，Walls 则是按规格建出来的每一面墙。": [
+  "Wall Management はソーティングウォールを管理します。Wall Specs でウォールのタイプとサイズを定義し、Walls は仕様に基づいて作られた個々のウォールです。",
+  "Wall Management manages put walls and sort walls: Wall Specs define a wall's type and size, and Walls are the individual walls created from those specs."
+ ],
+ "同一类商品想固定放在一片库位里，就把这些库位归成一个组": [
+  "同じ種類の商品を決まったエリアに置くため、そのロケーションを 1 つのグループにまとめる",
+  "To keep one kind of goods in a fixed area, group those locations together"
+ ],
+ "例如把 A 区的一批库位归为一个 Zone 类型的 VLG，在组内设置是否允许混放不同商品或批次，再到 SKU VLG 页签把某个 SKU 与这个 VLG 对应起来。": [
+  "たとえば A エリアのロケーションを Zone タイプの VLG にまとめ、グループ内で異なる商品やロットの混載を許可するかを設定し、SKU VLG タブで特定の SKU とこの VLG を対応付けます。",
+  "For example, group the locations in Zone A into a Zone-type VLG, set whether different items or lots may be mixed inside it, then use the SKU VLG tab to link a SKU to this VLG."
+ ],
+ "VLG List 页面截图": [
+  "VLG List 画面のスクリーンショット",
+  "VLG List screenshot"
+ ],
+ "放大 VLG List 截图": [
+  "VLG List のスクリーンショットを拡大",
+  "Enlarge VLG List screenshot"
+ ],
+ "Add VLG 页面截图": [
+  "Add VLG 画面のスクリーンショット",
+  "Add VLG screenshot"
+ ],
+ "放大 Add VLG 截图": [
+  "Add VLG のスクリーンショットを拡大",
+  "Enlarge Add VLG screenshot"
+ ],
+ "开启后，同一库位不允许放入不同商品。": [
+  "有効にすると、同じロケーションに異なる商品を置けません。",
+  "When on, one location cannot hold different items."
+ ],
+ "开启后，同一库位不允许混放不同批次。": [
+  "有効にすると、同じロケーションに異なるロットを混載できません。",
+  "When on, one location cannot hold mixed lots."
+ ],
+ "Skip occupied location on putaway 让上架时跳过已占用的库位，Enable depleted location 则启用已耗尽的库位。": [
+  "Skip occupied location on putaway は棚入れ時に使用中のロケーションを飛ばし、Enable depleted location は枯渇したロケーションを有効にします。",
+  "Skip occupied location on putaway skips occupied locations when putting away, and Enable depleted location turns on depleted locations."
+ ],
+ "VLG List 可按 VLG Name、VLG Type 查询，显示类型、支持的拣货类型、库位数量、启用状态、占用方和显示顺序。新增时填写 VLG Name、VLG Type、Support Pick Type、Display Order、Max Partial Pallet，并选择 Locations、AirRob Locations 和 Staging VLG Connections。": [
+  "VLG List は VLG Name、VLG Type で検索でき、タイプ、対応ピッキングタイプ、ロケーション数、有効状態、使用元、表示順が表示されます。追加時は VLG Name、VLG Type、Support Pick Type、Display Order、Max Partial Pallet を入力し、Locations、AirRob Locations、Staging VLG Connections を選択します。",
+  "VLG List can be searched by VLG Name and VLG Type and shows the type, supported pick type, location count, enabled state, occupied-by and display order. To add one, enter VLG Name, VLG Type, Support Pick Type, Display Order and Max Partial Pallet, then choose Locations, AirRob Locations and Staging VLG Connections."
+ ],
+ "SKU VLG 列表 页面截图": [
+  "SKU VLG 列表 画面のスクリーンショット",
+  "SKU VLG 列表 screenshot"
+ ],
+ "放大 SKU VLG 列表 截图": [
+  "SKU VLG 列表 のスクリーンショットを拡大",
+  "Enlarge SKU VLG 列表 screenshot"
+ ],
+ "用三个页签把 VLG 与商品对应起来": [
+  "3 つのタブで VLG と商品を対応付ける",
+  "Link a VLG to goods through three tabs"
+ ],
+ "SKU VLG 把 VLG 与具体 SKU 对应，SKU Tag VLG 与商品标签（Tag）和行业（Industry）对应，SKU Title VLG 则与 Title ID 对应。三个页签都可再按客户（Customer）和托盘类型（Pallet Type）区分。": [
+  "SKU VLG は VLG を個別の SKU に、SKU Tag VLG は商品タグ（Tag）と業種（Industry）に、SKU Title VLG は Title ID に対応付けます。3 つのタブとも顧客（Customer）とパレットタイプ（Pallet Type）でさらに区別できます。",
+  "SKU VLG links a VLG to a specific SKU, SKU Tag VLG links it to a product tag and industry, and SKU Title VLG links it to a Title ID. All three tabs can be narrowed further by Customer and Pallet Type."
+ ],
+ "把库位归成组，再让商品对应到组": [
+  "ロケーションをグループ化し、商品をグループに対応付ける",
+  "Group the locations, then link goods to the group"
+ ],
+ "VLG（Virtual Location Group）把一批库位归为一组，并设置组内的混放与上架规则，再通过三个对应页签与 SKU、标签或 Title 建立关系。": [
+  "VLG（Virtual Location Group）は複数のロケーションを 1 つにまとめ、グループ内の混載や棚入れのルールを設定します。3 つの対応タブで SKU、タグ、Title との関係を作ります。",
+  "A VLG (Virtual Location Group) puts a set of locations into one group and sets mixing and putaway rules inside it; three linking tabs then tie it to SKUs, tags or titles."
+ ],
+ "发现某条基础数据不对，想知道是谁、什么时候、通过哪个页面改的": [
+  "基礎データがおかしいとき、誰がいつどの画面から変更したかを知りたい",
+  "A piece of base data looks wrong and you want to know who changed it, when and from which page"
+ ],
+ "例如某个库位的容量突然变了：在 Table Name 和 Data ID 里填入对应表与记录，或者用 Trace ID 追到同一次请求，再结合 Created By 与 Created Time 找到改动人和时间，Content 还可以对变更差异做模糊搜索。": [
+  "たとえばあるロケーションの容量が突然変わった場合、Table Name と Data ID に対象のテーブルとレコードを入力するか、Trace ID で同じリクエストをたどり、Created By と Created Time から変更者と時刻を特定します。Content では変更差分をあいまい検索できます。",
+  "For example, when a location's capacity suddenly changes, enter the table in Table Name and the record in Data ID, or follow the same request with Trace ID, then use Created By and Created Time to find who changed it and when. Content also does a fuzzy search on the change diff."
+ ],
+ "DB Change Log 页面截图": [
+  "DB Change Log 画面のスクリーンショット",
+  "DB Change Log screenshot"
+ ],
+ "放大 DB Change Log 截图": [
+  "DB Change Log のスクリーンショットを拡大",
+  "Enlarge DB Change Log screenshot"
+ ],
+ "按数据源、表、请求追踪变更": [
+  "データソース・テーブル・リクエストで変更を追跡",
+  "Trace changes by data source, table and request"
+ ],
+ "可按 Data Source、Table Name、Data ID、Trace ID、Request Path、Method、Screen ID、Content 和 Created By 查询。列表显示每条变更的操作类型、涉及的数据 ID、请求路径与方法、来源页面、操作人和时间。": [
+  "Data Source、Table Name、Data ID、Trace ID、Request Path、Method、Screen ID、Content、Created By で検索できます。一覧には各変更の操作タイプ、対象データ ID、リクエストパスとメソッド、発生元の画面、操作者、時刻が表示されます。",
+  "Search by Data Source, Table Name, Data ID, Trace ID, Request Path, Method, Screen ID, Content and Created By. The list shows each change's operation, data ID, request path and method, source screen, operator and time."
+ ],
+ "基础数据被改动时，从这里查来龙去脉": [
+  "基礎データが変更されたら、ここで経緯を調べる",
+  "When base data changes, trace what happened from here"
+ ],
+ "DB Change Log 记录对基础数据的变更，方便按表、记录或请求回溯。": [
+  "DB Change Log は基礎データへの変更を記録し、テーブル・レコード・リクエストで遡れるようにします。",
+  "DB Change Log records changes to base data so they can be traced back by table, record or request."
+ ]
+};
+const WES_BATCH2_TRANSLATIONS = {
+  ja: Object.fromEntries(Object.entries(WES_BATCH2_PAIRS).map(([source, targets]) => [source, targets[0]])),
+  en: Object.fromEntries(Object.entries(WES_BATCH2_PAIRS).map(([source, targets]) => [source, targets[1]]))
+};
+
+// WES batch 4 (Inbound: Receipt Filter Templates)
+const WES_BATCH4_PAIRS = {
+ "状态汇总用于查看 Open、In Progress、Closed 和 Exception 的数量；列表同时显示 Receipt Type、Receive Task 与 Put Away Task，便于追踪每张单据所处阶段。左上角的 Presets 可以把当前设好的一组筛选条件保存为预设，下次在下拉中直接选用，适合每天重复使用的查单口径。": ["ステータスサマリーで Open、In Progress、Closed、Exception の件数を確認できます。一覧には Receipt Type、Receive Task、Put Away Task も表示され、各伝票の進捗を追跡しやすくなります。左上の Presets では、設定した絞り込み条件の組み合わせをプリセットとして保存でき、次回からはドロップダウンで選ぶだけで使えるため、毎日繰り返す検索基準に便利です。", "The status summary shows the number of Open, In Progress, Closed and Exception receipts; the list also shows Receipt Type, Receive Task and Put Away Task so you can track the stage of each receipt. Presets at the top left lets you save the current set of filter conditions as a preset and pick it from the drop-down next time, which suits search criteria you repeat every day."],
+ "订单当前状态": ["注文の現在のステータス", "Current order status"],
+ "为不同履约场景准备独立的订单入口": ["フルフィルメントのシナリオごとに独立した注文の入口を用意する", "Set up a separate order entry for each fulfillment scenario"],
+ "小包裹订单可按 Ship Method 和订单状态建立模板；内部调拨或退货订单可按 Order Type 分开处理。不同字段同时填写时需全部满足，同一字段多选时匹配任一值。": ["小口荷物の注文は Ship Method と注文ステータスでテンプレートを作成し、社内移動や返品の注文は Order Type で分けて処理できます。複数の項目を入力した場合はすべてに一致する必要があり、同じ項目で複数の値を選んだ場合はいずれかに一致すれば対象になります。", "Small parcel orders can be set up by Ship Method and order status, while internal transfer or return orders can be handled separately by Order Type. When several fields are filled in, an order must match all of them; when several values are chosen in one field, matching any of them is enough."],
+ "Dispatch Settings 将 Filter 模板与拣货配置组合为可执行方案，可手动 Execute Dispatch，也可按 Schedule 自动运行。": ["Dispatch Settings は Filter テンプレートとピッキング設定を組み合わせて実行可能なプランにします。Execute Dispatch で手動実行することも、Schedule で自動実行することもできます。", "Dispatch Settings combines a Filter template with a picking configuration into an executable plan. It can be run manually with Execute Dispatch or automatically on a Schedule."],
+ "小件订单可以采用 Batch Order Pick 与 Tote Cart，自动化区域可以采用 Pick by AGV，并通过任务容量控制现场作业规模。": ["小口の注文には Batch Order Pick と Tote Cart、自動化エリアには Pick by AGV を使い、タスク容量で現場の作業規模を調整できます。", "Small orders can use Batch Order Pick with a Tote Cart, automated areas can use Pick by AGV, and task capacity keeps the workload on the floor under control."],
+ "Receipt Filter Templates 用来保存 Receipt 列表里反复使用的筛选组合。模板建好后，在 Receipt 列表左上角的 Presets 中选用，不必每次重新逐项设置。": ["Receipt Filter Templates は、Receipt 一覧で繰り返し使う絞り込み条件の組み合わせを保存します。テンプレートを作成したら、Receipt 一覧左上の Presets から選んで使えるため、毎回条件を設定し直す必要がありません。", "Receipt Filter Templates saves filter combinations you use repeatedly on the Receipt list. Once a template is created, pick it from Presets at the top left of the Receipt list, so you do not need to set each condition again."],
+ "为每个条件选择匹配方式并填写值，保存后到 Receipt 列表左上角的 Presets 中选用。": ["各条件に一致方法を選んで値を入力します。保存後は Receipt 一覧左上の Presets から選んで使えます。", "Choose a match method and enter a value for each condition. After saving, pick the template from Presets at the top left of the Receipt list."],
+ "便于不同班次用同一套口径查单。": ["シフトが変わっても同じ基準で伝票を確認できます。", "This lets every shift check receipts with the same criteria."],
+ "例如收货组长每天都要先处理加急到货，或只看某个客户处于 In Progress 的单据。把这些条件存成模板后，便于不同班次用同一套口径查单。": ["たとえば入荷リーダーが毎日、優先入荷を最初に処理したり、特定顧客の In Progress の伝票だけを確認したりする場合、その条件をテンプレートに保存しておけば、シフトが変わっても同じ基準で伝票を確認できます。", "For example, a receiving lead may need to handle rush arrivals first, or review only one customer's In Progress receipts. Saving those conditions as a template lets every shift check receipts with the same criteria."],
+ "把常用的收货单筛选条件存成模板，一键套用": [
+  "よく使う入荷伝票の絞り込み条件をテンプレートに保存し、ワンクリックで適用する",
+  "Save frequently used receipt filters as templates and apply them in one click"
+ ],
+ "每天开工先看同一批单据": [
+  "毎日の作業開始時に同じ伝票群を確認する",
+  "Start each day with the same set of receipts"
+ ],
+ "在列表里管理已有模板": [
+  "一覧で既存のテンプレートを管理する",
+  "Manage existing templates in the list"
+ ],
+ "Selected Fields 概括了每个模板包含哪些条件，名称建议体现用途，方便同事一眼选对。点击 Create Filter Template 新建。": [
+  "Selected Fields では各テンプレートに含まれる条件の概要が分かります。名称には用途が分かるものを付けると、同僚が迷わず選べます。新規作成は Create Filter Template から行います。",
+  "Selected Fields summarizes the conditions in each template. Give templates names that reflect their purpose so colleagues can pick the right one at a glance. Click Create Filter Template to add a new one."
+ ],
+ "先命名": [
+  "まず名前を付ける",
+  "Name it first"
+ ],
+ "填写模板名称，并用 Note 说明适用场景。": [
+  "テンプレート名を入力し、Note に利用シーンを書きます。",
+  "Enter a template name and use Note to describe when to use it."
+ ],
+ "再挑条件": [
+  "次に条件を選ぶ",
+  "Then pick conditions"
+ ],
+ "在左侧勾选要用的筛选项，右侧会出现对应的条件输入。": [
+  "左側で使う絞り込み項目にチェックを入れると、右側に対応する条件入力欄が表示されます。",
+  "Tick the filters you need on the left, and matching condition inputs appear on the right."
+ ],
+ "设定取值": [
+  "値を設定する",
+  "Set the values"
+ ],
+ "模板只保存筛选条件，不会改动任何 Receipt 数据。": [
+  "テンプレートは絞り込み条件のみを保存し、Receipt のデータは変更しません。",
+  "A template only stores filter conditions and never changes any Receipt data."
+ ],
+ "放大 Receipt Filter Templates 列表截图": [
+  "Receipt Filter Templates 一覧のスクリーンショットを拡大",
+  "Enlarge Receipt Filter Templates list screenshot"
+ ],
+ "Receipt Filter Templates 列表页面截图": [
+  "Receipt Filter Templates 一覧画面のスクリーンショット",
+  "Receipt Filter Templates list screenshot"
+ ],
+ "放大 Create Filter Template 截图": [
+  "Create Filter Template のスクリーンショットを拡大",
+  "Enlarge Create Filter Template screenshot"
+ ],
+ "Create Filter Template 页面截图": [
+  "Create Filter Template 画面のスクリーンショット",
+  "Create Filter Template screenshot"
+ ]
+};
+const WES_BATCH4_TRANSLATIONS = {
+  ja: Object.fromEntries(Object.entries(WES_BATCH4_PAIRS).map(([source, targets]) => [source, targets[0]])),
+  en: Object.fromEntries(Object.entries(WES_BATCH4_PAIRS).map(([source, targets]) => [source, targets[1]]))
+};
+
+// WES batch 5 (IAM and Report)
+const WES_BATCH5_PAIRS = {
+ "01 · 账号": [
+  "01 · アカウント",
+  "01 · Account"
+ ],
+ "维护个人与租户资料": [
+  "個人情報とテナント情報を管理する",
+  "Maintain personal and tenant information"
+ ],
+ "个人账号可自行改资料和密码；租户资料由管理员维护，并显示租户有效期。": [
+  "個人アカウントは自分で情報とパスワードを変更できます。テナント情報は管理者が管理し、有効期限も確認できます。",
+  "Users can update their own details and password; tenant details are maintained by administrators, including the tenant expiry."
+ ],
+ "02 · 权限": [
+  "02 · 権限",
+  "02 · Access"
+ ],
+ "按角色授权，再分配给用户": [
+  "ロールで権限を付与しユーザーに割り当てる",
+  "Grant by role, then assign to users"
+ ],
+ "角色决定能做哪些操作，用户可同时拥有多个角色，并可限定可访问的设施。": [
+  "ロールで実行できる操作を決め、1 人のユーザーに複数ロールを付与できます。アクセス可能な施設も限定できます。",
+  "Roles decide which operations are allowed; a user can hold several roles and be limited to specific facilities."
+ ],
+ "03 · 对接": [
+  "03 · 連携",
+  "03 · Integration"
+ ],
+ "为外部系统签发访问密钥": [
+  "外部システム用のアクセスキーを発行する",
+  "Issue access keys for external systems"
+ ],
+ "API Key 供第三方系统调用接口，可设置有效期，并随时停用或重新生成。": [
+  "API Key はサードパーティシステムの API 呼び出しに使い、有効期限の設定や、無効化・再生成ができます。",
+  "API Keys let third-party systems call the APIs; set an expiry and disable or regenerate a key at any time."
+ ],
+ "IAM 管理谁能进入系统、能做什么": [
+  "IAM は誰がシステムに入れて、何ができるかを管理します",
+  "IAM controls who can enter the system and what they can do"
+ ],
+ "IAM 负责账号、角色权限、租户资料和系统对接密钥。先建好角色，再把角色分配给用户，用户登录后只能看到并操作被授权的功能。": [
+  "IAM はアカウント、ロール権限、テナント情報、システム連携用キーを管理します。先にロールを作成してユーザーに割り当てると、ユーザーは許可された機能だけを利用できます。",
+  "IAM manages accounts, role permissions, tenant information and integration keys. Create roles first, then assign them to users, so each user only sees and operates what has been granted."
+ ],
+ "个人资料管理自己的账号，租户资料代表整个公司": [
+  "プロフィールは自分のアカウント、テナント情報は会社全体を表します",
+  "Profile covers your own account; Tenant Profile covers the whole company"
+ ],
+ "Profile 供每位用户维护自己的资料和登录密码；Tenant Profile 展示所在租户的基本信息，由管理员维护。": [
+  "Profile では各ユーザーが自分の情報とログインパスワードを管理します。Tenant Profile は所属テナントの基本情報で、管理者が管理します。",
+  "Profile lets each user maintain their own details and login password; Tenant Profile shows the tenant's basic information and is maintained by administrators."
+ ],
+ "新员工入职后首次登录，需要完善资料并修改初始密码": [
+  "新入社員が初回ログイン後にプロフィールを整え、初期パスワードを変更する",
+  "A new employee signs in for the first time and needs to complete their profile and change the initial password"
+ ],
+ "管理员创建账号时会设置初始密码。员工登录后到 Profile 补充姓名、邮箱等联系方式，并在 Change Password 中换成自己的密码；之后忘记密码或怀疑泄露时，也在这里自行修改。": [
+  "管理者がアカウント作成時に初期パスワードを設定します。社員はログイン後に Profile で氏名やメールなどの連絡先を補い、Change Password で自分のパスワードに変更します。以後、パスワードを忘れた場合や漏えいが疑われる場合もここで変更できます。",
+  "The administrator sets an initial password when creating the account. After signing in, the employee fills in contact details on Profile and replaces the password in Change Password; the same page is used later if the password is forgotten or may have leaked."
+ ],
+ "Profile 页面截图": [
+  "Profile 画面のスクリーンショット",
+  "Profile screenshot"
+ ],
+ "个人信息与密码分开保存": [
+  "個人情報とパスワードは別々に保存",
+  "Personal information and password are saved separately"
+ ],
+ "上半部分的个人信息用于识别账号使用人，保存后立即生效；下半部分的密码修改需要先输入旧密码。账号名由管理员创建。": [
+  "上部の個人情報はアカウント利用者の識別に使われ、保存するとすぐに反映されます。下部のパスワード変更では現在のパスワードの入力が必要です。アカウント名は管理者が作成します。",
+  "Personal information at the top identifies the account holder and takes effect once saved; changing the password below requires the current password first. The username is created by the administrator."
+ ],
+ "Tenant Profile 页面截图": [
+  "Tenant Profile 画面のスクリーンショット",
+  "Tenant Profile screenshot"
+ ],
+ "租户有效期与基础资料一页查看": [
+  "テナントの有効期限と基本情報を 1 画面で確認",
+  "Tenant expiry and basic details on one page"
+ ],
+ "页面上方是系统维护的租户状态和到期时间，管理员可据此提前安排续期；下方是公司对外使用的资料，例如名称、联系人和地址。": [
+  "上部にはシステムが管理するテナントの状態と有効期限があり、管理者は更新の準備に使えます。下部は会社名、担当者、住所など対外的に使う情報です。",
+  "The top shows the tenant status and expiry maintained by the system, so administrators can plan renewals ahead; the lower part holds company-facing details such as name, contact person and address."
+ ],
+ "Tenant Profile 编辑状态截图": [
+  "Tenant Profile 編集状態のスクリーンショット",
+  "Tenant Profile edit mode screenshot"
+ ],
+ "在原页面切换到编辑状态": [
+  "同じ画面で編集状態に切り替える",
+  "Switch to edit mode on the same page"
+ ],
+ "点击 Edit 后，可更换 Logo 并修改可编辑的资料，Submit 保存、Cancel 放弃修改。租户状态和到期时间不可在此修改。": [
+  "Edit を押すとロゴを差し替え、編集可能な情報を変更できます。Submit で保存、Cancel で変更を破棄します。テナントの状態と有効期限はここでは変更できません。",
+  "Click Edit to replace the logo and change the editable details; Submit saves and Cancel discards the changes. Tenant status and expiry cannot be changed here."
+ ],
+ "先用角色定义权限，再把角色分配给用户": [
+  "先にロールで権限を定義し、ユーザーに割り当てる",
+  "Define permissions with roles first, then assign roles to users"
+ ],
+ "Role Management 决定“能做什么”，User Management 决定“谁拥有这些角色、能进哪些设施”。两者配合，才能让不同岗位只看到自己的功能。": [
+  "Role Management は「何ができるか」、User Management は「誰がそのロールを持ち、どの施設に入れるか」を決めます。両者を組み合わせることで、職務ごとに必要な機能だけを見せられます。",
+  "Role Management decides what can be done; User Management decides who holds those roles and which facilities they can enter. Together they make each job role see only its own functions."
+ ],
+ "新增一名只负责拣货的员工": [
+  "ピッキング専任の担当者を追加する",
+  "Adding an employee who only picks"
+ ],
+ "管理员先在 Role Management 建好“拣货员”角色，只勾选拣货相关的权限；再到 User Management 新建账号，分配该角色，并限定可访问的设施。员工登录后看不到其他岗位的功能，也不会误操作。": [
+  "管理者はまず Role Management で「ピッキング担当」ロールを作り、ピッキング関連の権限だけを選びます。次に User Management でアカウントを作成してそのロールを割り当て、アクセスできる施設を限定します。これで担当者には他の職務の機能が表示されず、誤操作も防げます。",
+  "The administrator first creates a Picker role in Role Management with only picking permissions, then creates the account in User Management, assigns that role and limits the facilities it can access. The employee never sees other jobs' functions and cannot misuse them."
+ ],
+ "Role Management 列表页面截图": [
+  "Role Management 一覧画面のスクリーンショット",
+  "Role Management list screenshot"
+ ],
+ "角色是权限的集合，可复用": [
+  "ロールは権限のまとまりで、再利用できる",
+  "A role is a reusable set of permissions"
+ ],
+ "同一个角色可以分配给多名用户，修改角色权限后，所有持有该角色的用户同步生效。停用角色可以快速收回一批人的权限，而不必逐个改账号。": [
+  "同じロールを複数のユーザーに割り当てられ、ロールの権限を変更すると、そのロールを持つ全ユーザーに反映されます。ロールを無効化すれば、アカウントを 1 件ずつ変更せずに一括で権限を取り消せます。",
+  "One role can be assigned to many users, and changing its permissions takes effect for everyone holding it. Deactivating a role withdraws access from a whole group at once, without editing accounts one by one."
+ ],
+ "Create Role 页面截图": [
+  "Create Role 画面のスクリーンショット",
+  "Create Role screenshot"
+ ],
+ "按系统和功能逐项授权": [
+  "システムと機能ごとに権限を付与する",
+  "Grant permissions per system and function"
+ ],
+ "权限按 WMS、IAM、WCS 分页，每个功能下可细分到新增、编辑、删除、导入、导出等操作。需要整批授权时用 Select All，再取消不需要的项，比逐项勾选更快；授权宜遵循够用即可的原则，敏感的删除、导入类操作只给必要的岗位。": [
+  "権限は WMS、IAM、WCS のタブに分かれ、各機能で作成・編集・削除・インポート・エクスポートなどの操作まで細かく設定できます。まとめて付与したい場合は Select All のあとに不要な項目を外すと効率的です。削除やインポートなど影響の大きい操作は、必要な職務にだけ付与してください。",
+  "Permissions are split into WMS, IAM and WCS tabs, and each function can be refined down to create, edit, delete, import and export. To grant in bulk, use Select All and then untick what is not needed. Keep to least privilege, and give sensitive actions such as delete and import only to the roles that need them."
+ ],
+ "User Management 列表页面截图": [
+  "User Management 一覧画面のスクリーンショット",
+  "User Management list screenshot"
+ ],
+ "一个账号可以同时拥有多个角色": [
+  "1 つのアカウントに複数のロールを付与できる",
+  "One account can hold several roles"
+ ],
+ "列表的 Roles 列可直接看到每个账号当前拥有的角色，便于核对某位员工为什么能（或不能）看到某个功能。人员调岗或离职时，调整角色或把状态改为停用即可，不需要删除账号，历史作业记录仍保留。": [
+  "一覧の Roles 列で各アカウントが持つロールをその場で確認でき、ある社員がなぜその機能を使える（使えない）のかを調べるのに役立ちます。異動や退職の際は、ロールの変更またはステータスの無効化で対応でき、アカウントを削除しないため過去の作業履歴も残ります。",
+  "The Roles column shows the roles each account holds, which helps explain why an employee can or cannot see a function. When someone changes jobs or leaves, adjust their roles or set the status to inactive instead of deleting the account, so past work records are kept."
+ ],
+ "Create User 页面截图": [
+  "Create User 画面のスクリーンショット",
+  "Create User screenshot"
+ ],
+ "角色决定功能，设施范围决定可访问的仓库": [
+  "ロールが機能を、施設範囲が入れる倉庫を決める",
+  "Roles decide functions; facility access decides which warehouses"
+ ],
+ "Assign Roles 通过左右穿梭框选择角色；Facility Access 用来限定该账号可进入的设施，适合多仓库公司让员工只处理所在仓库的数据。初始密码请告知本人，并建议其首次登录后自行修改。": [
+  "Assign Roles は左右の選択ボックスでロールを選びます。Facility Access はそのアカウントが入れる施設を限定するもので、複数倉庫を持つ会社で担当者を自分の倉庫のデータだけに絞るのに向いています。初期パスワードは本人に伝え、初回ログイン後に自分で変更してもらってください。",
+  "Assign Roles uses a left-right transfer box. Facility Access limits which facilities the account can enter, so employees of a multi-warehouse company only work with their own warehouse's data. Give the initial password to the user and ask them to change it after first sign-in."
+ ],
+ "为每个对接系统单独签发密钥，方便控制和回收": [
+  "連携システムごとにキーを発行し、管理と回収をしやすくする",
+  "Issue a separate key for each integrated system for easier control and revocation"
+ ],
+ "API Key 是外部系统访问本系统接口时使用的凭证，每个对接方一把，彼此独立。": [
+  "API Key は外部システムが本システムの API にアクセスするための認証情報で、連携先ごとに 1 つ発行し、互いに独立しています。",
+  "An API Key is the credential an external system uses to call this system's APIs. Each integration gets its own, independent key."
+ ],
+ "电商平台或 ERP 需要自动推送订单、回写库存": [
+  "EC プラットフォームや ERP から注文を自動連携し、在庫を書き戻す",
+  "An e-commerce platform or ERP needs to push orders and read back inventory automatically"
+ ],
+ "管理员为该系统新建一把 API Key，把 App Code 和密钥交给对接方；合同到期可设置有效期，怀疑泄露时可立即停用或重新生成，而不影响其他系统的对接。": [
+  "管理者がそのシステム用に API Key を新規作成し、App Code とキーを連携先に渡します。契約期間に合わせて有効期限を設定でき、漏えいが疑われる場合はすぐに無効化または再生成でき、他のシステムの連携には影響しません。",
+  "The administrator creates an API Key for that system and hands the App Code and key to the integrator. An expiry can match the contract term, and if a leak is suspected the key can be disabled or regenerated immediately without affecting other integrations."
+ ],
+ "API Key 列表页面截图": [
+  "API Key 一覧画面のスクリーンショット",
+  "API Key list screenshot"
+ ],
+ "在列表里掌握每把密钥的状态": [
+  "一覧で各キーの状態を把握する",
+  "See the state of every key in the list"
+ ],
+ "通过过期时间和状态可以快速找出即将失效或已停用的对接。Regenerate 会换发新密钥，使用旧密钥的对接方需要同步更新配置，请提前通知；出于安全考虑，请勿在聊天或邮件中明文传递密钥。": [
+  "有効期限とステータスから、まもなく失効する連携や無効化済みの連携をすぐに見つけられます。Regenerate は新しいキーを発行します。古いキーを使っている連携先は設定の更新が必要なため、事前に連絡してください。安全のため、チャットやメールでキーを平文で送らないでください。",
+  "Expiry and status make it easy to spot integrations about to expire or already disabled. Regenerate issues a new key, so integrators using the old one must update their configuration; tell them in advance. For safety, never send keys in plain text over chat or email."
+ ],
+ "Add API Key 页面截图": [
+  "Add API Key 画面のスクリーンショット",
+  "Add API Key screenshot"
+ ],
+ "App Code 用来识别对接方": [
+  "App Code で連携先を識別する",
+  "App Code identifies the integrator"
+ ],
+ "建议用能看出对接系统的名称作为 App Code 和 App Name，日后排查接口调用时一眼可辨。Expire Time 留空表示永不过期；长期不变的内部系统可留空，外部合作方建议设置到期时间。": [
+  "App Code と App Name には連携システムが分かる名前を付けると、あとで API 呼び出しを調査するときに識別しやすくなります。Expire Time を空欄にすると無期限になります。長期間変わらない社内システムは空欄、外部パートナーには有効期限の設定をお勧めします。",
+  "Use names that make the integrated system obvious for App Code and App Name, so API calls are easy to trace later. Leaving Expire Time empty means the key never expires: fine for stable internal systems, while external partners should get an expiry date."
+ ],
+ "01 · 单据": [
+  "01 · 伝票",
+  "01 · Documents"
+ ],
+ "入库与出库的业务汇总": [
+  "入庫と出庫の業務サマリー",
+  "Inbound and outbound summaries"
+ ],
+ "按时间范围汇总收货与发运情况，用来核对一段时间内的收发货量。": [
+  "期間ごとに入荷と出荷の状況をまとめ、一定期間の入出荷数量の照合に使えます。",
+  "Summarize receiving and shipping over a time range to reconcile what came in and went out."
+ ],
+ "02 · 库存": [
+  "02 · 在庫",
+  "02 · Inventory"
+ ],
+ "库存、调整与动态分析": [
+  "在庫・調整・動きの分析",
+  "Inventory, adjustments and movement analysis"
+ ],
+ "看当前库存分布、库存状态汇总、调整原因和某个 SKU 的全部库存变动。": [
+  "現在の在庫分布、ステータス別の集計、調整理由、SKU ごとの在庫変動を確認できます。",
+  "See the current stock spread, status summary, adjustment reasons and every stock change for a SKU."
+ ],
+ "03 · 字段": [
+  "03 · 項目",
+  "03 · Fields"
+ ],
+ "按客户定制导出字段": [
+  "顧客ごとに出力項目をカスタマイズ",
+  "Customize export fields per customer"
+ ],
+ "为不同客户设定各自的导出字段和显示名称，并可设默认配置。": [
+  "顧客ごとに出力項目と表示名を設定し、デフォルト設定も指定できます。",
+  "Set export fields and display names per customer, with an optional default configuration."
+ ],
+ "Report 按客户汇总入库、出库与库存数据，并支持导出": [
+  "Report は顧客別に入庫・出庫・在庫データをまとめ、エクスポートできます",
+  "Report summarizes inbound, outbound and inventory data by customer, ready to export"
+ ],
+ "报表统一先选择客户再查询，适合做对账、盘点分析和向客户提供数据；Field Configuration 还可以让不同客户导出不同的字段。": [
+  "レポートはまず顧客を選んでから検索します。照合、棚卸分析、顧客へのデータ提供に向いており、Field Configuration で顧客ごとに出力項目を変えることもできます。",
+  "Every report starts by choosing a customer, which suits reconciliation, stock analysis and sharing data with customers. Field Configuration lets each customer export different fields."
+ ],
+ "用收货与发运报表核对一段时间的进出量": [
+  "入荷・出荷レポートで一定期間の入出庫量を照合する",
+  "Reconcile inflow and outflow over a period with the receiving and shipping reports"
+ ],
+ "Receiving 汇总客户的收货单，Shipping 汇总客户的装车与发运。两者都必须先选择客户，再设置时间范围查询。": [
+  "Receiving は顧客の入荷伝票を、Shipping は顧客の積込と出荷をまとめます。どちらも先に顧客を選び、期間を指定して検索します。",
+  "Receiving summarizes a customer's receipts and Shipping summarizes loads and shipments. Both require choosing a customer first and then a time range."
+ ],
+ "月底与客户对账，确认当月收了多少、发了多少": [
+  "月末に顧客と照合し、当月の入荷数・出荷数を確認する",
+  "Month-end reconciliation with a customer: how much was received and shipped"
+ ],
+ "运营人员选择该客户和当月时间范围，分别查询 Receiving 与 Shipping，核对单据状态后导出，作为与客户对账的依据。": [
+  "オペレーターが顧客と当月の期間を選び、Receiving と Shipping を検索して、伝票ステータスを確認したうえでエクスポートし、顧客との照合資料にします。",
+  "The operator picks the customer and the month, queries Receiving and Shipping, checks document statuses and exports the result as the basis for reconciliation."
+ ],
+ "Receiving 报表页面截图": [
+  "Receiving レポート画面のスクリーンショット",
+  "Receiving report screenshot"
+ ],
+ "按收货时间和状态汇总收货单": [
+  "入荷日時とステータスで入荷伝票を集計",
+  "Summarize receipts by receiving time and status"
+ ],
+ "除了常规的单号和状态，可用 Received Time 看实际收货完成的时间，用 In Yard Time 看车辆进场时间，两者结合可评估卸货等待与作业效率。需要导出时点击 Export。": [
+  "伝票番号やステータスに加えて、Received Time で実際の入荷完了時刻、In Yard Time で車両の入場時刻を確認できます。両者を組み合わせると荷下ろしの待ち時間や作業効率を評価できます。出力が必要なときは Export を押します。",
+  "Besides document numbers and statuses, Received Time shows when receiving actually finished and In Yard Time shows when the vehicle arrived; together they reveal unloading wait and efficiency. Use Export to download."
+ ],
+ "Shipping 报表页面截图": [
+  "Shipping レポート画面のスクリーンショット",
+  "Shipping report screenshot"
+ ],
+ "按装车号和发运时间追踪出库": [
+  "積込番号と出荷日時で出庫を追跡",
+  "Track outbound by load number and shipping time"
+ ],
+ "适合按 Load No 追踪某一车货的出库情况，或用 Shipped Time 统计某段时间的实际发运量。Created Time 与 Shipped Time 之间的差距，可以反映订单从创建到发出的时效。": [
+  "Load No で特定の車両分の出庫状況を追跡したり、Shipped Time で一定期間の実際の出荷量を集計したりするのに向いています。Created Time と Shipped Time の差は、注文作成から出荷までのリードタイムを表します。",
+  "Use Load No to follow the outbound status of one truckload, or Shipped Time to count what actually shipped in a period. The gap between Created Time and Shipped Time reflects order-to-ship lead time."
+ ],
+ "从库存现状、状态、调整到动态，多角度分析库存": [
+  "在庫の現状・ステータス・調整・動きを多角的に分析する",
+  "Analyze stock from its current state, status, adjustments and movement"
+ ],
+ "四个库存类报表回答四类问题：现在有多少、处于什么状态、为什么被调整、某个 SKU 经历了什么。": [
+  "4 つの在庫レポートは、「今どれだけあるか」「どの状態か」「なぜ調整されたか」「ある SKU に何があったか」という 4 種類の疑問に答えます。",
+  "The four inventory reports answer four questions: how much is there now, what state is it in, why was it adjusted, and what has happened to a SKU."
+ ],
+ "客户质疑库存数量，需要拿出依据": [
+  "顧客から在庫数量に疑問が出て、根拠を示す必要がある",
+  "A customer questions the stock count and evidence is needed"
+ ],
+ "先用 Inventory 查出该 SKU 当前分布在哪些库位和 LP；再用 Inventory Status 看不同状态（如可用、冻结）的数量；最后用 SKU Activity 回溯进出和调整的全过程，并结合 Adjustment 说明差异原因。": [
+  "まず Inventory でその SKU が現在どのロケーションと LP にあるかを調べ、Inventory Status で状態別（利用可能・凍結など）の数量を確認します。最後に SKU Activity で入出庫と調整の全履歴をたどり、Adjustment で差異の理由を説明します。",
+  "Use Inventory to see which locations and LPs hold the SKU now, Inventory Status for quantities by state such as available or on hold, then SKU Activity to trace every movement and adjustment, with Adjustment explaining any difference."
+ ],
+ "Inventory 报表页面截图": [
+  "Inventory レポート画面のスクリーンショット",
+  "Inventory report screenshot"
+ ],
+ "明细级库存，精确到库位和 LP": [
+  "ロケーション・LP 単位の在庫明細",
+  "Detail-level stock down to location and LP"
+ ],
+ "可按 SKU、库位、LP 或批次精确定位库存，适合排查某批货放在哪里。选择 Location Level 可以按库位层级汇总，查看整个区域或货架的存量。": [
+  "SKU、ロケーション、LP、ロットで在庫をピンポイントに特定でき、特定ロットの保管場所を調べるのに向いています。Location Level を選ぶと、ロケーション階層ごとに集計してエリアや棚全体の在庫量を確認できます。",
+  "Pinpoint stock by SKU, location, LP or lot, ideal for finding where a batch is stored. Location Level rolls stock up by location hierarchy to show a whole zone or rack."
+ ],
+ "Inventory Status 报表页面截图": [
+  "Inventory Status レポート画面のスクリーンショット",
+  "Inventory Status report screenshot"
+ ],
+ "按状态汇总每个 SKU 的数量": [
+  "ステータス別に SKU の数量を集計",
+  "Quantity per SKU summarized by status"
+ ],
+ "把同一个 SKU 的库存按状态拆开，一眼看出可发货的数量和被冻结、待处理的数量，用于判断是否需要补货或处理异常库存。": [
+  "同じ SKU の在庫をステータスごとに分けて表示するため、出荷可能数量と凍結・保留中の数量がひと目で分かり、補充や異常在庫の処理が必要かを判断できます。",
+  "Splits a SKU's stock by status, so shippable quantity and held or pending quantity are visible at a glance, helping decide whether to replenish or handle abnormal stock."
+ ],
+ "Adjustment 报表页面截图": [
+  "Adjustment レポート画面のスクリーンショット",
+  "Adjustment report screenshot"
+ ],
+ "按原因复盘库存调整": [
+  "理由別に在庫調整を振り返る",
+  "Review inventory adjustments by reason"
+ ],
+ "按 Reason 筛选可统计破损、盘盈盘亏等各类原因造成的调整量，帮助管理者发现反复出现的问题环节，并按时间范围做月度或季度复盘。": [
+  "Reason で絞り込むと、破損や棚卸差異など理由別の調整量を集計でき、繰り返し発生する問題の工程を見つけられます。期間を指定すれば月次・四半期の振り返りにも使えます。",
+  "Filtering by Reason totals adjustments caused by damage, count variances and so on, exposing recurring problem areas; combine with a time range for monthly or quarterly reviews."
+ ],
+ "SKU Activity 报表页面截图": [
+  "SKU Activity レポート画面のスクリーンショット",
+  "SKU Activity report screenshot"
+ ],
+ "查看一个 SKU 的完整库存变动": [
+  "1 つの SKU の在庫変動を全て確認",
+  "See the full stock history of one SKU"
+ ],
+ "按 Activity Type 可只看入库、出库、移库或调整等某一类动作，配合 Activity Time 还原某个时间段内库存增减的来龙去脉，是排查库存差异最直接的报表。": [
+  "Activity Type で入庫・出庫・移動・調整などの動作だけに絞り、Activity Time と組み合わせて、ある期間の在庫増減の経緯を再現できます。在庫差異の調査に最も直接的なレポートです。",
+  "Activity Type narrows to one kind of action such as receiving, shipping, moving or adjusting, and with Activity Time it reconstructs how stock rose and fell in a period. It is the most direct report for investigating stock differences."
+ ],
+ "让不同客户导出不同的报表字段": [
+  "顧客ごとに異なるレポート項目を出力する",
+  "Let each customer export different report fields"
+ ],
+ "Field Configuration 为每类报表设置要显示和导出的字段及名称，可以针对某个客户，也可以设置为所有客户通用的默认配置。": [
+  "Field Configuration では、レポートの種類ごとに表示・出力する項目と名称を設定します。特定の顧客向けにも、全顧客共通のデフォルトにも設定できます。",
+  "Field Configuration sets which fields and labels each report type shows and exports, either for a specific customer or as a default shared by all customers."
+ ],
+ "某客户只需要部分字段，且希望使用自己习惯的列名": [
+  "ある顧客は一部の項目だけを必要とし、自社の呼び方で列名を表示したい",
+  "A customer only needs certain fields and wants its own column names"
+ ],
+ "为该客户新建一条配置，选择报表类型并挑选需要的字段、修改显示名称；之后该客户的报表只出现这些列。其余没有专属配置的客户，则沿用默认配置。": [
+  "その顧客向けに設定を新規作成し、レポートの種類を選んで必要な項目を選択し、表示名を変更します。以後、その顧客のレポートにはこれらの列だけが表示されます。専用設定のない顧客は、デフォルト設定に従います。",
+  "Create a configuration for that customer, pick the report type, choose the needed fields and rename their labels. From then on that customer's report shows only those columns, while customers without their own configuration follow the default."
+ ],
+ "Field Configuration 列表页面截图": [
+  "Field Configuration 一覧画面のスクリーンショット",
+  "Field Configuration list screenshot"
+ ],
+ "在列表中管理各客户与默认配置": [
+  "一覧で顧客別設定とデフォルト設定を管理",
+  "Manage customer and default configurations in the list"
+ ],
+ "列表按报表类别和客户展示已有配置，并标明哪条是默认配置，方便确认某个客户到底在用哪一套字段；修改后点击 Refresh 可重新加载最新数据。": [
+  "一覧にはレポート種別と顧客ごとの既存設定が表示され、どれがデフォルトかも分かるため、ある顧客が実際にどの項目セットを使っているか確認できます。変更後は Refresh で最新の状態を再読み込みします。",
+  "The list shows existing configurations by report category and customer and marks which one is the default, so you can confirm which field set a customer really uses. Click Refresh after changes to reload the latest data."
+ ],
+ "New Configuration 页面截图": [
+  "New Configuration 画面のスクリーンショット",
+  "New Configuration screenshot"
+ ],
+ "先选范围，再逐个映射字段": [
+  "まず適用範囲を選び、項目を 1 つずつマッピング",
+  "Choose the scope first, then map fields one by one"
+ ],
+ "Customer 选择 Default (no customer) 并将 Is Default 设为 Yes，即作为所有客户的通用配置；选择具体客户则只对该客户生效。Field Mappings 用来决定报表出现哪些列、叫什么名字；通用字段建议先放进默认配置，再按客户差异做微调。": [
+  "Customer で Default (no customer) を選び Is Default を Yes にすると、全顧客共通の設定になります。特定の顧客を選ぶと、その顧客にだけ適用されます。Field Mappings ではレポートに表示する列とその名称を決めます。共通の項目はまずデフォルト設定に入れ、顧客ごとの違いだけを調整すると管理しやすくなります。",
+  "Choosing Default (no customer) with Is Default set to Yes makes it the shared configuration for all customers, while picking a customer applies it to that customer only. Field Mappings decide which columns appear and what they are called. Put common fields in the default first, then fine-tune per customer."
+ ]
+};
+const WES_BATCH5_TRANSLATIONS = {
+  ja: Object.fromEntries(Object.entries(WES_BATCH5_PAIRS).map(([source, targets]) => [source, targets[0]])),
+  en: Object.fromEntries(Object.entries(WES_BATCH5_PAIRS).map(([source, targets]) => [source, targets[1]]))
+};
+
+const WES_BATCH6_PAIRS = {
+  "盘点或现场发现数量、状态、库位等信息不符时，通过 Adjustment 发起受控调整；Inventory Activity 按作业、Inventory Log 按库存记录，分别追溯库存发生过的变化。": [
+    "棚卸や現場で数量・ステータス・ロケーションの不一致が見つかったら、Adjustment で管理された調整を行います。Inventory Activity は作業単位、Inventory Log は在庫レコード単位で、在庫に起きた変化を追跡します。",
+    "When a count or the floor finds a mismatch in quantity, status, or location, use Adjustment for a controlled correction. Inventory Activity (by operation) and Inventory Log (by inventory record) trace what happened to the stock."
+  ],
+  "Summary 将符合查询条件的库存按 SKU、Status 和 Type 汇总，适合先判断某个商品当前有多少库存；需要确认具体库位、LP 或关联单据时，再切换到 Inventory Detail。左上角的 Presets 可把当前筛选条件保存为预设，下次直接选用。": [
+    "Summary は検索条件に合う在庫を SKU、Status、Type ごとに集計するため、まず商品の在庫量を判断するのに向いています。具体的なロケーション、LP、関連伝票を確認するときは Inventory Detail に切り替えます。左上の Presets で現在の検索条件をプリセットとして保存でき、次回からそのまま選べます。",
+    "Summary groups the inventory that matches the query by SKU, Status, and Type, which is useful for first judging how much of a product is in stock. Switch to Inventory Detail when you need the exact Location, LP, or related documents. Presets in the upper left saves the current filters so you can pick them directly next time."
+  ],
+  "Receipt、Order 和 Load ID 用于沿入库、出库或装载单据追查对应库存；Inventory Channel 区分库存来自收货、退货还是转移。": [
+    "Receipt、Order、Load ID で入庫・出庫・積込の伝票から該当在庫をたどれます。Inventory Channel は在庫が入荷、返品、移動のどれ由来かを区別します。",
+    "Receipt, Order, and Load ID trace inventory through inbound, outbound, or loading documents; Inventory Channel separates stock that came from receiving, returns, or transfers."
+  ],
+  "LP 表示当前承载库存的容器，Location、Receipt、Order 和 Load ID 进一步说明库存放在哪里、与哪张单据相关。": [
+    "LP は現在在庫を載せているコンテナを示し、Location、Receipt、Order、Load ID で在庫の置き場所と関連伝票が分かります。",
+    "LP is the container currently holding the stock; Location, Receipt, Order, and Load ID show where it sits and which documents it relates to."
+  ],
+  "追溯作业来源": [
+    "作業の発生元をたどる",
+    "Trace the source operation"
+  ],
+  "Receive Task 与 PutAway Task 对应这条库存的收货和上架任务，Adjustment Id 对应造成数量变化的调整单，可复制编号到 Task 或 Adjustment 页面继续查询。": [
+    "Receive Task と PutAway Task はこの在庫の入荷・棚入れタスク、Adjustment Id は数量を変えた調整伝票に対応します。番号をコピーして Task や Adjustment 画面で続けて検索できます。",
+    "Receive Task and PutAway Task point to the receiving and put-away tasks behind this stock, and Adjustment Id points to the adjustment that changed its quantity. Copy the number into Task or Adjustment to keep searching."
+  ],
+  "导出与排序预览": [
+    "エクスポートと並び順プレビュー",
+    "Export and sort preview"
+  ],
+  "Export 导出当前查询结果，便于线下核对；Sort Preview 用来预览拣货顺序，见下方说明。": [
+    "Export は現在の検索結果を出力し、オフラインでの突合に使えます。Sort Preview はピッキング順のプレビューで、下の説明を参照してください。",
+    "Export outputs the current results for offline checking; Sort Preview previews the picking order, described below."
+  ],
+  "Sort Preview：": [
+    "Sort Preview：",
+    "Sort Preview: "
+  ],
+  "在 Detail 页点击 Sort Preview，输入 SKU 并按需选择客户、出库规则（默认 FIFO，先入先出）、批次和数量，点击 Sort 后列出符合条件的库存及其 Location、LP、Lot No 和收货时间。它是预览工具，用于在拣货前确认库存会按什么顺序被使用，调整规则或库存分布前先验证一遍。": [
+    "Detail タブで Sort Preview を開き、SKU を入力して必要に応じ顧客、出庫ルール（既定は FIFO、先入先出）、ロット、数量を選び、Sort を押すと、条件に合う在庫とその Location、LP、Lot No、入荷日時が表示されます。プレビュー用のツールで、ピッキング前に在庫がどの順で使われるかを確認でき、ルールや在庫配置を変える前の検証にも使えます。",
+    "On the Detail tab, open Sort Preview, enter a SKU, optionally choose customer, shipping rule (FIFO by default), lot, and quantity, then click Sort to list the matching stock with its Location, LP, Lot No, and received time. It is a preview tool for checking in what order stock will be used before picking, and for validating a rule or stock layout change."
+  ],
+  "锁定已结束，不再占用可分配量": [
+    "ロックは終了しており、割当可能数量を占有しません",
+    "The lock has ended and no longer holds any allocatable quantity"
+  ],
+  "先定位到那条库存": [
+    "先に該当在庫を特定する",
+    "Locate the record first"
+  ],
+  "已知 Inventory ID 或 LP ID 时可直接定位；只知道商品时，用 SKU 配合起止时间缩小范围。": [
+    "Inventory ID または LP ID が分かればそのまま特定できます。商品しか分からない場合は SKU と開始・終了時間で範囲を絞ります。",
+    "With an Inventory ID or LP ID you can go straight to the record; if you only know the product, narrow down by SKU and a start and end time."
+  ],
+  "对比变更前后的数量": [
+    "変更前後の数量を比べる",
+    "Compare quantity before and after"
+  ],
+  "Qty Before 与 Qty After 对比即可看出数量如何变化；Action Type 区分这次是新增、修改还是删除，新增记录的 Qty Before 显示为“-”。": [
+    "Qty Before と Qty After を比べると数量の変化が分かります。Action Type は追加・変更・削除のどれかを示し、追加レコードの Qty Before は「-」と表示されます。",
+    "Comparing Qty Before and Qty After shows how the quantity changed. Action Type tells whether the change was an insert, update, or delete; for inserts, Qty Before shows “-”."
+  ],
+  "按状态与时间回溯": [
+    "状態と時間でさかのぼる",
+    "Look back by status and time"
+  ],
+  "Status 用来判断变化发生在库存的哪个阶段，例如已拣货或已调整出库；按时间范围筛选可以只看某个班次或某一天的变化。": [
+    "Status で変化が在庫のどの段階で起きたか（例：ピッキング済み、調整出庫）を判断できます。期間で絞れば、特定のシフトや日の変化だけを確認できます。",
+    "Status shows the stage at which the change happened, such as Picked or Adjust Out; a time range lets you review a single shift or day."
+  ],
+  "按库存记录逐条查看数量是如何新增、修改或删除的": [
+    "在庫レコード単位で、数量がどのように追加・変更・削除されたかを確認する",
+    "Trace, record by record, how inventory quantities were added, changed, or deleted"
+  ],
+  "Inventory Log 保存库存记录本身的变更轨迹：每次新增、修改或删除，都会留下变更前后的数量。它比 Inventory Activity 更贴近库存数据，适合账面数量对不上时逐条核对；本页只用于查询，不会修改库存。": [
+    "Inventory Log は在庫レコード自体の変更履歴を保存し、追加・変更・削除のたびに変更前後の数量を残します。Inventory Activity より在庫データに近く、帳簿数量が合わないときに1件ずつ確認するのに適しています。このページは照会専用で、在庫は変更されません。",
+    "Inventory Log keeps the change history of the inventory records themselves: every insert, update, or delete leaves the quantity before and after. It sits closer to the inventory data than Inventory Activity, which makes it useful for checking one record at a time when book quantity does not match. This page is query-only and never changes inventory."
+  ],
+  "某条库存的数量与预期不一致，需要确认是哪一步改变了它": [
+    "ある在庫の数量が想定と合わず、どの時点で変わったかを確認したい",
+    "A stock record does not match expectations and you need to find which step changed it"
+  ],
+  "例如某个 SKU 的账面数量比现场少。先在 Inventory 中找到对应库存的 Inventory ID 或 LP，再到 Inventory Log 查询，逐条对比变更前后的数量，即可定位数量是在哪一次变更中发生变化的；若还需要知道是哪项作业造成的，再回到 Inventory Activity 或 Task 按时间继续查找。": [
+    "たとえばある SKU の帳簿数量が現場より少ないとします。まず Inventory で該当在庫の Inventory ID または LP を確認し、Inventory Log で照会して変更前後の数量を1件ずつ比べると、どの変更で数量が変わったかを特定できます。原因となった作業まで知りたい場合は、Inventory Activity や Task に戻って時間で追跡します。",
+    "For example, the book quantity of a SKU is lower than what is on the shelf. Find the Inventory ID or LP in Inventory, then query Inventory Log and compare the quantity before and after each change to see which change altered it. If you also need the operation behind it, go back to Inventory Activity or Task and follow the same time range."
+  ],
+  "与 Inventory Activity 的分工": [
+    "Inventory Activity との使い分け",
+    "How it differs from Inventory Activity"
+  ],
+  "Inventory Activity 按作业记录库存移动，回答“做了什么作业”；Inventory Log 按库存记录保存数量变化，回答“这条库存的数量怎么变的”。排查时先用 Log 确认数量在哪一步变化，再用 Activity 找到对应作业。": [
+    "Inventory Activity は作業単位で在庫の動きを記録し、「どの作業が行われたか」に答えます。Inventory Log は在庫レコード単位で数量の変化を保存し、「この在庫の数量がどう変わったか」に答えます。調査では、まず Log で数量が変わった時点を確認し、次に Activity で該当する作業を探します。",
+    "Inventory Activity records stock movements by operation and answers “what work was done”. Inventory Log records quantity changes by inventory record and answers “how did this record's quantity change”. When investigating, use Log to find the step where the quantity changed, then use Activity to find the matching operation."
+  ],
+  "放大 Inventory Log 列表页面截图": [
+    "Inventory Log 一覧画面のスクリーンショットを拡大",
+    "Enlarge the Inventory Log list page screenshot"
+  ],
+  "Inventory Log 列表页面截图": [
+    "Inventory Log 一覧画面のスクリーンショット",
+    "Inventory Log list page screenshot"
+  ],
+  "归属对象": [
+    "帰属先",
+    "Ownership"
+  ],
+  "商品与数量": [
+    "商品と数量",
+    "Product and quantity"
+  ],
+  "库存属性": [
+    "在庫の属性",
+    "Inventory attributes"
+  ],
+  "容器与追查入口": [
+    "コンテナと追跡の手がかり",
+    "Container and tracing entry points"
+  ],
+  "例如 5 CASE，表示以箱为单位记录。": [
+    "例：5 CASE は、ケース単位で記録されていることを示します。",
+    "For example, 5 CASE means the quantity is recorded in cases."
+  ],
+  "若 1 CASE = 12 EA，则 5 CASE = 60 EA。": [
+    "1 CASE = 12 EA なら、5 CASE = 60 EA です。",
+    "If 1 CASE = 12 EA, then 5 CASE = 60 EA."
+  ],
+  "需要处理的调整单通常是 NEW 状态：先按 Status 筛出 NEW，再按 Customer、Adjustment Type 或 Reason 缩小范围。NEW 单据的行内可直接 Approve、Decline 或 Edit，点击 Adjustment ID 进入详情页核对后再处理；已审批的单据行内没有操作，只用于回看审批结果和库存变化。": [
+    "処理が必要な調整伝票は通常 NEW ステータスです。まず Status で NEW に絞り、Customer、Adjustment Type、Reason でさらに絞り込みます。NEW の伝票は行内から直接 Approve、Decline、Edit でき、Adjustment ID をクリックして詳細で確認してから処理することもできます。承認済みの伝票には行内操作がなく、承認結果と在庫の変化を振り返る用途です。",
+    "Adjustments that need action are usually in NEW status: filter Status to NEW first, then narrow by Customer, Adjustment Type, or Reason. NEW adjustments offer Approve, Decline, and Edit right in the row, or you can click the Adjustment ID to review the detail first. Approved adjustments have no row actions and are kept for reviewing the result and the inventory change."
+  ],
+  "NEW 单据被拒绝；库存不会更新": [
+    "NEW の伝票が却下されました。在庫は更新されません",
+    "A NEW adjustment was declined; inventory is not updated"
+  ],
+  "在列表点击 Adjustment ID 进入详情页，右上角可选择 Approve、Decline 或 Edit。Approve 后执行库存调整；Decline 后单据变为 DECLINED，库存保持不变。": [
+    "一覧で Adjustment ID をクリックして詳細を開き、右上で Approve、Decline、Edit を選択します。Approve 後に在庫調整を実行し、Decline 後は伝票が DECLINED となり在庫は変わりません。",
+    "From the list, click the Adjustment ID to open the detail page and choose Approve, Decline, or Edit in the upper right. Approve executes the inventory adjustment; Decline changes the document to DECLINED and leaves inventory unchanged."
+  ],
+  "Basic Info 先确定 Customer、Reason 和备注；Add Line 再按 SKU、Title、Location、LP 或 Lot No 查找来源库存。先选择 Adjustment Type，并在库存行里填写目标值（例如 Qty Adjust To），行首的复选框才可勾选；勾选后点击 Add to Lines 加入 Adjustment Lines，最后保存并按需要审批。": [
+    "Basic Info でまず Customer、Reason、備考を決め、Add Line で SKU、Title、Location、LP、Lot No から対象在庫を探します。先に Adjustment Type を選び、在庫行に目標値（たとえば Qty Adjust To）を入力するとはじめて行頭のチェックボックスが選べるようになります。チェック後に Add to Lines で Adjustment Lines に追加し、最後に保存して必要に応じて承認します。",
+    "Basic Info first sets Customer, Reason, and a note; Add Line then finds the source stock by SKU, Title, Location, LP, or Lot No. Choose the Adjustment Type first and enter the target value on the stock row (for example Qty Adjust To); only then does the row checkbox become selectable. Tick it, click Add to Lines to move it into Adjustment Lines, then save and approve as needed."
+  ],
+  "规则多了以后，可以按 SKU、Customer、Method 或 Enabled 筛选，快速判断哪些规则在生效、最近一次补货是什么时候。列表上方的 Export 导出当前规则用于线下核对；Trigger All 不等定时，立即对所有已启用规则做一次检查并按需创建补货任务，操作前先确认当前库存与规则符合预期。Scheduler Config 与 Execution Log 见下方。": [
+    "ルールが増えたら、SKU、Customer、Method、Enabled で絞り込み、どのルールが有効で、直近の補充がいつだったかをすばやく確認できます。一覧上部の Export は現在のルールを出力してオフラインで確認するための機能です。Trigger All は定時実行を待たず、有効なすべてのルールを今すぐチェックして必要に応じて補充タスクを作成します。実行前に現在の在庫とルールが想定どおりか確認してください。Scheduler Config と Execution Log は下で説明します。",
+    "When there are many rules, filter by SKU, Customer, Method, or Enabled to see which rules are active and when each last replenished. Export above the list outputs the current rules for offline checking. Trigger All does not wait for the schedule: it checks every enabled rule right now and creates replenishment tasks where needed, so confirm that stock and rules are as expected before using it. Scheduler Config and Execution Log are described below."
+  ],
+  "执行记录": [
+    "実行履歴",
+    "Execution history"
+  ],
+  "确认自动补货有没有按时运行": [
+    "自動補充が時間どおり実行されたかを確認する",
+    "Check whether automatic replenishment ran on time"
+  ],
+  "顶部汇总": [
+    "上部サマリー",
+    "Summary at the top"
+  ],
+  "用成功、失败、跳过的次数和成功率快速判断调度是否健康，发现失败再往下看具体哪一次出了问题。": [
+    "成功・失敗・スキップの件数と成功率で、スケジュールが正常かをすばやく判断できます。失敗があれば、下の一覧でどの回に問題があったかを確認します。",
+    "Success, failed, and skipped counts plus the success rate show at a glance whether the scheduler is healthy; if something failed, look below for the exact run."
+  ],
+  "逐次记录": [
+    "実行ごとの記録",
+    "Run-by-run records"
+  ],
+  "每次检查检查了多少条规则、触发了多少、实际创建了多少任务，以及失败原因。Skipped 较多通常说明当天命中了 Skip Rules，或库存还没低于 Min Qty。": [
+    "各回で、チェックしたルール数、トリガーされた数、実際に作成されたタスク数と失敗理由を確認できます。Skipped が多い場合は、その日が Skip Rules に該当したか、在庫がまだ Min Qty を下回っていないことが多いです。",
+    "Each run shows how many rules were checked, triggered, and turned into tasks, plus any error. Many Skipped usually means the day hit a Skip Rule or stock has not dropped below Min Qty yet."
+  ],
+  "排查补货任务没生成": [
+    "補充タスクが作成されない場合の調べ方",
+    "When no replenishment task was created"
+  ],
+  "先看这次是否执行、结果是否成功，再核对规则是否 Enabled、库存是否低于 Min Qty；Execution Log 只用于查看，不会改动规则。": [
+    "まずその時刻に実行されたか、結果が成功かを確認し、次にルールが Enabled か、在庫が Min Qty を下回っているかを確認します。Execution Log は閲覧専用で、ルールは変更されません。",
+    "First check whether it ran and succeeded, then whether the rule is Enabled and stock is below Min Qty. Execution Log is view-only and never changes the rules."
+  ],
+  "放大 Execution Log 截图": [
+    "Execution Log のスクリーンショットを拡大",
+    "Enlarge the Execution Log screenshot"
+  ],
+  "Execution Log 页面截图": [
+    "Execution Log 画面のスクリーンショット",
+    "Execution Log page screenshot"
+  ],
+  "在此页面添加假日后，Min/Max Setting → Scheduler Config → Skip Rules 会自动列出这些日期和每周休息日，当天 Scheduler 不会执行自动补货检查。列表中的 Referenced By 显示这条假日被几个配置引用；被引用的日期删除前，请先确认对应的自动补货安排。": [
+    "ここで休日を追加すると、Min/Max Setting → Scheduler Config → Skip Rules にその日付と毎週の休みが自動的に表示され、当日は Scheduler が自動補充チェックを実行しません。一覧の Referenced By は、その休日が何件の設定から参照されているかを示します。参照されている日付を削除する前に、対応する自動補充の予定を確認してください。",
+    "Once a holiday is added here, Min/Max Setting → Scheduler Config → Skip Rules lists these dates and the weekly days off automatically, and the scheduler skips its automatic replenishment check on those days. Referenced By shows how many configurations use a holiday; before deleting a referenced date, check the matching automatic replenishment plan."
+  ],
+  "放大 Holiday Management 列表截图": [
+    "Holiday Management 一覧のスクリーンショットを拡大",
+    "Enlarge the Holiday Management list screenshot"
+  ],
+  "Holiday Management 列表页面截图": [
+    "Holiday Management 一覧画面のスクリーンショット",
+    "Holiday Management list page screenshot"
+  ],
+  "Adjustment 的创建来源": [
+    "Adjustment の作成元",
+    "Where adjustments come from"
+  ],
+  "除了操作人员在网页中创建，盘点和部分库存业务也会由系统生成调整单。": [
+    "作業者が画面で作成するほか、棚卸や一部の在庫業務でもシステムが調整伝票を自動生成します。",
+    "Besides adjustments created by operators on the web, the system also generates them from cycle counts and some inventory operations."
+  ],
+  "现场发现库存问题": [
+    "現場で在庫の問題を発見",
+    "A problem found on the floor"
+  ],
+  "使用方式": [
+    "使い方",
+    "How to use it"
+  ],
+  "Inventory 更新 + ADJUST Activity": [
+    "Inventory 更新 + ADJUST Activity",
+    "Inventory updated + ADJUST Activity"
+  ],
+  "Outbound Order 是出库作业的起点。库存锁定、拣货、包装和装车都以订单资料为依据，订单也可由客户系统通过接口导入。": [
+    "Outbound Order は出庫作業の起点です。在庫引当・ピッキング・梱包・積込はすべて注文情報に基づいて行われ、注文は顧客システムからインターフェース経由で取り込むこともできます。",
+    "Outbound Order is where outbound work begins. Inventory commitment, picking, packing, and loading all rely on the order data, and orders can also be imported from the customer's system through an interface."
+  ],
+  "操作人员选择 Customer，确认订单类型与运输要求，补充收货地址和计划时间，最后添加 SKU Lines。订单保存后只形成出库需求，不会扣减库存；后续 Inventory Commitment 才会为订单匹配并锁定可用库存。": [
+    "担当者は Customer を選び、注文タイプと輸送要件を確認し、届け先住所と予定日時を補足して、最後に SKU Lines を追加します。注文を保存しても出庫の要求が登録されるだけで在庫は減りません。この後の Inventory Commitment で、注文に対して利用可能な在庫が割り当てられ確保されます。",
+    "The operator selects a Customer, confirms the order type and transport requirements, adds the delivery address and planned dates, and finally adds SKU Lines. Saving the order only records the outbound demand and does not deduct stock; Inventory Commitment later matches and locks available inventory for it."
+  ],
+  "订单列表": [
+    "注文一覧",
+    "Order List"
+  ],
+  "一眼看清订单进行到哪一步": [
+    "注文がどの段階まで進んだか一目で分かる",
+    "See at a glance how far each order has progressed"
+  ],
+  "顶部汇总区快速反映待处理与已发运的订单规模；列表里的 Order Plan、Pick Task、Pack Task、Load Task 几列，能直接看出订单已经进入哪个环节，不必再逐个任务页面去查。": [
+    "上部の集計エリアでは、処理待ちと出荷済みの注文規模をすぐに把握できます。一覧の Order Plan・Pick Task・Pack Task・Load Task の列を見れば、注文がどの工程に進んでいるかが分かり、各タスク画面を一つずつ確認する必要がありません。",
+    "The summary at the top shows the volume of pending and shipped orders. The Order Plan, Pick Task, Pack Task, and Load Task columns in the list show which stage an order has reached, so you do not need to check each task page one by one."
+  ],
+  "批量处理：": [
+    "一括処理：",
+    "Batch actions: "
+  ],
+  "勾选多张订单后，可在 Actions 中批量取消、关闭、挂起、解除挂起或回滚；常用的查询条件可存为 Presets，需要对账时用 Export 导出。": [
+    "複数の注文を選択すると、Actions から一括でキャンセル・クローズ・保留・保留解除・ロールバックができます。よく使う検索条件は Presets に保存でき、照合が必要なときは Export で出力できます。",
+    "After selecting several orders, use Actions to cancel, close, put on hold, revert hold, or roll back in bulk. Save frequently used search conditions as Presets, and use Export when you need to reconcile."
+  ],
+  "创建订单时先确定归属与运输方式": [
+    "注文作成では、まず所属と輸送方法を決める",
+    "Start by deciding ownership and transport method when creating an order"
+  ],
+  "Customer 决定可选商品和库存分配策略；Order Type 与 Ship Method 决定后续走哪条履约路径，例如 Small Parcel 订单会进入小包裹打包工位，整车和零担订单则通过 Load 交接承运商。": [
+    "Customer によって選択できる商品と在庫割当の方針が決まります。Order Type と Ship Method によって以降の出荷経路が決まり、たとえば Small Parcel の注文は小口梱包ステーションへ、整車・混載の注文は Load を通じて運送会社に引き渡されます。",
+    "Customer determines which items can be chosen and the inventory allocation strategy. Order Type and Ship Method decide the fulfillment path: Small Parcel orders go to the small parcel packing station, while truckload and LTL orders are handed to the carrier through a Load."
+  ],
+  "时间窗口": [
+    "時間枠",
+    "Time window"
+  ],
+  "Schedule Date 安排计划作业日，Ship Not Before 与 Ship No Later 限定允许发货的区间，需要预约承运商时再填 Appointment Time。": [
+    "Schedule Date で作業予定日を設定し、Ship Not Before と Ship No Later で出荷可能な期間を限定します。運送会社の予約が必要な場合は Appointment Time も入力します。",
+    "Schedule Date sets the planned work day, Ship Not Before and Ship No Later limit the allowed shipping window, and Appointment Time is filled in when a carrier appointment is needed."
+  ],
+  "地址随单保存": [
+    "住所は注文ごとに保存",
+    "Addresses are saved with the order"
+  ],
+  "Ship From、Ship To、Bill To 选定后作为快照保存在订单中，之后修改地址主档不会影响已创建的订单。": [
+    "Ship From・Ship To・Bill To は選択後、スナップショットとして注文に保存され、その後に住所マスタを変更しても作成済みの注文には影響しません。",
+    "Ship From, Ship To, and Bill To are stored in the order as a snapshot once selected, so later changes to the address master do not affect orders that have already been created."
+  ],
+  "通过 Add Item Lines 添加商品，UOM 与 Qty 表示需求数量，Title 用来限定货权，是库存锁定的匹配依据。": [
+    "Add Item Lines で商品を追加します。UOM と Qty は需要数量を表し、Title は所有権を限定するもので、在庫引当の照合条件になります。",
+    "Add products through Add Item Lines. UOM and Qty express the required quantity, and Title restricts ownership, which is a matching condition for inventory commitment."
+  ],
+  "订单创建后，在详情页继续跟进": [
+    "注文作成後は、詳細画面で引き続き確認する",
+    "After creation, keep following the order on the detail page"
+  ],
+  "详情页在创建页的基础上增加了订单状态，并提供 Print 和 Actions 等操作入口。Status、Source 这类由系统维护的信息以灰色只读显示，不能手工改动。": [
+    "詳細画面は作成画面に注文ステータスが加わり、Print や Actions などの操作入口も用意されています。Status や Source のようにシステムが管理する情報はグレーの読み取り専用で表示され、手動では変更できません。",
+    "The detail page adds the order status to the create page and provides entries such as Print and Actions. System-maintained information such as Status and Source is shown as read-only in gray and cannot be edited manually."
+  ],
+  "执行记录：": [
+    "実行記録：",
+    "Execution records: "
+  ],
+  "订单创建后，详情页还会出现 Picked Inventory、Parcels、Shipment 和 Put Back History 四个页签，分别记录已拣货的库存、包裹与运单信息、发运结果和退回上架记录。它们随作业进度才有内容，多数订单只会用到前几项，Put Back History 通常为空。": [
+    "注文作成後、詳細画面には Picked Inventory・Parcels・Shipment・Put Back History の 4 つのタブが加わり、それぞれピッキング済み在庫、荷物と送り状の情報、出荷結果、戻し入れ記録を表示します。これらは作業の進行に応じて内容が入るもので、多くの注文では前の項目しか使わず、Put Back History は通常空です。",
+    "Once an order is created, the detail page also shows four tabs, Picked Inventory, Parcels, Shipment, and Put Back History, which record picked inventory, parcel and tracking information, shipment results, and put-back records. They only fill in as work progresses; most orders use just the first few, and Put Back History is usually empty."
+  ],
+  "承接客户自定义的业务信息": [
+    "顧客独自の業務情報を受け止める",
+    "Capture customer-specific business information"
+  ],
+  "当客户有标准字段无法容纳的信息，如项目编号、内部分类或特殊处理标记，可以放在 Dynamic Fields 中随订单保存。它提供文本与日期两类自定义字段，字段含义由客户和仓库自行约定。": [
+    "標準項目に収まらない情報、たとえばプロジェクト番号、社内分類、特別な取り扱いの目印などは、Dynamic Fields に入力して注文と一緒に保存できます。テキストと日付の 2 種類のカスタム項目があり、項目の意味は顧客と倉庫の間で取り決めます。",
+    "When a customer has information that standard fields cannot hold, such as a project number, an internal category, or a special handling flag, it can be stored with the order in Dynamic Fields. It offers custom text and date fields whose meaning is agreed between the customer and the warehouse."
+  ],
+  "Inventory Commitment 把订单需求与当前可用库存对上号：先看缺口，再锁定库存，锁定结果决定订单能否继续进入拣货计划。": [
+    "Inventory Commitment は、注文の需要と現在の利用可能在庫を突き合わせます。まず不足を確認してから在庫を引き当て、その結果によって注文がピッキング計画に進めるかが決まります。",
+    "Inventory Commitment matches order demand against available stock. You check the shortage first, then commit the stock, and the result decides whether the order can move on to a pick plan."
+  ],
+  "多张订单同时等待出库，库存不一定够所有人": [
+    "複数の注文が同時に出荷待ちで、在庫が全員分あるとは限らない",
+    "Several orders are waiting to ship at once, and stock may not cover all of them"
+  ],
+  "操作人员先在 Build Commitment 中查出待处理订单，用 Gap Preview 判断哪些订单缺货、缺多少，再决定是否执行 Commit。库存不足的订单会停在 Commit Blocked 等待补货，不会占用其他订单的库存；已锁定的订单可以在 Commitment Report 中查看，必要时回滚释放。": [
+    "担当者はまず Build Commitment で処理待ちの注文を検索し、Gap Preview でどの注文がどれだけ不足しているかを確認してから Commit を実行するか判断します。在庫が足りない注文は Commit Blocked のまま補充を待ち、他の注文の在庫を占有しません。引き当て済みの注文は Commitment Report で確認でき、必要に応じてロールバックして解放できます。",
+    "The operator finds the pending orders in Build Commitment, uses Gap Preview to see which orders are short and by how much, and then decides whether to run Commit. Orders without enough stock stay in Commit Blocked until stock arrives and do not take stock away from other orders. Committed orders can be reviewed in Commitment Report and rolled back to release the stock if needed."
+  ],
+  "选出要锁定库存的订单": [
+    "在庫を引き当てる注文を選ぶ",
+    "Select the orders to commit stock for"
+  ],
+  "Status 筛选决定处理哪一类订单：Open 与 Imported 是等待首次锁定的订单，Commit Blocked 和 Commit Failed 则是上次尝试未成功、需要重新处理的订单。勾选订单后，可先预览缺口，再点击 Commit 立即锁定。": [
+    "Status の絞り込みで処理する注文の種類を決めます。Open と Imported は初回の引き当て待ち、Commit Blocked と Commit Failed は前回の引き当てが成功せず再処理が必要な注文です。注文を選択したら、先に不足をプレビューしてから Commit で即時に引き当てます。",
+    "The Status filter decides which orders you work on. Open and Imported orders are waiting for their first commitment, while Commit Blocked and Commit Failed orders did not succeed last time and need another attempt. After selecting orders, preview the shortage first, then click Commit to lock the stock immediately."
+  ],
+  "锁定之前，先知道缺多少": [
+    "引き当ての前に、不足数を把握する",
+    "Know how much is short before committing"
+  ],
+  "弹窗按订单行对比需求数量与可用数量，Shortage Base Qty 为红色标记的行就是库存不足的商品。可以据此提前安排补货或调整订单，避免提交后才发现被阻塞。预览只做检查，不会锁定库存。": [
+    "ポップアップは注文明細ごとに必要数量と利用可能数量を比較し、Shortage Base Qty が赤く表示された行が在庫不足の商品です。これをもとに事前に補充や注文の調整ができ、実行後に初めて保留に気づくことを避けられます。プレビューは確認のみで、在庫は引き当てられません。",
+    "The pop-up compares required and available quantity for each order line, and a red mark in Shortage Base Qty flags an item that is short. Use it to arrange replenishment or adjust the order before committing, instead of finding out afterwards that the order is blocked. The preview only checks; it does not lock any stock."
+  ],
+  "查看已经建立的库存承诺": [
+    "確定済みの在庫引き当てを確認する",
+    "Review the commitments already made"
+  ],
+  "订单锁定后会进入 Committed，并随着计划、拣货、打包、发运逐步更新状态，所以这里也可以当作订单履约进度的查询入口。订单需要重新分配库存时，勾选后使用 Rollback 释放已锁定的库存。": [
+    "引き当て後の注文は Committed となり、計画、ピッキング、梱包、出荷の進行に合わせてステータスが更新されるため、ここは注文の履行状況を調べる入口としても使えます。在庫を割り当て直したいときは、注文を選択して Rollback を使うと引き当て済みの在庫を解放できます。",
+    "Once stock is locked, the order moves to Committed and its status keeps updating through planning, picking, packing and shipping, so this page also works as a place to check fulfilment progress. When an order needs its stock reassigned, select it and use Rollback to release the locked stock."
+  ],
+  "把已锁定库存的订单组织成可执行的拣货计划": [
+    "在庫引き当て済みの注文を実行可能なピッキング計画にまとめる",
+    "Organize committed orders into an executable pick plan"
+  ],
+  "Order Plan 决定一批订单怎样被拣、由谁拣、先拣哪一批。计划释放后，系统据此生成拣货任务。": [
+    "Order Plan は、注文の一括をどのようにピッキングし、誰が担当し、どれを先に処理するかを決めます。計画をリリースすると、システムがこれに基づいてピッキングタスクを生成します。",
+    "An Order Plan decides how a batch of orders is picked, by whom, and which batch goes first. Once the plan is released, the system generates pick tasks from it."
+  ],
+  "一批订单完成库存锁定，需要决定现场怎么拣": [
+    "在庫の引き当てが済んだ注文群について、現場でどうピッキングするかを決める",
+    "A batch of orders has its stock committed, and you need to decide how the floor will pick them"
+  ],
+  "计划员把订单纳入同一个计划，选择拣货方式（逐单拣还是合并拣）、拣货载具（推车、播种墙或 AGV）和任务优先级，再指定默认执行人。计划释放后，现场人员就能在手持端领取任务；整个计划的进度也都能在这里追踪。": [
+    "計画担当者は注文を同じ計画にまとめ、ピッキング方法（注文ごとか、まとめてか）、ピッキング手段（カート、播種壁、AGV）、タスクの優先度を選び、既定の担当者を指定します。計画をリリースすると現場の作業者がハンディ端末でタスクを受け取れ、計画全体の進捗もここで追跡できます。",
+    "The planner groups orders into one plan, chooses the pick method (order by order or batched), the picking mode (cart, put wall or AGV) and the task priority, and sets a default assignee. After release, floor staff can take the tasks on their handheld devices, and the progress of the whole plan can be followed here."
+  ],
+  "计划列表": [
+    "計画一覧",
+    "Plan list"
+  ],
+  "一眼看清每个计划走到哪一步": [
+    "各計画がどの段階にあるかがひと目で分かる",
+    "See at a glance where each plan stands"
+  ],
+  "Status 反映计划从构建、生成任务到释放、完成的进度；orders、Pick Tasks 两列可直接看出计划规模，不必进入详情页逐个核对。": [
+    "Status は計画の構築、タスク生成、リリース、完了までの進捗を示します。orders と Pick Tasks の列から計画の規模が分かるため、詳細画面を一つずつ開いて確認する必要はありません。",
+    "Status shows how far a plan has progressed, from building and task creation to release and completion. The orders and Pick Tasks columns show the size of each plan, so you do not need to open every detail page."
+  ],
+  "先定拣货策略，再添加订单": [
+    "先にピッキング方針を決め、次に注文を追加する",
+    "Set the pick strategy first, then add orders"
+  ],
+  "Pick Method 与 Pick Mode 是最关键的两项：前者决定订单如何分配到任务，例如一单一任务，或多单合并一次拣完再拆分；后者决定现场用什么方式拣，例如推车、播种墙或 AGV。设置好之后，通过 Add Orders 添加已锁定库存的订单即可创建。": [
+    "最も重要なのは Pick Method と Pick Mode の2項目です。前者は注文をタスクにどう割り当てるかを決め（1注文1タスク、または複数注文をまとめて一度にピッキングして仕分け）、後者は現場でどの方式で行うかを決めます（カート、播種壁、AGV など）。設定後、Add Orders で在庫引き当て済みの注文を追加して作成します。",
+    "Pick Method and Pick Mode are the two key settings. The first decides how orders are assigned to tasks, for example one task per order, or several orders picked together and split afterwards. The second decides how the floor picks, for example with a cart, a put wall or an AGV. Once they are set, use Add Orders to add orders whose stock is committed and create the plan."
+  ],
+  "控制任务规模": [
+    "タスク規模の制御",
+    "Controlling task size"
+  ],
+  "Max Order Qty Per Pick Task 限制单个任务包含的订单数量，避免任务过大、拣货员一次推车装不下。": [
+    "Max Order Qty Per Pick Task で1タスクに含める注文数を制限し、タスクが大きくなりすぎてカートに載り切らない事態を防ぎます。",
+    "Max Order Qty Per Pick Task limits how many orders one task can hold, so a task does not grow too large for a picker to carry on one cart."
+  ],
+  "指派方式": [
+    "割り当て方法",
+    "Assignment"
+  ],
+  "Assignment Mode 与 Default Assignee 决定任务是由系统自动分配，还是预先指给固定的拣货员。": [
+    "Assignment Mode と Default Assignee により、タスクをシステムが自動で割り当てるか、あらかじめ特定の作業者に指定するかが決まります。",
+    "Assignment Mode and Default Assignee decide whether tasks are assigned automatically by the system or given to a fixed picker in advance."
+  ],
+  "限定拣货来源": [
+    "ピッキング元の限定",
+    "Limiting the pick source"
+  ],
+  "Pick From Virtual Location Groups 可把拣货范围限制在指定区域，Plan Tags 则用于给计划打标签，便于后续筛选。": [
+    "Pick From Virtual Location Groups でピッキング範囲を指定エリアに限定でき、Plan Tags では計画にタグを付けて後から絞り込みやすくできます。",
+    "Pick From Virtual Location Groups restricts picking to chosen areas, and Plan Tags labels a plan so it is easier to filter later."
+  ],
+  "计划创建后，在详情页跟进任务进展": [
+    "計画の作成後は、詳細画面でタスクの進捗を追う",
+    "After a plan is created, follow task progress on its detail page"
+  ],
+  "详情页除 Basic Info 外，还有 Pick Strategies、Pick Tasks、Task Actions 和 Picked Inventory 四个页签，分别对应拣货策略、已生成的任务、任务操作记录和已拣出的库存。大多数情况下只需看 Basic Info 与 Pick Tasks，判断计划是否已释放、任务是否在正常推进。": [
+    "詳細画面には Basic Info のほかに、Pick Strategies、Pick Tasks、Task Actions、Picked Inventory の4つのタブがあり、それぞれピッキング方針、生成済みタスク、タスクの操作記録、ピッキング済み在庫に対応します。通常は Basic Info と Pick Tasks を見れば、計画がリリース済みか、タスクが順調に進んでいるかを判断できます。",
+    "Besides Basic Info, the detail page has four more tabs: Pick Strategies, Pick Tasks, Task Actions and Picked Inventory, covering the pick strategy, the generated tasks, the task action records and the stock already picked. In most cases Basic Info and Pick Tasks are enough to tell whether the plan has been released and the tasks are moving normally."
+  ],
+  "Order Filters 保存可重复使用的订单条件。Dispatch 只处理满足条件、且尚未关联 Order Plan 的订单。": [
+    "Order Filters は再利用できる注文条件を保存します。Dispatch は、条件を満たし、まだ Order Plan に紐づいていない注文だけを処理します。",
+    "Order Filters stores reusable order conditions. Dispatch only handles orders that meet the conditions and are not yet linked to an Order Plan."
+  ],
+  "不同履约场景，需要各自独立的订单入口": [
+    "履行シーンごとに、独立した注文の入口が必要",
+    "Each fulfilment scenario needs its own entry point for orders"
+  ],
+  "仓库往往同时处理几类订单：一件代发订单适合按商品汇总拣货，普通订单适合逐单拣货，小包裹订单则要走打包工位。为每一类订单建一个筛选模板，Dispatch 就能分别圈出对应的订单，互不干扰。": [
+    "倉庫では通常、複数の種類の注文を同時に扱います。ドロップシップ注文は商品ごとにまとめてピッキングするのが向き、通常注文は注文ごとのピッキングが向き、小口配送の注文は梱包ステーションに回します。注文の種類ごとにフィルターテンプレートを作れば、Dispatch はそれぞれの注文を別々に抽出でき、互いに影響しません。",
+    "A warehouse usually handles several kinds of orders at once: dropship orders suit item-based picking, regular orders suit order-by-order picking, and small parcel orders go to the packing station. Create one filter template per kind, and Dispatch can pick out each group separately without them interfering."
+  ],
+  "模板列表": [
+    "テンプレート一覧",
+    "Template list"
+  ],
+  "一眼看清每个模板圈了哪些订单": [
+    "各テンプレートがどの注文を対象にしているか、ひと目で分かる",
+    "See at a glance which orders each template covers"
+  ],
+  "Selected Fields 列直接显示模板用到的条件和取值，不必逐个打开就能区分模板的用途。同一类订单只需要维护一个模板，供不同的派单方案重复引用。": [
+    "Selected Fields 列にテンプレートで使う条件と値が直接表示されるため、一つずつ開かなくても用途を区別できます。同じ種類の注文には1つのテンプレートを維持すれば足り、複数の Dispatch 方案から繰り返し参照できます。",
+    "The Selected Fields column shows the conditions and values each template uses, so you can tell their purposes apart without opening them. Keep one template per kind of order and let different dispatch plans reuse it."
+  ],
+  "从左侧挑选条件，右侧设置取值": [
+    "左側で条件を選び、右側で値を設定する",
+    "Pick conditions on the left and set values on the right"
+  ],
+  "左侧 Supported Fields 列出所有可用的筛选条件，点选后会出现在右侧 Filter Criteria 中，再为它选择取值。条件越多范围越窄：不同条件需要同时满足，同一条件下选择多个值时，满足其中任意一个即可。保存之前可以用 Preview Orders 看一下当前条件能匹配到哪些订单。": [
+    "左側の Supported Fields に使用できる絞り込み条件が並び、選択すると右側の Filter Criteria に追加されるので、そこで値を選びます。条件が増えるほど範囲は狭くなります。異なる条件はすべて満たす必要があり、同じ条件で複数の値を選んだ場合はいずれかに一致すれば対象になります。保存前に Preview Orders で、現在の条件に一致する注文を確認できます。",
+    "Supported Fields on the left lists every available condition. Selecting one adds it to Filter Criteria on the right, where you choose its values. More conditions mean a narrower range: different conditions must all be met, while several values under the same condition match if any one of them applies. Before saving, use Preview Orders to see which orders the current conditions match."
+  ],
+  "建模板的思路：": [
+    "テンプレート作成の考え方：",
+    "How to build a template:"
+  ],
+  "订单状态与订单类型通常是最基础的两项，再按承运商、运输方式或时间窗口收窄；需要按客户自定义字段区分订单时，可使用 Dynamic Text Value。已经关联 Order Plan 的订单会被自动排除，不会被重复派单。": [
+    "注文ステータスと注文タイプが最も基本的な2項目で、さらに運送会社、配送方法、時間枠で絞り込みます。顧客ごとの独自項目で注文を区別したい場合は Dynamic Text Value を使います。すでに Order Plan に紐づいている注文は自動的に除外され、重複して割り当てられることはありません。",
+    "Order status and order type are usually the two basic conditions, and you narrow further by carrier, ship method or time window. To tell orders apart by a customer-defined field, use Dynamic Text Value. Orders already linked to an Order Plan are excluded automatically, so they are never dispatched twice."
+  ],
+  "Dispatch Settings 把筛选模板和拣货配置组合成一个可执行的方案，可以手动执行，也可以按时间表自动运行。": [
+    "Dispatch Settings は、フィルターテンプレートとピッキング設定を組み合わせて実行可能な方案にします。手動で実行することも、スケジュールに従って自動実行することもできます。",
+    "Dispatch Settings combines a filter template with picking settings into an executable plan. It can be run manually or run automatically on a schedule."
+  ],
+  "同一批订单，按现场作业方式生成不同的计划和任务": [
+    "同じ注文群でも、現場の作業方法に合わせて異なる計画とタスクを生成する",
+    "The same batch of orders can produce different plans and tasks to suit how the floor works"
+  ],
+  "小件订单可以合并拣货、使用推车；自动化区域的订单可以交给 AGV。把这些做法分别保存成方案后，仓库只需要在合适的时间执行对应方案，或者让系统按时间表自动运行，不必每次手工创建计划。": [
+    "小物の注文はまとめてピッキングしてカートを使い、自動化エリアの注文は AGV に任せる、といった運用ができます。これらをそれぞれ方案として保存しておけば、倉庫は適切なタイミングで該当の方案を実行するか、スケジュールに従ってシステムに自動実行させるだけでよく、毎回手作業で計画を作る必要がありません。",
+    "Small items can be batch-picked with carts, while orders in an automated area can go to AGVs. Save each approach as its own plan, and the warehouse only needs to run the right plan at the right time, or let the system run it on a schedule, instead of building a plan by hand every time."
+  ],
+  "方案列表": [
+    "方案一覧",
+    "Plan list"
+  ],
+  "管理并执行仓库内的派单方案": [
+    "倉庫内の割り当て方案を管理して実行する",
+    "Manage and run the dispatch plans in the warehouse"
+  ],
+  "每一行是一个方案。Auto Release 与 Schedule 两列的开关能直接看出方案是否会自动释放、是否按时间表运行。行尾的操作按钮依次是预览订单、立即执行、查看执行历史、复制和删除。": [
+    "各行が1つの方案です。Auto Release と Schedule の列のスイッチで、自動リリースされるか、スケジュール実行されるかがひと目で分かります。行末の操作ボタンは、順に注文のプレビュー、即時実行、実行履歴の表示、コピー、削除です。",
+    "Each row is one plan. The switches in the Auto Release and Schedule columns show at a glance whether it releases automatically and whether it runs on a schedule. The buttons at the end of each row are, in order, preview orders, run now, view execution history, copy and delete."
+  ],
+  "日常使用：": [
+    "日常の使い方：",
+    "In daily use:"
+  ],
+  "新方案可以从相近的方案 Copy 后调整；执行前先用 Preview 确认会处理哪些订单；方案越多越要靠名称区分，建议把客户、拣货方式写进名称。": [
+    "新しい方案は似た方案を Copy して調整できます。実行前に Preview でどの注文が処理されるかを確認します。方案が増えるほど名称での区別が重要になるため、顧客とピッキング方法を名称に入れておくことをお勧めします。",
+    "A new plan can be made by copying a similar one and adjusting it. Before running, use Preview to confirm which orders will be handled. The more plans you have, the more the names matter, so put the customer and the picking method in the name."
+  ],
+  "按“订单来源、拣货方式、计划规模、执行时间”四步配置": [
+    "「注文の対象、ピッキング方法、計画の規模、実行時間」の4ステップで設定する",
+    "Configure it in four steps: order source, pick method, plan size and run time"
+  ],
+  "页面从上到下分为六个区块，实际决策主要集中在这四件事上。": [
+    "ページは上から下へ6つのブロックに分かれていますが、実際に判断するのは主にこの4点です。",
+    "The page has six blocks from top to bottom, but the decisions mostly come down to these four things."
+  ],
+  "订单来源": [
+    "注文の対象",
+    "Order source"
+  ],
+  "Apply Filters 引用第一步建好的筛选模板，Customer 可进一步限定客户，Preview Orders 用来在保存前确认范围。": [
+    "Apply Filters で最初に作ったフィルターテンプレートを参照し、Customer でさらに顧客を絞り込めます。Preview Orders で保存前に対象範囲を確認します。",
+    "Apply Filters refers to the filter template built in the first step, and Customer narrows it down to one customer. Use Preview Orders to confirm the range before saving."
+  ],
+  "拣货方式": [
+    "ピッキング方法",
+    "Pick method"
+  ],
+  "Pick Method 与 Pick Mode 决定订单如何合并成任务、由什么方式拣货；Task Priority、Assignment Mode、Default Assignee 决定任务的优先级和指派方式。": [
+    "Pick Method と Pick Mode は、注文をどうまとめてタスクにし、どの方式でピッキングするかを決めます。Task Priority、Assignment Mode、Default Assignee はタスクの優先度と割り当て方法を決めます。",
+    "Pick Method and Pick Mode decide how orders are combined into tasks and how they are picked. Task Priority, Assignment Mode and Default Assignee decide the task priority and how tasks are assigned."
+  ],
+  "计划分组": [
+    "計画のグループ化",
+    "Plan grouping"
+  ],
+  "Order Plan Group By 用来决定订单分组生成计划的依据，需要把不同订单分开作业时使用。": [
+    "Order Plan Group By は、注文をどの基準で分けて計画を作るかを決めます。異なる注文を分けて作業したいときに使います。",
+    "Order Plan Group By decides the basis on which orders are split into plans. Use it when different orders need to be worked separately."
+  ],
+  "Min Orders Per Plan 与 Max Orders Per Plan 控制一个计划至少、至多容纳多少订单，避免计划过碎或者过大。": [
+    "Min Orders Per Plan と Max Orders Per Plan で、1つの計画に最低・最大いくつの注文を含めるかを制御し、計画が細かすぎたり大きすぎたりするのを防ぎます。",
+    "Min Orders Per Plan and Max Orders Per Plan control the fewest and most orders a single plan can hold, so plans are neither too fragmented nor too large."
+  ],
+  "自动释放与异常订单": [
+    "自動リリースと例外注文",
+    "Auto release and problem orders"
+  ],
+  "开启 Auto Release 后计划生成即释放，现场可立刻领取任务。库存锁定失败的订单是否排除、带错误的订单是否移出计划并标记异常，也在这里选择，用于避免个别订单拖住整批作业。": [
+    "Auto Release を有効にすると、計画の生成と同時にリリースされ、現場がすぐにタスクを受け取れます。在庫の引き当てに失敗した注文を除外するか、エラーのある注文を計画から外して例外として記録するかもここで選び、一部の注文のせいで全体の作業が止まるのを防ぎます。",
+    "With Auto Release on, a plan is released as soon as it is created, so the floor can take its tasks right away. This is also where you choose whether to exclude orders whose stock commitment fails and whether to remove orders with errors from the plan and mark them as exceptions, so a few orders do not hold up the whole batch."
+  ],
+  "执行时间": [
+    "実行時間",
+    "Run time"
+  ],
+  "开启 Enable Schedule 后，可按固定间隔、每天、工作日或 Cron 表达式运行。页面会同步列出接下来的 10 次执行时间，保存前先核对时间是否符合预期。": [
+    "Enable Schedule を有効にすると、固定間隔、毎日、平日、または Cron 式で実行できます。ページには今後10回の実行時刻も表示されるので、保存前に想定どおりか確認してください。",
+    "With Enable Schedule on, the plan can run at a fixed interval, daily, on weekdays, or by a Cron expression. The page also lists the next 10 run times, so check them before saving."
+  ],
+  "方案没有按预期生成计划时，先看历史": [
+    "方案が想定どおりに計画を生成しないときは、まず履歴を確認する",
+    "When a plan does not create plans as expected, check the history first"
+  ],
+  "History 记录每次执行的结果：处理了多少订单、生成了多少计划、有多少订单锁定库存失败。没有生成计划时，Exception 列会说明原因，例如没有订单匹配筛选条件，就应回到 Order Filters 检查条件。": [
+    "History には実行ごとの結果が記録されます。処理した注文数、生成した計画数、在庫の引き当てに失敗した注文数などです。計画が生成されなかった場合は Exception 列に理由が表示されます。たとえば条件に一致する注文がなければ、Order Filters の条件を見直してください。",
+    "History records the result of each run: how many orders were handled, how many plans were created, and how many orders failed to commit stock. When no plan was created, the Exception column gives the reason. For example, if no order matches the conditions, go back and check the conditions in Order Filters."
+  ],
+  "拣货在手持端完成后，容器被送到打包工位。操作员在这里调出订单，确认每件商品与数量，补充包裹尺寸和重量，最后打印 Shipping Label 和需要随货附上的装箱单。处理完一票后，可以用 Reset 清空页面，再扫描下一票。": [
+    "ハンディ端末でのピッキングが終わると、コンテナが梱包ステーションに運ばれます。担当者はここで注文を呼び出し、各商品と数量を確認し、荷物のサイズと重量を入力して、Shipping Label と同梱する納品書を印刷します。1件が終わったら Reset で画面をクリアし、次の注文をスキャンします。",
+    "Once picking is finished on the handheld device, the container is brought to the packing station. The operator calls up the order here, checks each item and quantity, adds the parcel size and weight, and prints the Shipping Label and any packing list to go in the box. After one order is done, use Reset to clear the page and scan the next one."
+  ],
+  "工位主页": [
+    "ステーションのメイン画面",
+    "Station main page"
+  ],
+  "上方调出订单，下方完成打印": [
+    "上で注文を呼び出し、下で印刷を完了する",
+    "Call up the order at the top, finish printing at the bottom"
+  ],
+  "页面顶部是扫描框和功能入口，扫描后订单与待打包的商品显示在中间区域，底部固定着可勾选的单据和 Print All。Operation Log 记录工位上的操作过程，需要回溯时可展开查看。": [
+    "画面上部にスキャン欄と機能の入口があり、スキャンすると注文と梱包待ちの商品が中央に表示されます。下部には選択できる帳票と Print All が固定されています。Operation Log にはステーションでの操作の経過が記録され、さかのぼって確認したいときに展開できます。",
+    "The scan box and the function entries sit at the top. After scanning, the order and the items waiting to be packed appear in the middle, and the documents you can select, together with Print All, are fixed at the bottom. Operation Log records what was done at the station and can be expanded when you need to look back."
+  ],
+  "调出订单": [
+    "注文を呼び出す",
+    "Call up the order"
+  ],
+  "逐件核验": [
+    "1点ずつ照合する",
+    "Check item by item"
+  ],
+  "逐件扫描 UPC、Item Name、Case UPC 或其他商品编码，系统将扫描结果与当前订单物料匹配并扣减待扫数量。是否必须逐件扫描，由工位设置中的 Require Item Scan 控制。": [
+    "UPC、Item Name、Case UPC などの商品コードを1点ずつスキャンすると、システムが現在の注文の品目と照合して、未スキャンの数量を減らします。1点ずつのスキャンを必須にするかどうかは、ステーション設定の Require Item Scan で決まります。",
+    "Scan UPC, Item Name, Case UPC or other item codes one by one, and the system matches each scan to the items of the current order and reduces the quantity still to scan. Whether item-by-item scanning is required is controlled by Require Item Scan in the station settings."
+  ],
+  "工位设置": [
+    "ステーション設定",
+    "Station settings"
+  ],
+  "按本工位的作业习惯调整行为": [
+    "このステーションの作業習慣に合わせて動作を調整する",
+    "Adjust behavior to how this station works"
+  ],
+  "点击右上角的 Settings 可以调整当前工位的作业方式，不同工位可以采用不同习惯。": [
+    "右上の Settings をクリックすると、現在のステーションの作業方法を調整できます。ステーションごとに異なる運用にできます。",
+    "Click Settings at the top right to adjust how the current station works. Different stations can use different habits."
+  ],
+  "三项开关与两台打印机": [
+    "3つのスイッチと2台のプリンター",
+    "Three switches and two printers"
+  ],
+  "让扫描和打印更贴合现场": [
+    "スキャンと印刷を現場に合わせる",
+    "Fit scanning and printing to the floor"
+  ],
+  "控制打包时是否要求逐件扫描商品。是否开启取决于现场对核验精度和打包速度的取舍。": [
+    "梱包時に商品を1点ずつスキャンすることを必須にするかを制御します。有効にするかどうかは、現場での照合精度と梱包速度のどちらを重視するかで決まります。",
+    "Controls whether items must be scanned one by one while packing. Whether to turn it on depends on how the floor balances checking accuracy against packing speed."
+  ],
+  "两项都属于自动化选项，用来减少操作员的重复点击：前者与面单打印有关，后者与订单关闭有关。": [
+    "どちらも自動化オプションで、担当者の繰り返しのクリックを減らします。前者はラベル印刷、後者は注文のクローズに関わります。",
+    "Both are automation options that save the operator repeated clicks: the first relates to label printing and the second to closing the order."
+  ],
+  "分别填写 ZPL 标签打印机和 PDF 文档打印机的名称，面单和装箱单可以输出到各自对应的设备。": [
+    "ZPL ラベルプリンターと PDF 文書プリンターの名前をそれぞれ入力すると、ラベルと納品書をそれぞれの機器に出力できます。",
+    "Enter the names of the ZPL label printer and the PDF document printer, so labels and packing lists can be sent to their own devices."
+  ],
+  "其他入口": [
+    "その他の入口",
+    "Other entries"
+  ],
+  "补发面单、处理异常、查看订单汇总": [
+    "ラベルの再発行、例外の確認、注文サマリーの表示",
+    "Reprint labels, check exceptions, view the order summary"
+  ],
+  "顶部另外三个入口用于特殊情况，日常打包通常不需要。": [
+    "上部のほかの3つの入口は特殊な場合に使うもので、通常の梱包では必要ありません。",
+    "The other three entries at the top are for special cases and are usually not needed in daily packing."
+  ],
+  "面单损坏或需要补发时使用，针对已发货的包裹重新打印单据。": [
+    "ラベルが破損した場合や再発行が必要な場合に使い、出荷済みの荷物について帳票を再印刷します。",
+    "Use it when a label is damaged or must be reissued; it reprints the documents for parcels that have already shipped."
+  ],
+  "集中查看被标记为异常的记录，没有异常时会显示 No exceptions。": [
+    "例外としてマークされた記録をまとめて確認できます。例外がないときは No exceptions と表示されます。",
+    "Shows all records marked as exceptions in one place. When there are none, it displays No exceptions."
+  ],
+  "需要先调出订单才能使用，用来查看当前订单的汇总信息。": [
+    "先に注文を呼び出さないと使えません。現在の注文のサマリー情報を確認するために使います。",
+    "It can only be used after an order has been called up, and shows the summary information of the current order."
+  ],
+  "Load Management 归集同一次运输中的出库订单，维护承运商、地址、预约时间和运输编号。装车现场的 Load Task 必须基于已有的 Load 创建。": [
+    "Load Management は、同じ輸送で出荷する注文をまとめ、運送会社、住所、予約時間、輸送番号を管理します。荷積み現場の Load Task は、既存の Load をもとに作成する必要があります。",
+    "Load Management groups the outbound orders that travel together and maintains the carrier, addresses, appointment time and shipment numbers. A Load Task for the loading floor must be created from an existing Load."
+  ],
+  "例如承运商安排一辆整车下午 3 点到仓，同时提取三个已完成拣货的客户订单。仓库用一个 Load 归集它们，统一记录承运商、预约时间、收发货地址和运输编号。车辆到达后，再基于这个 Load 创建装车任务，交给现场人员执行。": [
+    "たとえば運送会社が午後3時にフルトラックを手配し、ピッキング済みの3件の顧客注文を同時に引き取るとします。倉庫は1つの Load にまとめて、運送会社、予約時間、出荷先と届け先の住所、輸送番号をまとめて記録します。車両が到着したら、この Load をもとに荷積みタスクを作成して現場担当者に渡します。",
+    "Say a carrier books a full truck for 3 p.m. to collect three picked customer orders at once. The warehouse groups them in one Load and records the carrier, appointment time, addresses and shipment numbers together. When the truck arrives, a loading task is created from this Load and handed to the floor staff."
+  ],
+  "Load 列表": [
+    "Load 一覧",
+    "Load list"
+  ],
+  "从装载批次的状态，判断今天的装车进度": [
+    "積載バッチの状態から、今日の積込みの進み具合を判断する",
+    "Judge today's loading progress from the status of each load"
+  ],
+  "顶部的状态汇总反映各阶段的批次数量，列表中的 Orders 列显示每个批次包含多少订单。Import 用于批量导入已有的装载数据，Export 用于导出列表，新建单个批次则点击 Add。": [
+    "上部のステータス集計は各段階のバッチ数を示し、一覧の Orders 列は各バッチに含まれる注文数を示します。Import は既存の積載データの一括取り込み、Export は一覧の出力、1件ずつ新規作成する場合は Add をクリックします。",
+    "The status summary at the top shows how many loads are in each stage, and the Orders column shows how many orders each load holds. Import brings in existing load data in bulk, Export exports the list, and Add creates a single load."
+  ],
+  "装车任务从已有的 Load 创建": [
+    "荷積みタスクは既存の Load から作成する",
+    "Loading tasks are created from an existing Load"
+  ],
+  "在列表中勾选 Load 后点击 Create Task，指定月台、装车方式，按需补充承运商和设备类型，再设置优先级和负责人。Task 菜单下的 Load Tasks 只用于管理和执行已经创建的任务，不能手工新建。": [
+    "一覧で Load を選択して Create Task をクリックし、ドック、積込み方法を指定し、必要に応じて運送会社と機材タイプを補足してから、優先度と担当者を設定します。Task メニューの Load Tasks は作成済みのタスクの管理と実行のみに使い、手動で新規作成することはできません。",
+    "Select Loads in the list and click Create Task, specify the dock and load mode, add the carrier and equipment type if needed, then set the priority and assignee. Load Tasks under the Task menu is only for managing and running tasks that already exist; tasks cannot be created there by hand."
+  ],
+  "一次可选多个 Load": [
+    "複数の Load をまとめて選択",
+    "Select several Loads at once"
+  ],
+  "弹窗下方的 Selected Loads 会列出本次选中的批次，多个 Load 可以放进同一个装车任务。": [
+    "ポップアップ下部の Selected Loads に今回選択したバッチが表示され、複数の Load を1つの荷積みタスクにまとめられます。",
+    "Selected Loads at the bottom of the pop-up lists the loads you chose, and several Loads can go into the same loading task."
+  ],
+  "必填项与优先级": [
+    "必須項目と優先度",
+    "Required fields and priority"
+  ],
+  "Dock、Load Mode、Priority 和 Assignee 带红色星号，是创建任务必填的内容；需要加急的车辆可以调高 Priority。": [
+    "Dock、Load Mode、Priority、Assignee には赤い星印が付いており、タスク作成に必須の項目です。急ぎの車両は Priority を上げます。",
+    "Dock, Load Mode, Priority and Assignee carry a red asterisk and are required to create the task. Raise Priority for a truck that needs to go first."
+  ],
+  "先记录运输安排，再加入订单": [
+    "先に輸送の手配を記録し、次に注文を追加する",
+    "Record the transport arrangement first, then add orders"
+  ],
+  "创建页分为两部分：上半部分是承运商、运费条款、Load Type 和预约时间等运输信息；下半部分是 Ship From、Ship To、Bill To 三个地址和本次装载的订单行。Load Type 对应不同的运输方式，例如整车 FTL 与零担 LTL，按实际运输方式选择即可。": [
+    "作成画面は2つの部分に分かれています。上半分は運送会社、運賃条件、Load Type、予約時間などの輸送情報、下半分は Ship From、Ship To、Bill To の3つの住所と今回積む注文の明細です。Load Type は輸送方法に対応し、たとえばフルトラックの FTL や混載の LTL など、実際の輸送方法に合わせて選びます。",
+    "The create page has two parts. The upper half holds transport information such as the carrier, freight terms, Load Type and appointment time. The lower half holds the three addresses, Ship From, Ship To and Bill To, plus the order lines for this load. Load Type matches the way the freight moves, for example full truckload FTL or less-than-truckload LTL; choose the one that fits the actual shipment."
+  ],
+  "加入订单：": [
+    "注文の追加：",
+    "Adding orders:"
+  ],
+  "通过 Add Order Lines 添加已完成拣货、等待发运的订单。需要按顺序装车时，可开启 Enable Load Sequence。地址会作为快照保存在这个 Load 中，之后修改地址主档不会影响已创建的批次。": [
+    "Add Order Lines で、ピッキングが完了し出荷待ちの注文を追加します。積込み順を決めたいときは Enable Load Sequence を有効にします。住所はこの Load にスナップショットとして保存されるため、後から住所マスターを変更しても作成済みのバッチには影響しません。",
+    "Use Add Order Lines to add orders that are picked and waiting to ship. Turn on Enable Load Sequence when the loading order matters. Addresses are saved in this Load as a snapshot, so changing the address master later does not affect loads already created."
+  ],
+  "Load 详情": [
+    "Load 詳細",
+    "Load detail"
+  ],
+  "创建之后，在详情页核对和跟进": [
+    "作成後は、詳細画面で確認して進捗を追う",
+    "After creation, check and follow up on the detail page"
+  ],
+  "详情页上方汇总运输信息和签收状态，下方的 Orders 页签列出本批次包含的订单，Photos 页签用于查看照片，没有照片时显示 No photos。右上角的 Print 用于打印单据，More Actions 中可以执行批次级别的操作，例如 Close Load。": [
+    "詳細画面の上部には輸送情報と署名状況がまとまっており、下の Orders タブにはこのバッチに含まれる注文が並び、Photos タブでは写真を確認できます。写真がないときは No photos と表示されます。右上の Print は帳票の印刷、More Actions ではバッチ単位の操作、たとえば Close Load を実行できます。",
+    "The top of the detail page summarizes the transport information and signature status. The Orders tab below lists the orders in this load, and the Photos tab shows photos, displaying No photos when there are none. Print at the top right prints documents, and More Actions offers load-level actions such as Close Load."
+  ],
+  "Shipment Ticket 是订单级的发运结果记录。装车任务关闭后，系统根据订单、运输方式、Tracking No 和 Load 对已发运库存分组并自动生成，同时作为打印 Packing List 和发送 DC（Delivery Confirmation）的数据入口。": [
+    "Shipment Ticket は注文単位の出荷結果の記録です。荷積みタスクがクローズされると、システムが注文、輸送方法、Tracking No、Load ごとに出荷済み在庫をグループ化して自動生成し、Packing List の印刷と DC（Delivery Confirmation）送信のデータの入口にもなります。",
+    "A Shipment Ticket is the order-level record of what actually shipped. After a loading task is closed, the system groups the shipped stock by order, ship method, Tracking No and Load and creates the ticket automatically. It is also the entry point for printing the Packing List and sending the DC (Delivery Confirmation)."
+  ],
+  "装车任务关闭后，仓库需要保留正式的发运记录，说明哪些商品、装在哪些容器中、通过什么运单号发出；客户的 OMS 或 ERP 也需要收到发货确认，才能更新订单状态。Shipment Ticket 就是这份记录和通知的数据载体。": [
+    "荷積みタスクがクローズされた後、倉庫はどの商品がどのコンテナに入り、どの送り状番号で出荷されたかを示す正式な出荷記録を残す必要があります。顧客の OMS や ERP も出荷確認を受け取らなければ、注文ステータスを更新できません。Shipment Ticket はこの記録と通知を運ぶデータです。",
+    "Once a loading task is closed, the warehouse needs a formal shipping record showing which items went out in which containers under which tracking number, and the customer's OMS or ERP needs the shipment confirmation to update its order status. The Shipment Ticket carries both the record and the notification."
+  ],
+  "Ticket 列表": [
+    "Ticket 一覧",
+    "Ticket list"
+  ],
+  "查询发运记录，并确认是否已通知客户": [
+    "出荷記録を検索し、顧客に通知済みかを確認する",
+    "Look up shipping records and check whether the customer was notified"
+  ],
+  "可以按 Ticket、订单、Load 或客户定位记录。DC Sent 一列用来判断发运结果有没有成功发送给客户系统，Status 则区分 Ticket 是新建还是已关闭。需要统一补发时，勾选多条记录后使用 Batch Send/Resend DC；需要对账时用 Export 导出。": [
+    "Ticket、注文、Load、顧客で記録を絞り込めます。DC Sent 列は、出荷結果が顧客システムへ正常に送信されたかを判断するための列で、Status は Ticket が新規かクローズ済みかを区別します。まとめて再送したいときは複数の記録を選択して Batch Send/Resend DC を使い、突き合わせには Export で出力します。",
+    "Records can be found by ticket, order, load or customer. The DC Sent column tells you whether the shipment result reached the customer system, and Status separates new tickets from closed ones. To resend in bulk, select several records and use Batch Send/Resend DC; use Export when you need to reconcile."
+  ],
+  "Customer Basic Info 页面截图": ["Customer Basic Info 画面のスクリーンショット", "Customer Basic Info page screenshot"],
+  "放大 Customer Basic Info 截图": ["Customer Basic Info のスクリーンショットを拡大", "Enlarge the Customer Basic Info screenshot"],
+  "Customer Title Relationship 页面截图": ["Customer Title Relationship 画面のスクリーンショット", "Customer Title Relationship page screenshot"],
+  "放大 Customer Title Relationship 截图": ["Customer Title Relationship のスクリーンショットを拡大", "Enlarge the Customer Title Relationship screenshot"],
+  "Customer Scan SKU Config 页面截图": ["Customer Scan SKU Config 画面のスクリーンショット", "Customer Scan SKU Config page screenshot"],
+  "放大 Customer Scan SKU Config 截图": ["Customer Scan SKU Config のスクリーンショットを拡大", "Enlarge the Customer Scan SKU Config screenshot"],
+  "Customer Settings Inbound 页面截图": ["Customer Settings の Inbound 画面のスクリーンショット", "Customer Settings Inbound page screenshot"],
+  "放大 Customer Settings Inbound 截图": ["Customer Settings の Inbound スクリーンショットを拡大", "Enlarge the Customer Settings Inbound screenshot"],
+  "Customer Settings Put Away Strategies 页面截图": ["Customer Settings の Put Away Strategies 画面のスクリーンショット", "Customer Settings Put Away Strategies page screenshot"],
+  "放大 Customer Settings Put Away Strategies 截图": ["Customer Settings の Put Away Strategies スクリーンショットを拡大", "Enlarge the Customer Settings Put Away Strategies screenshot"],
+  "Customer Settings Outbound 页面截图": ["Customer Settings の Outbound 画面のスクリーンショット", "Customer Settings Outbound page screenshot"],
+  "放大 Customer Settings Outbound 截图": ["Customer Settings の Outbound スクリーンショットを拡大", "Enlarge the Customer Settings Outbound screenshot"],
+  "Customer Settings Webhook Channels 页面截图": ["Customer Settings の Webhook Channels 画面のスクリーンショット", "Customer Settings Webhook Channels page screenshot"],
+  "放大 Customer Settings Webhook Channels 截图": ["Customer Settings の Webhook Channels スクリーンショットを拡大", "Enlarge the Customer Settings Webhook Channels screenshot"],
+  "Customer Settings WCS Setting 页面截图": ["Customer Settings の WCS Setting 画面のスクリーンショット", "Customer Settings WCS Setting page screenshot"],
+  "放大 Customer Settings WCS Setting 截图": ["Customer Settings の WCS Setting スクリーンショットを拡大", "Enlarge the Customer Settings WCS Setting screenshot"],
+  "Customer Settings Dynamic Field Mapping 页面截图": ["Customer Settings の Dynamic Field Mapping 画面のスクリーンショット", "Customer Settings Dynamic Field Mapping page screenshot"],
+  "放大 Customer Settings Dynamic Field Mapping 截图": ["Customer Settings の Dynamic Field Mapping スクリーンショットを拡大", "Enlarge the Customer Settings Dynamic Field Mapping screenshot"],
+  "Customer Settings 分类": ["Customer Settings の分類", "Customer Settings categories"],
+  "Scan SKU Config｜扫码商品范围": ["Scan SKU Config｜スキャン対象の商品範囲", "Scan SKU Config | SKUs that require scanning"],
+  "先在 Select Item 中选择商品，再把它加入该客户的扫码商品清单。": ["まず Select Item で商品を選び、その顧客のスキャン対象商品リストに追加します。", "Pick an item in Select Item first, then add it to this customer's scan-SKU list."],
+  "用于按客户单独维护需要扫码处理的 SKU，清单为空时表示尚未配置。": ["顧客ごとにスキャン対象の SKU を個別に管理するために使います。リストが空の場合は未設定です。", "Use it to maintain, per customer, the SKUs that must be scanned. An empty list means nothing has been configured yet."],
+  "适用范围": ["適用範囲", "Scope"],
+  "这个客户的入库规则对哪些收货类型生效": ["この顧客の入庫ルールが適用される入荷タイプ", "Which receipt types this customer's inbound rules apply to"],
+  "限定该客户可以使用的收货子类型。客户只做部分入库业务时，可以只保留相关类型，录单时就不会选到不适用的类型。": ["この顧客が使える入荷サブタイプを限定します。顧客が一部の入庫業務だけを行う場合は、関連するタイプだけを残すと、登録時に不適切なタイプを選ばずに済みます。", "Restricts the receipt sub types this customer can use. If the customer only runs part of the inbound business, keep just the relevant types so unsuitable ones cannot be picked when creating a receipt."],
+  "这个客户可以下哪些类型的出库订单": ["この顧客が作成できる出庫オーダーのタイプ", "Which outbound order types this customer can place"],
+  "限定该客户可以使用的出库订单子类型，录单时只会看到与该客户业务相关的类型。": ["この顧客が使える出庫オーダーのサブタイプを限定します。登録時には、その顧客の業務に関係するタイプだけが表示されます。", "Restricts the outbound order sub types this customer can use, so only the types relevant to this customer appear when creating an order."],
+  "开启后允许同一 LP 混放不同商品，具体仍按 VLG 规则判断；实际存放还需满足 Location、Container Type 等其他规则。": ["有効にすると、同じ LP に異なる商品を混載できます。可否は引き続き VLG ルールで判定され、実際の保管には Location や Container Type などの条件も満たす必要があります。", "When enabled, different items can share one LP, still judged by VLG rules; actual storage must also satisfy Location, Container Type and other rules."],
+  "订单一生成就自动锁库存，还是人工确认后再锁": ["オーダー作成と同時に在庫を自動で引き当てるか、人が確認してから引き当てるか", "Lock inventory as soon as an order is created, or only after manual confirmation"],
+  "开启后，订单创建完成即自动 Commit，也就是锁定库存。适合订单量大、希望下单后立刻占住库存的客户；需要人工审核订单后再锁库存的客户可以保持关闭。": ["有効にすると、オーダー作成の完了と同時に自動で Commit（在庫の引き当て）が行われます。オーダー数が多く、発注後すぐに在庫を確保したい顧客に向いています。オーダーを人が確認してから引き当てたい顧客は無効のままにします。", "When enabled, an order is committed (inventory locked) automatically once it is created. Suits customers with high order volume who want stock held right after ordering; leave it off if orders need manual review before inventory is locked."],
+  "缺货处理": ["欠品時の扱い", "Shortage handling"],
+  "拣货短拣后，剩余库存如何处理": ["ショートピック後、残りの在庫をどう扱うか", "What happens to the remaining stock after a short pick"],
+  "开启后，发生短拣时剩余库存会被置为 ONHOLD，在差异处理完成前其他订单无法占用，避免在库存不准时继续出货。": ["有効にすると、ショートピックが発生したとき残りの在庫が ONHOLD になり、差異の処理が終わるまで他のオーダーは引き当てられません。在庫が不正確なまま出荷を続けるのを防ぎます。", "When enabled, a short pick sets the remaining stock to ONHOLD so other orders cannot commit against it until the discrepancy is resolved, avoiding shipments while inventory is inaccurate."],
+  "回退规则": ["ロールバックの条件", "Rollback rule"],
+  "订单回退前，要不要先完成已有的 Put Back": ["オーダーをロールバックする前に、既存の Put Back を完了させる必要があるか", "Whether existing Put Back must finish before an order is rolled back"],
+  "用于控制订单回退（Rollback）与 Put Back 的先后顺序。具体生效条件请以现场测试为准。": ["オーダーのロールバック（Rollback）と Put Back の前後関係を制御します。具体的な適用条件は現場でのテスト結果を基準にしてください。", "Controls the order between rolling back an order (Rollback) and Put Back. Confirm the exact conditions with on-site testing."],
+  "小包裹工位是否需要逐件扫描商品": ["スモールパーセル工位で商品を1点ずつスキャンする必要があるか", "Whether items must be scanned one by one at the small parcel station"],
+  "开启后，在小包裹工位扫描订单即自动把全部商品分配进包裹，无需逐件扫码核对，适合低价值商品。": ["有効にすると、スモールパーセル工位でオーダーをスキャンするだけで全商品が自動的に荷姿へ割り当てられ、1点ずつのスキャン照合は不要になります。低価格商品に向いています。", "When enabled, scanning the order at the small parcel station assigns all items to the package automatically, with no item-by-item scan check. Suitable for low-value goods."],
+  "通过 Pick Sort Rules 定义拣货任务的排序方式，并可按 Facility 配置覆盖规则，使同一客户在不同仓库采用各自的作业顺序。": ["Pick Sort Rules でピッキングタスクの並び順を定義し、Facility ごとに上書きルールを設定することで、同じ顧客でも倉庫ごとに作業順を変えられます。", "Pick Sort Rules define how pick tasks are ordered, and a Facility override lets the same customer follow a different sequence in each warehouse."],
+  "开启后，还需在 Task Push Configs 中勾选要推送的任务类型（Put Away、Pick、Move、Cycle Count）。两项条件同时满足时，相关 Task Action 才会发送到 WCS。": ["有効にした後、Task Push Configs でプッシュするタスク種別（Put Away、Pick、Move、Cycle Count）にもチェックを入れる必要があります。両方の条件を満たしたときに限り、該当する Task Action が WCS に送信されます。", "After enabling it, also tick the task types to push in Task Push Configs (Put Away, Pick, Move, Cycle Count). A Task Action is sent to WCS only when both conditions are met."],
+  "按对象（SKU Master、Receipt、Receipt Lines、Order、Order Lines、Inventory）分页签，把预置的 dynTxt、dynDate 等扩展字段启用并改成客户熟悉的名称，还可以指定哪些字段在对外接口中必填。": ["対象（SKU Master、Receipt、Receipt Lines、Order、Order Lines、Inventory）ごとにタブが分かれています。あらかじめ用意された dynTxt や dynDate などの拡張項目を有効にして顧客に馴染みのある名称に変え、外部インターフェースで必須にする項目も指定できます。", "Tabs are split by object (SKU Master, Receipt, Receipt Lines, Order, Order Lines, Inventory). Enable the preset extension fields such as dynTxt and dynDate, rename them to terms the customer knows, and mark which ones are required in the public API."],
+  "Basic Info｜客户资料": ["Basic Info｜顧客情報", "Basic Info | Customer profile"],
+  "时，完成 LP Setup 后即可生成上架任务；选择": ["の場合、LP Setup の完了後すぐに上架タスクが生成されます。選択", "to generate put-away tasks as soon as LP Setup is complete; select"],
+  "时，关闭收货任务后再统一生成。": ["の場合、入荷タスクをクローズした後でまとめて生成されます。", "to generate them together once the receiving task is closed."],
+  "可在收货任务完成时关闭 Receipt，也可以等到上架完成后关闭。后者适用于客户把“货物已入库位”作为入库完成标准的情况。": ["入荷タスクの完了時に Receipt をクローズすることも、上架の完了後にクローズすることもできます。後者は、顧客が「商品がロケーションに入ったこと」を入庫完了の基準とする場合に向いています。", "The receipt can close when the receiving task completes, or wait until put-away is complete. The latter suits customers who treat \"goods are in their locations\" as the inbound completion standard."],
+  "按优先级逐条匹配，例如优先进入已有相同商品的库位，或优先选择空库位。数值越小的策略越先执行。": ["優先度の順に1件ずつ照合します。たとえば、同じ商品がすでにあるロケーションを優先したり、空きロケーションを優先したりできます。数値が小さいストラテジーほど先に実行されます。", "Strategies are matched one by one by priority, for example preferring locations that already hold the same item, or preferring empty locations. The lower the number, the earlier it runs."],
+  "列表可按 Industry Code 或 Name 查询，用来确认仓库已经维护了哪些行业分类；需要调整某个行业的专属字段时，从这里进入对应记录。": ["一覧は Industry Code または Name で検索できます。倉庫でどの業種分類が登録済みかを確認でき、業種固有の項目を調整したいときは、ここから該当レコードを開きます。", "The list can be searched by Industry Code or Name to confirm which industry classifications the warehouse already maintains. Open a record from here when you need to adjust the fields specific to that industry."],
+  "Industry 列表集中查看已维护的行业分类": ["Industry 一覧で登録済みの業種分類をまとめて確認する", "Review the maintained industry classifications in the Industry list"],
+  "可按 Hazard Code、Hazard Name 或 Hazard Class 定位记录。新建商品前先在这里确认所需的危险品定义是否已存在，避免重复建档。": ["Hazard Code、Hazard Name、Hazard Class でレコードを検索できます。商品を登録する前にここで必要な危険品定義がすでにあるかを確認し、重複登録を避けます。", "Records can be located by Hazard Code, Hazard Name or Hazard Class. Before creating an item, check here whether the hazard definition you need already exists, to avoid duplicates."],
+  "从 Hazard 列表查询已有的危险品定义": ["Hazard 一覧から既存の危険品定義を検索する", "Find existing hazard definitions from the Hazard list"],
+  "仓库管理乙醇、易燃液体等危险品时，可以先按法规资料建立 Hazard 定义，再由相关 Item 选择该定义。这样无需在每个商品上重复填写完整分类资料，定义有变化时也只需在一处维护。": ["倉庫でエタノールや引火性液体などの危険品を扱う場合は、まず法規の資料に基づいて Hazard 定義を作成し、該当する Item でその定義を選択します。商品ごとに分類情報を入力し直す必要がなく、定義に変更があっても1か所で更新できます。", "When the warehouse handles hazardous goods such as ethanol or flammable liquids, create the Hazard definition from regulatory data first, then let the related Items select it. Classification data does not need to be re-entered on every item, and a change to the definition is maintained in one place."],
+  "定义更新": ["定義の更新", "Updating a definition"],
+  "危险品资料发生变化时，只需修改 Hazard 主档，不必逐个修改商品。": ["危険品情報に変更があった場合は、Hazard マスタを修正するだけで済み、商品を1件ずつ修正する必要はありません。", "When hazard data changes, only the Hazard master needs editing; there is no need to edit items one by one."],
+  "依据现有危险品资料，记录标准编号、运输正式名称、危险品类别和包装等级。": ["既存の危険品資料に基づいて、標準番号、運送上の正式品名、危険品クラス、容器等級を記録します。", "Based on existing hazardous-goods data, record the standard number, the proper shipping name, the hazard class and the packing group."],
+  "并通过 Name、Company 和 Tags 帮助操作人员在创建订单或 Load 时找到正确地址。": ["Name、Company、Tags により、注文や Load の作成時に担当者が正しい住所を見つけやすくなります。", "Name, Company and Tags help operators find the right address when creating an order or Load."],
+  "可按名称或联系人搜索，并按客户缩小范围；需要核对某个门店或收货点的信息时，直接在列表中查看即可，无需打开记录。": ["名称や連絡先で検索し、顧客で絞り込めます。店舗や納品先の情報を確認したいときは、レコードを開かなくても一覧でそのまま確認できます。", "Search by name or contact and narrow the list by customer. To check a store or delivery point, read it straight from the list without opening the record."],
+  "仓库可以为同一个 Customer 建立三条 Address，用 Name 表示门店名称、Company 记录所属企业，并用 Tags 标记区域或用途。": ["倉庫は同じ Customer に対して3件の Address を登録できます。Name に店舗名、Company に所属企業を記録し、Tags で地域や用途を示します。", "The warehouse can create three Addresses for the same Customer, using Name for the store name, Company for the owning business, and Tags to mark the region or purpose."],
+  "同一 Customer 可维护多个门店或收货点，并通过 Name、Company 和 Tags 识别。": ["同じ Customer で複数の店舗や納品先を管理でき、Name、Company、Tags で識別します。", "One Customer can maintain several stores or delivery points, identified by Name, Company and Tags."],
+  "选择 Customer 并填写 Name，形成地址的归属和主要识别名称。Company 记录该地址所属的公司或门店所属企业，与 Name 配合识别；Tags 可自由输入区域、门店类别或业务用途。": ["Customer を選択して Name を入力し、住所の帰属と主な識別名を決めます。Company にはその住所が属する会社や店舗の運営企業を記録し、Name と合わせて識別します。Tags には地域、店舗区分、用途を自由に入力できます。", "Select the Customer and enter a Name to set the owner and main identifier of the address. Company records the business the address belongs to and works with Name for identification; Tags can hold a region, store category or purpose."],
+  "Contact、Phone 和 Email 用于记录该地址的对接窗口；Note 可以补充卸货时间、门店收货要求或其他现场说明。如果手头已有一整段地址文字，可以先使用 Parse 按钮让系统尝试拆分填入各字段，再人工核对。": ["Contact、Phone、Email はその住所の連絡窓口を記録するためのもので、Note には荷下ろし時間や店舗の受け入れ要件などの現場情報を補足できます。住所が1つの文章としてすでにある場合は、Parse ボタンで各項目への振り分けを試し、その後に目視で確認できます。", "Contact, Phone and Email record the point of contact for the address, and Note can add unloading times, store receiving requirements or other on-site details. If you already have the address as one block of text, use the Parse button to let the system try to split it into the fields, then check the result by hand."],
+  "通过列表查询已有商品，并能直接区分套件商品、危险品和所属行业；需要新建或维护商品时，可从这里进入对应操作。已有商品清单时，可用 Import 批量导入；需要核对或留档时，可用 Export 导出当前商品资料。": ["一覧で既存の商品を検索でき、セット商品、危険品、所属業種もそのまま見分けられます。商品を新規登録・保守するときは、ここから該当の操作に進みます。商品リストが手元にある場合は Import で一括取り込み、確認や保管が必要な場合は Export で現在の商品情報を書き出せます。", "Search existing items in the list and tell kitting items, hazardous items and industries apart at a glance. Start creating or maintaining an item from here. If you already have an item list, use Import to bring it in as a batch; use Export to check or archive the current item data."],
+  "维护商品的完整描述、列表中便于快速识别的简短描述，以及现场沟通时使用的简称。": ["商品の詳細説明、一覧で素早く識別するための短い説明、現場でのやり取りで使う略称を管理します。", "Maintain the full description, the short description for quick recognition in the list, and the abbreviation used in day-to-day communication."],
+  "列表可按 Carrier Code、Carrier Name、SCAC Code 和 Status 查询。选择承运商前，可先在这里确认它支持哪些运输方式、当前是否可用，以及该找谁对接。": ["一覧は Carrier Code、Carrier Name、SCAC Code、Status で検索できます。運送会社を選ぶ前に、対応している輸送方法、現在利用できるか、誰に連絡すればよいかをここで確認できます。", "The list can be searched by Carrier Code, Carrier Name, SCAC Code and Status. Before choosing a carrier, check here which shipping methods it supports, whether it is currently available, and who to contact."],
+  "Address 是客户地址簿。一个 Customer 可以建立多个门店、收货点或其他业务地址，并通过 Name、Company 和 Tags 帮助操作人员在创建订单或 Load 时找到正确地址。": ["Address は顧客ごとの住所録です。1つの Customer に複数の店舗、納品先、その他の業務用住所を登録でき、Name、Company、Tags により、注文や Load の作成時に担当者が正しい住所を見つけやすくなります。", "Address is the customer address book. One Customer can hold many stores, delivery points or other business addresses, and Name, Company and Tags help operators find the right one when creating an order or Load."],
+  "例如零售客户在上海、苏州和杭州分别设有门店。仓库可以为同一个 Customer 建立三条 Address，用 Name 表示门店名称、Company 记录所属企业，并用 Tags 标记区域或用途。创建出库单时，操作人员按客户筛选并选择对应门店地址。": ["たとえば小売顧客が上海、蘇州、杭州に店舗を持っているとします。倉庫は同じ Customer に3件の Address を登録し、Name に店舗名、Company に所属企業を記録して、Tags で地域や用途を示せます。出荷オーダーの作成時には、担当者が顧客で絞り込んで該当する店舗の住所を選びます。", "For example, a retail customer has stores in Shanghai, Suzhou and Hangzhou. The warehouse creates three Addresses for the same Customer, using Name for the store name, Company for the owning business, and Tags to mark the region or purpose. When creating an outbound order, the operator filters by customer and picks the matching store address."],
+  "示例零售集团": ["サンプル小売グループ", "Sample Retail Group"],
+  "集中维护": ["一元管理", "Central maintenance"]
+};
+const WES_BATCH6_TRANSLATIONS = {
+  ja: Object.fromEntries(Object.entries(WES_BATCH6_PAIRS).map(([source, targets]) => [source, targets[0]])),
+  en: Object.fromEntries(Object.entries(WES_BATCH6_PAIRS).map(([source, targets]) => [source, targets[1]]))
+};
+
 function translationDictionary(lang, pageName) {
   const common = pageName === "inbound.html" ? INBOUND_COMMON[lang] || {} : {};
   const pageTranslations = pageName === "inventory.html" ? INVENTORY_TRANSLATIONS[lang] || {} : {};
-  return { ...(TRANSLATIONS[lang] || {}), ...(MDM_TRANSLATIONS[lang] || {}), ...(INBOUND_TRANSLATIONS[lang] || {}), ...(INBOUND_EXTRA[lang] || {}), ...(CYCLE_COUNT_DETAIL_TRANSLATIONS[lang] || {}), ...(LP_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_LOCK_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_ACTIVITY_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_OVERVIEW_DETAIL_TRANSLATIONS[lang] || {}), ...pageTranslations, ...common };
+  return { ...(TRANSLATIONS[lang] || {}), ...(WES_BATCH1_TRANSLATIONS[lang] || {}), ...(WES_BATCH2_TRANSLATIONS[lang] || {}), ...(WES_BATCH4_TRANSLATIONS[lang] || {}), ...(WES_BATCH5_TRANSLATIONS[lang] || {}), ...(WES_BATCH6_TRANSLATIONS[lang] || {}), ...(MDM_TRANSLATIONS[lang] || {}), ...(INBOUND_TRANSLATIONS[lang] || {}), ...(INBOUND_EXTRA[lang] || {}), ...(CYCLE_COUNT_DETAIL_TRANSLATIONS[lang] || {}), ...(LP_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_LOCK_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_ACTIVITY_DETAIL_TRANSLATIONS[lang] || {}), ...(INVENTORY_OVERVIEW_DETAIL_TRANSLATIONS[lang] || {}), ...pageTranslations, ...common };
 }
 
 function translateText(source, lang, pageNameOverride, preparedDictionary) {

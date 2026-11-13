@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Orbiflow WMS-Lite 功能说明书网站样章">
+  <title>Orbiflow WMS-Lite · Facility 设施</title>
+  <link rel="stylesheet" href="styles.css?v=20261118-wes-batch1">
+</head>
+<body class="page-facility">  <div class="language-switcher" aria-label="Language switcher"><button type="button" data-lang-option="zh" class="active">中</button><button type="button" data-lang-option="ja">日</button><button type="button" data-lang-option="en">EN</button></div>
+  <!-- 内容规则：不复述截图中显而易见的界面结构、按钮或必填标记；正文只解释业务场景、选择依据、配置结果和非显性约束。 -->
+  <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">O</span>
+      <div>
+        <strong>ORBIFLOW</strong>
+        <small>WMS-Lite Manual</small>
+      </div>
+    </div>
+
+    <nav aria-label="说明书导航">
+      <a href="index.html#start" class="nav-link active"><span>00</span>阅读指南</a>
+      <div class="nav-module main-nav-module facility-main-nav" data-nav-module="facility">
+        <div class="nav-module-head"><a href="facility.html#facility" class="nav-link nav-group-link"><span>FAC</span>Facility</a><button class="nav-toggle" type="button" aria-label="收起 Facility 子菜单" aria-expanded="true" aria-controls="facility-submenu"></button></div>
+        <div class="nav-submenu" id="facility-submenu">
+          <a href="facility.html#facility-mgmt-guide" class="nav-link"><span>01</span>Facility Management</a><a href="facility.html#location-guide" class="nav-link"><span>02</span>Location Management</a><a href="facility.html#equipment-guide" class="nav-link"><span>03</span>Equipment Management</a><a href="facility.html#rcs-client-guide" class="nav-link"><span>04</span>RCS Client Management</a><a href="facility.html#warehouse-server-guide" class="nav-link"><span>05</span>Warehouse Server Management</a><a href="facility.html#light-guide" class="nav-link"><span>06</span>Light Management</a><a href="facility.html#container-guide" class="nav-link"><span>07</span>Container Management</a><a href="facility.html#wall-guide" class="nav-link"><span>08</span>Wall Management</a><a href="facility.html#vlg-guide" class="nav-link"><span>09</span>VLG Management</a><a href="facility.html#db-change-log-guide" class="nav-link"><span>10</span>DB Change Log</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="status-dot"></span>
+      基于当前系统页面整理
+    </div>
+  </aside>
+
+  <header class="mobile-header">
+    <button id="menu-button" aria-label="打开菜单" aria-expanded="false">☰</button>
+    <strong>WMS-Lite 功能说明书</strong>
+    <span>FAC</span>
+  </header>
+
+  <main>
+<section class="wg-overview facility-overview" id="facility" data-section="facility">
+      <div class="overview-label">FACILITY · MODULE OVERVIEW</div>
+      <h2>Facility 维护仓库、库位、设备、容器与分组等基础资料</h2>
+      <p class="wg-lead">Facility 是 WES 运行的底座：先建好设施和库位，再接入设备与服务器，定义容器规格、播种墙和库位分组，之后入库、出库、任务等业务才有可用的资源。DB Change Log 则用来追查基础数据被谁改过。</p>
+
+      <div class="wg-function-grid">
+        <article><small>01 · 设施</small><b>建立仓库并设定如何连接 WCS</b><p>填写设施名称、编码、时区和地址，设置 LP 标签前缀，并选择 WCS 通讯方式。</p><div class="wg-scope-links"><span>Facility Management</span></div></article>
+        <article><small>02 · 库位</small><b>维护仓内每一个库位</b><p>按类型、货架坐标、尺寸与容量定义库位，支持导入导出。</p><div class="wg-scope-links"><span>Location Management</span></div></article>
+        <article><small>03 · 设备</small><b>登记设备、客户端与服务器</b><p>设备管理记录分拣机等设备，RCS Client 记录对接的控制系统客户端，Warehouse Server 记录仓内服务器。</p><div class="wg-scope-links"><span>Equipment · RCS Client · Warehouse Server</span></div></article>
+        <article><small>04 · 灯光</small><b>管理信号灯与拣选灯控制器</b><p>按信号灯与电子拣选灯分别维护控制器，并提供测试工具验证灯光指令。</p><div class="wg-scope-links"><span>Light Management</span></div></article>
+        <article><small>05 · 容器与墙</small><b>定义周转箱规格，管理播种墙</b><p>先建容器规格再批量生成容器；播种墙、分拣墙按规格创建，并可绑定站点与设备。</p><div class="wg-scope-links"><span>Container · Wall</span></div></article>
+        <article><small>06 · 分组与审计</small><b>VLG 归组库位，DB Change Log 追踪改动</b><p>VLG 把库位归成组并设置混放与上架规则；DB Change Log 按表名、数据 ID 或请求追踪变更。</p><div class="wg-scope-links"><span>VLG · DB Change Log</span></div></article>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="facility-mgmt-guide" data-section="facility-mgmt-guide">
+      <div class="module-number">01</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · FACILITY MANAGEMENT</div>
+        <h2>先建好设施，其他资料才有地方存放</h2>
+        <p>Facility Management 保存每个仓库的基本信息、LP 标签设置，以及 WES 与 WCS 之间的通讯方式。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>新开一个仓，要让系统知道它在哪里、用什么时区、怎么连到 WCS</h3>
+        <p>例如实施人员为东京仓新建设施：填写名称和编码，选择 Asia/Tokyo 时区，设置 LP 标签前缀，再按现场网络情况选择 WCS 通讯方式。保存后，这个设施就可以在右上角的设施选择中使用。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Facility · List</span>
+          <h3>查看全部设施及其状态</h3>
+          <p>可按 Facility Name、Facility Type、Status 查询。列表显示设施编码、类型（如 Physical Warehouse）、时区、状态和创建时间，Status 开关可直接启用或停用，行尾提供编辑和删除。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-facility-list.png?v=20261118" aria-label="放大 Facility Management 列表 截图">
+          <span>FACILITY · LIST</span><img loading="lazy" decoding="async" src="assets/wes-facility-list.png?v=20261118" alt="Facility Management 列表 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Facility · Add</span>
+          <h3>基础信息、地址与 LP 设置</h3>
+          <p>Basic Information 中的 Facility Name、Facility Code、Facility Type 和 Time Zone 为必填。Address 记录公司、国家、省州、城市和详细地址；LP Settings 设置 LP Label Size 与 LP Prefix。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-facility-add-1.png?v=20261118" aria-label="放大 Add Facility 基础信息 截图">
+          <span>FACILITY · ADD</span><img loading="lazy" decoding="async" src="assets/wes-facility-add-1.png?v=20261118" alt="Add Facility 基础信息 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-facility-add-2.png?v=20261118" aria-label="放大 Add Facility LP 设置与 WCS 通讯 截图">
+          <span>FACILITY · LP · WCS</span><img loading="lazy" decoding="async" src="assets/wes-facility-add-2.png?v=20261118" alt="Add Facility LP 设置与 WCS 通讯 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">WCS Communication</span>
+          <h3>三种 WCS 通讯方式与选择依据</h3>
+          <p>WCS Communication Mode 决定 WES 如何找到并连接 WCS。选择不同方式时，下方会显示对应的说明和需要填写的内容。</p>
+        </div>
+        <div class="wg-choice">
+          <article><span>Nacos Service Discovery</span><b>通过 Nacos 自动发现</b><p>系统通过 Nacos 注册中心自动发现 WCS 服务实例，无需额外配置，适合 WMS 与 WCS 在同一网络且使用 Nacos 的环境。</p></article>
+          <article><span>Direct Connection</span><b>通过 HTTP 直连</b><p>WMS 通过 HTTP 直接连接 WCS 服务节点，需要手动配置服务地址和认证令牌（点击 Add Endpoint 添加），适合没有 Nacos 或跨网络直连的环境。</p></article>
+          <article><span>Relay Mode</span><b>通过网关中继</b><p>WMS 经 Gateway 中继层转发请求，需要填写 Relay Token，适合 WCS 部署在远端、WMS 无法直接访问的环境。</p></article>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-facility-wcs-direct.png?v=20261118" aria-label="放大 Direct Connection 通讯方式 截图">
+          <span>FACILITY · WCS · DIRECT</span><img loading="lazy" decoding="async" src="assets/wes-facility-wcs-direct.png?v=20261118" alt="Direct Connection 通讯方式 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-facility-wcs-relay.png?v=20261118" aria-label="放大 Relay Mode 通讯方式 截图">
+          <span>FACILITY · WCS · RELAY</span><img loading="lazy" decoding="async" src="assets/wes-facility-wcs-relay.png?v=20261118" alt="Relay Mode 通讯方式 页面截图"><i>点击放大</i>
+        </button>
+        <p class="wg-note"><b>选错通讯方式：</b>通讯方式与现场网络不匹配时，WES 将无法连到 WCS。保存前请先向实施或网络同事确认现场实际采用哪一种。</p>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="location-guide" data-section="location-guide">
+      <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · LOCATION MANAGEMENT</div>
+        <h2>库位定义清楚，上架与拣货才找得到地方</h2>
+        <p>Location Management 维护仓内全部库位，包括存储位、月台、暂存区和站点，并记录它们的货架坐标、尺寸、容量和占用情况。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>仓库新增一片货架区，需要把库位一次建好并区分用途</h3>
+        <p>例如仓库新增一排货架：按 Aisle、Bay、Level、Slot 记录每个库位的货架坐标，类型选择 Storage，补充尺寸与容量。月台、暂存区、站点也在这里作为库位类型维护，库位很多时可以用 Import 批量导入。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Location · List</span>
+          <h3>按类型、楼层和状态查找库位</h3>
+          <p>可按 Location Name、Location Type、Floor、Status、Space Status 查询。列表显示库位类型（Dock、Staging、Storage、Station 等）、可用状态、占用情况（Occupied、Empty、Reserved）、启用开关和顺序，并提供 Export、Import、Add 和 Refresh。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-location-list.png?v=20261118" aria-label="放大 Location Management 列表 截图">
+          <span>LOCATION · LIST</span><img loading="lazy" decoding="async" src="assets/wes-location-list.png?v=20261118" alt="Location Management 列表 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Location · Add</span>
+          <h3>基础信息、货架坐标、尺寸容量与附加属性</h3>
+          <p>表单分为几块。基础部分填写 Location Name、Alias Name、Location Type、Status、Enabled、Sequence 和 Floor；Rack Information 记录 Aisle、Bay、Section、Level、Slot；Dimension and Capacity 记录长宽高、单位、最大尺寸、容量类型、容量和堆叠；Additional Attributes 可补充 Coordinate、Tag、Support Pick Type、RFIDs、HLP ID 并设置是否启用库位 HLP。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-location-add-1.png?v=20261118" aria-label="放大 Add Location 基础与货架信息 截图">
+          <span>LOCATION · ADD · BASIC</span><img loading="lazy" decoding="async" src="assets/wes-location-add-1.png?v=20261118" alt="Add Location 基础与货架信息 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-location-add-2.png?v=20261118" aria-label="放大 Add Location 尺寸与容量 截图">
+          <span>LOCATION · ADD · CAPACITY</span><img loading="lazy" decoding="async" src="assets/wes-location-add-2.png?v=20261118" alt="Add Location 尺寸与容量 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-location-add-3.png?v=20261118" aria-label="放大 Add Location 附加属性 截图">
+          <span>LOCATION · ADD · ATTRIBUTES</span><img loading="lazy" decoding="async" src="assets/wes-location-add-3.png?v=20261118" alt="Add Location 附加属性 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="equipment-guide" data-section="equipment-guide">
+      <div class="module-number">03</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · EQUIPMENT MANAGEMENT</div>
+        <h2>先登记设备，才能把它用在墙和任务上</h2>
+        <p>Equipment Management 记录仓内的自动化设备，如分拣机，并保存它们使用的通信协议。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>仓里接入了一台分拣机，需要先在系统里登记它</h3>
+        <p>例如现场新装 SORTER-011：在这里新增设备，填写设备编码，选择通信协议（如 Libiao 3D Sort）并启用。之后在 Wall Management 里创建分拣墙时，就可以把这台设备绑定到墙上。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Equipment · List</span>
+          <h3>设备及其通信协议</h3>
+          <p>可按 Keyword、Equipment Type、Communication Protocol、Enabled 查询。列表显示设备编码、名称、序列号、通信协议和启用开关。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-equipment-list.png?v=20261118" aria-label="放大 Equipment Management 列表 截图">
+          <span>EQUIPMENT · LIST</span><img loading="lazy" decoding="async" src="assets/wes-equipment-list.png?v=20261118" alt="Equipment Management 列表 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Equipment · Add</span>
+          <h3>必填项与启用开关</h3>
+          <p>Equipment Code 和 Communication Protocol 为必填，Equipment Name 与 Serial Number 可选，Enabled 开关决定设备是否启用。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-equipment-add.png?v=20261118" aria-label="放大 Add Equipment 截图">
+          <span>EQUIPMENT · ADD</span><img loading="lazy" decoding="async" src="assets/wes-equipment-add.png?v=20261118" alt="Add Equipment 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="rcs-client-guide" data-section="rcs-client-guide">
+      <div class="module-number">04</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · RCS CLIENT MANAGEMENT</div>
+        <h2>登记对接设备控制系统的客户端</h2>
+        <p>RCS Client Management 维护与设备控制系统对接的客户端，并按厂商类型区分。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>设备厂商的控制系统要和 WES 对接，需要先登记对应的客户端</h3>
+        <p>例如接入 Libiao AirRob 机器人：在这里新增一个 Client，填写客户端编码和名称，类型选择 Libiao AirRob 并启用。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">RCS Client</span>
+          <h3>查询、列表与新增</h3>
+          <p>可按 Keyword、Client Type、Enabled 查询，列表显示客户端类型（如 Libiao AirRob、Libiao 3D Sort）、编码、名称和启用开关。新增时填写 Client Code、Client Name、Client Type，并设置 Enabled。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-rcs-client-list.png?v=20261118" aria-label="放大 RCS Client Management 列表 截图">
+          <span>RCS CLIENT · LIST</span><img loading="lazy" decoding="async" src="assets/wes-rcs-client-list.png?v=20261118" alt="RCS Client Management 列表 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-rcs-client-add.png?v=20261118" aria-label="放大 Add RCS Client 截图">
+          <span>RCS CLIENT · ADD</span><img loading="lazy" decoding="async" src="assets/wes-rcs-client-add.png?v=20261118" alt="Add RCS Client 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="warehouse-server-guide" data-section="warehouse-server-guide">
+      <div class="module-number">05</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · WAREHOUSE SERVER MANAGEMENT</div>
+        <h2>集中记录仓内服务器的连接信息</h2>
+        <p>Warehouse Server Management 保存仓内服务器的地址、端口、协议和状态。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>仓内有需要被系统访问的服务器，需要登记它的地址和端口</h3>
+        <p>例如现场部署了一台服务器：新增记录，选择 Server Type 和 Protocol，填写 IP Address、Port 与 URL Prefix，Status 设为 Active。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Warehouse Server</span>
+          <h3>查询服务器，并新增连接信息</h3>
+          <p>可按 Keyword、Server Type、Status 查询。列表显示服务器名称、IP 地址、端口、类型、状态和 URL 前缀。新增表单包括 Server Name、Server Type、Status、Protocol、IP Address、Port、URL Prefix，以及 Description 与 Extension 两个说明类字段。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-warehouse-server-list.png?v=20261118" aria-label="放大 Warehouse Server Management 列表 截图">
+          <span>WAREHOUSE SERVER · LIST</span><img loading="lazy" decoding="async" src="assets/wes-warehouse-server-list.png?v=20261118" alt="Warehouse Server Management 列表 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-warehouse-server-add.png?v=20261118" aria-label="放大 Add Warehouse Server 截图">
+          <span>WAREHOUSE SERVER · ADD</span><img loading="lazy" decoding="async" src="assets/wes-warehouse-server-add.png?v=20261118" alt="Add Warehouse Server 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="light-guide" data-section="light-guide">
+      <div class="module-number">06</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · LIGHT MANAGEMENT</div>
+        <h2>先建控制器，再用测试工具验证灯光</h2>
+        <p>Light Management 分为 Signal Light、Pick-to-Light 和 Test Tool 三个页签，分别管理信号灯控制器、电子拣选灯控制器以及灯光指令测试。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>上线前要确认灯能亮、颜色对，现场不用再临时接线调试</h3>
+        <p>例如新装一批信号灯：先在 Signal Light 页签创建控制器，再到 Test Tool 连接灯光服务器，选择控制器和灯号，试一下 Light On、Flash 与不同颜色，确认没问题再投入使用。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Signal Light · Pick-to-Light</span>
+          <h3>信号灯与电子拣选灯的分开维护</h3>
+          <p>两个页签的布局一致，都可按 Controller Code 查询，列表显示控制器编码、名称和启用状态，并提供 Create Controller、Download template、Import、Export 和 Refresh。大量控制器可以先下载模板，填好后再导入。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-light-signal.png?v=20261118" aria-label="放大 Signal Light 页签 截图">
+          <span>LIGHT · SIGNAL LIGHT</span><img loading="lazy" decoding="async" src="assets/wes-light-signal.png?v=20261118" alt="Signal Light 页签 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Test Tool</span>
+          <h3>直接向灯发送指令</h3>
+          <p>Server Connection 先选择灯光服务器并点击 Connect。Quick Operations 里选择 Controller 和 Light ID，再选颜色（R、G、B、Y、P、W、S、O），执行 Light On、Light Off、Flash、Set ID 或 Unlock。Custom Command 可直接填写 IP、Port 和 Command 后点击 Send，所有收发记录会显示在 Response Log。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-light-test-tool.png?v=20261118" aria-label="放大 Light Test Tool 截图">
+          <span>LIGHT · TEST TOOL</span><img loading="lazy" decoding="async" src="assets/wes-light-test-tool.png?v=20261118" alt="Light Test Tool 页面截图"><i>点击放大</i>
+        </button>
+        <p class="wg-note"><b>在线上环境使用时：</b>测试工具会把指令发给真实的灯光设备，现场有人作业时请先与现场同事确认再操作。</p>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="container-guide" data-section="container-guide">
+      <div class="module-number">07</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · CONTAINER MANAGEMENT</div>
+        <h2>先定规格，再生成容器</h2>
+        <p>Container Management 分为 Container Specs 和 Containers 两个页签：规格描述一类容器长什么样，容器则是具体的每一个箱子或料车。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>新增一批周转箱，需要先定规格，再按编号规则一次生成</h3>
+        <p>例如要新增 100 个周转箱：先在 Container Specs 建一个规格（类型 Tote，填写长宽高），再到 Containers 点击 Batch Create，选择规格，填写 Code Prefix、Start Number 和 Count，先 Preview 核对编号，确认无误后点击 Create Batch。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Container Specs</span>
+          <h3>类型、尺寸与格口</h3>
+          <p>可按 Spec Code、Spec Name、Customer、Container Type 查询。列表显示类型（如 Tote、Tote Cart）、长宽高和格口数。新增规格时 Spec Code 与 Container Type 必填，可填写长宽高、Photo ID、Container Code Regex，并在 Slot layout 里通过 Add layer、Split selected、Merge selected 设计料车的格口布局。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-container-spec-list.png?v=20261118" aria-label="放大 Container Specs 列表 截图">
+          <span>CONTAINER · SPECS</span><img loading="lazy" decoding="async" src="assets/wes-container-spec-list.png?v=20261118" alt="Container Specs 列表 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-container-spec-add.png?v=20261118" aria-label="放大 Add Container Spec 截图">
+          <span>CONTAINER · SPEC · ADD</span><img loading="lazy" decoding="async" src="assets/wes-container-spec-add.png?v=20261118" alt="Add Container Spec 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Containers · Batch Create</span>
+          <h3>单个新增与批量生成</h3>
+          <p>Containers 页签可按 Container Code、Container Spec、Container Type、LP ID、LP ID(Batch/Prefix)、Status、Location 查询，列表显示容器编码、规格、类型、LP ID、状态、库位和创建时间。Batch Create 中，Container Type 随所选规格带出，不能手工填写；Code Prefix、Start Number、Count 必填，Preview 用来先看生成结果。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-container-list.png?v=20261118" aria-label="放大 Containers 列表 截图">
+          <span>CONTAINER · LIST</span><img loading="lazy" decoding="async" src="assets/wes-container-list.png?v=20261118" alt="Containers 列表 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-container-batch-create.png?v=20261118" aria-label="放大 Batch Create Containers 截图">
+          <span>CONTAINER · BATCH CREATE</span><img loading="lazy" decoding="async" src="assets/wes-container-batch-create.png?v=20261118" alt="Batch Create Containers 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="wall-guide" data-section="wall-guide">
+      <div class="module-number">08</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · WALL MANAGEMENT</div>
+        <h2>规格在先，墙在后</h2>
+        <p>Wall Management 管理播种墙和分拣墙：Wall Specs 定义墙的类型和大小，Walls 则是按规格建出来的每一面墙。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>播种或分拣需要一面墙，先定规格，再建墙并绑到站点和设备</h3>
+        <p>例如新建一面 3×3 的播种墙：先在 Wall Specs 确认规格，再在 Walls 点击 Create，选择规格、关联站点并启用。已建好的墙在列表里会显示绑定的站点、设备，以及格口占用情况。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Walls</span>
+          <h3>墙的站点、设备与格口使用情况</h3>
+          <p>Walls 页签列表显示墙编码、规格编码、墙类型（PUT_WALL、SORT_WALL）、站点编码、设备编码、启用开关和 Occupied。Occupied 以「已占用/总格口」显示，例如 3/9 对应 3×3 的规格。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-wall-list.png?v=20261118" aria-label="放大 Walls 列表 截图">
+          <span>WALL · WALLS</span><img loading="lazy" decoding="async" src="assets/wes-wall-list.png?v=20261118" alt="Walls 列表 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Wall Specs</span>
+          <h3>类型、大小与编号规则</h3>
+          <p>Wall Specs 页签上方列出各墙类型的编号规则（Wall Code Prefix 与 Wall Code Digits），下方列出规格编码、名称、墙类型、大小（如 3 × 3）、是否绑定设备以及设备类型。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-wall-specs.png?v=20261118" aria-label="放大 Wall Specs 列表 截图">
+          <span>WALL · SPECS</span><img loading="lazy" decoding="async" src="assets/wes-wall-specs.png?v=20261118" alt="Wall Specs 列表 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="vlg-guide" data-section="vlg-guide">
+      <div class="module-number">09</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · VLG MANAGEMENT</div>
+        <h2>把库位归成组，再让商品对应到组</h2>
+        <p>VLG（Virtual Location Group）把一批库位归为一组，并设置组内的混放与上架规则，再通过三个对应页签与 SKU、标签或 Title 建立关系。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>同一类商品想固定放在一片库位里，就把这些库位归成一个组</h3>
+        <p>例如把 A 区的一批库位归为一个 Zone 类型的 VLG，在组内设置是否允许混放不同商品或批次，再到 SKU VLG 页签把某个 SKU 与这个 VLG 对应起来。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">VLG List</span>
+          <h3>查询、列表与新增</h3>
+          <p>VLG List 可按 VLG Name、VLG Type 查询，显示类型、支持的拣货类型、库位数量、启用状态、占用方和显示顺序。新增时填写 VLG Name、VLG Type、Support Pick Type、Display Order、Max Partial Pallet，并选择 Locations、AirRob Locations 和 Staging VLG Connections。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-vlg-list.png?v=20261118" aria-label="放大 VLG List 截图">
+          <span>VLG · LIST</span><img loading="lazy" decoding="async" src="assets/wes-vlg-list.png?v=20261118" alt="VLG List 页面截图"><i>点击放大</i>
+        </button>
+        <button class="screen-frame" data-lightbox="assets/wes-vlg-add.png?v=20261118" aria-label="放大 Add VLG 截图">
+          <span>VLG · ADD</span><img loading="lazy" decoding="async" src="assets/wes-vlg-add.png?v=20261118" alt="Add VLG 页面截图"><i>点击放大</i>
+        </button>
+        <div class="wg-points">
+          <article><span>01</span><div><b>Disallow mix item</b><p>开启后，同一库位不允许放入不同商品。</p></div></article>
+          <article><span>02</span><div><b>Disallow mix lot</b><p>开启后，同一库位不允许混放不同批次。</p></div></article>
+          <article><span>03</span><div><b>Putaway · Depleted</b><p>Skip occupied location on putaway 让上架时跳过已占用的库位，Enable depleted location 则启用已耗尽的库位。</p></div></article>
+        </div>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">SKU VLG · SKU Tag VLG · SKU Title VLG</span>
+          <h3>用三个页签把 VLG 与商品对应起来</h3>
+          <p>SKU VLG 把 VLG 与具体 SKU 对应，SKU Tag VLG 与商品标签（Tag）和行业（Industry）对应，SKU Title VLG 则与 Title ID 对应。三个页签都可再按客户（Customer）和托盘类型（Pallet Type）区分。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-vlg-sku.png?v=20261118" aria-label="放大 SKU VLG 列表 截图">
+          <span>VLG · SKU VLG</span><img loading="lazy" decoding="async" src="assets/wes-vlg-sku.png?v=20261118" alt="SKU VLG 列表 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="db-change-log-guide" data-section="db-change-log-guide">
+      <div class="module-number">10</div>
+      <div class="module-heading">
+        <div class="eyebrow">FACILITY · DB CHANGE LOG</div>
+        <h2>基础数据被改动时，从这里查来龙去脉</h2>
+        <p>DB Change Log 记录对基础数据的变更，方便按表、记录或请求回溯。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>发现某条基础数据不对，想知道是谁、什么时候、通过哪个页面改的</h3>
+        <p>例如某个库位的容量突然变了：在 Table Name 和 Data ID 里填入对应表与记录，或者用 Trace ID 追到同一次请求，再结合 Created By 与 Created Time 找到改动人和时间，Content 还可以对变更差异做模糊搜索。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">DB Change Log</span>
+          <h3>按数据源、表、请求追踪变更</h3>
+          <p>可按 Data Source、Table Name、Data ID、Trace ID、Request Path、Method、Screen ID、Content 和 Created By 查询。列表显示每条变更的操作类型、涉及的数据 ID、请求路径与方法、来源页面、操作人和时间。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-db-change-log.png?v=20261118" aria-label="放大 DB Change Log 截图">
+          <span>DB CHANGE LOG</span><img loading="lazy" decoding="async" src="assets/wes-db-change-log.png?v=20261118" alt="DB Change Log 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+</main>
+
+  <dialog id="image-dialog">
+    <button id="dialog-close" aria-label="关闭图片">×</button>
+    <img id="dialog-image" alt="页面截图放大预览">
+  </dialog>
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+  <script src="app.js?v=20260813-inventory-tabs"></script>
+  <script src="i18n.js?v=20261118-wes-batch1"></script></body>
+</html>
+
+
+
+
+
+

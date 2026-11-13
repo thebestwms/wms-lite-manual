@@ -24,6 +24,8 @@
       <a class="portal-home portal-route active" href="?page=home&amp;section=start" data-page="home" data-section="start"><span>00</span><b data-i18n="home">首页</b></a>
 
       <div class="system-menu" data-system-menu="wes">
+      <a class="portal-direct portal-route" href="?page=dashboard&amp;section=dashboard-guide" data-page="dashboard" data-section="dashboard-guide"><span>DB</span><b data-i18n="dashboard">仪表盘</b></a>
+
       <section class="nav-module" data-module="mdm">
         <div class="module-head"><a class="module-link portal-route" href="?page=mdm&amp;section=mdm" data-page="mdm" data-section="mdm"><span>MDM</span><b data-i18n="mdm">主数据</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-mdm" data-i18n-aria="toggle"></button></div>
         <div class="module-items" id="portal-mdm">
@@ -37,10 +39,60 @@
         </div>
       </section>
 
+      <section class="nav-module" data-module="facility">
+        <div class="module-head"><a class="module-link portal-route" href="?page=facility&amp;section=facility" data-page="facility" data-section="facility"><span>FAC</span><b data-i18n="facility">设施</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-facility" data-i18n-aria="toggle"></button></div>
+        <div class="module-items" id="portal-facility">
+          <a class="portal-route" href="?page=facility&amp;section=facility-mgmt-guide" data-page="facility" data-section="facility-mgmt-guide" data-i18n="facilityMgmt">Facility Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=location-guide" data-page="facility" data-section="location-guide" data-i18n="locationMgmt">Location Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=equipment-guide" data-page="facility" data-section="equipment-guide" data-i18n="equipmentMgmt">Equipment Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=rcs-client-guide" data-page="facility" data-section="rcs-client-guide" data-i18n="rcsClientMgmt">RCS Client Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=warehouse-server-guide" data-page="facility" data-section="warehouse-server-guide" data-i18n="warehouseServerMgmt">Warehouse Server Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=light-guide" data-page="facility" data-section="light-guide" data-i18n="lightMgmt">Light Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=container-guide" data-page="facility" data-section="container-guide" data-i18n="containerMgmt">Container Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=wall-guide" data-page="facility" data-section="wall-guide" data-i18n="wallMgmt">Wall Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=vlg-guide" data-page="facility" data-section="vlg-guide" data-i18n="vlgMgmt">VLG Management</a>
+          <a class="portal-route" href="?page=facility&amp;section=db-change-log-guide" data-page="facility" data-section="db-change-log-guide" data-i18n="dbChangeLog">DB Change Log</a>
+        </div>
+      </section>
+
+      <section class="nav-module" data-module="inventory">
+        <div class="module-head"><a class="module-link portal-route" href="?page=inventory&amp;section=inventory" data-page="inventory" data-section="inventory"><span>INV</span><b data-i18n="inventory">库存</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-inventory" data-i18n-aria="toggle"></button></div>
+        <div class="module-items" id="portal-inventory">
+          <a class="portal-route" href="?page=inventory&amp;section=inventory-list-guide" data-page="inventory" data-section="inventory-list-guide" data-i18n="inventoryList">Inventory</a>
+          <a class="portal-route" href="?page=inventory&amp;section=inventory-lock-guide" data-page="inventory" data-section="inventory-lock-guide" data-i18n="inventoryLock">Inventory Lock</a>
+          <a class="portal-route" href="?page=inventory&amp;section=inventory-activity-guide" data-page="inventory" data-section="inventory-activity-guide" data-i18n="inventoryActivity">Inventory Activity</a>
+          <a class="portal-route" href="?page=inventory&amp;section=inventory-log-guide" data-page="inventory" data-section="inventory-log-guide" data-i18n="inventoryLog">Inventory Log</a>
+          <a class="portal-route" href="?page=inventory&amp;section=lp-guide" data-page="inventory" data-section="lp-guide">LP</a>
+          <a class="portal-route" href="?page=inventory&amp;section=adjustment-guide" data-page="inventory" data-section="adjustment-guide" data-i18n="adjustment">Adjustment</a>
+          <a class="portal-route" href="?page=inventory&amp;section=min-max-guide" data-page="inventory" data-section="min-max-guide" data-i18n="minMax">Min/Max Setting</a>
+          <a class="portal-route" href="?page=inventory&amp;section=holiday-guide" data-page="inventory" data-section="holiday-guide" data-i18n="holiday">Holiday Management</a>
+        </div>
+      </section>
+
+      <section class="nav-module" data-module="cycle-count">
+        <div class="module-head"><a class="module-link portal-route" href="?page=cycle-count&amp;section=cycle-count" data-page="cycle-count" data-section="cycle-count"><span>CC</span><b data-i18n="cycleCount">盘点</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-cycle-count" data-i18n-aria="toggle"></button></div>
+        <div class="module-items" id="portal-cycle-count">
+          <a class="portal-route" href="?page=cycle-count&amp;section=count-tickets-guide" data-page="cycle-count" data-section="count-tickets-guide" data-i18n="countTickets">Count Tickets</a>
+          <a class="portal-route" href="?page=cycle-count&amp;section=count-tasks-guide" data-page="cycle-count" data-section="count-tasks-guide" data-i18n="countTasks">Count Tasks</a>
+          <a class="portal-route" href="?page=cycle-count&amp;section=count-results-guide" data-page="cycle-count" data-section="count-results-guide" data-i18n="countResults">Count Results</a>
+        </div>
+      </section>
+
+      <section class="nav-module" data-module="appointment">
+        <div class="module-head"><a class="module-link portal-route" href="?page=appointment&amp;section=appointment" data-page="appointment" data-section="appointment"><span>APT</span><b data-i18n="appointment">预约</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-appointment" data-i18n-aria="toggle"></button></div>
+        <div class="module-items" id="portal-appointment">
+          <a class="portal-route" href="?page=appointment&amp;section=appointment-list-guide" data-page="appointment" data-section="appointment-list-guide" data-i18n="appointmentList">Appointment List</a>
+          <a class="portal-route" href="?page=appointment&amp;section=appointment-calendar-guide" data-page="appointment" data-section="appointment-calendar-guide" data-i18n="appointmentCalendar">Appointment Calendar</a>
+          <a class="portal-route" href="?page=appointment&amp;section=pending-carrier-guide" data-page="appointment" data-section="pending-carrier-guide" data-i18n="pendingCarrier">Pending Carrier Appointment</a>
+          <a class="portal-route" href="?page=appointment&amp;section=appointment-settings-guide" data-page="appointment" data-section="appointment-settings-guide" data-i18n="appointmentSettings">Appointment Settings</a>
+        </div>
+      </section>
+
       <section class="nav-module" data-module="inbound">
         <div class="module-head"><a class="module-link portal-route" href="?page=inbound&amp;section=inbound" data-page="inbound" data-section="inbound"><span>IN</span><b data-i18n="inbound">入库</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-inbound" data-i18n-aria="toggle"></button></div>
         <div class="module-items" id="portal-inbound">
           <a class="portal-route" href="?page=inbound&amp;section=receipt" data-page="inbound" data-section="receipt" data-i18n="receipt">Receipt</a>
+          <a class="portal-route" href="?page=inbound&amp;section=receipt-filter-templates" data-page="inbound" data-section="receipt-filter-templates" data-i18n="receiptFilterTemplates">Receipt Filter Templates</a>
           <a class="portal-route" href="?page=inbound&amp;section=rma" data-page="inbound" data-section="rma" data-i18n="rma">RMA Management</a>
         </div>
       </section>
@@ -60,41 +112,51 @@
         </div>
       </section>
 
-      <section class="nav-module" data-module="inventory">
-        <div class="module-head"><a class="module-link portal-route" href="?page=inventory&amp;section=inventory" data-page="inventory" data-section="inventory"><span>INV</span><b data-i18n="inventory">库存</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-inventory" data-i18n-aria="toggle"></button></div>
-        <div class="module-items" id="portal-inventory">
-          <a class="portal-route" href="?page=inventory&amp;section=inventory-list-guide" data-page="inventory" data-section="inventory-list-guide" data-i18n="inventoryList">Inventory</a>
-          <a class="portal-route" href="?page=inventory&amp;section=inventory-lock-guide" data-page="inventory" data-section="inventory-lock-guide" data-i18n="inventoryLock">Inventory Lock</a>
-          <a class="portal-route" href="?page=inventory&amp;section=inventory-activity-guide" data-page="inventory" data-section="inventory-activity-guide" data-i18n="inventoryActivity">Inventory Activity</a>
-          <a class="portal-route" href="?page=inventory&amp;section=lp-guide" data-page="inventory" data-section="lp-guide">LP</a>
-          <a class="portal-route" href="?page=inventory&amp;section=adjustment-guide" data-page="inventory" data-section="adjustment-guide" data-i18n="adjustment">Adjustment</a>
-          <a class="portal-route" href="?page=inventory&amp;section=min-max-guide" data-page="inventory" data-section="min-max-guide" data-i18n="minMax">Min/Max Setting</a>
-          <a class="portal-route" href="?page=inventory&amp;section=holiday-guide" data-page="inventory" data-section="holiday-guide" data-i18n="holiday">Holiday Management</a>
-        </div>
-      </section>
-
-      <section class="nav-module" data-module="cycle-count">
-        <div class="module-head"><a class="module-link portal-route" href="?page=cycle-count&amp;section=cycle-count" data-page="cycle-count" data-section="cycle-count"><span>CC</span><b data-i18n="cycleCount">盘点</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-cycle-count" data-i18n-aria="toggle"></button></div>
-        <div class="module-items" id="portal-cycle-count">
-          <a class="portal-route" href="?page=cycle-count&amp;section=count-tickets-guide" data-page="cycle-count" data-section="count-tickets-guide" data-i18n="countTickets">Count Tickets</a>
-          <a class="portal-route" href="?page=cycle-count&amp;section=count-tasks-guide" data-page="cycle-count" data-section="count-tasks-guide" data-i18n="countTasks">Count Tasks</a>
-          <a class="portal-route" href="?page=cycle-count&amp;section=count-results-guide" data-page="cycle-count" data-section="count-results-guide" data-i18n="countResults">Count Results</a>
-        </div>
-      </section>
-
       <section class="nav-module" data-module="task">
         <div class="module-head"><a class="module-link portal-route" href="?page=task&amp;section=task-overview" data-page="task" data-section="task-overview"><span>TSK</span><b data-i18n="task">任务</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-task" data-i18n-aria="toggle"></button></div>
         <div class="module-items" id="portal-task">
           <a class="portal-route" href="?page=task&amp;section=receive-task" data-page="task" data-section="receive-task" data-i18n="receiveTask">收货任务</a>
-          <a class="portal-route" href="?page=task&amp;section=put-away-task" data-page="task" data-section="put-away-task" data-i18n="putAwayTask">上架任务</a>
-          <a class="portal-route" href="?page=task&amp;section=pick-task" data-page="task" data-section="pick-task" data-i18n="pickTask">拣货任务</a>
-          <a class="portal-route" href="?page=task&amp;section=pack-task" data-page="task" data-section="pack-task" data-i18n="packTask">打包任务</a>
-          <a class="portal-route" href="?page=task&amp;section=replenishment-task" data-page="task" data-section="replenishment-task" data-i18n="replenishmentTask">补货任务</a>
-          <a class="portal-route" href="?page=task&amp;section=load-task" data-page="task" data-section="load-task" data-i18n="loadTask">装车任务</a>
-          <a class="portal-route" href="?page=task&amp;section=movement-task" data-page="task" data-section="movement-task" data-i18n="movementTask">移库任务</a>
-          <a class="portal-route" href="?page=task&amp;section=consolidate-task" data-page="task" data-section="consolidate-task" data-i18n="scenarioTasks">特定场景任务</a>
-          <a class="portal-route" href="?page=task&amp;section=put-back-task" data-page="task" data-section="put-back-task" data-i18n="putBackTask">退库任务</a>
-          <a class="portal-route" href="?page=task&amp;section=other-tasks" data-page="task" data-section="other-tasks" data-i18n="technical">技术页面</a>
+<a class="portal-route" href="?page=task&amp;section=put-away-task" data-page="task" data-section="put-away-task" data-i18n="putAwayTask">上架任务</a>
+<a class="portal-route" href="?page=task&amp;section=movement-task" data-page="task" data-section="movement-task" data-i18n="movementTask">移库任务</a>
+<a class="portal-route" href="?page=task&amp;section=pick-task" data-page="task" data-section="pick-task" data-i18n="pickTask">拣货任务</a>
+<a class="portal-route" href="?page=task&amp;section=pack-task" data-page="task" data-section="pack-task" data-i18n="packTask">打包任务</a>
+<a class="portal-route" href="?page=task&amp;section=consolidate-task" data-page="task" data-section="consolidate-task" data-i18n="consolidateTask">合并任务</a>
+<a class="portal-route" href="?page=task&amp;section=assembly-task" data-page="task" data-section="assembly-task" data-i18n="assemblyTask">组装任务</a>
+<a class="portal-route" href="?page=task&amp;section=sort-task" data-page="task" data-section="sort-task" data-i18n="sortTask">分拣任务</a>
+<a class="portal-route" href="?page=task&amp;section=put-back-task" data-page="task" data-section="put-back-task" data-i18n="putBackTask">退库任务</a>
+<a class="portal-route" href="?page=task&amp;section=replenishment-task" data-page="task" data-section="replenishment-task" data-i18n="replenishmentTask">补货任务</a>
+<a class="portal-route" href="?page=task&amp;section=inventory-check-task" data-page="task" data-section="inventory-check-task" data-i18n="inventoryCheckTask">盘点核对任务</a>
+<a class="portal-route" href="?page=task&amp;section=load-task" data-page="task" data-section="load-task" data-i18n="loadTask">装车任务</a>
+<a class="portal-route" href="?page=task&amp;section=task-action" data-page="task" data-section="task-action" data-i18n="taskAction">任务动作</a>
+<a class="portal-route" href="?page=task&amp;section=wcs-send-log" data-page="task" data-section="wcs-send-log" data-i18n="wcsSendLog">WCS 发送日志</a>
+<a class="portal-route" href="?page=task&amp;section=task-assignment" data-page="task" data-section="task-assignment" data-i18n="taskAssignment">任务分配</a>
+</div>
+      </section>
+
+      <section class="nav-module" data-module="template">
+        <div class="module-head"><a class="module-link portal-route" href="?page=template&amp;section=template" data-page="template" data-section="template"><span>TPL</span><b data-i18n="template">模板</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-template" data-i18n-aria="toggle"></button></div>
+        <div class="module-items" id="portal-template">
+          <a class="portal-route" href="?page=template&amp;section=template-management-guide" data-page="template" data-section="template-management-guide" data-i18n="templateManagement">Template Management</a>
+          <a class="portal-route" href="?page=template&amp;section=template-settings-guide" data-page="template" data-section="template-settings-guide" data-i18n="templateSettings">Template Settings</a>
+          <a class="portal-route" href="?page=template&amp;section=lp-batch-print-guide" data-page="template" data-section="lp-batch-print-guide" data-i18n="lpBatchPrint">LP Batch Print</a>
+        </div>
+      </section>
+
+      <section class="nav-module" data-module="iam">
+        <div class="module-head"><a class="module-link portal-route" href="?page=iam&amp;section=iam" data-page="iam" data-section="iam"><span>IAM</span><b data-i18n="iam">iam</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-iam" data-i18n-aria="toggle"></button></div>
+        <div class="module-items" id="portal-iam">
+          <a class="portal-route" href="?page=iam&amp;section=iam-account-guide" data-page="iam" data-section="iam-account-guide" data-i18n="iamAccount">Profile & Tenant</a>
+          <a class="portal-route" href="?page=iam&amp;section=iam-user-role-guide" data-page="iam" data-section="iam-user-role-guide" data-i18n="iamUserRole">User & Role</a>
+          <a class="portal-route" href="?page=iam&amp;section=iam-api-key-guide" data-page="iam" data-section="iam-api-key-guide" data-i18n="apiKey">API Key</a>
+        </div>
+      </section>
+
+      <section class="nav-module" data-module="report">
+        <div class="module-head"><a class="module-link portal-route" href="?page=report&amp;section=report" data-page="report" data-section="report"><span>RPT</span><b data-i18n="report">report</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-report" data-i18n-aria="toggle"></button></div>
+        <div class="module-items" id="portal-report">
+          <a class="portal-route" href="?page=report&amp;section=report-inbound-outbound-guide" data-page="report" data-section="report-inbound-outbound-guide" data-i18n="reportIO">Receiving & Shipping</a>
+          <a class="portal-route" href="?page=report&amp;section=report-inventory-guide" data-page="report" data-section="report-inventory-guide" data-i18n="reportInv">Inventory Reports</a>
+          <a class="portal-route" href="?page=report&amp;section=report-field-config-guide" data-page="report" data-section="report-field-config-guide" data-i18n="fieldConfig">Field Configuration</a>
         </div>
       </section>
       </div>
@@ -105,9 +167,10 @@
         <section class="nav-module" data-module="wcs-configuration">
           <div class="module-head"><a class="module-link portal-route" href="?page=wcs&amp;section=action-type-config" data-page="wcs" data-section="action-type-config"><span>CFG</span><b data-i18n="configuration">配置</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-wcs-configuration" data-i18n-aria="toggle"></button></div>
           <div class="module-items" id="portal-wcs-configuration">
-            <a class="portal-route" href="?page=wcs&amp;section=action-type-config" data-page="wcs" data-section="action-type-config" data-i18n="actionType">动作类型配置</a>
+            <a class="portal-route" href="?page=wcs&amp;section=action-type-config" data-page="wcs" data-section="action-type-config" data-i18n="actionType">作业类型配置</a>
             <a class="portal-route" href="?page=wcs&amp;section=workflow-definitions" data-page="wcs" data-section="workflow-definitions" data-i18n="workflowDefinitions">工作流定义</a>
             <a class="portal-route" href="?page=wcs&amp;section=system-workflows" data-page="wcs" data-section="system-workflows" data-i18n="systemWorkflows">系统工作流</a>
+<a class="portal-route" href="?page=wcs&amp;section=capability-workflow-mappings" data-page="wcs" data-section="capability-workflow-mappings" data-i18n="capabilityMappings">能力工作流映射</a>
             <a class="portal-route" href="?page=wcs&amp;section=job-filters" data-page="wcs" data-section="job-filters" data-i18n="jobFilters">作业过滤器</a>
             <a class="portal-route" href="?page=wcs&amp;section=job-dispatch" data-page="wcs" data-section="job-dispatch" data-i18n="jobDispatch">作业调度设置</a>
             <a class="portal-route" href="?page=wcs&amp;section=message-config" data-page="wcs" data-section="message-config" data-i18n="messageConfig">消息配置</a>
@@ -118,8 +181,8 @@
           <div class="module-head"><a class="module-link portal-route" href="?page=wcs&amp;section=job-management" data-page="wcs" data-section="job-management"><span>RUN</span><b data-i18n="runtime">运行</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-wcs-runtime" data-i18n-aria="toggle"></button></div>
           <div class="module-items" id="portal-wcs-runtime">
             <a class="portal-route" href="?page=wcs&amp;section=job-management" data-page="wcs" data-section="job-management" data-i18n="jobManagement">作业管理</a>
+<a class="portal-route" href="?page=wcs&amp;section=wcs-tasks" data-page="wcs" data-section="wcs-tasks" data-i18n="wcsTasks">WCS 任务</a>
             <a class="portal-route" href="?page=wcs&amp;section=workflow-instances" data-page="wcs" data-section="workflow-instances" data-i18n="workflowInstances">工作流实例</a>
-            <a class="portal-route" href="?page=wcs&amp;section=node-executions" data-page="wcs" data-section="node-executions" data-i18n="nodeExecutions">节点执行</a>
           </div>
         </section>
 
@@ -127,15 +190,16 @@
           <div class="module-head"><a class="module-link portal-route" href="?page=wcs&amp;section=station-entry" data-page="wcs" data-section="station-entry"><span>STN</span><b data-i18n="station">工作站</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-wcs-station" data-i18n-aria="toggle"></button></div>
           <div class="module-items" id="portal-wcs-station">
             <a class="portal-route" href="?page=wcs&amp;section=station-entry" data-page="wcs" data-section="station-entry" data-i18n="enterStation">进入工作站</a>
-            <a class="portal-route" href="?page=wcs&amp;section=workstation" data-page="wcs" data-section="workstation" data-i18n="workstation">工作站</a>
-            <a class="portal-route" href="?page=wcs&amp;section=accept-tasks" data-page="wcs" data-section="accept-tasks" data-i18n="acceptTasks">接收任务</a>
+<a class="portal-route" href="?page=wcs&amp;section=station-management" data-page="wcs" data-section="station-management" data-i18n="stationManagement">工作站管理</a>
           </div>
         </section>
 
         <section class="nav-module" data-module="wcs-operations">
-          <div class="module-head"><a class="module-link portal-route" href="?page=wcs&amp;section=message-send-logs" data-page="wcs" data-section="message-send-logs"><span>OPS</span><b data-i18n="operations">运维</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-wcs-operations" data-i18n-aria="toggle"></button></div>
+          <div class="module-head"><a class="module-link portal-route" href="?page=wcs&amp;section=alert-management" data-page="wcs" data-section="alert-management"><span>OPS</span><b data-i18n="operations">运维</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-wcs-operations" data-i18n-aria="toggle"></button></div>
           <div class="module-items" id="portal-wcs-operations">
-            <a class="portal-route" href="?page=wcs&amp;section=message-send-logs" data-page="wcs" data-section="message-send-logs" data-i18n="messageLogs">消息发送日志</a>
+            <a class="portal-route" href="?page=wcs&amp;section=alert-management" data-page="wcs" data-section="alert-management" data-i18n="alertManagement">告警管理</a>
+<a class="portal-route" href="?page=wcs&amp;section=log-query" data-page="wcs" data-section="log-query" data-i18n="logQuery">日志查询</a>
+<a class="portal-route" href="?page=wcs&amp;section=message-send-logs" data-page="wcs" data-section="message-send-logs" data-i18n="messageLogs">消息发送日志</a>
           </div>
         </section>
 
@@ -143,8 +207,10 @@
           <div class="module-head"><a class="module-link portal-route" href="?page=wcs&amp;section=communication-logs" data-page="wcs" data-section="communication-logs"><span>DEV</span><b data-i18n="deviceApp">设备应用</b></a><button class="module-toggle" type="button" aria-expanded="false" aria-controls="portal-wcs-device" data-i18n-aria="toggle"></button></div>
           <div class="module-items" id="portal-wcs-device">
             <a class="portal-route" href="?page=wcs&amp;section=communication-logs" data-page="wcs" data-section="communication-logs" data-i18n="communicationLogs">通信日志</a>
+<a class="portal-route" href="?page=wcs&amp;section=client-cache-status" data-page="wcs" data-section="client-cache-status" data-i18n="clientCacheStatus">客户端缓存状态</a>
             <a class="portal-route" href="?page=wcs&amp;section=device-debug" data-page="wcs" data-section="device-debug" data-i18n="deviceDebug">设备/RCS 调试</a>
             <a class="portal-route" href="?page=wcs&amp;section=callback-records" data-page="wcs" data-section="callback-records" data-i18n="callbackRecords">回调记录</a>
+<a class="portal-route" href="?page=wcs&amp;section=maintenance-tools" data-page="wcs" data-section="maintenance-tools" data-i18n="maintenanceTools">维护工具</a>
           </div>
         </section>
       </div>
@@ -170,6 +236,6 @@
     <div id="manual-host" class="manual-host" tabindex="-1" aria-live="polite"></div>
   </main>
 
-  <script src="portal.js?v=20260907-home-menu-wrap-v21"></script>
+  <script src="portal.js?v=20261304-customer"></script>
 </body>
 </html>

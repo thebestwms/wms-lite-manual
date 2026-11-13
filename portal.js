@@ -1,35 +1,44 @@
 const routes = {
-  home: "wms-lite.html?v=20260903-shared-home-v17",
-  mdm: "wms-lite.html?v=20260903-shared-home-v17",
+  home: "wms-lite.html?v=20261304-customer",
+  mdm: "wms-lite.html?v=20261304-customer",
   inbound: "inbound.html",
   outbound: "inbound.html",
   inventory: "inventory.html",
   "cycle-count": "inventory.html",
+  dashboard: "dashboard.html",
+  appointment: "appointment.html",
+  template: "template.html",
+  iam: "iam.html",
+  report: "report.html",
+  facility: "facility.html",
   task: "task/index.html",
-  "wcs-home": "wms-lite.html?v=20260903-shared-home-v17",
+  "wcs-home": "wms-lite.html?v=20261304-customer",
   wcs: "wcs/index.html"
 };
 
 const translations = {
   zh: {
+    iam: "账号与权限", iamAccount: "个人与租户资料", iamUserRole: "用户与角色", apiKey: "API 密钥", report: "报表", reportIO: "收货与发运报表", reportInv: "库存报表", fieldConfig: "字段配置",
     home: "首页", manual: "统一功能说明书", mdm: "主数据", organization: "组织", customer: "客户", item: "商品", industry: "行业", hazard: "危险品", carrier: "承运商", address: "地址",
-    inbound: "入库", receipt: "收货单", rma: "退货入库", outbound: "出库", outboundOrder: "出库订单", commitment: "库存承诺", orderPlans: "订单计划", dispatch: "订单调度", orderFilters: "订单过滤器", dispatchSettings: "调度设置", smallParcel: "小包工作站", loadManagement: "装载管理", shipmentTickets: "发运单",
-    inventory: "库存", inventoryList: "库存总览", inventoryLock: "库存锁定", inventoryActivity: "库存活动", adjustment: "库存调整", minMax: "最小/最大设置", holiday: "节假日管理", cycleCount: "盘点", countTickets: "盘点单", countTasks: "盘点任务", countResults: "盘点结果",
-    task: "任务", receiveTask: "收货任务", putAwayTask: "上架任务", pickTask: "拣货任务", packTask: "打包任务", replenishmentTask: "补货任务", loadTask: "装车任务", movementTask: "移库任务", scenarioTasks: "特定场景任务", putBackTask: "退库任务", technical: "技术页面", wcsManual: "控制系统", dashboard: "仪表盘", configuration: "配置", actionType: "动作类型配置", workflowDefinitions: "工作流定义", systemWorkflows: "系统工作流", jobFilters: "作业过滤器", jobDispatch: "作业调度设置", messageConfig: "消息配置", runtime: "运行", jobManagement: "作业管理", workflowInstances: "工作流实例", nodeExecutions: "节点执行", station: "工作站", enterStation: "进入工作站", workstation: "工作站", acceptTasks: "接收任务", operations: "运维", messageLogs: "消息发送日志", deviceApp: "设备应用", communicationLogs: "通信日志", deviceDebug: "设备/RCS 调试", callbackRecords: "回调记录",
+    appointment: "预约", appointmentList: "预约列表", appointmentCalendar: "预约日历", pendingCarrier: "待预约承运商", appointmentSettings: "预约设置", template: "模板", templateManagement: "模板管理", templateSettings: "模板设置", lpBatchPrint: "LP 批量打印", facility: "设施", facilityMgmt: "设施管理", locationMgmt: "库位管理", equipmentMgmt: "设备管理", rcsClientMgmt: "RCS 客户端管理", warehouseServerMgmt: "仓库服务器管理", lightMgmt: "灯光管理", containerMgmt: "容器管理", wallMgmt: "播种墙管理", vlgMgmt: "VLG 管理", dbChangeLog: "数据库变更日志", inbound: "入库", receipt: "收货单", receiptFilterTemplates: "收货筛选模板", rma: "退货入库", outbound: "出库", outboundOrder: "出库订单", commitment: "库存承诺", orderPlans: "订单计划", dispatch: "订单调度", orderFilters: "订单过滤器", dispatchSettings: "调度设置", smallParcel: "小包工作站", loadManagement: "装载管理", shipmentTickets: "发运单",
+    inventory: "库存", inventoryList: "库存总览", inventoryLock: "库存锁定", inventoryActivity: "库存活动", inventoryLog: "库存日志", adjustment: "库存调整", minMax: "最小/最大设置", holiday: "节假日管理", cycleCount: "盘点", countTickets: "盘点单", countTasks: "盘点任务", countResults: "盘点结果",
+    task: "任务", taskAssignment: "任务分配", wcsSendLog: "WCS 发送日志", taskAction: "任务动作", inventoryCheckTask: "盘点核对任务", sortTask: "分拣任务", assemblyTask: "组装任务", consolidateTask: "合并任务", receiveTask: "收货任务", putAwayTask: "上架任务", pickTask: "拣货任务", packTask: "打包任务", replenishmentTask: "补货任务", loadTask: "装车任务", movementTask: "移库任务", scenarioTasks: "特定场景任务", putBackTask: "退库任务", technical: "技术页面", wcsManual: "控制系统", dashboard: "仪表盘", configuration: "配置", actionType: "作业类型配置", workflowDefinitions: "工作流定义", systemWorkflows: "系统工作流", jobFilters: "作业过滤器", jobDispatch: "作业调度设置", messageConfig: "消息配置", runtime: "运行", jobManagement: "作业管理", workflowInstances: "工作流实例", station: "工作站", enterStation: "进入工作站", workstation: "工作站", operations: "运维", messageLogs: "消息发送日志", deviceApp: "设备应用", communicationLogs: "通信日志", deviceDebug: "设备/RCS 调试", callbackRecords: "回调记录", capabilityMappings: "能力工作流映射", wcsTasks: "WCS 任务", stationManagement: "工作站管理", alertManagement: "告警管理", logQuery: "日志查询", clientCacheStatus: "客户端缓存状态", maintenanceTools: "维护工具",
     openMenu: "打开菜单", closeMenu: "关闭菜单", expand: "展开", collapse: "收起", loading: "正在加载内容"
   },
   ja: {
+    iam: "アカウントと権限", iamAccount: "個人・テナント情報", iamUserRole: "ユーザーとロール", apiKey: "API キー", report: "レポート", reportIO: "入荷・出荷レポート", reportInv: "在庫レポート", fieldConfig: "項目設定",
     home: "ホーム", manual: "統合機能マニュアル", mdm: "マスターデータ", organization: "組織", customer: "顧客", item: "商品", industry: "業種", hazard: "危険物", carrier: "配送業者", address: "住所",
-    inbound: "入庫", receipt: "入荷伝票", rma: "返品入庫", outbound: "出庫", outboundOrder: "出庫注文", commitment: "在庫引当", orderPlans: "注文計画", dispatch: "注文ディスパッチ", orderFilters: "注文フィルター", dispatchSettings: "ディスパッチ設定", smallParcel: "小口出荷ステーション", loadManagement: "積込管理", shipmentTickets: "出荷伝票",
-    inventory: "在庫", inventoryList: "在庫一覧", inventoryLock: "在庫ロック", inventoryActivity: "在庫活動", adjustment: "在庫調整", minMax: "最小／最大設定", holiday: "休日管理", cycleCount: "棚卸", countTickets: "棚卸伝票", countTasks: "棚卸タスク", countResults: "棚卸結果",
-    task: "タスク", receiveTask: "入荷タスク", putAwayTask: "棚入れタスク", pickTask: "ピッキングタスク", packTask: "梱包タスク", replenishmentTask: "補充タスク", loadTask: "積込タスク", movementTask: "移動タスク", scenarioTasks: "特定シナリオタスク", putBackTask: "戻し入れタスク", technical: "技術情報", wcsManual: "制御システム", dashboard: "ダッシュボード", configuration: "設定", actionType: "アクションタイプ設定", workflowDefinitions: "ワークフロー定義", systemWorkflows: "システムワークフロー", jobFilters: "ジョブフィルター", jobDispatch: "ジョブディスパッチ設定", messageConfig: "メッセージ設定", runtime: "実行管理", jobManagement: "ジョブ管理", workflowInstances: "ワークフローインスタンス", nodeExecutions: "ノード実行", station: "ステーション", enterStation: "ステーション入場", workstation: "ワークステーション", acceptTasks: "タスク受付", operations: "運用", messageLogs: "メッセージ送信ログ", deviceApp: "デバイスアプリ", communicationLogs: "通信ログ", deviceDebug: "デバイス/RCS デバッグ", callbackRecords: "コールバック記録",
+    appointment: "予約", appointmentList: "予約一覧", appointmentCalendar: "予約カレンダー", pendingCarrier: "未予約の配送業者", appointmentSettings: "予約設定", template: "テンプレート", templateManagement: "テンプレート管理", templateSettings: "テンプレート設定", lpBatchPrint: "LP 一括印刷", facility: "施設", facilityMgmt: "施設管理", locationMgmt: "ロケーション管理", equipmentMgmt: "設備管理", rcsClientMgmt: "RCS クライアント管理", warehouseServerMgmt: "倉庫サーバー管理", lightMgmt: "ライト管理", containerMgmt: "容器管理", wallMgmt: "ウォール管理", vlgMgmt: "VLG 管理", dbChangeLog: "DB 変更ログ", inbound: "入庫", receipt: "入荷伝票", receiptFilterTemplates: "入荷フィルターテンプレート", rma: "返品入庫", outbound: "出庫", outboundOrder: "出庫注文", commitment: "在庫引当", orderPlans: "注文計画", dispatch: "注文ディスパッチ", orderFilters: "注文フィルター", dispatchSettings: "ディスパッチ設定", smallParcel: "小口出荷ステーション", loadManagement: "積込管理", shipmentTickets: "出荷伝票",
+    inventory: "在庫", inventoryList: "在庫一覧", inventoryLock: "在庫ロック", inventoryActivity: "在庫活動", inventoryLog: "在庫ログ", adjustment: "在庫調整", minMax: "最小／最大設定", holiday: "休日管理", cycleCount: "棚卸", countTickets: "棚卸伝票", countTasks: "棚卸タスク", countResults: "棚卸結果",
+    task: "タスク", taskAssignment: "タスク割り当て", wcsSendLog: "WCS 送信ログ", taskAction: "タスク動作", inventoryCheckTask: "在庫確認タスク", sortTask: "仕分けタスク", assemblyTask: "組立タスク", consolidateTask: "統合タスク", receiveTask: "入荷タスク", putAwayTask: "棚入れタスク", pickTask: "ピッキングタスク", packTask: "梱包タスク", replenishmentTask: "補充タスク", loadTask: "積込タスク", movementTask: "移動タスク", scenarioTasks: "特定シナリオタスク", putBackTask: "戻し入れタスク", technical: "技術情報", wcsManual: "制御システム", dashboard: "ダッシュボード", configuration: "設定", actionType: "ジョブタイプ設定", workflowDefinitions: "ワークフロー定義", systemWorkflows: "システムワークフロー", jobFilters: "ジョブフィルター", jobDispatch: "ジョブディスパッチ設定", messageConfig: "メッセージ設定", runtime: "実行管理", jobManagement: "ジョブ管理", workflowInstances: "ワークフローインスタンス", station: "ステーション", enterStation: "ステーション入場", workstation: "ワークステーション", operations: "運用", messageLogs: "メッセージ送信ログ", deviceApp: "デバイスアプリ", communicationLogs: "通信ログ", deviceDebug: "デバイス/RCS デバッグ", callbackRecords: "コールバック記録", capabilityMappings: "ケイパビリティ・ワークフロー対応", wcsTasks: "WCS タスク", stationManagement: "ステーション管理", alertManagement: "アラート管理", logQuery: "ログ検索", clientCacheStatus: "クライアントキャッシュ状態", maintenanceTools: "メンテナンスツール",
     openMenu: "メニューを開く", closeMenu: "メニューを閉じる", expand: "展開", collapse: "折りたたむ", loading: "コンテンツを読み込み中"
   },
   en: {
+    iam: "IAM", iamAccount: "Profile & Tenant", iamUserRole: "User & Role", apiKey: "API Key", report: "Report", reportIO: "Receiving & Shipping", reportInv: "Inventory Reports", fieldConfig: "Field Configuration",
     home: "Home", manual: "Unified Function Manual", mdm: "Master Data", organization: "Organization", customer: "Customer", item: "Item", industry: "Industry", hazard: "Hazard", carrier: "Carrier", address: "Address",
-    inbound: "Inbound", receipt: "Receipt", rma: "RMA Management", outbound: "Outbound", outboundOrder: "Outbound Order", commitment: "Inventory Commitment", orderPlans: "Order Plans", dispatch: "Order Dispatch", orderFilters: "Order Filters", dispatchSettings: "Dispatch Settings", smallParcel: "Small Parcel Station", loadManagement: "Load Management", shipmentTickets: "Shipment Tickets",
-    inventory: "Inventory", inventoryList: "Inventory Overview", inventoryLock: "Inventory Lock", inventoryActivity: "Inventory Activity", adjustment: "Adjustment", minMax: "Min/Max Setting", holiday: "Holiday Management", cycleCount: "Cycle Count", countTickets: "Count Tickets", countTasks: "Count Tasks", countResults: "Count Results",
-    task: "Task", receiveTask: "Receive Task", putAwayTask: "Put Away Task", pickTask: "Pick Task", packTask: "Pack Task", replenishmentTask: "Replenishment Task", loadTask: "Load Task", movementTask: "Movement Task", scenarioTasks: "Scenario-Specific Tasks", putBackTask: "Put Back Task", technical: "Technical", wcsManual: "Control System", dashboard: "Dashboard", configuration: "Configuration", actionType: "Action Type Config", workflowDefinitions: "Workflow Definitions", systemWorkflows: "System Workflows", jobFilters: "Job Filters", jobDispatch: "Job Dispatch Settings", messageConfig: "Message Config", runtime: "Runtime", jobManagement: "Job Management", workflowInstances: "Workflow Instances", nodeExecutions: "Node Executions", station: "Station", enterStation: "Enter Station", workstation: "Workstation", acceptTasks: "Accept Tasks", operations: "Operations", messageLogs: "Message Send Logs", deviceApp: "Device App", communicationLogs: "Communication Logs", deviceDebug: "Device/RCS Debug", callbackRecords: "Callback Records",
+    appointment: "Appointment", appointmentList: "Appointment List", appointmentCalendar: "Appointment Calendar", pendingCarrier: "Pending Carrier Appointment", appointmentSettings: "Appointment Settings", template: "Template", templateManagement: "Template Management", templateSettings: "Template Settings", lpBatchPrint: "LP Batch Print", facility: "Facility", facilityMgmt: "Facility Management", locationMgmt: "Location Management", equipmentMgmt: "Equipment Management", rcsClientMgmt: "RCS Client Management", warehouseServerMgmt: "Warehouse Server Management", lightMgmt: "Light Management", containerMgmt: "Container Management", wallMgmt: "Wall Management", vlgMgmt: "VLG Management", dbChangeLog: "DB Change Log", inbound: "Inbound", receipt: "Receipt", receiptFilterTemplates: "Receipt Filter Templates", rma: "RMA Management", outbound: "Outbound", outboundOrder: "Outbound Order", commitment: "Inventory Commitment", orderPlans: "Order Plans", dispatch: "Order Dispatch", orderFilters: "Order Filters", dispatchSettings: "Dispatch Settings", smallParcel: "Small Parcel Station", loadManagement: "Load Management", shipmentTickets: "Shipment Tickets",
+    inventory: "Inventory", inventoryList: "Inventory Overview", inventoryLock: "Inventory Lock", inventoryActivity: "Inventory Activity", inventoryLog: "Inventory Log", adjustment: "Adjustment", minMax: "Min/Max Setting", holiday: "Holiday Management", cycleCount: "Cycle Count", countTickets: "Count Tickets", countTasks: "Count Tasks", countResults: "Count Results",
+    task: "Task", taskAssignment: "Task Assignment", wcsSendLog: "WCS Send Log", taskAction: "Task Action", inventoryCheckTask: "Inventory Check Task", sortTask: "Sort Task", assemblyTask: "Assembly Task", consolidateTask: "Consolidate Task", receiveTask: "Receive Task", putAwayTask: "Put Away Task", pickTask: "Pick Task", packTask: "Pack Task", replenishmentTask: "Replenishment Task", loadTask: "Load Task", movementTask: "Movement Task", scenarioTasks: "Scenario-Specific Tasks", putBackTask: "Put Back Task", technical: "Technical", wcsManual: "Control System", dashboard: "Dashboard", configuration: "Configuration", actionType: "Job Type Config", workflowDefinitions: "Workflow Definitions", systemWorkflows: "System Workflows", jobFilters: "Job Filters", jobDispatch: "Job Dispatch Settings", messageConfig: "Message Config", runtime: "Runtime", jobManagement: "Job Management", workflowInstances: "Workflow Instances", station: "Station", enterStation: "Enter Station", workstation: "Workstation", operations: "Operations", messageLogs: "Message Send Logs", deviceApp: "Device App", communicationLogs: "Communication Logs", deviceDebug: "Device/RCS Debug", callbackRecords: "Callback Records", capabilityMappings: "Capability Workflow Mappings", wcsTasks: "WCS Tasks", stationManagement: "Station Management", alertManagement: "Alert Management", logQuery: "Log Query", clientCacheStatus: "Client Cache Status", maintenanceTools: "Maintenance Tools",
     openMenu: "Open menu", closeMenu: "Close menu", expand: "Expand", collapse: "Collapse", loading: "Loading content"
   }
 };
@@ -151,10 +160,10 @@ function ensureLanguageEngine(page) {
   const engine = page === "task" ? "task" : page === "wcs" ? "wcs" : "wms";
   if (!languageEnginePromises.has(engine)) {
     const source = engine === "task"
-      ? "./task/i18n.js?v=20260903-native-content-v10"
+      ? "./task/i18n.js?v=20261304-customer"
       : engine === "wcs"
         ? "./wcs/translations.js?v=20260903-native-content-v10"
-        : "./i18n.js?v=20260903-native-content-v11";
+        : "./i18n.js?v=20261304-customer";
     languageEnginePromises.set(engine, import(source));
   }
   return languageEnginePromises.get(engine);
@@ -245,10 +254,11 @@ function bindContentInteractions(root) {
       return;
     }
 
-    const tab = event.target.closest("[data-settings-tab], [data-item-info-tab], [data-item-config-tab], [data-inventory-tab]");
+    const tab = event.target.closest("[data-settings-tab], [data-item-info-tab], [data-item-config-tab], [data-inventory-tab], [data-detail-tab]");
     if (tab) {
-      const attribute = ["data-settings-tab", "data-item-info-tab", "data-item-config-tab", "data-inventory-tab"].find((name) => tab.hasAttribute(name));
-      root.querySelectorAll(`[${attribute}]`).forEach((item) => {
+      const attribute = ["data-settings-tab", "data-item-info-tab", "data-item-config-tab", "data-inventory-tab", "data-detail-tab"].find((name) => tab.hasAttribute(name));
+      const tabScope = attribute === "data-detail-tab" ? (tab.closest(".detail-tabs") || root) : root;
+      tabScope.querySelectorAll(`[${attribute}]`).forEach((item) => {
         const selected = item === tab;
         item.classList.toggle("active", selected);
         item.setAttribute("aria-selected", String(selected));
@@ -330,6 +340,12 @@ async function loadContent(page, section, sequence) {
     if (!sourceSection) throw new Error("Manual content is missing");
     const sourceMain = sourceDocument.createElement("main");
     sourceMain.append(sourceSection.cloneNode(true));
+    if (page === "mdm" && sourceSection.classList && sourceSection.classList.contains("module")) {
+      // MDM 概览后紧跟的详情章节（如 customer-info / customer-settings）一并载入
+      for (let next = sourceSection.nextElementSibling; next && next.classList.contains("detail-section"); next = next.nextElementSibling) {
+        sourceMain.append(next.cloneNode(true));
+      }
+    }
     const sourceDialog = sourceDocument.querySelector("#image-dialog");
     const startReading = sourceMain.querySelector("[data-portal-start]");
     if (startReading && page === "wcs-home") startReading.setAttribute("href", "wcs/index.html#dashboard");
@@ -340,7 +356,7 @@ async function loadContent(page, section, sequence) {
     const root = contentHost.shadowRoot || contentHost.attachShadow({ mode: "open" });
     const stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
-    stylesheet.href = new URL(page === "task" ? "task/styles.css" : page === "wcs" ? "wcs/styles.css" : "styles.css", location.href).href;
+    stylesheet.href = new URL(page === "task" ? "task/styles.css?v=20261123-task" : page === "wcs" ? "wcs/styles.css" : "styles.css", location.href).href;
     const embedStyle = document.createElement("style");
     const pageLayoutOverrides = page === "wcs" ? `
       main > :is(.manual-page, section.section, article) {
@@ -367,11 +383,11 @@ async function loadContent(page, section, sequence) {
       }
       main { width: 100% !important; max-width: none !important; margin-left: 0 !important; padding-top: 0 !important; }
       .sidebar, .mobile-header, .language-switcher, .language-switch, .language-switch-floating, .reading-line, #sidebar-scrim { display: none !important; }
-      :is(.hero, .mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview) {
+      :is(.hero, .mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview, .wg-overview) {
         background: #fbfaf7 !important;
         color: var(--ink) !important;
       }
-      :is(.hero, .mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview)::after {
+      :is(.hero, .mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview, .wg-overview)::after {
         color: rgba(14, 42, 71, .045) !important;
       }
       .hero > :is(h1, h2),
@@ -379,32 +395,32 @@ async function loadContent(page, section, sequence) {
       .inbound-heading h2,
       .outbound-overview > h2,
       .inventory-overview > h2,
-      .cycle-count-overview > h2 { color: var(--navy) !important; }
+      .cycle-count-overview > h2, .wg-overview > h2 { color: var(--navy) !important; }
       .hero > .hero-lead,
       .mdm-heading > p,
       .inbound-heading > p,
       .outbound-overview > p,
       .inventory-overview > p,
-      .cycle-count-overview > p { color: var(--muted) !important; }
+      .cycle-count-overview > p, .wg-overview > p { color: var(--muted) !important; }
       .hero > .eyebrow,
-      :is(.mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview) .overview-label,
+      :is(.mdm-overview, .inbound-overview, .outbound-overview, .inventory-overview, .cycle-count-overview, .wg-overview) .overview-label,
       :is(.mdm-heading, .inbound-heading) .eyebrow,
-      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article > small,
+      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .wg-function-grid, .task-overview-cards) article > small,
       .inbound-flow article > span { color: var(--blue) !important; }
       :is(.mdm-scope, .inventory-function-grid) {
         border-color: var(--line) !important;
         background: var(--line) !important;
       }
-      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article {
+      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .wg-function-grid, .task-overview-cards) article {
         border-color: var(--line) !important;
         background: #fff !important;
         color: var(--ink) !important;
       }
-      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article :is(h2, h3, b, strong),
+      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .wg-function-grid, .task-overview-cards) article :is(h2, h3, b, strong),
       .inbound-flow article b { color: var(--navy) !important; }
-      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article p,
+      :is(.mdm-scope, .inbound-scenarios, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .wg-function-grid, .task-overview-cards) article p,
       .inbound-flow article small { color: var(--muted) !important; }
-      :is(.mdm-scope, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .task-overview-cards) article span {
+      :is(.mdm-scope, .outbound-function-grid, .inventory-function-grid, .cycle-count-function-grid, .wg-function-grid, .task-overview-cards) article span {
         color: #516579 !important;
         border-color: var(--line) !important;
       }

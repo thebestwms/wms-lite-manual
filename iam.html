@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Orbiflow WMS-Lite 功能说明书网站样章">
+  <title>Orbiflow WMS-Lite · IAM 账号与权限</title>
+  <link rel="stylesheet" href="styles.css?v=20261118-wes-batch1">
+</head>
+<body class="page-iam">  <div class="language-switcher" aria-label="Language switcher"><button type="button" data-lang-option="zh" class="active">中</button><button type="button" data-lang-option="ja">日</button><button type="button" data-lang-option="en">EN</button></div>
+  <!-- 内容规则：不复述截图中显而易见的界面结构、按钮或必填标记；正文只解释业务场景、选择依据、配置结果和非显性约束。 -->
+  <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">O</span>
+      <div>
+        <strong>ORBIFLOW</strong>
+        <small>WMS-Lite Manual</small>
+      </div>
+    </div>
+
+    <nav aria-label="说明书导航">
+      <a href="index.html#start" class="nav-link active"><span>00</span>阅读指南</a>
+      <div class="nav-module main-nav-module template-main-nav" data-nav-module="iam">
+        <div class="nav-module-head"><a href="iam.html#iam" class="nav-link nav-group-link"><span>IAM</span>IAM</a><button class="nav-toggle" type="button" aria-label="收起 IAM 子菜单" aria-expanded="true" aria-controls="iam-submenu"></button></div>
+        <div class="nav-submenu" id="iam-submenu">
+      <a href="iam.html#iam-account-guide" class="nav-link"><span>01</span>Profile & Tenant</a><a href="iam.html#iam-user-role-guide" class="nav-link"><span>02</span>User & Role</a><a href="iam.html#iam-api-key-guide" class="nav-link"><span>03</span>API Key</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="status-dot"></span>
+      基于当前系统页面整理
+    </div>
+  </aside>
+
+  <header class="mobile-header">
+    <button id="menu-button" aria-label="打开菜单" aria-expanded="false">☰</button>
+    <strong>WMS-Lite 功能说明书</strong>
+    <span>IAM</span>
+  </header>
+
+  <main>
+
+<section class="wg-overview iam-overview" id="iam" data-section="iam">
+      <div class="overview-label">IAM · MODULE OVERVIEW</div>
+      <h2>IAM 管理谁能进入系统、能做什么</h2>
+      <p class="wg-lead">IAM 负责账号、角色权限、租户资料和系统对接密钥。先建好角色，再把角色分配给用户，用户登录后只能看到并操作被授权的功能。</p>
+
+      <div class="wg-function-grid">
+        <article><small>01 · 账号</small><b>维护个人与租户资料</b><p>个人账号可自行改资料和密码；租户资料由管理员维护，并显示租户有效期。</p><div class="wg-scope-links"><span>Profile</span><span>Tenant Profile</span></div></article>
+        <article><small>02 · 权限</small><b>按角色授权，再分配给用户</b><p>角色决定能做哪些操作，用户可同时拥有多个角色，并可限定可访问的设施。</p><div class="wg-scope-links"><span>User Management</span><span>Role Management</span></div></article>
+        <article><small>03 · 对接</small><b>为外部系统签发访问密钥</b><p>API Key 供第三方系统调用接口，可设置有效期，并随时停用或重新生成。</p><div class="wg-scope-links"><span>API Key</span></div></article>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="iam-account-guide" data-section="iam-account-guide">
+      <div class="module-number">01</div>
+      <div class="module-heading">
+        <div class="eyebrow">IAM · PROFILE & TENANT PROFILE</div>
+        <h2>个人资料管理自己的账号，租户资料代表整个公司</h2>
+        <p>Profile 供每位用户维护自己的资料和登录密码；Tenant Profile 展示所在租户的基本信息，由管理员维护。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>新员工入职后首次登录，需要完善资料并修改初始密码</h3>
+        <p>管理员创建账号时会设置初始密码。员工登录后到 Profile 补充姓名、邮箱等联系方式，并在 Change Password 中换成自己的密码；之后忘记密码或怀疑泄露时，也在这里自行修改。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Profile</span>
+          <h3>个人信息与密码分开保存</h3>
+          <p>上半部分的个人信息用于识别账号使用人，保存后立即生效；下半部分的密码修改需要先输入旧密码。账号名由管理员创建。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-profile.png?v=20261128" aria-label="放大 Profile 截图">
+          <span>IAM · PROFILE</span><img loading="lazy" decoding="async" src="assets/wes-iam-profile.png?v=20261128" alt="Profile 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Tenant Profile</span>
+          <h3>租户有效期与基础资料一页查看</h3>
+          <p>页面上方是系统维护的租户状态和到期时间，管理员可据此提前安排续期；下方是公司对外使用的资料，例如名称、联系人和地址。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-tenant-profile.png?v=20261130" aria-label="放大 Tenant Profile 截图">
+          <span>IAM · TENANT PROFILE</span><img loading="lazy" decoding="async" src="assets/wes-iam-tenant-profile.png?v=20261130" alt="Tenant Profile 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Edit</span>
+          <h3>在原页面切换到编辑状态</h3>
+          <p>点击 Edit 后，可更换 Logo 并修改可编辑的资料，Submit 保存、Cancel 放弃修改。租户状态和到期时间不可在此修改。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-tenant-edit.png?v=20261130" aria-label="放大 Edit 截图">
+          <span>IAM · TENANT PROFILE · EDIT</span><img loading="lazy" decoding="async" src="assets/wes-iam-tenant-edit.png?v=20261130" alt="Tenant Profile 编辑状态截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="iam-user-role-guide" data-section="iam-user-role-guide">
+      <div class="module-number">02</div>
+      <div class="module-heading">
+        <div class="eyebrow">IAM · USER MANAGEMENT & ROLE MANAGEMENT</div>
+        <h2>先用角色定义权限，再把角色分配给用户</h2>
+        <p>Role Management 决定“能做什么”，User Management 决定“谁拥有这些角色、能进哪些设施”。两者配合，才能让不同岗位只看到自己的功能。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>新增一名只负责拣货的员工</h3>
+        <p>管理员先在 Role Management 建好“拣货员”角色，只勾选拣货相关的权限；再到 User Management 新建账号，分配该角色，并限定可访问的设施。员工登录后看不到其他岗位的功能，也不会误操作。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Role Management</span>
+          <h3>角色是权限的集合，可复用</h3>
+          <p>同一个角色可以分配给多名用户，修改角色权限后，所有持有该角色的用户同步生效。停用角色可以快速收回一批人的权限，而不必逐个改账号。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-role-list.png?v=20261130" aria-label="放大 Role Management 截图">
+          <span>IAM · ROLE MANAGEMENT</span><img loading="lazy" decoding="async" src="assets/wes-iam-role-list.png?v=20261130" alt="Role Management 列表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Create Role</span>
+          <h3>按系统和功能逐项授权</h3>
+          <p>权限按 WMS、IAM、WCS 分页，每个功能下可细分到新增、编辑、删除、导入、导出等操作。需要整批授权时用 Select All，再取消不需要的项，比逐项勾选更快；授权宜遵循够用即可的原则，敏感的删除、导入类操作只给必要的岗位。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-role-create.png?v=20261130" aria-label="放大 Create Role 截图">
+          <span>IAM · ROLE · CREATE</span><img loading="lazy" decoding="async" src="assets/wes-iam-role-create.png?v=20261130" alt="Create Role 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">User Management</span>
+          <h3>一个账号可以同时拥有多个角色</h3>
+          <p>列表的 Roles 列可直接看到每个账号当前拥有的角色，便于核对某位员工为什么能（或不能）看到某个功能。人员调岗或离职时，调整角色或把状态改为停用即可，不需要删除账号，历史作业记录仍保留。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-user-list.png?v=20261130" aria-label="放大 User Management 截图">
+          <span>IAM · USER MANAGEMENT</span><img loading="lazy" decoding="async" src="assets/wes-iam-user-list.png?v=20261130" alt="User Management 列表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Create User</span>
+          <h3>角色决定功能，设施范围决定可访问的仓库</h3>
+          <p>Assign Roles 通过左右穿梭框选择角色；Facility Access 用来限定该账号可进入的设施，适合多仓库公司让员工只处理所在仓库的数据。初始密码请告知本人，并建议其首次登录后自行修改。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-user-create.png?v=20261130" aria-label="放大 Create User 截图">
+          <span>IAM · USER · CREATE</span><img loading="lazy" decoding="async" src="assets/wes-iam-user-create.png?v=20261130" alt="Create User 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+<section class="module wg-guide" id="iam-api-key-guide" data-section="iam-api-key-guide">
+      <div class="module-number">03</div>
+      <div class="module-heading">
+        <div class="eyebrow">IAM · API KEY</div>
+        <h2>为每个对接系统单独签发密钥，方便控制和回收</h2>
+        <p>API Key 是外部系统访问本系统接口时使用的凭证，每个对接方一把，彼此独立。</p>
+      </div>
+
+      <div class="wg-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>电商平台或 ERP 需要自动推送订单、回写库存</h3>
+        <p>管理员为该系统新建一把 API Key，把 App Code 和密钥交给对接方；合同到期可设置有效期，怀疑泄露时可立即停用或重新生成，而不影响其他系统的对接。</p>
+      </div>
+
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">API Key</span>
+          <h3>在列表里掌握每把密钥的状态</h3>
+          <p>通过过期时间和状态可以快速找出即将失效或已停用的对接。Regenerate 会换发新密钥，使用旧密钥的对接方需要同步更新配置，请提前通知；出于安全考虑，请勿在聊天或邮件中明文传递密钥。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-api-key-list.png?v=20261130" aria-label="放大 API Key 截图">
+          <span>IAM · API KEY</span><img loading="lazy" decoding="async" src="assets/wes-iam-api-key-list.png?v=20261130" alt="API Key 列表页面截图"><i>点击放大</i>
+        </button>
+      </div>
+      <div class="wg-section ">
+        <div class="wg-copy">
+          <span class="section-kicker">Add API Key</span>
+          <h3>App Code 用来识别对接方</h3>
+          <p>建议用能看出对接系统的名称作为 App Code 和 App Name，日后排查接口调用时一眼可辨。Expire Time 留空表示永不过期；长期不变的内部系统可留空，外部合作方建议设置到期时间。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/wes-iam-api-key-add.png?v=20261130" aria-label="放大 Add API Key 截图">
+          <span>IAM · API KEY · ADD</span><img loading="lazy" decoding="async" src="assets/wes-iam-api-key-add.png?v=20261130" alt="Add API Key 页面截图"><i>点击放大</i>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <dialog id="image-dialog">
+    <button id="dialog-close" aria-label="关闭图片">×</button>
+    <img id="dialog-image" alt="页面截图放大预览">
+  </dialog>
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+  <script src="app.js?v=20260813-inventory-tabs"></script>
+  <script src="i18n.js?v=20261127-iam-report"></script></body>
+</html>
+
+
+
+
+
+

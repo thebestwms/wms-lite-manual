@@ -149,6 +149,7 @@ function bindContentTabs(selector, targetAttribute) {
 bindContentTabs("[data-item-info-tab]", "data-item-info-tab");
 bindContentTabs("[data-item-config-tab]", "data-item-config-tab");
 bindContentTabs("[data-inventory-tab]", "data-inventory-tab");
+bindContentTabs("[data-detail-tab]", "data-detail-tab");
 
 dialogClose.addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", (event) => {

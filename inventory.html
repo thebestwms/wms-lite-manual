@@ -58,7 +58,7 @@
       <div class="nav-module main-nav-module inventory-main-nav" data-nav-module="inventory">
         <div class="nav-module-head"><a href="inventory.html#inventory" class="nav-link nav-group-link inventory-nav"><span>INV</span>Inventory</a><button class="nav-toggle" type="button" aria-label="收起 Inventory 子菜单" aria-expanded="true" aria-controls="inventory-submenu"></button></div>
         <div class="nav-submenu" id="inventory-submenu">
-          <a href="inventory.html#inventory-list-guide" class="nav-link"><span>01</span>Inventory</a><a href="inventory.html#inventory-lock-guide" class="nav-link"><span>02</span>Inventory Lock</a><a href="inventory.html#inventory-activity-guide" class="nav-link"><span>03</span>Inventory Activity</a><a href="inventory.html#lp-guide" class="nav-link"><span>04</span>LP</a><a href="inventory.html#adjustment-guide" class="nav-link"><span>05</span>Adjustment</a><a href="inventory.html#min-max-guide" class="nav-link"><span>06</span>Min/Max Setting</a><a href="inventory.html#holiday-guide" class="nav-link"><span>07</span>Holiday Management</a>
+          <a href="inventory.html#inventory-list-guide" class="nav-link"><span>01</span>Inventory</a><a href="inventory.html#inventory-lock-guide" class="nav-link"><span>02</span>Inventory Lock</a><a href="inventory.html#inventory-activity-guide" class="nav-link"><span>03</span>Inventory Activity</a><a href="inventory.html#inventory-log-guide" class="nav-link"><span>04</span>Inventory Log</a><a href="inventory.html#lp-guide" class="nav-link"><span>05</span>LP</a><a href="inventory.html#adjustment-guide" class="nav-link"><span>06</span>Adjustment</a><a href="inventory.html#min-max-guide" class="nav-link"><span>07</span>Min/Max Setting</a><a href="inventory.html#holiday-guide" class="nav-link"><span>08</span>Holiday Management</a>
         </div>
       </div>
       <div class="nav-module main-nav-module cycle-count-main-nav" data-nav-module="cycle-count">
@@ -89,7 +89,7 @@
       <div class="inventory-function-grid">
         <article><small>01 · 看清现状</small><b>库存有多少，分别放在哪里</b><p>查询商品数量、状态、Location 与 LP，并通过容器层级确认托盘、箱或 Tote 中实际承载的库存。</p><div class="inventory-scope-links"><span>Inventory</span><span>LP</span></div></article>
         <article><small>02 · 判断可用</small><b>账面有货，不代表仍可分配</b><p>出库订单锁定库存后，台账数量不会立即减少，但相应数量已被占用；只有未被有效锁定的 Open 库存才能继续分配。</p><div class="inventory-scope-links"><span>Inventory Lock</span></div></article>
-        <article><small>03 · 处理差异</small><b>纠正库存，并保留变化依据</b><p>盘点或现场发现数量、状态、库位等信息不符时，通过 Adjustment 发起受控调整；Inventory Activity 用于追溯库存经历过的作业。</p><div class="inventory-scope-links"><span>Adjustment</span><span>Inventory Activity</span></div></article>
+        <article><small>03 · 处理差异</small><b>纠正库存，并保留变化依据</b><p>盘点或现场发现数量、状态、库位等信息不符时，通过 Adjustment 发起受控调整；Inventory Activity 按作业、Inventory Log 按库存记录，分别追溯库存发生过的变化。</p><div class="inventory-scope-links"><span>Adjustment</span><span>Inventory Activity</span><span>Inventory Log</span></div></article>
         <article><small>04 · 保障供给</small><b>拣货位不足时安排补货</b><p>为商品和目标区域设置最低与最高库存；系统按调度检查补货需求，并在设定的非工作日跳过自动任务。</p><div class="inventory-scope-links"><span>Min/Max Setting</span><span>Holiday Management</span></div></article>
       </div>
     </section>
@@ -105,16 +105,17 @@
         </div>
 
       <div class="inventory-screen-section inventory-tab-panel" id="inventory-summary-panel" role="tabpanel">
-        <button class="screen-frame" data-lightbox="assets/inventory-summary.png" aria-label="放大 Inventory Summary 页面截图"><span>INVENTORY · SUMMARY</span><img loading="lazy" decoding="async" src="assets/inventory-summary.png" alt="Inventory Summary 页面截图"><i>点击放大</i></button>
-        <div class="inventory-summary-intro"><span class="section-kicker">Summary</span><h3>先按商品查看库存汇总</h3><p>Summary 将符合查询条件的库存按 SKU、Status 和 Type 汇总，适合先判断某个商品当前有多少库存；需要确认具体库位、LP 或关联单据时，再切换到 Inventory Detail。</p></div>
-        <div class="inventory-query-groups"><article><b>归属与商品</b><p>Customer、Title 和 SKU 用于限定库存属于哪个客户、货权方和商品。</p></article><article><b>状态与存放位置</b><p>Status、Location、LP 和 Original LP 用于查询库存所处阶段及当前或来源容器。</p></article><article><b>业务来源</b><p>Receipt、Order 和 Load ID 用于沿入库、出库或装载单据追查对应库存。</p></article></div>
+        <button class="screen-frame" data-lightbox="assets/inventory-summary.png?v=20261201" aria-label="放大 Inventory Summary 页面截图"><span>INVENTORY · SUMMARY</span><img loading="lazy" decoding="async" src="assets/inventory-summary.png?v=20261201" alt="Inventory Summary 页面截图"><i>点击放大</i></button>
+        <div class="inventory-summary-intro"><span class="section-kicker">Summary</span><h3>先按商品查看库存汇总</h3><p>Summary 将符合查询条件的库存按 SKU、Status 和 Type 汇总，适合先判断某个商品当前有多少库存；需要确认具体库位、LP 或关联单据时，再切换到 Inventory Detail。左上角的 Presets 可把当前筛选条件保存为预设，下次直接选用。</p></div>
+        <div class="inventory-query-groups"><article><b>归属与商品</b><p>Customer、Title 和 SKU 用于限定库存属于哪个客户、货权方和商品。</p></article><article><b>状态与存放位置</b><p>Status、Location、LP 和 Original LP 用于查询库存所处阶段及当前或来源容器。</p></article><article><b>业务来源</b><p>Receipt、Order 和 Load ID 用于沿入库、出库或装载单据追查对应库存；Inventory Channel 区分库存来自收货、退货还是转移。</p></article></div>
         <div class="inventory-quantity-note"><div><span>Total Qty (UOM)</span><b>按当前计量单位显示</b><p>例如 5 CASE，表示以箱为单位记录。</p></div><div><span>Total Base Qty (UOM)</span><b>换算为基础单位</b><p>若 1 CASE = 12 EA，则 5 CASE = 60 EA。</p></div><div class="inventory-availability"><span>判断可分配量</span><b>页面库存数量不等于当前可分配数量</b><p>Open 库存还需扣除已锁定数量：100 EA - 30 EA = 70 EA 可分配。</p></div></div>
       </div>
       <div class="inventory-detail-section inventory-tab-panel" id="inventory-detail-panel" role="tabpanel" hidden>
-        <button class="screen-frame" data-lightbox="assets/inventory-detail.png" aria-label="放大 Inventory Detail 页面截图"><span>INVENTORY · DETAIL</span><img loading="lazy" decoding="async" src="assets/inventory-detail.png" alt="Inventory Detail 页面截图"><i>点击放大</i></button>
+        <button class="screen-frame" data-lightbox="assets/inventory-detail.png?v=20261201" aria-label="放大 Inventory Detail 页面截图"><span>INVENTORY · DETAIL</span><img loading="lazy" decoding="async" src="assets/inventory-detail.png?v=20261201" alt="Inventory Detail 页面截图"><i>点击放大</i></button>
         <div class="inventory-detail-intro"><span class="section-kicker">Inventory Detail</span><h3>把商品汇总量拆解为具体库存记录</h3><p>同一个 SKU 可能分布在不同客户、货权、LP、批次或库存状态下。Inventory Detail 按记录逐行展示这些差异，用于确认某一部分库存的实际归属和存放载体。</p></div>
-        <div class="inventory-detail-fields"><article><span>01</span><div><b>归属对象</b><p>Customer 表示库存所属客户，Title 表示库存货权。即使 SKU 相同，归属不同的库存也会分别记录。</p></div></article><article><span>02</span><div><b>商品与数量</b><p>SKU 识别商品；Qty (UOM) 显示当前单位下的数量，Base Qty 统一换算为基础单位。</p></div></article><article><span>03</span><div><b>库存属性</b><p>Status 表示当前作业阶段，Type 表示货物类型，Lot# 用于区分需要批次追踪的库存。</p></div></article><article><span>04</span><div><b>容器与追查入口</b><p>LP 表示当前承载库存的容器；点击 View 可进入该条库存记录，继续查看 Location 和关联单据等信息。</p></div></article></div>
+        <div class="inventory-detail-fields"><article><span>01</span><div><b>归属对象</b><p>Customer 表示库存所属客户，Title 表示库存货权。即使 SKU 相同，归属不同的库存也会分别记录。</p></div></article><article><span>02</span><div><b>商品与数量</b><p>SKU 识别商品；Qty (UOM) 显示当前单位下的数量，Base Qty 统一换算为基础单位。</p></div></article><article><span>03</span><div><b>库存属性</b><p>Status 表示当前作业阶段，Type 表示货物类型，Lot# 用于区分需要批次追踪的库存。</p></div></article><article><span>04</span><div><b>容器与追查入口</b><p>LP 表示当前承载库存的容器，Location、Receipt、Order 和 Load ID 进一步说明库存放在哪里、与哪张单据相关。</p></div></article><article><span>05</span><div><b>追溯作业来源</b><p>Receive Task 与 PutAway Task 对应这条库存的收货和上架任务，Adjustment Id 对应造成数量变化的调整单，可复制编号到 Task 或 Adjustment 页面继续查询。</p></div></article><article><span>06</span><div><b>导出与排序预览</b><p>Export 导出当前查询结果，便于线下核对；Sort Preview 用来预览拣货顺序，见下方说明。</p></div></article></div>
         <p class="inventory-detail-usage"><b>实际使用：</b>Summary 用于判断“这个 SKU 总共有多少”，Inventory Detail 用于回答“这些数量分别属于谁、装在哪个 LP、处于什么状态”。</p>
+        <p class="inventory-detail-usage"><b>Sort Preview：</b>在 Detail 页点击 Sort Preview，输入 SKU 并按需选择客户、出库规则（默认 FIFO，先入先出）、批次和数量，点击 Sort 后列出符合条件的库存及其 Location、LP、Lot No 和收货时间。它是预览工具，用于在拣货前确认库存会按什么顺序被使用，调整规则或库存分布前先验证一遍。</p>
       </div>
       </div>
     </section>
@@ -152,8 +153,8 @@
       </div>
 
       <div class="lock-page-section">
-        <button class="screen-frame" data-lightbox="assets/inventory-lock-list.png" aria-label="放大 Inventory Lock 列表页面截图">
-          <span>INVENTORY LOCK · LIST</span><img loading="lazy" decoding="async" src="assets/inventory-lock-list.png" alt="Inventory Lock 列表页面截图"><i>点击放大</i>
+        <button class="screen-frame" data-lightbox="assets/inventory-lock-list.png?v=20261201" aria-label="放大 Inventory Lock 列表页面截图">
+          <span>INVENTORY LOCK · LIST</span><img loading="lazy" decoding="async" src="assets/inventory-lock-list.png?v=20261201" alt="Inventory Lock 列表页面截图"><i>点击放大</i>
         </button>
         <div class="lock-page-intro">
           <span class="section-kicker">锁定记录</span>
@@ -162,14 +163,14 @@
         </div>
         <div class="lock-status-legend">
           <div><b>ACTIVE</b><span>当前仍在为订单占用可分配量</span></div>
-          <div><b>CONSUMED</b><span>对应数量已经完成拣货</span></div>
+          <div><b>Closed</b><span>锁定已结束，不再占用可分配量</span></div>
           <div><b>INACTIVE</b><span>锁定已释放或本次未形成有效占用</span></div>
         </div>
       </div>
 
       <div class="lock-detail-layout">
-        <button class="screen-frame" data-lightbox="assets/inventory-lock-detail.png" aria-label="放大 Inventory Lock Detail 页面截图">
-          <span>INVENTORY LOCK · DETAIL</span><img loading="lazy" decoding="async" src="assets/inventory-lock-detail.png" alt="Inventory Lock Detail 页面截图"><i>点击放大</i>
+        <button class="screen-frame" data-lightbox="assets/inventory-lock-detail.png?v=20261201" aria-label="放大 Inventory Lock Detail 页面截图">
+          <span>INVENTORY LOCK · DETAIL</span><img loading="lazy" decoding="async" src="assets/inventory-lock-detail.png?v=20261201" alt="Inventory Lock Detail 页面截图"><i>点击放大</i>
         </button>
         <div class="lock-detail-copy">
           <span class="section-kicker">Lock Detail</span>
@@ -212,9 +213,9 @@
           <h3>查看库存“发生过什么”，而不是“现在还有多少”</h3>
           <p>Inventory Activity 保存已经发生的库存活动，用于调查库存为何增加、减少、换容器、换库位或进入后续出库阶段。当前库存数量应以 Inventory 或 Balance Report 为准；需要追查历史原因时，再回到本页面按 SKU、LP、Location、Task ID 或 Adjustment ID 查询。</p>
         </div>
-        <button class="screen-frame" data-lightbox="assets/inventory-activity-list.png" aria-label="放大 Inventory Activity 列表页面截图">
+        <button class="screen-frame" data-lightbox="assets/inventory-activity-list.png?v=20261201" aria-label="放大 Inventory Activity 列表页面截图">
           <span>INVENTORY ACTIVITY · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/inventory-activity-list.png" alt="Inventory Activity 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/inventory-activity-list.png?v=20261201" alt="Inventory Activity 列表页面截图">
           <i>点击放大</i>
         </button>
         <div class="activity-field-groups">
@@ -226,8 +227,42 @@
 
     </section>
 
-<section class="module lp-guide" id="lp-guide" data-section="lp-guide">
+<section class="module inventory-log-guide" id="inventory-log-guide" data-section="inventory-log-guide">
       <div class="module-number">04</div>
+      <div class="module-heading">
+        <div class="eyebrow">INVENTORY · INVENTORY LOG</div>
+        <h2>按库存记录逐条查看数量是如何新增、修改或删除的</h2>
+        <p>Inventory Log 保存库存记录本身的变更轨迹：每次新增、修改或删除，都会留下变更前后的数量。它比 Inventory Activity 更贴近库存数据，适合账面数量对不上时逐条核对；本页只用于查询，不会修改库存。</p>
+      </div>
+
+      <div class="activity-scenario">
+        <span class="section-kicker">核心场景</span>
+        <h3>某条库存的数量与预期不一致，需要确认是哪一步改变了它</h3>
+        <p>例如某个 SKU 的账面数量比现场少。先在 Inventory 中找到对应库存的 Inventory ID 或 LP，再到 Inventory Log 查询，逐条对比变更前后的数量，即可定位数量是在哪一次变更中发生变化的；若还需要知道是哪项作业造成的，再回到 Inventory Activity 或 Task 按时间继续查找。</p>
+      </div>
+
+      <div class="activity-page-section">
+        <div class="activity-page-intro">
+          <span class="section-kicker">页面用途</span>
+          <h3>与 Inventory Activity 的分工</h3>
+          <p>Inventory Activity 按作业记录库存移动，回答“做了什么作业”；Inventory Log 按库存记录保存数量变化，回答“这条库存的数量怎么变的”。排查时先用 Log 确认数量在哪一步变化，再用 Activity 找到对应作业。</p>
+        </div>
+        <button class="screen-frame" data-lightbox="assets/inventory-log-list.png?v=20261201" aria-label="放大 Inventory Log 列表页面截图">
+          <span>INVENTORY LOG · LIST</span>
+          <img loading="lazy" decoding="async" src="assets/inventory-log-list.png?v=20261201" alt="Inventory Log 列表页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="activity-field-groups">
+          <article><span>01</span><div><b>先定位到那条库存</b><p>已知 Inventory ID 或 LP ID 时可直接定位；只知道商品时，用 SKU 配合起止时间缩小范围。</p></div></article>
+          <article><span>02</span><div><b>对比变更前后的数量</b><p>Qty Before 与 Qty After 对比即可看出数量如何变化；Action Type 区分这次是新增、修改还是删除，新增记录的 Qty Before 显示为“-”。</p></div></article>
+          <article><span>03</span><div><b>按状态与时间回溯</b><p>Status 用来判断变化发生在库存的哪个阶段，例如已拣货或已调整出库；按时间范围筛选可以只看某个班次或某一天的变化。</p></div></article>
+        </div>
+      </div>
+
+    </section>
+
+<section class="module lp-guide" id="lp-guide" data-section="lp-guide">
+      <div class="module-number">05</div>
       <div class="module-heading">
         <div class="eyebrow">INVENTORY · LP</div>
         <h2>用一个可扫描编号，识别并追踪整托、整箱或整料箱库存</h2>
@@ -251,9 +286,9 @@
           <h3>查询载体当前的位置、状态和用途</h3>
           <p>可按 LP ID、Type、Location 和 Status 查询现场载体。列表同时提供单个或批量创建、标签打印和详情入口；它用于查询与维护 LP，不直接执行库存移动。</p>
         </div>
-        <button class="screen-frame" data-lightbox="assets/lp-list.png" aria-label="放大 LP List 页面截图">
+        <button class="screen-frame" data-lightbox="assets/lp-list.png?v=20261201" aria-label="放大 LP List 页面截图">
           <span>LP · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/lp-list.png" alt="LP List 页面截图">
+          <img loading="lazy" decoding="async" src="assets/lp-list.png?v=20261201" alt="LP List 页面截图">
           <i>点击放大</i>
         </button>
         <div class="lp-list-guide">
@@ -286,9 +321,9 @@
           <h3>先建立可扫描的载体编号，再通过仓库作业装入库存</h3>
           <p>Add 创建一个空 LP；Batch Create 按 Type 和数量批量生成空 LP。两者都不会同时创建库存。</p>
         </div>
-        <button class="screen-frame" data-lightbox="assets/lp-create.png" aria-label="放大 Create LP 页面截图">
+        <button class="screen-frame" data-lightbox="assets/lp-create.png?v=20261201" aria-label="放大 Create LP 页面截图">
           <span>LP · CREATE</span>
-          <img loading="lazy" decoding="async" src="assets/lp-create.png" alt="Create LP 页面截图">
+          <img loading="lazy" decoding="async" src="assets/lp-create.png?v=20261201" alt="Create LP 页面截图">
           <i>点击放大</i>
         </button>
         <div class="lp-create-fields">
@@ -304,9 +339,9 @@
           <h3>确认这个载体在哪里、属于哪一层，以及里面当前装有什么</h3>
           <p>详情页用于核对 LP 本身与当前库存的关联，不是历史流水。库存经历过哪些移动，应到 Inventory Activity 查询。</p>
         </div>
-        <button class="screen-frame" data-lightbox="assets/lp-detail.png" aria-label="放大 LP Detail 页面截图">
+        <button class="screen-frame" data-lightbox="assets/lp-detail.png?v=20261201" aria-label="放大 LP Detail 页面截图">
           <span>LP · DETAIL</span>
-          <img loading="lazy" decoding="async" src="assets/lp-detail.png" alt="LP Detail 页面截图">
+          <img loading="lazy" decoding="async" src="assets/lp-detail.png?v=20261201" alt="LP Detail 页面截图">
           <i>点击放大</i>
         </button>
         <div class="lp-detail-points">
@@ -319,7 +354,7 @@
     </section>
 
 <section class="module adjustment-guide" id="adjustment-guide" data-section="adjustment-guide">
-      <div class="module-number">05</div>
+      <div class="module-number">06</div>
       <div class="module-heading">
         <div class="eyebrow">INVENTORY · ADJUSTMENT</div>
         <h2>通过可审批的调整单，纠正库存数量、位置和属性差异</h2>
@@ -345,17 +380,17 @@
         <div class="adjustment-list-copy">
           <span class="section-kicker">Adjustment List</span>
           <h3>查询调整原因、类型与审批结果</h3>
-          <p>可按 Customer、Status、Adjustment Type 和 Reason 定位调整单。NEW 单据可在列表右侧直接 Approve 或 Edit；点击 View 进入详情页后，还可以选择 Decline。已完成审批的单据仅保留 View，用于核对审批结果和库存变化。</p>
+          <p>需要处理的调整单通常是 NEW 状态：先按 Status 筛出 NEW，再按 Customer、Adjustment Type 或 Reason 缩小范围。NEW 单据的行内可直接 Approve、Decline 或 Edit，点击 Adjustment ID 进入详情页核对后再处理；已审批的单据行内没有操作，只用于回看审批结果和库存变化。</p>
         </div>
-        <button class="screen-frame" data-lightbox="assets/adjustment-list.png?v=approve" aria-label="放大 Adjustment List 页面截图">
+        <button class="screen-frame" data-lightbox="assets/adjustment-list.png?v=20261204" aria-label="放大 Adjustment List 页面截图">
           <span>ADJUSTMENT · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/adjustment-list.png?v=approve" alt="Adjustment List 页面截图">
+          <img loading="lazy" decoding="async" src="assets/adjustment-list.png?v=20261204" alt="Adjustment List 页面截图">
           <i>点击放大</i>
         </button>
         <div class="adjustment-status-row">
           <div><b>NEW</b><span>已保存，等待审批；库存尚未变化</span></div>
           <div><b>APPROVED</b><span>全部调整行执行成功，库存已经更新</span></div>
-          <div><b>DECLINED</b><span>在 NEW 单据详情页点击 Decline；库存不会更新</span></div>
+          <div><b>DECLINED</b><span>NEW 单据被拒绝；库存不会更新</span></div>
         </div>
         <p class="adjustment-batch-note"><b>Batch Approve：</b>可一次批准多张 NEW Adjustment。只要其中一张或一行执行失败，本次批量审批整体不生效，不会留下部分成功的库存变化。</p>
       </div>
@@ -364,15 +399,15 @@
         <div class="adjustment-create-copy">
           <span class="section-kicker">Create Adjustment</span>
           <h3>先选中需要纠正的库存，再填写调整后的目标值</h3>
-          <p>Basic Info 先确定 Customer、Reason 和备注；Add Line 再按 SKU、Title、Location、LP 或 Lot No 查找来源库存。选择 Adjustment Type 并填写目标值后，将记录加入 Adjustment Lines，最后保存并按需要审批。</p>
+          <p>Basic Info 先确定 Customer、Reason 和备注；Add Line 再按 SKU、Title、Location、LP 或 Lot No 查找来源库存。先选择 Adjustment Type，并在库存行里填写目标值（例如 Qty Adjust To），行首的复选框才可勾选；勾选后点击 Add to Lines 加入 Adjustment Lines，最后保存并按需要审批。</p>
         </div>
         <div class="screen-frame adjustment-create-frame">
           <span>ADJUSTMENT · CREATE</span>
-          <button class="adjustment-create-shot" data-lightbox="assets/adjustment-create-basic.png" aria-label="放大 Create Adjustment 上半部分截图">
-            <img loading="lazy" decoding="async" src="assets/adjustment-create-basic.png" alt="Create Adjustment Basic Info 页面截图">
+          <button class="adjustment-create-shot" data-lightbox="assets/adjustment-create-basic.png?v=20261204" aria-label="放大 Create Adjustment 上半部分截图">
+            <img loading="lazy" decoding="async" src="assets/adjustment-create-basic.png?v=20261204" alt="Create Adjustment Basic Info 页面截图">
           </button>
-          <button class="adjustment-create-shot" data-lightbox="assets/adjustment-create-lines.png" aria-label="放大 Create Adjustment 下半部分截图">
-            <img loading="lazy" decoding="async" src="assets/adjustment-create-lines.png" alt="Create Adjustment Add Line 与 Adjustment Lines 页面截图">
+          <button class="adjustment-create-shot" data-lightbox="assets/adjustment-create-lines.png?v=20261204" aria-label="放大 Create Adjustment 下半部分截图">
+            <img loading="lazy" decoding="async" src="assets/adjustment-create-lines.png?v=20261204" alt="Create Adjustment Add Line 与 Adjustment Lines 页面截图">
           </button>
         </div>
         <div class="adjustment-type-heading">
@@ -398,12 +433,12 @@
           <h3>核对库存从什么值调整到了什么值</h3>
           <p>详情页将调整原因、审批状态和每一条变化放在一起，用于确认库存具体改动了多少，以及后续到 Inventory Activity 继续追溯。</p>
         </div>
-        <button class="screen-frame" data-lightbox="assets/adjustment-detail.png?v=decline" aria-label="放大 Adjustment Detail 页面截图">
+        <button class="screen-frame" data-lightbox="assets/adjustment-detail.png?v=20261204" aria-label="放大 Adjustment Detail 页面截图">
           <span>ADJUSTMENT · DETAIL</span>
-          <img loading="lazy" decoding="async" src="assets/adjustment-detail.png?v=decline" alt="Adjustment Detail 页面截图">
+          <img loading="lazy" decoding="async" src="assets/adjustment-detail.png?v=20261204" alt="Adjustment Detail 页面截图">
           <i>点击放大</i>
         </button>
-        <p class="adjustment-detail-action-note"><b>NEW 单据操作：</b>从列表点击 View 进入详情页，右上角可选择 Approve、Decline 或 Edit。Approve 后执行库存调整；Decline 后单据变为 DECLINED，库存保持不变。</p>
+        <p class="adjustment-detail-action-note"><b>NEW 单据操作：</b>在列表点击 Adjustment ID 进入详情页，右上角可选择 Approve、Decline 或 Edit。Approve 后执行库存调整；Decline 后单据变为 DECLINED，库存保持不变。</p>
         <div class="adjustment-detail-fields">
           <article><span>01</span><div><b>Adjust From</b><p>调整前的数量、状态、LP、Location 或其他库存属性。</p></div></article>
           <article><span>02</span><div><b>Adjust To</b><p>审批执行后的目标值；数量调整中表示调整后的总数量。</p></div></article>
@@ -418,7 +453,7 @@
     </section>
 
 <section class="module min-max-guide" id="min-max-guide" data-section="min-max-guide">
-      <div class="module-number">06</div>
+      <div class="module-number">07</div>
       <div class="module-heading">
         <div class="eyebrow">INVENTORY · MIN/MAX SETTING</div>
         <h2>拣货区库存不够时，自动从储存区补货</h2>
@@ -439,22 +474,22 @@
       </div>
 
       <div class="minmax-list-section">
-        <button class="screen-frame" data-lightbox="assets/min-max-list-v2.png" aria-label="放大 Min/Max Setting 列表截图">
+        <button class="screen-frame" data-lightbox="assets/min-max-list-v2.png?v=20261204" aria-label="放大 Min/Max Setting 列表截图">
           <span>MIN/MAX SETTING · REPLENISHMENT SETTING</span>
-          <img loading="lazy" decoding="async" src="assets/min-max-list-v2.png" alt="Min/Max Setting 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/min-max-list-v2.png?v=20261204" alt="Min/Max Setting 列表页面截图">
           <i>点击放大</i>
         </button>
         <div class="minmax-page-intro">
           <span class="section-kicker">Min/Max Setting · 列表</span>
           <h3>集中管理补货规则及执行状态</h3>
-          <p>列表展示每条规则的 SKU、Method、Min / Max / Fixed Qty、来源与目标 VLG、启用状态和 Last Replenishment。可从这里判断规则是否启用、最近是否触发，并进入新增或编辑页面维护规则。</p>
+          <p>规则多了以后，可以按 SKU、Customer、Method 或 Enabled 筛选，快速判断哪些规则在生效、最近一次补货是什么时候。列表上方的 Export 导出当前规则用于线下核对；Trigger All 不等定时，立即对所有已启用规则做一次检查并按需创建补货任务，操作前先确认当前库存与规则符合预期。Scheduler Config 与 Execution Log 见下方。</p>
         </div>
       </div>
 
       <div class="minmax-create-section">
-        <button class="screen-frame" data-lightbox="assets/min-max-create-setting.png" aria-label="放大 Create Setting 页面截图">
+        <button class="screen-frame" data-lightbox="assets/min-max-create-setting.png?v=20261204" aria-label="放大 Create Setting 页面截图">
           <span>MIN/MAX SETTING · CREATE SETTING</span>
-          <img loading="lazy" decoding="async" src="assets/min-max-create-setting.png" alt="Create Setting 页面截图">
+          <img loading="lazy" decoding="async" src="assets/min-max-create-setting.png?v=20261204" alt="Create Setting 页面截图">
           <i>点击放大</i>
         </button>
         <div class="minmax-create-copy">
@@ -469,9 +504,9 @@
       </div>
 
       <div class="minmax-scheduler-section">
-        <button class="screen-frame" data-lightbox="assets/min-max-scheduler-v2.png" aria-label="放大 Scheduler Config 截图">
+        <button class="screen-frame" data-lightbox="assets/min-max-scheduler-v2.png?v=20261204" aria-label="放大 Scheduler Config 截图">
           <span>MIN/MAX SETTING · SCHEDULER CONFIG</span>
-          <img loading="lazy" decoding="async" src="assets/min-max-scheduler-v2.png" alt="Scheduler Config 页面截图">
+          <img loading="lazy" decoding="async" src="assets/min-max-scheduler-v2.png?v=20261204" alt="Scheduler Config 页面截图">
           <i>点击放大</i>
         </button>
         <div class="minmax-scheduler-copy">
@@ -483,21 +518,44 @@
           <article><b>Execution Times</b><p>设置每天执行检查的时间点，可配置多个时间。</p></article>
           <article><b>Skip Rules</b><p>选择固定周几或 Holiday Management 中维护的日期，不执行自动补货。</p></article>
           <article><b>Default Task Assignee</b><p>设置自动创建的 Replenishment Task 默认负责人。</p></article>
-        </div>
-      </div>
+</div>
+</div>
+<div class="minmax-scheduler-section">
+<button class="screen-frame" data-lightbox="assets/min-max-execution-log.png?v=20261204" aria-label="放大 Execution Log 截图">
+<span>MIN/MAX SETTING · EXECUTION LOG</span>
+<img loading="lazy" decoding="async" src="assets/min-max-execution-log.png?v=20261204" alt="Execution Log 页面截图">
+<i>点击放大</i>
+</button>
+<div class="minmax-scheduler-copy">
+<span class="section-kicker">执行记录</span>
+<h3>确认自动补货有没有按时运行</h3>
+</div>
+<div class="minmax-scheduler-grid">
+<article><b>顶部汇总</b><p>用成功、失败、跳过的次数和成功率快速判断调度是否健康，发现失败再往下看具体哪一次出了问题。</p></article>
+<article><b>逐次记录</b><p>每次检查检查了多少条规则、触发了多少、实际创建了多少任务，以及失败原因。Skipped 较多通常说明当天命中了 Skip Rules，或库存还没低于 Min Qty。</p></article>
+<article><b>排查补货任务没生成</b><p>先看这次是否执行、结果是否成功，再核对规则是否 Enabled、库存是否低于 Min Qty；Execution Log 只用于查看，不会改动规则。</p></article>
+</div>
+</div>
     </section>
 
 <section class="module holiday-guide" id="holiday-guide" data-section="holiday-guide">
-      <div class="module-number">07</div>
+      <div class="module-number">08</div>
       <div class="module-heading">
         <div class="eyebrow">INVENTORY · HOLIDAY MANAGEMENT</div>
         <h2>告诉系统哪些日子不需要自动补货</h2>
         <p>Holiday Management 维护仓库的休息日和节假日。这些日期被 Min/Max Setting 的 Scheduler Config 引用——当天系统跳过自动补货检查，避免在无人值守时生成无法执行的任务。</p>
       </div>
 
-      <div style="display:flex;gap:32px;align-items:flex-start;margin:20px 0;">
+      <div class="activity-page-section" style="margin-top:0;">
+<button class="screen-frame" data-lightbox="assets/holiday-list.png?v=20261204" aria-label="放大 Holiday Management 列表截图">
+<span>HOLIDAY MANAGEMENT · LIST</span>
+<img loading="lazy" decoding="async" src="assets/holiday-list.png?v=20261204" alt="Holiday Management 列表页面截图">
+<i>点击放大</i>
+</button>
+</div>
+<div style="display:flex;gap:32px;align-items:flex-start;margin:20px 0;">
         <div style="flex:0 0 320px;max-width:320px;">
-          <img loading="lazy" decoding="async" src="assets/add-holiday.png" alt="Add Holiday 弹窗截图" style="width:100%;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+          <img loading="lazy" decoding="async" src="assets/add-holiday.png?v=20261204" alt="Add Holiday 弹窗截图" style="width:100%;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         </div>
         <div style="flex:1;">
           <div class="subsection-title"><span>01</span><h3>两种休息日类型</h3></div>
@@ -506,7 +564,7 @@
             <div><dt>Week Day（固定周几）</dt><dd>选择每周固定的休息日。适用于仓库固定排班。</dd></div>
           </dl>
           <div class="subsection-title cyan-text"><span>02</span><h3>使用方式</h3></div>
-          <p style="font-size:14px;color:#475569;margin:0 0 0;line-height:1.6;">在此页面添加假日后，到 Min/Max Setting → Scheduler Config → Skip Rules 中勾选需要跳过的日期即可。被勾选的日期当天，Scheduler 不会执行自动补货检查。</p>
+          <p style="font-size:14px;color:#475569;margin:0 0 0;line-height:1.6;">在此页面添加假日后，Min/Max Setting → Scheduler Config → Skip Rules 会自动列出这些日期和每周休息日，当天 Scheduler 不会执行自动补货检查。列表中的 Referenced By 显示这条假日被几个配置引用；被引用的日期删除前，请先确认对应的自动补货安排。</p>
         </div>
       </div>
     </section>
@@ -540,7 +598,7 @@
         <div class="count-ticket-page-copy">
           <span class="section-kicker">Count Tickets · List</span>
           <h3>从列表掌握盘点单的准备与执行状态</h3>
-          <p>可按 Ticket No、Customer 和 Status 查询盘点单。列表同时显示范围类型、库位数量和计划日期，并提供 View、Create Task 与 Cancel 入口。</p>
+          <p>按 Ticket No、Customer 和 Status 快速找到要跟进的盘点单，Status 能直接看出盘点是刚建立、已拆任务还是正在清点。点击 Ticket No 进入详情；行内的 Create Task 可直接把盘点单拆成现场任务。新的盘点单从右上方 Create Count Ticket 建立，常用的查询条件可存为 Presets 反复使用。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-tickets-list.png" aria-label="放大 Count Tickets 列表截图">
           <span>COUNT TICKETS · LIST</span><img loading="lazy" decoding="async" src="assets/count-tickets-list.png" alt="Count Tickets 列表页面截图"><i>点击放大</i>
@@ -584,7 +642,7 @@
         <div class="count-ticket-detail-points">
           <article><span>01</span><div><b>Basic / Time Information</b><p>确认 Customer、Count Type、Method、Category、Blind Count 与计划日期。</p></div></article>
           <article><span>02</span><div><b>Count Lines</b><p>展示本次 Ticket 选中的 SKU、Location 或对应盘点范围。</p></div></article>
-          <article><span>03</span><div><b>Related Tasks</b><p>查看已创建的任务、负责人和状态，并进入具体 Count Task。</p></div></article>
+          <article><span>03</span><div><b>Related Tasks</b><p>查看已创建的任务及其优先级和状态，并进入具体 Count Task。</p></div></article>
         </div>
         <p class="count-ticket-action-note"><b>Create Task：</b>把 Ticket 范围生成一个或多个现场盘点任务。Ticket 进入 COUNTING 后不可取消；所有关联任务结束后，Ticket 自动变为 COMPLETED。</p>
       </div>
@@ -608,7 +666,7 @@
         <div class="count-task-page-copy">
           <span class="section-kicker">Count Tasks · List</span>
           <h3>分配任务，并掌握每张盘点任务的执行状态</h3>
-          <p>列表按 Task No、Status 或 Assignee 查询任务。Task 只能从 Count Ticket 创建；这里用于查看来源 Ticket、盘点方式、当前负责人和执行状态。</p>
+          <p>按 Task No、Status 或 Assignee 找到要跟进的任务，例如按 Assignee 查看某位操作员手上还有哪些盘点。Task 只能从 Count Ticket 创建，这里用于分配人员并跟进执行进度；常用的查询条件可存为 Presets。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-tasks-list.png" aria-label="放大 Count Tasks 列表截图">
           <span>COUNT TASKS · LIST</span><img loading="lazy" decoding="async" src="assets/count-tasks-list.png" alt="Count Tasks 列表页面截图"><i>点击放大</i>
@@ -616,7 +674,7 @@
         <div class="count-task-list-points">
           <article><b>任务来源</b><p>Ticket No 说明任务由哪张盘点单生成；Count Type 与 Count Method 沿用 Ticket 的盘点规则。</p></article>
           <article><b>人员分配</b><p>Assign 或 Batch Assign 指定执行人员；重新分配只更新 Assignee，不会改变任务状态。</p></article>
-          <article><b>执行状态</b><p>Pending 等待开始，In Progress 表示现场盘点中；结束后进入 Closed、Force Closed 或 Cancelled。</p></article>
+          <article><b>执行状态</b><p>New 表示任务已生成、等待开始，In Progress 表示现场正在清点，全部清点完成后变为 Completed；任务被取消时为 Cancelled。</p></article>
         </div>
       </div>
 
@@ -679,7 +737,7 @@
         <div class="count-result-page-copy">
           <span class="section-kicker">Count Results · List</span>
           <h3>从分组列表查看待处理结果，并进入对应的复核动作</h3>
-          <p>列表按商品和 LP 汇总盘点结果；Results 是分组内的结果总数，Pending 包含 PENDING 和 ACKNOWLEDGED 状态的待处理结果。展开后可核对 System Qty、Count Qty、Difference 及库位、批次日期等信息。</p>
+          <p>列表按 SKU、LP、Location 分组汇总盘点结果，Results 是分组内的结果条数，Pending 是仍待处理的数量，可以先从 Pending 较多的分组入手。展开后逐条核对账实差异。Result Type 筛选能快速找出数量差异、缺失或新增商品等需要重点处理的结果；Source Type 区分结果来源，Cycle Count 来自周期盘点，Inventory Check 来自 WCS 工作站对到站容器的在库确认。</p>
         </div>
         <button class="screen-frame" data-lightbox="assets/count-results-list.png" aria-label="放大 Count Results 列表与状态截图">
           <span>COUNT RESULTS · LIST &amp; ACTIONS</span><img loading="lazy" decoding="async" src="assets/count-results-list.png" alt="Count Results 列表及 Pending 和 Acknowledged 状态截图"><i>点击放大</i>
@@ -690,9 +748,9 @@
         <div class="count-result-decision-flow" aria-label="Count Result 复核状态流程">
           <article><small>01 · PENDING</small><b>Acknowledge</b><p>确认已收到该结果并进入人工复核，不代表差异已经获批。</p></article>
           <i>→</i>
-          <article><small>02 · ACKNOWLEDGED</small><b>Approve</b><p>接受结果；有差异时自动生成并批准 Adjustment，库存随即更新。</p></article>
+          <article><small>02 · ACKNOWLEDGED</small><b>Approve</b><p>接受结果；有差异时自动生成并批准 Adjustment，库存随即更新。同组其他未处理的结果会被自动驳回，批准前请确认选对了那一条。</p></article>
           <span>或</span>
-          <article><small>02 · ACKNOWLEDGED</small><b>Reject</b><p>不采用本次盘点结果，不生成 Adjustment，也不修改库存。</p></article>
+          <article><small>02 · ACKNOWLEDGED</small><b>Reject</b><p>不采用本次盘点结果，不生成 Adjustment，也不修改库存。待处理和已确认的结果都可以驳回。</p></article>
         </div>
       </div>
 
@@ -722,7 +780,7 @@
   <div class="sidebar-scrim" id="sidebar-scrim"></div>
 
   <script src="app.js?v=20260813-inventory-tabs"></script>
-  <script src="i18n.js?v=20260902-inventory-overview-detail"></script></body>
+  <script src="i18n.js?v=20261204-adjust-minmax"></script></body>
 </html>
 
 

@@ -499,11 +499,11 @@ h1 em {
   grid-column: 1;
   grid-row: 1;
   width: 100%;
-  max-width: 540px;
+  max-width: 680px;
 }
 .screen-section.select-screen {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  grid-template-columns: minmax(0, 1.6fr) minmax(240px, 0.7fr);
   gap: 28px;
   align-items: start;
 }
@@ -1317,6 +1317,17 @@ h1 em {
   font-size: 12px;
   line-height: 1.7;
 }
+.dashboard-update-note {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--teal);
+  background: rgba(18, 154, 137, 0.07);
+}
+.dashboard-update-note b { color: var(--navy); font-size: 13px; }
+.dashboard-update-note span { color: var(--muted); font-size: 12px; line-height: 1.75; }
 .info-grid,
 .step-grid,
 .two-column-note {
@@ -1552,6 +1563,7 @@ footer a {
   .accept-detail-layout,
   .accept-status-guide,
   .device-page-guide article { grid-template-columns: 1fr; }
+  .dashboard-update-note { grid-template-columns: 1fr; gap: 6px; }
   .message-delivery-guide i { display: none; }
   .message-important-notes > div { grid-template-columns: 1fr; gap: 6px; }
   .job-status-guide > div { padding: 17px 0; }
@@ -1610,3 +1622,6 @@ footer a {
   .hero { min-height: auto; }
   section { break-inside: avoid; }
 }
+
+.manual-page-body .device-page-preview-pair { width: 100%; margin: 20px 0 30px; }
+.manual-page-body .device-page-preview-pair { grid-template-columns: 1fr; gap: 22px; }

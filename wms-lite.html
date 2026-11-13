@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Orbiflow WMS-Lite 功能说明书网站样章">
   <title>Orbiflow WMS-Lite 功能说明书 · 导航</title>
-  <link rel="stylesheet" href="styles.css?v=20260825-page-nav">
+  <link rel="stylesheet" href="styles.css?v=20261304-customer">
 </head>
 <body class="page-index">  <div class="language-switcher" aria-label="Language switcher"><button type="button" data-lang-option="zh" class="active">中</button><button type="button" data-lang-option="ja">日</button><button type="button" data-lang-option="en">EN</button></div>
   <!-- 内容规则：不复述截图中显而易见的界面结构、按钮或必填标记；正文只解释业务场景、选择依据、配置结果和非显性约束。 -->
@@ -176,9 +176,9 @@
           <h3>集中查看并维护已登记的组织主档</h3>
           <p>Organization 列表集中展示已建立的业务主体。日常维护时，可先按编码、名称或状态定位记录，再进入详情或编辑页面。</p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/organization-list.png" aria-label="放大 Organization 列表截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/organization-list.png?v=20261305" aria-label="放大 Organization 列表截图">
           <span>ORGANIZATION LIST</span>
-          <img loading="lazy" decoding="async" src="assets/organization-list.png" alt="Organization 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/organization-list.png?v=20261305" alt="Organization 列表页面截图">
           <i>点击放大</i>
         </button>
         <div class="list-page-notes">
@@ -304,9 +304,9 @@
       </div>
 
       <div class="screen-explainer">
-        <button class="screen-frame tall" data-lightbox="assets/customer-basic-info.png" aria-label="放大 Customer Basic Info 截图">
+        <button class="screen-frame tall" data-lightbox="assets/customer-basic-info.png?v=20261304" aria-label="放大 Customer Basic Info 截图">
           <span>BASIC INFO</span>
-          <img loading="lazy" decoding="async" src="assets/customer-basic-info.png" alt="Customer Basic Info 页面截图">
+          <img loading="lazy" decoding="async" src="assets/customer-basic-info.png?v=20261304" alt="Customer Basic Info 页面截图">
           <i>点击放大</i>
         </button>
         <div class="field-copy">
@@ -323,9 +323,9 @@
       </div>
 
       <div class="screen-explainer reverse">
-        <button class="screen-frame" data-lightbox="assets/customer-title-relationship.png" aria-label="放大 Customer Title Relationship 截图">
+        <button class="screen-frame" data-lightbox="assets/customer-title-relationship.png?v=20261304" aria-label="放大 Customer Title Relationship 截图">
           <span>TITLE RELATIONSHIP</span>
-          <img loading="lazy" decoding="async" src="assets/customer-title-relationship.png" alt="Customer Title Relationship 页面截图">
+          <img loading="lazy" decoding="async" src="assets/customer-title-relationship.png?v=20261304" alt="Customer Title Relationship 页面截图">
           <i>点击放大</i>
         </button>
         <div class="field-copy">
@@ -337,6 +337,20 @@
           </dl>
         </div>
       </div>
+      <div class="screen-explainer reverse">
+        <button class="screen-frame" data-lightbox="assets/customer-scan-sku.png?v=20261304" aria-label="放大 Customer Scan SKU Config 截图">
+          <span>SCAN SKU CONFIG</span>
+          <img loading="lazy" decoding="async" src="assets/customer-scan-sku.png?v=20261304" alt="Customer Scan SKU Config 页面截图">
+          <i>点击放大</i>
+        </button>
+        <div class="field-copy">
+          <div class="subsection-title"><span>03</span><h3>Scan SKU Config｜扫码商品范围</h3></div>
+          <dl>
+            <div><dt>Add</dt><dd>先在 Select Item 中选择商品，再把它加入该客户的扫码商品清单。</dd></div>
+            <div><dt>使用场景</dt><dd>用于按客户单独维护需要扫码处理的 SKU，清单为空时表示尚未配置。</dd></div>
+          </dl>
+        </div>
+      </div>
     </section>
 
 <section class="detail-section settings-section" id="customer-settings" data-section="customer-settings">
@@ -345,12 +359,6 @@
         <h2>按客户配置收货、上架、分配、拣货及设备协同方式</h2>
         <p>同一仓库服务不同客户时，可以在 Customer Settings 中分别维护作业要求，使任务创建和执行过程采用对应客户的规则。</p>
       </div>
-
-      <button class="screen-frame settings-screen" data-lightbox="assets/customer-settings.png" aria-label="放大 Customer Settings 截图">
-        <span>CUSTOMER SETTINGS</span>
-        <img loading="lazy" decoding="async" src="assets/customer-settings.png" alt="Customer Settings 页面截图">
-        <i>点击放大</i>
-      </button>
 
       <div class="settings-guide">
         <div class="settings-tabs" role="tablist" aria-label="Customer Settings 分类">
@@ -365,6 +373,10 @@
             <div><h3>入库与上架</h3><p>根据客户对月台周转、收货差异和库位使用的要求，决定收货任务怎样推进。</p></div>
           </div>
           <div class="decision-list">
+            <article>
+              <div><small>适用范围</small><h4>这个客户的入库规则对哪些收货类型生效</h4></div>
+              <p><b>Receive Sub Types</b> 限定该客户可以使用的收货子类型。客户只做部分入库业务时，可以只保留相关类型，录单时就不会选到不适用的类型。</p>
+            </article>
             <article>
               <div><small>流程要求</small><h4>不需要系统记录完整的月台作业步骤</h4></div>
               <p><b>Skip Receive Steps</b> 可按客户跳过 Dock Check In 或 Offload。适合不在系统中管理签到或卸货步骤的业务；LP Setup 仍会保留，因为它负责建立实际收货的 LP。</p>
@@ -383,13 +395,14 @@
             </article>
             <article>
               <div><small>容器规则</small><h4>一个 LP 是否可以同时装载多个 SKU</h4></div>
-              <p><b>Allow LP Mixed Item</b> 开启后允许同一 LP 混放不同商品；实际存放仍需满足 Location、Container Type 等其他规则。</p>
+              <p><b>Allow LP Mixed Item</b> 开启后允许同一 LP 混放不同商品，具体仍按 VLG 规则判断；实际存放还需满足 Location、Container Type 等其他规则。</p>
             </article>
             <article>
               <div><small>库位推荐</small><h4>系统按照什么顺序寻找上架库位</h4></div>
               <p><b>Put Away Strategies</b> 按优先级逐条匹配，例如优先进入已有相同商品的库位，或优先选择空库位。数值越小的策略越先执行。</p>
             </article>
           </div>
+          <div class="settings-shots"><button class="screen-frame settings-shot" data-lightbox="assets/customer-settings-inbound.png?v=20261304" aria-label="放大 Customer Settings Inbound 截图"><span>INBOUND SETTING</span><img loading="lazy" decoding="async" src="assets/customer-settings-inbound.png?v=20261304" alt="Customer Settings Inbound 页面截图"><i>点击放大</i></button><button class="screen-frame settings-shot" data-lightbox="assets/customer-settings-putaway.png?v=20261304" aria-label="放大 Customer Settings Put Away Strategies 截图"><span>PUT AWAY STRATEGIES</span><img loading="lazy" decoding="async" src="assets/customer-settings-putaway.png?v=20261304" alt="Customer Settings Put Away Strategies 页面截图"><i>点击放大</i></button></div>
         </section>
 
         <section class="settings-block outbound-block" id="settings-outbound" role="tabpanel" hidden>
@@ -398,6 +411,10 @@
             <div><h3>出库与拣货</h3><p>根据客户对库存周转、订单变更和拣货效率的要求，控制分配与任务执行顺序。</p></div>
           </div>
           <div class="decision-list">
+            <article>
+              <div><small>适用范围</small><h4>这个客户可以下哪些类型的出库订单</h4></div>
+              <p><b>Order Sub Types</b> 限定该客户可以使用的出库订单子类型，录单时只会看到与该客户业务相关的类型。</p>
+            </article>
             <article>
               <div><small>库存周转</small><h4>出库时应优先使用哪一批库存</h4></div>
               <p><b>Default Shipping Rule</b> 是默认库存分配规则。选择 FIFO 时，系统按库存创建时间由早到晚进行分配，用于落实先进先出的周转要求。</p>
@@ -411,18 +428,27 @@
               <p><b>Allow Order Cancellation Before</b> 设置允许取消的状态边界。边界越靠前，订单进入拣货、装箱或装车后越早停止接受取消。</p>
             </article>
             <article>
-              <div><small>库位利用</small><h4>优先释放被少量库存占用的库位</h4></div>
-              <p><b>Enable Depleted Location</b> 开启后，分配时优先选择本次拣完即可清空库位的库存，减少零散库存长期占用库位。</p>
-            </article>
-            <article>
               <div><small>拣货路径</small><h4>不同仓库采用不同的拣货排序</h4></div>
-              <p><b>Pick Sort Rules</b> 定义拣货任务的排序方式，并可按 Facility 配置覆盖规则，使同一客户在不同仓库采用各自的作业顺序。</p>
+              <p><b>Pick Strategy Rules</b> 通过 Pick Sort Rules 定义拣货任务的排序方式，并可按 Facility 配置覆盖规则，使同一客户在不同仓库采用各自的作业顺序。</p>
             </article>
             <article>
-              <div><small>批次控制</small><h4>拣货时严格执行 Shipping Rule 或放宽 Lot No 校验</h4></div>
-              <p><b>Force Pick By Shipping Rule</b> 强制校验库存是否符合订单规则；<b>Skip LotNo Validation</b> 则用于决定是否跳过订单指定 Lot No 与实际库存的匹配检查。</p>
+              <div><small>订单变更</small><h4>订单一生成就自动锁库存，还是人工确认后再锁</h4></div>
+              <p><b>Auto Commit on Order Created</b> 开启后，订单创建完成即自动 Commit，也就是锁定库存。适合订单量大、希望下单后立刻占住库存的客户；需要人工审核订单后再锁库存的客户可以保持关闭。</p>
+            </article>
+            <article>
+              <div><small>缺货处理</small><h4>拣货短拣后，剩余库存如何处理</h4></div>
+              <p><b>Shortage On Hold</b> 开启后，发生短拣时剩余库存会被置为 ONHOLD，在差异处理完成前其他订单无法占用，避免在库存不准时继续出货。</p>
+            </article>
+            <article>
+              <div><small>回退规则</small><h4>订单回退前，要不要先完成已有的 Put Back</h4></div>
+              <p><b>Put Back Finished Before Rollback Order</b> 用于控制订单回退（Rollback）与 Put Back 的先后顺序。具体生效条件请以现场测试为准。</p>
+            </article>
+            <article>
+              <div><small>小包裹</small><h4>小包裹工位是否需要逐件扫描商品</h4></div>
+              <p><b>Small Parcel Pack Skip Item Scanning</b> 开启后，在小包裹工位扫描订单即自动把全部商品分配进包裹，无需逐件扫码核对，适合低价值商品。</p>
             </article>
           </div>
+          <div class="settings-shots"><button class="screen-frame settings-shot" data-lightbox="assets/customer-settings-outbound.png?v=20261304" aria-label="放大 Customer Settings Outbound 截图"><span>OUTBOUND SETTING</span><img loading="lazy" decoding="async" src="assets/customer-settings-outbound.png?v=20261304" alt="Customer Settings Outbound 页面截图"><i>点击放大</i></button><button class="screen-frame settings-shot" data-lightbox="assets/customer-settings-webhook.png?v=20261304" aria-label="放大 Customer Settings Webhook Channels 截图"><span>WEBHOOK CHANNELS</span><img loading="lazy" decoding="async" src="assets/customer-settings-webhook.png?v=20261304" alt="Customer Settings Webhook Channels 页面截图"><i>点击放大</i></button></div>
         </section>
 
         <section class="settings-block connection-block" id="settings-connection" role="tabpanel" hidden>
@@ -433,7 +459,7 @@
           <div class="decision-list">
             <article>
               <div><small>设备执行</small><h4>指定类型的仓储任务由自动化设备完成</h4></div>
-              <p><b>Enable WCS</b> 开启后，还需在 Task Config 中启用对应任务类型。两项条件同时满足时，相关 Task Action 才会发送到 WCS。</p>
+              <p><b>Enable WCS</b> 开启后，还需在 Task Push Configs 中勾选要推送的任务类型（Put Away、Pick、Move、Cycle Count）。两项条件同时满足时，相关 Task Action 才会发送到 WCS。</p>
             </article>
             <article>
               <div><small>结果通知</small><h4>客户系统需要及时接收关键业务结果</h4></div>
@@ -441,9 +467,10 @@
             </article>
             <article>
               <div><small>客户化资料</small><h4>标准字段不足以承载客户自己的参考信息</h4></div>
-              <p><b>Dynamic Field Mapping</b> 可为 Item、Receipt、Order、明细和 Inventory 配置扩展字段名称，用于页面展示、导入导出、接口同步和精确查询。</p>
+              <p><b>Dynamic Field Mapping</b> 按对象（SKU Master、Receipt、Receipt Lines、Order、Order Lines、Inventory）分页签，把预置的 dynTxt、dynDate 等扩展字段启用并改成客户熟悉的名称，还可以指定哪些字段在对外接口中必填。</p>
             </article>
           </div>
+          <div class="settings-shots"><button class="screen-frame settings-shot" data-lightbox="assets/customer-settings-wcs.png?v=20261304" aria-label="放大 Customer Settings WCS Setting 截图"><span>WCS SETTING</span><img loading="lazy" decoding="async" src="assets/customer-settings-wcs.png?v=20261304" alt="Customer Settings WCS Setting 页面截图"><i>点击放大</i></button><button class="screen-frame settings-shot" data-lightbox="assets/customer-settings-dynamic.png?v=20261304" aria-label="放大 Customer Settings Dynamic Field Mapping 截图"><span>DYNAMIC FIELD MAPPING</span><img loading="lazy" decoding="async" src="assets/customer-settings-dynamic.png?v=20261304" alt="Customer Settings Dynamic Field Mapping 页面截图"><i>点击放大</i></button></div>
         </section>
       </div>
 
@@ -461,11 +488,11 @@
         <div class="preview-heading">
           <span class="section-kicker">页面预览</span>
           <h3>Item 列表集中查看与管理商品主档</h3>
-          <p>通过列表查询已有商品，并查看 SKU、Customer、Type、Status 等主要资料；需要新建或维护商品时，可从这里进入对应操作。</p>
+          <p>通过列表查询已有商品，并能直接区分套件商品、危险品和所属行业；需要新建或维护商品时，可从这里进入对应操作。已有商品清单时，可用 Import 批量导入；需要核对或留档时，可用 Export 导出当前商品资料。</p>
         </div>
-        <button class="screen-frame module-preview-screen" data-lightbox="assets/item-list.png" aria-label="放大 Item 列表页面预览">
+        <button class="screen-frame module-preview-screen" data-lightbox="assets/item-list.png?v=20261305" aria-label="放大 Item 列表页面预览">
           <span>ITEM LIST · PREVIEW</span>
-          <img loading="lazy" decoding="async" src="assets/item-list.png" alt="Item 列表页面预览截图">
+          <img loading="lazy" decoding="async" src="assets/item-list.png?v=20261305" alt="Item 列表页面预览截图">
           <i>点击放大</i>
         </button>
       </div>
@@ -511,7 +538,7 @@
             <article><b>SKU *</b><p>租户内唯一的商品编码，创建后固定，作为长期识别 Item 的业务编号。</p></article>
             <article><b>Type *</b><p>创建时确定商品分类：PRODUCT 为普通产品，MATERIAL 主要用于物料候选。</p></article>
             <article><b>Status</b><p>控制商品在新入库、RMA 和出库选择中的常规可选状态；停用不删除已有库存和业务记录。</p></article>
-            <article><b>Description / Short Description</b><p>维护商品的完整描述和列表中便于快速识别的简短描述。</p></article>
+            <article><b>Description / Short Description / Abbreviation</b><p>维护商品的完整描述、列表中便于快速识别的简短描述，以及现场沟通时使用的简称。</p></article>
             <article><b>Industry / Brand</b><p>记录商品所属行业和品牌；选择 Industry 后启用对应的 Industry Properties。</p></article>
             <article><b>Country of Origin / Grade</b><p>补充商品原产地和等级资料。</p></article>
             <article><b>Tags / AKAs</b><p>记录商品标签和别名，帮助使用不同业务称呼识别同一商品。</p></article>
@@ -677,12 +704,12 @@
       <div class="module-page-preview">
         <div class="preview-heading">
           <span class="section-kicker">页面预览</span>
-          <h3>Industry 列表同时展示行业主档和模板使用情况</h3>
-          <p>列表可按 Industry Code 或 Name 查询，并通过 Property Template Count 查看该行业配置了多少个动态属性，通过 Related SKU Count 查看已有多少个 Item 使用该 Industry。</p>
+          <h3>Industry 列表集中查看已维护的行业分类</h3>
+          <p>列表可按 Industry Code 或 Name 查询，用来确认仓库已经维护了哪些行业分类；需要调整某个行业的专属字段时，从这里进入对应记录。</p>
         </div>
-        <button class="screen-frame module-preview-screen industry-list-screen" data-lightbox="assets/industry-list.png" aria-label="放大 Industry 列表页面预览">
+        <button class="screen-frame module-preview-screen industry-list-screen" data-lightbox="assets/industry-list.png?v=20261305" aria-label="放大 Industry 列表页面预览">
           <span>INDUSTRY LIST · PREVIEW</span>
-          <img loading="lazy" decoding="async" src="assets/industry-list.png" alt="Industry 列表页面预览截图">
+          <img loading="lazy" decoding="async" src="assets/industry-list.png?v=20261305" alt="Industry 列表页面预览截图">
           <i>点击放大</i>
         </button>
       </div>
@@ -714,9 +741,9 @@
       </div>
 
       <div class="industry-create-compare">
-        <button class="screen-frame industry-create-screen" data-lightbox="assets/industry-create.png" aria-label="放大 Create Industry 页面截图">
+        <button class="screen-frame industry-create-screen" data-lightbox="assets/industry-create.png?v=20261305" aria-label="放大 Create Industry 页面截图">
           <span>INDUSTRY · PROPERTY TEMPLATE</span>
-          <img loading="lazy" decoding="async" src="assets/industry-create.png" alt="Industry 主档与 Property Template 维护页面截图">
+          <img loading="lazy" decoding="async" src="assets/industry-create.png?v=20261305" alt="Industry 主档与 Property Template 维护页面截图">
           <i>点击放大</i>
         </button>
         <div>
@@ -733,7 +760,7 @@
             <thead><tr><th>模板设置</th><th>配置作用</th><th>Item 页面效果</th><th>示例</th></tr></thead>
             <tbody>
               <tr><td>Property Name</td><td>定义要采集的属性名称</td><td>作为 Industry Properties 的字段标签</td><td>Voltage</td></tr>
-              <tr><td>Data Type</td><td>选择 Text、Number、Date 或 Select</td><td>生成对应的输入框、日期控件或下拉框</td><td>Number</td></tr>
+              <tr><td>Property Type</td><td>选择 Text、Number、Date 或 Select</td><td>生成对应的输入框、日期控件或下拉框</td><td>Number</td></tr>
               <tr><td>Required</td><td>决定该属性是否必须填写</td><td>Yes 时显示必填标记并在保存时检查</td><td>Yes</td></tr>
               <tr><td>Options</td><td>配置 Select 类型允许选择的值</td><td>生成固定选项的下拉框</td><td>CE / UL</td></tr>
               <tr><td>Unit</td><td>定义数值采用的计量单位</td><td>在输入框旁显示单位或后缀</td><td>V</td></tr>
@@ -759,12 +786,12 @@
       <div class="module-page-preview">
         <div class="preview-heading">
           <span class="section-kicker">页面预览</span>
-          <h3>从 Hazard 列表查询定义及其关联商品</h3>
-          <p>可按 Hazard Code、Hazard Name 或 Hazard Class 定位记录。列表中的 Related SKU Count 显示当前有多少个 Item 关联该定义，便于确认定义的使用范围。</p>
+          <h3>从 Hazard 列表查询已有的危险品定义</h3>
+          <p>可按 Hazard Code、Hazard Name 或 Hazard Class 定位记录。新建商品前先在这里确认所需的危险品定义是否已存在，避免重复建档。</p>
         </div>
-        <button class="screen-frame module-preview-screen hazard-list-screen" data-lightbox="assets/hazard-list.png" aria-label="放大 Hazard 列表页面预览">
+        <button class="screen-frame module-preview-screen hazard-list-screen" data-lightbox="assets/hazard-list.png?v=20261305" aria-label="放大 Hazard 列表页面预览">
           <span>HAZARD LIST · PREVIEW</span>
-          <img loading="lazy" decoding="async" src="assets/hazard-list.png" alt="Hazard 列表页面预览截图">
+          <img loading="lazy" decoding="async" src="assets/hazard-list.png?v=20261305" alt="Hazard 列表页面预览截图">
           <i>点击放大</i>
         </button>
       </div>
@@ -772,11 +799,11 @@
       <div class="hazard-scenario">
         <span class="section-kicker">核心场景</span>
         <h3>同一危险品定义可供多个商品共同引用</h3>
-        <p>仓库管理乙醇、易燃液体等危险品时，可以先按法规资料建立 Hazard 定义，再由相关 Item 选择该定义。这样无需在每个商品上重复填写完整分类资料，也可以通过 Related SKU Count 查看该定义已被多少个商品使用。</p>
+        <p>仓库管理乙醇、易燃液体等危险品时，可以先按法规资料建立 Hazard 定义，再由相关 Item 选择该定义。这样无需在每个商品上重复填写完整分类资料，定义有变化时也只需在一处维护。</p>
         <div class="hazard-result-row">
           <article><small>统一定义</small><b>Hazard 主档</b><p>集中记录 UN Number、Hazard Class、Packing Group 等危险品资料。</p></article>
           <article><small>商品引用</small><b>Item · Hazardous</b><p>开启危险品标识后，可选择已维护的 Hazard Definition。</p></article>
-          <article><small>使用确认</small><b>Related SKU Count</b><p>从列表查看该危险品定义当前关联的商品数量。</p></article>
+          <article><small>集中维护</small><b>定义更新</b><p>危险品资料发生变化时，只需修改 Hazard 主档，不必逐个修改商品。</p></article>
         </div>
       </div>
     </section>
@@ -788,9 +815,9 @@
         <p>新建 Hazard 时，先建立内部识别编码和名称，再根据已有的危险品资料填写 UN 编号、危险品类别、包装等级及说明。</p>
       </div>
 
-      <button class="screen-frame hazard-create-screen" data-lightbox="assets/hazard-create.png" aria-label="放大 Create Hazard 页面截图">
+      <button class="screen-frame hazard-create-screen" data-lightbox="assets/hazard-create.png?v=20261305" aria-label="放大 Create Hazard 页面截图">
         <span>CREATE HAZARD · FIELD GUIDE</span>
-        <img loading="lazy" decoding="async" src="assets/hazard-create.png" alt="Create Hazard 页面截图">
+        <img loading="lazy" decoding="async" src="assets/hazard-create.png?v=20261305" alt="Create Hazard 页面截图">
         <i>点击放大</i>
       </button>
 
@@ -806,8 +833,8 @@
             <div class="hazard-example-values"><span><small>Hazard Code *</small><strong>HZ-ETHANOL</strong></span><span><small>Hazard Name *</small><strong>Ethanol</strong></span></div>
           </article>
           <article>
-            <div class="hazard-group-title"><span>02</span><div><b>它属于哪类危险品</b><p>依据现有危险品资料，记录标准编号、危险品类别和包装等级。</p></div></div>
-            <div class="hazard-example-values three"><span><small>UN Number</small><strong>UN1170</strong></span><span><small>Hazard Class *</small><strong>3</strong></span><span><small>Packing Group</small><strong>II</strong></span></div>
+            <div class="hazard-group-title"><span>02</span><div><b>它属于哪类危险品</b><p>依据现有危险品资料，记录标准编号、运输正式名称、危险品类别和包装等级。</p></div></div>
+            <div class="hazard-example-values three"><span><small>UN Number</small><strong>UN1170</strong></span><span><small>Proper Shipping Name</small><strong>Ethanol</strong></span><span><small>Hazard Class *</small><strong>3</strong></span><span><small>Packing Group</small><strong>II</strong></span></div>
           </article>
           <article>
             <div class="hazard-group-title"><span>03</span><div><b>现场还需要知道什么</b><p>Description 用于补充编码和分类之外的仓储或合规说明；没有补充内容时可以留空。</p></div></div>
@@ -846,11 +873,11 @@
         <div class="preview-heading">
           <span class="section-kicker">页面预览</span>
           <h3>从 Carrier Management 查找可用承运商</h3>
-          <p>列表可按 Carrier Code、Carrier Name、SCAC Code 和 Status 查询，并集中查看承运商支持的 Shipping Methods、联系人及当前状态。</p>
+          <p>列表可按 Carrier Code、Carrier Name、SCAC Code 和 Status 查询。选择承运商前，可先在这里确认它支持哪些运输方式、当前是否可用，以及该找谁对接。</p>
         </div>
-        <button class="screen-frame module-preview-screen carrier-list-screen" data-lightbox="assets/carrier-list.png" aria-label="放大 Carrier 列表页面预览">
+        <button class="screen-frame module-preview-screen carrier-list-screen" data-lightbox="assets/carrier-list.png?v=20261305" aria-label="放大 Carrier 列表页面预览">
           <span>CARRIER LIST · PREVIEW</span>
-          <img loading="lazy" decoding="async" src="assets/carrier-list.png" alt="Carrier Management 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/carrier-list.png?v=20261305" alt="Carrier Management 列表页面截图">
           <i>点击放大</i>
         </button>
       </div>
@@ -875,9 +902,9 @@
         <h2>从身份识别到运输范围，完成承运商建档</h2>
       </div>
 
-      <button class="screen-frame carrier-create-screen" data-lightbox="assets/carrier-create.png" aria-label="放大 Create Carrier 页面截图">
+      <button class="screen-frame carrier-create-screen" data-lightbox="assets/carrier-create.png?v=20261305" aria-label="放大 Create Carrier 页面截图">
         <span>CREATE CARRIER · PAGE</span>
-        <img loading="lazy" decoding="async" src="assets/carrier-create.png" alt="Create Carrier 页面截图">
+        <img loading="lazy" decoding="async" src="assets/carrier-create.png?v=20261305" alt="Create Carrier 页面截图">
         <i>点击放大</i>
       </button>
 
@@ -907,18 +934,18 @@
       <div class="module-heading">
         <div class="eyebrow">MDM · ADDRESS</div>
         <h2>按客户集中维护业务地址，供订单与装载快速调用</h2>
-        <p>Address 是客户地址簿。一个 Customer 可以建立多个门店、收货点或其他业务地址，并通过名称、简称和 Tags 帮助操作人员在创建订单或 Load 时找到正确地址。</p>
+        <p>Address 是客户地址簿。一个 Customer 可以建立多个门店、收货点或其他业务地址，并通过 Name、Company 和 Tags 帮助操作人员在创建订单或 Load 时找到正确地址。</p>
       </div>
 
       <div class="module-page-preview">
         <div class="preview-heading">
           <span class="section-kicker">页面预览</span>
           <h3>从 Address Management 查看客户地址清单</h3>
-          <p>查询框可按地址名称、简称或联系人搜索；列表集中展示 Address Name、Shorthand、Customer、Tags、国家、城市及联系人信息。</p>
+          <p>可按名称或联系人搜索，并按客户缩小范围；需要核对某个门店或收货点的信息时，直接在列表中查看即可，无需打开记录。</p>
         </div>
-        <button class="screen-frame module-preview-screen address-list-screen" data-lightbox="assets/address-list.png" aria-label="放大 Address 列表页面预览">
+        <button class="screen-frame module-preview-screen address-list-screen" data-lightbox="assets/address-list.png?v=20261305" aria-label="放大 Address 列表页面预览">
           <span>ADDRESS LIST · PREVIEW</span>
-          <img loading="lazy" decoding="async" src="assets/address-list.png" alt="Address Management 列表页面截图">
+          <img loading="lazy" decoding="async" src="assets/address-list.png?v=20261305" alt="Address Management 列表页面截图">
           <i>点击放大</i>
         </button>
       </div>
@@ -926,9 +953,9 @@
       <div class="address-scenario">
         <span class="section-kicker">核心场景</span>
         <h3>同一客户拥有多个门店或收货地址</h3>
-        <p>例如零售客户在上海、苏州和杭州分别设有门店。仓库可以为同一个 Customer 建立三条 Address，通过 Address Name 表示门店名称、Shorthand 记录日常简称，并用 Tags 标记区域或用途。创建出库单时，操作人员按客户筛选并选择对应门店地址。</p>
+        <p>例如零售客户在上海、苏州和杭州分别设有门店。仓库可以为同一个 Customer 建立三条 Address，用 Name 表示门店名称、Company 记录所属企业，并用 Tags 标记区域或用途。创建出库单时，操作人员按客户筛选并选择对应门店地址。</p>
         <div class="address-merged-flow">
-          <article><small>客户地址簿</small><b>维护多个 Address</b><p>同一 Customer 可维护多个门店或收货点，并通过 Address Name、Shorthand 和 Tags 识别。</p></article>
+          <article><small>客户地址簿</small><b>维护多个 Address</b><p>同一 Customer 可维护多个门店或收货点，并通过 Name、Company 和 Tags 识别。</p></article>
           <i>→</i>
           <article><small>业务单据选择</small><b>复制当前地址内容</b><p>创建 Outbound Order 或 Load 时按 Customer 筛选并选择 Address。</p></article>
           <i>→</i>
@@ -943,17 +970,17 @@
         <h2>建立一条可在业务单据中选择的客户地址</h2>
       </div>
 
-      <button class="screen-frame address-create-screen" data-lightbox="assets/address-create.png" aria-label="放大 Create Address 页面截图">
+      <button class="screen-frame address-create-screen" data-lightbox="assets/address-create.png?v=20261305" aria-label="放大 Create Address 页面截图">
         <span>CREATE ADDRESS · PAGE</span>
-        <img loading="lazy" decoding="async" src="assets/address-create.png" alt="Create Address 页面截图">
+        <img loading="lazy" decoding="async" src="assets/address-create.png?v=20261305" alt="Create Address 页面截图">
         <i>点击放大</i>
       </button>
 
       <div class="address-config-groups">
         <article>
           <span>01</span>
-          <div><b>先确定地址属于哪个客户</b><p>选择 Customer 并填写 Address Name，形成地址的归属和主要识别名称。Shorthand 适合记录操作人员熟悉的简称；Tags 可自由输入区域、门店类别或业务用途。</p></div>
-          <div class="address-example-fields"><span><small>Customer *</small><strong>示例零售客户</strong></span><span><small>Address Name *</small><strong>上海门店</strong></span><span><small>Shorthand</small><strong>SH-STORE</strong></span><span><small>Tags</small><strong>EAST · RETAIL</strong></span></div>
+          <div><b>先确定地址属于哪个客户</b><p>选择 Customer 并填写 Name，形成地址的归属和主要识别名称。Company 记录该地址所属的公司或门店所属企业，与 Name 配合识别；Tags 可自由输入区域、门店类别或业务用途。</p></div>
+          <div class="address-example-fields"><span><small>Customer *</small><strong>示例零售客户</strong></span><span><small>Name *</small><strong>上海门店</strong></span><span><small>Company</small><strong>示例零售集团</strong></span><span><small>Tags</small><strong>EAST · RETAIL</strong></span></div>
         </article>
         <article>
           <span>02</span>
@@ -962,7 +989,7 @@
         </article>
         <article>
           <span>03</span>
-          <div><b>补充现场收货联系人</b><p>Contact、Phone 和 Email 用于记录该地址的对接窗口；Note 可以补充卸货时间、门店收货要求或其他现场说明。</p></div>
+          <div><b>补充现场收货联系人</b><p>Contact、Phone 和 Email 用于记录该地址的对接窗口；Note 可以补充卸货时间、门店收货要求或其他现场说明。如果手头已有一整段地址文字，可以先使用 Parse 按钮让系统尝试拆分填入各字段，再人工核对。</p></div>
           <div class="address-contact-chips"><span>Contact</span><span>Phone</span><span>Email</span><span>Note</span></div>
         </article>
       </div>
@@ -977,7 +1004,7 @@
   <div class="sidebar-scrim" id="sidebar-scrim"></div>
 
   <script src="app.js?v=20260813-inventory-tabs"></script>
-  <script src="i18n.js?v=20260828-inventory-audit-fix1"></script></body>
+  <script src="i18n.js?v=20261304-customer"></script></body>
 </html>
 
 
