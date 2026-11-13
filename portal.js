@@ -356,7 +356,7 @@ async function loadContent(page, section, sequence) {
     const root = contentHost.shadowRoot || contentHost.attachShadow({ mode: "open" });
     const stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
-    stylesheet.href = new URL(page === "task" ? "task/styles.css?v=20261123-task" : page === "wcs" ? "wcs/styles.css" : "styles.css", location.href).href;
+    stylesheet.href = new URL(page === "task" ? "task/styles.css?v=20261123-task" : page === "wcs" ? "wcs/styles.css?v=20261305-deploy" : "styles.css?v=20261305-deploy", location.href).href;
     const embedStyle = document.createElement("style");
     const pageLayoutOverrides = page === "wcs" ? `
       main > :is(.manual-page, section.section, article) {
