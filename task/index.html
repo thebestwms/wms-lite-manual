@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Orbiflow WMS-Lite · Task 任务管理 功能说明</title>
-  <link rel="stylesheet" href="styles.css?v=20261123-task">
+  <link rel="stylesheet" href="styles.css?v=20261116e">
 </head>
 <body>
   <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
@@ -137,37 +137,44 @@
     <div class="pda-section">
       <span class="section-kicker">PDA 手持端</span>
       <h3>在手持设备上执行 Receive Task</h3>
-      <p>现场操作员通过 PDA 完成收货作业。任务列表按状态分为 New、In Progress、Done 三个标签，点击任务卡片进入详情后可看到每步的当前状态与进度条，依次完成三个步骤后任务自动关闭。</p>
+      <p>现场操作员通过 PDA 完成收货作业，依次执行三个步骤：Dock Check In 确认月台对接、Offload 选择卸货方式、LP Setup 建立托盘并正式入库。任务列表按状态分为 New / In Progress / Done，每步完成后自动解锁下一步。</p>
       <div class="pda-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-list.png?v=20261116b" aria-label="放大 PDA Receive Task 列表截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-list.png?v=20261116b" alt="PDA Receive Task 列表截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-list.png?v=20261116c" aria-label="放大 PDA Receive Task 列表截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-list.png?v=20261116c" alt="PDA Receive Task 列表截图">
           </button>
           <strong>任务列表</strong>
           <p>New 显示待领取的收货任务，In Progress 显示进行中，Done 显示已完成。每张卡片展示任务编号、客户、月台、关联单据号、商品数量和当前步骤进度。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-detail.png?v=20261116b" aria-label="放大 PDA Receive Task 详情截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-detail.png?v=20261116b" alt="PDA Receive Task 详情截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-detail.png?v=20261116c" aria-label="放大 PDA Receive Task 步骤总览截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-detail.png?v=20261116c" alt="PDA Receive Task 步骤总览截图">
           </button>
           <strong>任务详情 · 执行步骤</strong>
           <p>点击任务卡片后进入详情，依次显示三个步骤：Dock Check In → Offload → LP Setup。每步有独立状态，前一步完成后才可进入下一步。</p>
         </div>
       </div>
-            <div class="pda-steps-row">
+      <div class="pda-steps-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-step-offload.png?v=20261116" aria-label="放大 PDA Step 2 Offload 执行页截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-step-offload.png?v=20261116" alt="PDA Step 2 Offload 执行页截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-step1.png?v=20261116c" aria-label="放大 PDA Step 1 Dock Check In 截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-step1.png?v=20261116c" alt="PDA Step 1 Dock Check In 截图">
           </button>
-          <strong>Step 2 · Offload</strong>
-          <p>选择卸载方式（整托、散货、混合），再逐件扫描进入库。</p>
+          <strong>Step 1 · Dock Check In</strong>
+          <p>扫描或输入月台编号完成对接确认，支持拍照留档，确认后解锁 Offload 步骤。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-step-lpsetup.png?v=20261116" aria-label="放大 PDA Step 3 LP Setup 截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-step-lpsetup.png?v=20261116" alt="PDA Step 3 LP Setup 截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-step-offload.png?v=20261116c" aria-label="放大 PDA Step 2 Offload 执行页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-step-offload.png?v=20261116c" alt="PDA Step 2 Offload 执行页截图">
+          </button>
+          <strong>Step 2 · Offload</strong>
+          <p>选择卸货方式（Palletized / Loose / Mixed），支持 Hand Shotgun 模式逐件扫描入库。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-step-lpsetup.png?v=20261116c" aria-label="放大 PDA Step 3 LP Setup 选择截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-step-lpsetup.png?v=20261116c" alt="PDA Step 3 LP Setup 选择截图">
           </button>
           <strong>Step 3 · LP Setup</strong>
-          <p>按单据和 SKU 核对应收数量，扫描建立 LP，商品正式入库。</p>
+          <p>选择 Receive By LP 或 Receive By Tote/Pick Location；选 By LP 后扫描 SKU 核对数量，系统自动建立托盘完成入库。</p>
         </div>
       </div>
     </div>
