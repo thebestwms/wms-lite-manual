@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Orbiflow WMS-Lite · Task 任务管理 功能说明</title>
-  <link rel="stylesheet" href="styles.css?v=20261116e">
+  <link rel="stylesheet" href="styles.css?v=20261117g">
 </head>
 <body>
   <div class="reading-line" aria-hidden="true"><span id="reading-progress"></span></div>
@@ -140,40 +140,45 @@
       <p>现场操作员通过 PDA 完成收货作业，依次执行三个步骤：Dock Check In 确认月台对接、Offload 选择卸货方式、LP Setup 建立托盘并正式入库。任务列表按状态分为 New / In Progress / Done，每步完成后自动解锁下一步。</p>
       <div class="pda-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-list.png?v=20261116c" aria-label="放大 PDA Receive Task 列表截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-list.png?v=20261116c" alt="PDA Receive Task 列表截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-list.png?v=20261116h" aria-label="放大 PDA Receive Task 列表截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-list.png?v=20261116h" alt="PDA Receive Task 列表截图">
           </button>
           <strong>任务列表</strong>
           <p>New 显示待领取的收货任务，In Progress 显示进行中，Done 显示已完成。每张卡片展示任务编号、客户、月台、关联单据号、商品数量和当前步骤进度。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-detail.png?v=20261116c" aria-label="放大 PDA Receive Task 步骤总览截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-detail.png?v=20261116c" alt="PDA Receive Task 步骤总览截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-detail.png?v=20261116h" aria-label="放大 PDA Receive Task 步骤总览截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-detail.png?v=20261116h" alt="PDA Receive Task 步骤总览截图">
           </button>
           <strong>任务详情 · 执行步骤</strong>
           <p>点击任务卡片后进入详情，依次显示三个步骤：Dock Check In → Offload → LP Setup。每步有独立状态，前一步完成后才可进入下一步。</p>
         </div>
       </div>
-      <div class="pda-steps-row">
+      <ol class="pda-flow-line">
+        <li><b>01</b><span>Dock Check In</span><em>确认月台对接</em></li>
+        <li><b>02</b><span>Offload</span><em>选择卸货方式</em></li>
+        <li><b>03</b><span>LP Setup</span><em>建立托盘并入库</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-step1.png?v=20261116c" aria-label="放大 PDA Step 1 Dock Check In 截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-step1.png?v=20261116c" alt="PDA Step 1 Dock Check In 截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-step1.png?v=20261116h" aria-label="放大 PDA Step 1 Dock Check In 截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-step1.png?v=20261116h" alt="PDA Step 1 Dock Check In 截图">
           </button>
-          <strong>Step 1 · Dock Check In</strong>
+          <strong>Dock Check In</strong>
           <p>扫描或输入月台编号完成对接确认，支持拍照留档，确认后解锁 Offload 步骤。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-step-offload.png?v=20261116c" aria-label="放大 PDA Step 2 Offload 执行页截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-step-offload.png?v=20261116c" alt="PDA Step 2 Offload 执行页截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-step-offload.png?v=20261116h" aria-label="放大 PDA Step 2 Offload 执行页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-step-offload.png?v=20261116h" alt="PDA Step 2 Offload 执行页截图">
           </button>
-          <strong>Step 2 · Offload</strong>
+          <strong>Offload</strong>
           <p>选择卸货方式（Palletized / Loose / Mixed），支持 Hand Shotgun 模式逐件扫描入库。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-receive-step-lpsetup.png?v=20261116c" aria-label="放大 PDA Step 3 LP Setup 选择截图">
-            <img loading="lazy" decoding="async" src="assets/pda-receive-step-lpsetup.png?v=20261116c" alt="PDA Step 3 LP Setup 选择截图">
+          <button class="pda-phone" data-lightbox="assets/pda-receive-step-lpsetup.png?v=20261116h" aria-label="放大 PDA Step 3 LP Setup 选择截图">
+            <img loading="lazy" decoding="async" src="assets/pda-receive-step-lpsetup.png?v=20261116h" alt="PDA Step 3 LP Setup 选择截图">
           </button>
-          <strong>Step 3 · LP Setup</strong>
+          <strong>LP Setup</strong>
           <p>选择 Receive By LP 或 Receive By Tote/Pick Location；选 By LP 后扫描 SKU 核对数量，系统自动建立托盘完成入库。</p>
         </div>
       </div>
@@ -213,21 +218,33 @@
     <div class="pda-section">
       <span class="section-kicker">PDA 手持端</span>
       <h3>在手持设备上执行 Put Away Task</h3>
-      <p>收货员在 PDA 上完成上架作业，可选择按 LP 整托上架或按商品逐件上架，系统推荐上架库位，支持手动扫描覆盖。</p>
-      <div class="pda-row">
+      <p>操作员在 PDA 上完成上架作业：先领取任务并选择按 LP 整托上架或按商品逐件上架，再扫描或勾选 LP，然后扫描目标库位或使用系统推荐库位，最后提交 Put Away。库位确认前，Put Away 按钮保持不可用，避免货物未定位就提交。</p>
+      <ol class="pda-flow-line">
+        <li><b>01</b><span>领取任务并选择模式</span><em>By LP / By Item</em></li>
+        <li><b>02</b><span>扫描或勾选 LP</span><em>Scan to Add</em></li>
+        <li><b>03</b><span>确认库位并提交</span><em>扫描库位 / Get Suggestion</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-putaway-list.png?v=20261116c" aria-label="放大 PDA Put Away Task 列表截图">
-            <img loading="lazy" decoding="async" src="assets/pda-putaway-list.png?v=20261116c" alt="PDA Put Away Task 列表截图">
+          <button class="pda-phone" data-lightbox="assets/pda-putaway-list.png?v=20261117b" aria-label="放大 PDA Put Away Task 列表截图">
+            <img loading="lazy" decoding="async" src="assets/pda-putaway-list.png?v=20261117b" alt="PDA Put Away Task 列表截图">
           </button>
-          <strong>任务列表</strong>
-          <p>每张卡片显示关联的 Tote/LP、收货来源、商品 SKU 和应上架数量，可直接点击「Put Away By LP」或「Put Away By Item」进入对应的执行模式。</p>
+          <strong>领取任务并选择模式</strong>
+          <p>卡片显示关联的 Tote/LP、收货来源、SKU 和应上架数量。整托上架点击「Put Away By LP」，拆零上架点击「Put Away By Item」。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-putaway-exec.png?v=20261116c" aria-label="放大 PDA Put Away 执行页截图">
-            <img loading="lazy" decoding="async" src="assets/pda-putaway-exec.png?v=20261116c" alt="PDA Put Away 执行页截图">
+          <button class="pda-phone" data-lightbox="assets/pda-putaway-exec.png?v=20261117b" aria-label="放大 PDA Put Away 执行页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-putaway-exec.png?v=20261117b" alt="PDA Put Away 执行页截图">
           </button>
-          <strong>Put Away By LP · 执行</strong>
-          <p>选定 LP 后扫描或输入目标库位，点击「Get Suggestion」可让系统推荐上架位；确认后点击「Put Away」完成入库。</p>
+          <strong>扫描或勾选 LP</strong>
+          <p>在顶部扫描或输入 LP，也可以直接勾选列表中的 LP。开启 Scan to Add 后，扫到的 LP 会自动加入本次上架。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-putaway-select.png?v=20261117b" aria-label="放大 PDA Put Away 已选 LP 截图">
+            <img loading="lazy" decoding="async" src="assets/pda-putaway-select.png?v=20261117b" alt="PDA Put Away 已选 LP 截图">
+          </button>
+          <strong>确认库位并提交</strong>
+          <p>勾选 LP 后扫描目标库位，或点击「Get Suggestion」使用系统推荐库位。库位确认后点击「Put Away」完成上架。</p>
         </div>
       </div>
     </div>
@@ -266,21 +283,53 @@
     <div class="pda-section">
       <span class="section-kicker">PDA 手持端</span>
       <h3>在手持设备上执行 Movement Task</h3>
-      <p>搬运员在 PDA 上接收库内移库指令，扫描 LP 确认来源，再扫目标库位完成货物转移，全程系统引导无需手写记录。</p>
-      <div class="pda-row">
+      <p>搬运员在 PDA 上分两个阶段完成移库：先在 Collect 阶段扫描来源 LP 或商品，把要搬的货收集起来；再在 Drop 阶段逐条确认目标库位和数量，提交后完成放置。任务中途可以退出，下次进入会停在上次的阶段。</p>
+      <ol class="pda-flow-line">
+        <li><b>01</b><span>领取任务</span><em>In Progress 列表</em></li>
+        <li><b>02</b><span>Collect 收集</span><em>扫描 LP / 商品</em></li>
+        <li><b>03</b><span>Drop 放置</span><em>选择已收集商品</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-movement-list.png?v=20261116c" aria-label="放大 PDA Movement Task 列表截图">
-            <img loading="lazy" decoding="async" src="assets/pda-movement-list.png?v=20261116c" alt="PDA Movement Task 列表截图">
+          <button class="pda-phone" data-lightbox="assets/pda-movement-list.png?v=20261117e" aria-label="放大 PDA Movement Task 列表截图">
+            <img loading="lazy" decoding="async" src="assets/pda-movement-list.png?v=20261117e" alt="PDA Movement Task 列表截图">
           </button>
-          <strong>任务列表</strong>
-          <p>每张卡片显示移库类型、优先级、来源库位与目标库位，以及涉及的 LP/商品摘要；In Progress 任务表示正在执行中的搬运。</p>
+          <strong>领取任务</strong>
+          <p>按 New / In Progress / Done 查看任务。卡片显示任务编号、移库方式（如 By Item）和当前所处步骤，点击即可进入。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-movement-exec.png?v=20261116c" aria-label="放大 PDA Movement Task 执行页截图">
-            <img loading="lazy" decoding="async" src="assets/pda-movement-exec.png?v=20261116c" alt="PDA Movement Task 执行页截图">
+          <button class="pda-phone" data-lightbox="assets/pda-movement-exec.png?v=20261117e" aria-label="放大 PDA Movement Collect 截图">
+            <img loading="lazy" decoding="async" src="assets/pda-movement-exec.png?v=20261117e" alt="PDA Movement Collect 截图">
           </button>
-          <strong>Collect · 收集货物</strong>
-          <p>执行分为 Collect（扫描来源 LP/商品，加入搬运清单）和 Place（扫描目标库位，确认放置）两个阶段，页面实时显示已收集的 SKU 明细和数量。</p>
+          <strong>Collect 收集</strong>
+          <p>扫描来源 LP 或商品，把需要搬运的货加入收集清单，页面实时显示已收集的内容。收集完成后点击「Next」进入 Drop。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-movement-drop.png?v=20261117f" aria-label="放大 PDA Movement Drop 截图">
+            <img loading="lazy" decoding="async" src="assets/pda-movement-drop.png?v=20261117f" alt="PDA Movement Drop 截图">
+          </button>
+          <strong>Drop 放置</strong>
+          <p>这里列出还没放下的货，Remaining Qty 提示每条还剩多少待放置。扫描商品或 LP，或直接点击对应的卡片，进入该条货的放置页面；如果发现漏收了货，点击「Back」回到 Collect 补扫。</p>
+        </div>
+      </div>
+      <ol class="pda-flow-line">
+        <li><b>04</b><span>提交放置</span><em>目标库位 / 数量 / LP</em></li>
+        <li><b>05</b><span>查看结果</span><em>Dropped / Collected</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-movement-submit.png?v=20261118c" aria-label="放大 PDA Movement Submit 截图">
+            <img loading="lazy" decoding="async" src="assets/pda-movement-submit.png?v=20261118c" alt="PDA Movement Submit 截图">
+          </button>
+          <strong>提交放置</strong>
+          <p>扫描目标库位，或点击搜索图标按 Dock / Location / Staging / Storage 分类选择，选中后显示在 Drop To。默认开启 Entire Drop，整条货一次放完；只想放一部分时关闭开关，在 Qty 中填写本次数量（如图中只放 50 EA）。目标 LP 必须填写：可以扫描现有标签，没有现成标签时点击打印图标，系统生成新的 LP 号并自动填入（如图中的 ILP-11454），已配置打印机时会同时打印标签，贴到货上。确认后点击「Submit」。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-movement-dropped.png?v=20261118c" aria-label="放大 PDA Movement 放置结果截图">
+            <img loading="lazy" decoding="async" src="assets/pda-movement-dropped.png?v=20261118c" alt="PDA Movement 放置结果截图">
+          </button>
+          <strong>查看结果</strong>
+          <p>提交后回到 Drop 页面。已放下的货移到上方 Dropped Items，记录从哪个库位和 LP 放到了哪个库位和 LP，方便现场复核；没放完的部分继续留在 Collected Items，Remaining Qty 显示还剩多少。剩余的货按同样方式继续放置，全部放完即完成移库。</p>
         </div>
       </div>
     </div>
@@ -322,21 +371,57 @@
     <div class="pda-section">
       <span class="section-kicker">PDA 手持端</span>
       <h3>在手持设备上执行 Pick Task</h3>
-      <p>拣货员在 PDA 上接收拣货任务，系统按照波次和商品维度指引取货路径，实时追踪每件商品的拣取进度。</p>
+      <p>拣货员在 PDA 上领取拣货任务：先在 Pick 步骤选择拣货方式，按系统给出的库位逐个拣取，拣完后进入 Stage 步骤，把拣好的 LP 暂存到指定库位。Pick 关闭后才开始 Stage。</p>
       <div class="pda-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-pick-list.png?v=20261116c" aria-label="放大 PDA Pick Task 列表截图">
-            <img loading="lazy" decoding="async" src="assets/pda-pick-list.png?v=20261116c" alt="PDA Pick Task 列表截图">
+          <button class="pda-phone" data-lightbox="assets/pda-pick-list.png?v=20261119p" aria-label="放大 PDA Pick Task 列表截图">
+            <img loading="lazy" decoding="async" src="assets/pda-pick-list.png?v=20261119p" alt="PDA Pick Task 列表截图">
           </button>
           <strong>任务列表</strong>
-          <p>按 New / In Progress / Done 分 tab 管理，每张卡片显示任务编号、波次类型、关联订单、商品数量和当前步骤进度。</p>
+          <p>按 New / In Progress / Done 管理任务。卡片显示任务类型、关联订单、需拣商品的应拣与已拣数量，以及当前所处步骤的进度，点击卡片进入任务。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-pick-exec.png?v=20261116c" aria-label="放大 PDA Pick Task 执行页截图">
-            <img loading="lazy" decoding="async" src="assets/pda-pick-exec.png?v=20261116c" alt="PDA Pick Task 执行页截图">
+          <button class="pda-phone" data-lightbox="assets/pda-pick-detail.png?v=20261119p" aria-label="放大 PDA Pick Task 步骤总览截图">
+            <img loading="lazy" decoding="async" src="assets/pda-pick-detail.png?v=20261119p" alt="PDA Pick Task 步骤总览截图">
           </button>
-          <strong>执行进度 · Item / Location 双视角</strong>
-          <p>Item 视图按 SKU 展示应拣 / 已拣 / 待拣数量；切换到 Location 视图按库位展示推荐取货路径，方便操作员一次走完最短路线。</p>
+          <strong>任务详情 · 执行步骤</strong>
+          <p>依次显示 Pick 和 Stage 两个步骤及各自状态，每一步完成后才会进入下一步。</p>
+        </div>
+      </div>
+      <ol class="pda-flow-line">
+        <li><b>01</b><span>选择拣货方式</span><em>Pick Mode</em></li>
+        <li><b>02</b><span>提交拣货</span><em>扫描后填写 To LP</em></li>
+        <li><b>03</b><span>查看拣货进度</span><em>Item / Location</em></li>
+        <li><b>04</b><span>Stage 暂存</span><em>扫描库位，暂存 LP</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-pick-mode.png?v=20261119p" aria-label="放大 PDA Pick Mode 选择截图">
+            <img loading="lazy" decoding="async" src="assets/pda-pick-mode.png?v=20261119p" alt="PDA Pick Mode 选择截图">
+          </button>
+          <strong>Pick · 选择拣货方式</strong>
+          <p>进入 Pick 步骤后先选择拣货方式（Pick to Tote Cart 或 By LP），选好后点击「Start Pick」开始拣货。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-pick-exec.png?v=20261119p" aria-label="放大 PDA Pick 提交拣货截图">
+            <img loading="lazy" decoding="async" src="assets/pda-pick-exec.png?v=20261119p" alt="PDA Pick 提交拣货截图">
+          </button>
+          <strong>Pick · 提交拣货</strong>
+          <p>操作员到建议库位依次扫描库位和批次，确认拣取数量后，在 To LP 填入承接货物的 LP。输入后按一次回车才算录入成功，也可点右侧 SLP 按钮由系统生成新的 LP，最后点击「Submit」提交。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-pick-location.png?v=20261119p" aria-label="放大 PDA Pick 进度 Location 视图截图">
+            <img loading="lazy" decoding="async" src="assets/pda-pick-location.png?v=20261119p" alt="PDA Pick 进度 Location 视图截图">
+          </button>
+          <strong>Pick · 进度（Location 视图）</strong>
+          <p>提交后可点击右上角的统计图标查看整体进度。Location 标签按库位看从哪里拣了多少，Item 标签按 SKU 汇总应拣与已拣；全部拣完显示 100%，随后进入 Stage。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-pick-stage.png?v=20261119p" aria-label="放大 PDA Pick Stage 截图">
+            <img loading="lazy" decoding="async" src="assets/pda-pick-stage.png?v=20261119p" alt="PDA Pick Stage 截图">
+          </button>
+          <strong>Stage 暂存</strong>
+          <p>拣货完成后进入 Stage：先填写暂存库位，待暂存列表里会列出刚拣好的 LP，扫描后点击「Stage」，有多个 LP 时可点「Stage All」一次暂存，成功后提示 Staged successfully。</p>
         </div>
       </div>
     </div>
@@ -479,28 +564,91 @@
     </section>
 
     <section class="module" id="sort-task" data-section="sort-task">
-      <div class="module-number">08</div>
+    <div class="module-number">08</div>
       <div class="module-heading">
         <div class="eyebrow">TASK · SORT TASK</div>
-        <h2>把批量拣出的货按订单分拣</h2>
-        <p>Sort Task 对应批量拣货之后的分拣步骤，用来查看分拣任务的批次、模式和状态。</p>
+        <h2>批量拣货后，按订单把货分开</h2>
+        <p>Sort Task 在批量拣货（Batch / Wave Pick）完成后自动生成，负责把拣出的混合货物分配到各订单对应的目标容器，让后续包装和发运可以按单处理。</p>
       </div>
       <div class="scenario-band">
         <div class="section-kicker">核心场景</div>
-        <h3>一批拣好的货要按订单分拣</h3>
-        <p class="scenario-intro">批量拣货（Batch / Wave）把多个订单的货一起拣出来，之后需要按订单拆开。Sort Task 记录这一步，列表里能看到它来自哪个批次（Batch No）、哪个波次（Wave No）、关联哪条 Pick Task，以及按哪种模式（Manual、WCS Auto、Hybrid）分拣。</p>
+        <h3>波次拣货后，把货分给各订单容器</h3>
+        <p class="scenario-intro">批量拣货（Batch / Wave）把多张订单的货一起拣出来。Sort Task 记录分拣过程：操作员扫来源容器，扫商品，系统提示投入哪个订单容器。每个 SKU 分完后标绿，全部分完任务自动关闭。</p>
+        <ol>
+          <li><b>扫来源容器</b><span>确认装有混合货物的来源箱，系统校验通过后进入分拣界面</span></li>
+          <li><b>扫商品条码</b><span>识别 SKU，系统自动匹配所属订单</span></li>
+          <li><b>分配目标容器</b><span>首次分拣时绑定空容器，后续同订单 SKU 自动对应已绑定容器</span></li>
+          <li><b>Confirm &amp; Put In</b><span>确认后投入，重复直至全部分拣完毕，任务自动关闭</span></li>
+        </ol>
       </div>
       <div class="list-page-preview">
         <div class="section-intro">
           <span class="section-kicker">Sort Task · 列表</span>
-          <h3>分拣任务按批次跟踪进度</h3>
-          <p>每条分拣任务都关联到所属批次和拣货任务，用来跟踪这批订单的分拣进度。</p>
+          <h3>按批次跟踪分拣进度</h3>
+          <p>每条分拣任务关联所属批次和拣货任务。Batch No / Wave No 对应批量拣货的来源；Mode 显示分拣方式（Manual / WCS Auto / Hybrid）；Progress 追踪已分拣和待分拣数量。</p>
         </div>
-        <button class="screen-frame list-screen" data-lightbox="assets/sort-task-list.png?v=20261120" aria-label="放大 Sort Task 列表截图">
+        <button class="screen-frame list-screen" data-lightbox="assets/sort-task-list.png?v=20261120s" aria-label="放大 Sort Task 列表截图">
           <span>SORT TASK · LIST</span>
-          <img loading="lazy" decoding="async" src="assets/sort-task-list.png?v=20261120" alt="Sort Task 列表截图">
+          <img loading="lazy" decoding="async" src="assets/sort-task-list.png?v=20261120s" alt="Sort Task 列表截图">
           <i>点击放大</i>
         </button>
+      </div>
+      <div class="pda-section">
+        <span class="section-kicker">PDA 手持端</span>
+        <h3>在手持设备上执行 Sort Task</h3>
+        <p>现场操作员在 PDA 上完成分拣：扫来源容器确认货物来源，逐件扫商品，系统提示投入哪个订单容器，确认后自动推进，直到所有 SKU 分拣完毕任务自动关闭。</p>
+        <div class="pda-row">
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-sort-list-inprogress.png?v=20261120s" aria-label="放大 PDA Sort Task 列表截图">
+              <img loading="lazy" decoding="async" src="assets/pda-sort-list-inprogress.png?v=20261120s" alt="PDA Sort Task 列表截图">
+            </button>
+            <strong>任务列表</strong>
+            <p>In Progress tab 显示所有待分拣任务，进度条标出各任务完成比例，卡片显示批次来源和已/待分拣商品数。</p>
+          </div>
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-sort-task-detail.png?v=20261120s" aria-label="放大 PDA Sort Task 详情截图">
+              <img loading="lazy" decoding="async" src="assets/pda-sort-task-detail.png?v=20261120s" alt="PDA Sort Task 详情截图">
+            </button>
+            <strong>任务详情</strong>
+            <p>查看批次来源和分拣进度，Actions 列表显示每个 SKU 的分拣状态（橙色待分拣、绿色已完成）和目标容器。</p>
+          </div>
+        </div>
+        <ol class="pda-flow-line">
+          <li><b>01</b><span>扫来源容器</span><em>Start Sorting</em></li>
+          <li><b>02</b><span>扫商品 SKU</span><em>Scan Item</em></li>
+          <li><b>03</b><span>分配目标容器</span><em>首次绑定空容器</em></li>
+          <li><b>04</b><span>确认放入</span><em>Confirm &amp; Put In</em></li>
+        </ol>
+        <div class="pda-steps-row pda-flow-row">
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-sort-scan-item.png?v=20261120s" aria-label="放大 PDA Sort Task 扫商品截图">
+              <img loading="lazy" decoding="async" src="assets/pda-sort-scan-item.png?v=20261120s" alt="PDA Sort Task 扫商品截图">
+            </button>
+            <strong>扫来源容器与商品</strong>
+            <p>扫描来源容器校验通过后，依次扫描各 SKU 条码。待分拣（橙色）和已完成（绿色）实时更新。</p>
+          </div>
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-sort-assign-tote.png?v=20261120s" aria-label="放大 PDA Sort Task 分配目标容器截图">
+              <img loading="lazy" decoding="async" src="assets/pda-sort-assign-tote.png?v=20261120s" alt="PDA Sort Task 分配目标容器截图">
+            </button>
+            <strong>分配目标容器</strong>
+            <p>若该订单尚未绑定容器，扫一个空容器分配给它；已有容器的订单直接跳到确认步骤。</p>
+          </div>
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-sort-confirm-put-in.png?v=20261120s" aria-label="放大 PDA Sort Task 确认放入截图">
+              <img loading="lazy" decoding="async" src="assets/pda-sort-confirm-put-in.png?v=20261120s" alt="PDA Sort Task 确认放入截图">
+            </button>
+            <strong>Confirm &amp; Put In</strong>
+            <p>确认商品和目标容器无误后点 Confirm &amp; Put In，该 SKU 标记为已完成（绿色）。</p>
+          </div>
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-sort-done.png?v=20261120s" aria-label="放大 PDA Sort Task 完成截图">
+              <img loading="lazy" decoding="async" src="assets/pda-sort-done.png?v=20261120s" alt="PDA Sort Task 完成截图">
+            </button>
+            <strong>分拣完成</strong>
+            <p>全部 SKU 分拣完毕，任务自动关闭（CLOSED），进度显示 100%，所有 Action 均标绿。</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -580,21 +728,49 @@
     <div class="pda-section">
       <span class="section-kicker">PDA 手持端</span>
       <h3>在手持设备上执行 Put Back Task</h3>
-      <p>操作员在 PDA 上处理退货上架或订单取消后的货物退回，扫描 LP 或发货单编号即可快速定位应退回的货物并完成上架。</p>
+      <p>操作员在 PDA 上处理退库：先在列表里新建任务，扫描要退回的 LP，填写退回的目标库位和 LP 后提交。提交后任务自动结束，可在 Review 里核对退回记录。</p>
       <div class="pda-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-putback-list.png?v=20261116c" aria-label="放大 PDA Put Back Task 列表截图">
-            <img loading="lazy" decoding="async" src="assets/pda-putback-list.png?v=20261116c" alt="PDA Put Back Task 列表截图">
+          <button class="pda-phone" data-lightbox="assets/pda-putback-list.png?v=20261122p" aria-label="放大 PDA Put Back Task 列表截图">
+            <img loading="lazy" decoding="async" src="assets/pda-putback-list.png?v=20261122p" alt="PDA Put Back Task 列表截图">
           </button>
           <strong>任务列表</strong>
-          <p>按类型区分：Order Cancel 是订单取消后自动触发的退库任务，Manual 是人工创建的；优先级和指派人可在任务创建时指定，方便排班管理。</p>
+          <p>按 New / In Progress / Done 管理任务。Manual 是人工创建的任务，Order Cancel 是订单取消后系统自动触发的任务。点击右上角的新建按钮可以手动发起一张退库任务。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-putback-exec.png?v=20261116c" aria-label="放大 PDA Put Back Task 执行页截图">
-            <img loading="lazy" decoding="async" src="assets/pda-putback-exec.png?v=20261116c" alt="PDA Put Back Task 执行页截图">
+          <button class="pda-phone" data-lightbox="assets/pda-putback-new.png?v=20261122p" aria-label="放大 PDA Put Back Task 新建任务截图">
+            <img loading="lazy" decoding="async" src="assets/pda-putback-new.png?v=20261122p" alt="PDA Put Back Task 新建任务截图">
           </button>
-          <strong>执行 · 扫描退回</strong>
-          <p>进入任务后扫描 LP、容器或发货单号，系统自动匹配应退回的商品清单；逐件确认后完成上架，整个过程无需手动查单。</p>
+          <strong>新建任务</strong>
+          <p>点击 NEW TASK 即创建并开始任务，创建后直接进入扫描页，没有步骤总览。</p>
+        </div>
+      </div>
+      <ol class="pda-flow-line">
+        <li><b>01</b><span>扫描 LP</span><em>找到待退回的货物</em></li>
+        <li><b>02</b><span>填写退回目标</span><em>Target Location / LP</em></li>
+        <li><b>03</b><span>Review 核对</span><em>确认货物去向</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-putback-scan.png?v=20261122p" aria-label="放大 PDA Put Back 扫描 LP截图">
+            <img loading="lazy" decoding="async" src="assets/pda-putback-scan.png?v=20261122p" alt="PDA Put Back 扫描 LP截图">
+          </button>
+          <strong>扫描 LP</strong>
+          <p>输入或扫描待退回的 LP，系统识别后显示它当前所在的库位、商品和数量，例如停放在暂存区的拣货 LP。点击该条目进入下一步。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-putback-target.png?v=20261122p" aria-label="放大 PDA Put Back 填写退回目标截图">
+            <img loading="lazy" decoding="async" src="assets/pda-putback-target.png?v=20261122p" alt="PDA Put Back 填写退回目标截图">
+          </button>
+          <strong>填写退回目标</strong>
+          <p>Target Location 填货物要退回的库位，Target LP 填承接货物的 LP，可以是原来的 LP。数量和批次由系统带出，每个输入框回车后下方出现确认文字，表示校验通过，最后点击「Submit」。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-putback-history.png?v=20261122p" aria-label="放大 PDA Put Back Review 历史截图">
+            <img loading="lazy" decoding="async" src="assets/pda-putback-history.png?v=20261122p" alt="PDA Put Back Review 历史截图">
+          </button>
+          <strong>Review · 历史记录</strong>
+          <p>提交后任务结束，点击右上角菜单里的 Review 可以看到退回记录：货物从哪个 LP 退到哪个 LP、放在哪个库位，以及操作人和时间。</p>
         </div>
       </div>
     </div>
@@ -632,21 +808,41 @@
     <div class="pda-section">
       <span class="section-kicker">PDA 手持端</span>
       <h3>在手持设备上执行 Replenishment Task</h3>
-      <p>补货员在 PDA 上接收补货指令，扫描来源 LP 或库位确认货物，再搬运至拣货区目标库位，确保拣货区始终有足够的库存。</p>
-      <div class="pda-row">
+      <p>补货员在 PDA 上按 Collect → Drop 两步完成补货：先到储存区取货，再把货放到拣货区的目标库位，让拣货区始终有足够的库存。</p>
+      <ol class="pda-flow-line">
+        <li><b>01</b><span>领取任务</span><em>Replenishment</em></li>
+        <li><b>02</b><span>Collect 取货</span><em>Suggested Source</em></li>
+        <li><b>03</b><span>Drop 放置</span><em>目标库位 + LP</em></li>
+        <li><b>04</b><span>完成补货</span><em>Remaining 0</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-replenishment-list.png?v=20261116c" aria-label="放大 PDA Replenishment Task 列表截图">
-            <img loading="lazy" decoding="async" src="assets/pda-replenishment-list.png?v=20261116c" alt="PDA Replenishment Task 列表截图">
+          <button class="pda-phone" data-lightbox="assets/pda-replenishment-list.png?v=20261117p" aria-label="放大 PDA Replenishment Task 列表截图">
+            <img loading="lazy" decoding="async" src="assets/pda-replenishment-list.png?v=20261117p" alt="PDA Replenishment Task 列表截图">
           </button>
-          <strong>任务列表</strong>
-          <p>每张卡片展示任务编号、关联 Handling LP、来源路线与目标库位，以及应补货的 SKU 和数量。任务来源（MANUAL / 自动调度）也标注在卡片上。</p>
+          <strong>领取任务</strong>
+          <p>在 New、In Progress、Done 标签间切换查看任务。卡片右上角标明任务来源，Manual 表示管理员手动创建；下方列出要补的商品，Req 为应补数量，Done 为已完成数量，进度条显示补货进度。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-replenishment-exec.png?v=20261116c" aria-label="放大 PDA Replenishment 执行页截图">
-            <img loading="lazy" decoding="async" src="assets/pda-replenishment-exec.png?v=20261116c" alt="PDA Replenishment 执行页截图">
+          <button class="pda-phone" data-lightbox="assets/pda-replenishment-exec.png?v=20261117p" aria-label="放大 PDA Replenishment Collect 页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-replenishment-exec.png?v=20261117p" alt="PDA Replenishment Collect 页截图">
           </button>
-          <strong>执行 · 收集与搬运</strong>
-          <p>扫描来源库位或 LP 完成收集（Collect），再扫描目标拣货位完成补货（Place）。整个流程由系统引导，无需手动查找目标位置。</p>
+          <strong>Collect 取货</strong>
+          <p>任务从 Collect 开始。页面顶部的 Suggested Source 给出建议的取货库位、LP 和要补的商品数量，操作员到该库位扫描库位或 LP 取货，取完的商品会列在 Collected Items 中，并记录来源库位和 LP。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-replenishment-dropsubmit.png?v=20261117p" aria-label="放大 PDA Replenishment Drop 提交页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-replenishment-dropsubmit.png?v=20261117p" alt="PDA Replenishment Drop 提交页截图">
+          </button>
+          <strong>Drop 放置</strong>
+          <p>取货完成后点击 Next 进入 Drop。选择要补货的目标库位，再扫描任务卡片上的 HLP（本任务的补货托盘），确认数量后提交，货即放入目标库位。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-replenishment-dropped.png?v=20261117p" aria-label="放大 PDA Replenishment 完成页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-replenishment-dropped.png?v=20261117p" alt="PDA Replenishment 完成页截图">
+          </button>
+          <strong>完成补货</strong>
+          <p>放置成功后，商品出现在 Dropped Items 中，并记录目标库位（To Location）和托盘（To LP）。Collected Items 的 Remaining Qty 变为 0，说明本次应补数量已全部放置完成。</p>
         </div>
       </div>
     </div>
@@ -704,18 +900,6 @@
         <h3>承运商车辆到达月台，仓库需要确认这一车该装哪些货</h3>
         <p class="scenario-intro">当订单完成拣货、打包并被安排到某个 Load 后，装车现场需要核对车辆、Dock、Carrier 以及实际装入的 LP。Load Task 记录这次交接过程，确保货物不是“计划已发”，而是已经完成现场装车确认。</p>
       </div>
-      <div class="rf-preview-block">
-        <button class="screen-frame rf-screen" data-lightbox="assets/load-task-rf-steps.png" aria-label="放大 Load Task 手持端步骤截图">
-          <span>LOAD TASK · RF/PDA STEPS</span>
-          <img loading="lazy" decoding="async" src="assets/load-task-rf-steps.png" alt="Load Task 手持端步骤页面截图">
-          <i>点击放大</i>
-        </button>
-        <div class="rf-caption">
-          <div class="subsection-title"><span>—</span><h3>手持端 · 按步骤完成装车</h3></div>
-          <p style="font-size:14px;color:#475569;margin:0 0 10px;line-height:1.6;">手持端把装车现场拆成 <b>Dock Check In</b>、<b>Loading</b>、<b>Sign BOL</b> 三个检查点，方便操作员按实际交接进度推进。</p>
-          <p style="font-size:13px;color:#64748b;line-height:1.6;">Loading 阶段用于扫描并确认货物装入对应 Load；Sign BOL 用于完成装车后的单据确认。</p>
-        </div>
-      </div>
       <div class="list-page-preview">
         <div class="section-intro">
           <span class="section-kicker">Load Task · 列表</span>
@@ -732,21 +916,61 @@
     <div class="pda-section">
       <span class="section-kicker">PDA 手持端</span>
       <h3>在手持设备上执行 Load Task</h3>
-      <p>装车员在 PDA 上引导整个装车流程，依次完成月台确认、装车执行和签发提单三个步骤，每步状态实时同步到 WES 后台。</p>
-      <div class="pda-row">
+      <p>装车员在 PDA 上按步骤完成一车货的交接：先在月台确认车辆，再装车，最后签发提单。每个任务对应一个 Load，进度以“已完成步骤数”显示，现场做到哪一步一目了然。</p>
+      <ol class="pda-flow-line">
+        <li><b>01</b><span>领取任务</span><em>Load Task</em></li>
+        <li><b>02</b><span>查看步骤</span><em>Dock Check In / Loading / Sign BOL</em></li>
+        <li><b>03</b><span>月台登记</span><em>Dock Check-In</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-load-list.png?v=20261116c" aria-label="放大 PDA Load Task 列表截图">
-            <img loading="lazy" decoding="async" src="assets/pda-load-list.png?v=20261116c" alt="PDA Load Task 列表截图">
+          <button class="pda-phone" data-lightbox="assets/pda-load-list.png?v=20261117p" aria-label="放大 PDA Load Task 列表截图">
+            <img loading="lazy" decoding="async" src="assets/pda-load-list.png?v=20261117p" alt="PDA Load Task 列表截图">
           </button>
-          <strong>任务列表</strong>
-          <p>显示发货单号、货主客户、关联承运商，以及商品总数和重量；In Progress 中的任务即为当前正在执行的装车作业。</p>
+          <strong>领取任务</strong>
+          <p>In Progress 标签下是正在执行的装车任务。卡片汇总这个任务对应的 Load 单号、客户和要装的商品，Req 为应装数量，Load 为已装数量；底部的步数进度（如 0/3 Steps）提示当前停在哪一步。点击卡片进入。</p>
         </div>
         <div class="pda-phone-wrap">
-          <button class="pda-phone" data-lightbox="assets/pda-load-detail.png?v=20261116c" aria-label="放大 PDA Load Task 步骤详情截图">
-            <img loading="lazy" decoding="async" src="assets/pda-load-detail.png?v=20261116c" alt="PDA Load Task 步骤详情截图">
+          <button class="pda-phone" data-lightbox="assets/pda-load-detail.png?v=20261117p" aria-label="放大 PDA Load Task 步骤页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-load-detail.png?v=20261117p" alt="PDA Load Task 步骤页截图">
           </button>
-          <strong>任务步骤</strong>
-          <p>进入任务后显示三个步骤：Dock Check In 确认月台、Loading 扫描装箱、Sign BOL 打印并签发提单；前序步骤完成后才能进入下一步。</p>
+          <strong>查看步骤</strong>
+          <p>装车被拆成 Dock Check In、Loading、Sign BOL 三个步骤，对应车辆到位、装货、签单三个现场检查点。每一步右侧显示状态，操作员按顺序逐步推进。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-load-dockcheckin.png?v=20261117p" aria-label="放大 PDA Dock Check-In 页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-load-dockcheckin.png?v=20261117p" alt="PDA Dock Check-In 页截图">
+          </button>
+          <strong>月台登记</strong>
+          <p>第一步先登记车辆停靠的月台：扫描月台条码，选择装货设备类型（Container、Trailer 或 Other），需要时填写 Entry ID，确认后点击 Check In。扫描的月台必须与这车货安排的月台一致，否则系统提示 Dock not match。</p>
+        </div>
+      </div>
+      <ol class="pda-flow-line">
+        <li><b>04</b><span>扫描装车</span><em>Loading</em></li>
+        <li><b>05</b><span>采集信息</span><em>Collect Info</em></li>
+        <li><b>06</b><span>签署提单</span><em>Sign BOL</em></li>
+      </ol>
+      <div class="pda-steps-row pda-flow-row">
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-load-loading.png?v=20261118a" aria-label="放大 PDA Loading 页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-load-loading.png?v=20261118a" alt="PDA Loading 页截图">
+          </button>
+          <strong>扫描装车</strong>
+          <p>货物上车时逐个扫描 LP 条码，Load 单号右侧的数字显示已装与应装的 LP 数，装到哪里随时可见。承运商的 PRO 号可以在这里补录或更正后保存。装错时打开 Unload Mode 再扫描对应 LP，把它从这一车中卸下。全部装完点击 Submit。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-load-collect.png?v=20261118a" aria-label="放大 PDA Collect Info 页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-load-collect.png?v=20261118a" alt="PDA Collect Info 页截图">
+          </button>
+          <strong>采集信息</strong>
+          <p>装车完成后在 Collect Info 留存交接凭证：封条号为必填，用于到货方核对车厢是否被打开过；封条、车辆和点货单照片作为装车现场的证据，发生货损或短少争议时可以回查。装车用到的辅材可通过 Add Materials 一并登记。</p>
+        </div>
+        <div class="pda-phone-wrap">
+          <button class="pda-phone" data-lightbox="assets/pda-load-bol.png?v=20261118a" aria-label="放大 PDA Sign BOL 页截图">
+            <img loading="lazy" decoding="async" src="assets/pda-load-bol.png?v=20261118a" alt="PDA Sign BOL 页截图">
+          </button>
+          <strong>签署提单</strong>
+          <p>最后一步由承运商和发货方在提单上确认交接。Load BOL 按整车签署，Order BOL 按订单签署；卡片上分别显示 Carrier 和 Shipper 的签字状态，点击 Sign 进入签字，需要纸质提单时点击 Print。双方签完后点击 Complete Signature，这车货的交接即告完成。</p>
         </div>
       </div>
     </div>
@@ -854,6 +1078,6 @@
   </dialog>
   <div class="sidebar-scrim" id="sidebar-scrim"></div>
   <script src="app.js?v=20261123-task"></script>
-  <script src="i18n.js?v=20261123-task"></script>
+  <script src="i18n.js?v=20261120st-task-pda1"></script>
 </body>
 </html>

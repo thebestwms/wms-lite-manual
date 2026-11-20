@@ -160,7 +160,7 @@ function ensureLanguageEngine(page) {
   const engine = page === "task" ? "task" : page === "wcs" ? "wcs" : "wms";
   if (!languageEnginePromises.has(engine)) {
     const source = engine === "task"
-      ? "./task/i18n.js?v=20261304-customer"
+      ? "./task/i18n.js?v=20261304-customer-pda1"
       : engine === "wcs"
         ? "./wcs/translations.js?v=20260903-native-content-v10"
         : "./i18n.js?v=20261304-customer";
@@ -356,7 +356,7 @@ async function loadContent(page, section, sequence) {
     const root = contentHost.shadowRoot || contentHost.attachShadow({ mode: "open" });
     const stylesheet = document.createElement("link");
     stylesheet.rel = "stylesheet";
-    stylesheet.href = new URL(page === "task" ? "task/styles.css?v=20261123-task" : page === "wcs" ? "wcs/styles.css?v=20261305-deploy" : "styles.css?v=20261305-deploy", location.href).href;
+    stylesheet.href = new URL(page === "task" ? "task/styles.css?v=20261118-mv2" : page === "wcs" ? "wcs/styles.css?v=20261305-deploy" : "styles.css?v=20261118-pda2", location.href).href;
     const embedStyle = document.createElement("style");
     const pageLayoutOverrides = page === "wcs" ? `
       main > :is(.manual-page, section.section, article) {

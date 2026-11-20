@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Orbiflow WMS-Lite 功能说明书网站样章">
   <title>Orbiflow WMS-Lite · Inventory / Cycle Count 库存与盘点</title>
-  <link rel="stylesheet" href="styles.css?v=20260825-page-nav">
+  <link rel="stylesheet" href="styles.css?v=20261117-pda">
 </head>
 <body class="page-inventory">  <div class="language-switcher" aria-label="Language switcher"><button type="button" data-lang-option="zh" class="active">中</button><button type="button" data-lang-option="ja">日</button><button type="button" data-lang-option="en">EN</button></div>
   <!-- 内容规则：不复述截图中显而易见的界面结构、按钮或必填标记；正文只解释业务场景、选择依据、配置结果和非显性约束。 -->
@@ -704,13 +704,57 @@
         <div class="count-task-page-copy">
           <span class="section-kicker">Mobile · Manual Count</span>
           <h3>手工盘点在 Mobile 端逐条执行</h3>
-          <p>已分配的 Pending Task 从 Mobile 的 Cycle Count Task List 打开。任务开始后进入 In Progress，操作员按现场对象完成扫描和清点。</p>
+          <p>已分配的任务从 PDA 的 Cycle Count Task List 打开。操作员按“库位 → LP → 商品”的顺序逐层扫描，再录入实盘数量。</p>
         </div>
-        <div class="count-task-mobile-flow" aria-label="Mobile 盘点步骤">
-          <div><b>01</b><span>打开已分配任务</span></div><i>→</i>
-          <div><b>02</b><span>扫描现场对象并清点</span></div><i>→</i>
-          <div><b>03</b><span>提交盘点结果</span></div>
+        <ol class="pda-flow-line">
+          <li><b>01</b><span>打开已分配任务</span><em>Cycle Count Task List</em></li>
+          <li><b>02</b><span>扫描库位</span><em>Suggested Location</em></li>
+          <li><b>03</b><span>扫描 LP</span><em>Expected Inventory</em></li>
+        </ol>
+        <div class="pda-steps-row pda-flow-row">
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-cyclecount-list.png?v=20261117p" aria-label="放大 PDA Cycle Count Task List 截图">
+              <img loading="lazy" decoding="async" src="assets/pda-cyclecount-list.png?v=20261117p" alt="PDA Cycle Count Task List 截图">
+            </button>
+            <strong>打开已分配任务</strong>
+            <p>卡片显示盘点方式（如 By Location）、来源 Ticket 和 Count Method，下方列出要盘的商品，Exp 为系统数量，Cnt 为已盘数量。点击卡片进入任务。</p>
+          </div>
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-cyclecount-exec.png?v=20261117p" aria-label="放大 PDA Cycle Count 库位扫描页截图">
+              <img loading="lazy" decoding="async" src="assets/pda-cyclecount-exec.png?v=20261117p" alt="PDA Cycle Count 库位扫描页截图">
+            </button>
+            <strong>扫描库位</strong>
+            <p>页面顶部给出 Suggested Location，下方的 Pending Locations 统计还有几个库位未盘。操作员到建议库位扫描库位条码开始清点；库位已空时可点击 Report Empty 上报。</p>
+          </div>
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-cyclecount-lp.png?v=20261117p" aria-label="放大 PDA Cycle Count LP 扫描页截图">
+              <img loading="lazy" decoding="async" src="assets/pda-cyclecount-lp.png?v=20261117p" alt="PDA Cycle Count LP 扫描页截图">
+            </button>
+            <strong>扫描 LP</strong>
+            <p>扫描库位后，Expected Inventory 列出该库位上应有的 LP 及其商品。操作员逐个扫描 LP。</p>
+          </div>
         </div>
+        <ol class="pda-flow-line">
+          <li><b>04</b><span>扫描商品</span><em>Item</em></li>
+          <li><b>05</b><span>录入实盘数量</span><em>Quantity + UOM</em></li>
+        </ol>
+        <div class="pda-steps-row pda-flow-row">
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-cyclecount-item.png?v=20261118a" aria-label="放大 PDA Cycle Count 商品扫描页截图">
+              <img loading="lazy" decoding="async" src="assets/pda-cyclecount-item.png?v=20261118a" alt="PDA Cycle Count 商品扫描页截图">
+            </button>
+            <strong>扫描商品</strong>
+            <p>LP 扫描通过后进入商品扫描页，顶部显示当前库位和 LP。扫描 LP 里的商品条码，系统才会带出该商品的数量录入页；LP 里已经没有货时，点击 Empty LP 处理。</p>
+          </div>
+          <div class="pda-phone-wrap">
+            <button class="pda-phone" data-lightbox="assets/pda-cyclecount-count.png?v=20261117p" aria-label="放大 PDA Cycle Count 数量录入页截图">
+              <img loading="lazy" decoding="async" src="assets/pda-cyclecount-count.png?v=20261117p" alt="PDA Cycle Count 数量录入页截图">
+            </button>
+            <strong>录入实盘数量</strong>
+            <p>扫描商品后输入实际清点的 Quantity 并确认 UOM，点击 Submit 提交这一条结果。</p>
+          </div>
+        </div>
+
         <div class="count-task-result-note">
           <b>逐条提交，逐条生成结果</b>
           <p>每完成一组 Location + Item + LP，系统提交对应 Action 并立即生成 Count Result；全部 Action 完成后 Task 才能正常关闭。Blind Count 只隐藏系统数量，不影响操作员扫描 Location、LP 和 Item。</p>

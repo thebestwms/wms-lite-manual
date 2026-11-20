@@ -1869,12 +1869,18 @@ dialog img { display: block; width: 100%; max-height: calc(92vh - 60px); object-
 
 /* ── PDA 手持端截图区 ── */
 .pda-section {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  column-gap: 46px;
+  align-items: start;
   max-width: 1120px;
+  --pda-gap: clamp(12px, 3.2vw, 60px);
   margin-top: 58px;
   padding-top: 48px;
   border-top: 1px solid var(--line);
 }
 .pda-section > .section-kicker {
+  grid-column: 1 / -1;
   display: inline-block;
   font-size: 11px;
   font-weight: 700;
@@ -1884,48 +1890,37 @@ dialog img { display: block; width: 100%; max-height: calc(92vh - 60px); object-
   margin-bottom: 8px;
 }
 .pda-section > h3 {
+  grid-column: 1;
   font-size: 20px;
   font-weight: 700;
   color: var(--navy);
-  margin: 0 0 10px;
+  margin: 0;
   line-height: 1.4;
 }
 .pda-section > p {
+  grid-column: 2;
   font-size: 14px;
   color: #475569;
   line-height: 1.7;
-  margin: 0 0 28px;
-  max-width: 640px;
-}
-.pda-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-bottom: 32px;
-}
-.pda-steps-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.pda-phone-wrap {
-  flex: 0 0 220px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.pda-phone-wrap p {
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.6;
   margin: 0;
 }
-.pda-phone-wrap strong {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 4px;
+.pda-row,
+.pda-steps-row {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: var(--pda-gap, 60px);
+  margin-top: 28px;
+}
+.pda-phone-wrap {
+  flex: 0 1 200px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 button.pda-phone {
   background: none;
@@ -1937,11 +1932,89 @@ button.pda-phone {
 }
 button.pda-phone img {
   width: 100%;
+  height: auto;
   display: block;
   border-radius: 14px;
   box-shadow: 0 6px 28px rgba(14,42,71,.13);
-  object-fit: cover;
+}
+.pda-phone-wrap strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+}
+.pda-phone-wrap p {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
 }
 @media (max-width: 760px) {
-  .pda-phone-wrap { flex: 0 0 160px; }
+  .pda-section { grid-template-columns: 1fr; }
+  .pda-section > h3,
+  .pda-section > p { grid-column: 1; }
 }
+
+/* ── PDA 流程线（节点与下方截图列对齐：200px 列 + 60px 间距） ── */
+.pda-flow-line {
+  grid-column: 1 / -1;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: var(--pda-gap, 60px);
+  margin: 34px 0 0;
+  padding: 0;
+}
+.pda-flow-line li {
+  flex: 0 1 200px;
+  min-width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.pda-flow-line li::before {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: calc(var(--pda-gap, 60px) / -2);
+  right: calc(var(--pda-gap, 60px) / -2);
+  height: 2px;
+  background: #cbd8ea;
+}
+.pda-flow-line li:first-child::before { left: 50%; }
+.pda-flow-line li:last-child::before { right: 50%; }
+.pda-flow-line b {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 5px #fbfaf7;
+}
+.pda-flow-line span {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.pda-flow-line em {
+  font-style: normal;
+  font-size: 12px;
+  color: #64748b;
+}
+.pda-flow-row { margin-top: 22px; align-items: flex-start; }
+/* 只有 2 张图的行：栏宽放宽到 320px，图片仍保持 200px，说明文字不再挤成窄条 */
+.pda-flow-row:has(> .pda-phone-wrap:nth-child(2):last-child) .pda-phone-wrap { flex-basis: 320px; }
+.pda-flow-row:has(> .pda-phone-wrap:nth-child(2):last-child) button.pda-phone { width: min(100%, 200px); }
+.pda-flow-line:has(> li:nth-child(2):last-child) li { flex-basis: 320px; }
